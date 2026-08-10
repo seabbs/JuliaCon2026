@@ -3,4 +3,230 @@ title: "Prompts"
 subtitle: "The brief that made this site, and the steers that followed"
 ---
 
-<!-- PROMPTS: filled in during the build workflow -->
+These three decks, the pages around them, and most of the words on them were
+drafted by coding agents.
+This page is what I asked for and what I said back.
+The [how I LLM](https://samabbott.co.uk/how-I-llm) deck put its prompt on a
+slide at the end.
+There are three decks this time, so the prompts live here and each deck links
+back to this page instead.
+
+::: {.callout-note}
+Writing the brief took about ten minutes.
+Deciding which of the answers coming back were true took most of the day.
+:::
+
+## The brief
+
+This is my opening prompt, cleaned up for spelling and sentence boundaries and
+grouped under headings.
+The judgements are unchanged.
+The verbatim version, typos and all, is
+[in the repo](https://github.com/seabbs/Juliacon2026/blob/main/notes/original-brief.md).
+
+### The site
+
+::: {.prompt}
+I have made a new repo, Juliacon2026, and invited seabbs-bot to it.
+I need to give three presentations with three posters this week at JuliaCon.
+What I want is a simple home page in Quarto, in the style of my personal
+seabbs.github.io site, with a page per project that has the title and the
+abstract, a link to the slides, and a bullet list of resources that are
+linked.
+I then want a home page that has a bit about me with a link to my website, and
+some links to my other recent work that a JuliaCon user might like.
+
+I want the QR code on the slides to go to the home page of the project on our
+little website, not to the slides this time.
+:::
+
+### The delays deck
+
+::: {.prompt}
+I want to make the slide decks for each talk in Quarto again, matching how I
+did it for my recent how I LLM talk (see that repo for its prompt and my
+follow-up prompts) and my how to serial interval talk.
+
+For the CensoredDistributions talk I want to show some of the primarycensored
+code, using Quarto's support for that, and again the Julia code to compare.
+It is not a straight win.
+primarycensored has over 10,000 downloads and is used in an ecosystem of
+packages by public health departments.
+CensoredDistributions is used currently by me and a few close collaborators.
+We had to specify the problem as an ODE in Stan, but otherwise it just worked
+with AD.
+In Julia it was quite painful (see the repo git history).
+
+Note this is going in the Julia direction of being modularised, into
+ConvolvedDistributions and more work on expanding distributions and estimating
+complex compound distributions like the generation time.
+:::
+
+### The roadmap deck
+
+::: {.prompt}
+For the roadmap and org slides I want the why.
+epinowcast (the "why am I so late" slides might have good context for this, as
+does the compose grant), EpiNow2's lack of expandability and modularity,
+reference to other projects.
+Multiple ways to do it, via ComposableTuringIDModels, via distributions,
+others.
+
+Julia standards by default are somewhat sloppy and you need to enforce a
+template.
+Most of the templates are fairly modular; I want it to be rigid, to enforce
+uniformity.
+We needed to set up AD testing, as you cannot say which AD backend is best.
+They are all flaky and dodgy, or run by small teams.
+There is no settled tooling for this.
+DifferentiationInterfaceTest is very nice but needed more on top.
+The lack of standards for this in wider Julia means making a model is
+basically always a custom affair with lots of iteration.
+That is not realistic for most infectious disease modelling, and especially
+not in an outbreak or another new setting.
+
+Very heavy LLM use for the org, with max Claude driving it.
+Pull in the PR figure from how I LLM.
+What does this mean for contributions?
+Flag the Chris R keynote or long talk on this.
+We are building out an org agent which acts in batch overnight against public
+standards.
+Where does it run safely?
+
+For the org talk I have a bunch of questions.
+What does a good Julia org look like?
+How do you depend on packages in the ecosystem when maintenance is usually
+fairly minimal for many packages?
+What does treating AD as a first class citizen look like?
+Are there examples of Julia ecosystems with broad adoption?
+SciML maybe, but my impression is very technical folk.
+SpeedyWeather maybe?
+Some of the physics ones, not sure.
+Try and use my recent work and Claude history to understand what other
+questions I might have.
+:::
+
+### The composability deck
+
+::: {.prompt}
+For the case for composability we have a bunch of talks in that private repo
+we can repurpose and adapt, but they need to get down to 15 minutes, and not
+the Turing 15 minute edit, as that was overly Turing focused.
+Since writing that paper I have become a lot less sure about Turing as a
+sensible backend, due to reduction in team size, lack of stability, and not
+complete AD backend support.
+I am now exploring composable distributions and similar.
+Bring in some of the other talks.
+:::
+
+### How they should look, and how they should be made
+
+::: {.prompt}
+Have a page on the JuliaCon 2026 site we are building that is the prompts.
+Clean this up and give it some structure and have it there, and then a
+steering section, and then we link to it from the slides, rather than
+embedding it in the slides as we do in how I LLM.
+Make sure to get my prompt and steering prompt from there.
+
+We want a large workflow cross checking and exploring my repos, agents on core
+building, pushing to main is okay for this repo.
+Agents cross checking slide length and quality as well as correctness.
+No stuff about my citations.
+
+Lots of work on this is okay, and in fact good, as we want it to be good,
+clear, concise, with nice use of bullets.
+Similar to previous talks, and in a similar voice to my blog and past
+presentations.
+
+We have a poster for each of these but I was thinking that we would print the
+QR slide, the title slide, and two others.
+Those two should be interesting.
+Perhaps that has its own bullet, summary slides or similar, that is just
+those.
+:::
+
+### What I am unsure about
+
+::: {.prompt}
+Something I am a little unsure about is how and where to bring in my recent
+BVDOutbreakSize work.
+I think that maybe this could be in the composable org part, as to where we
+are, a bunch of LLM driven blah, very long, hard to check, hard to steer.
+But on the same front it is much better in my opinion than what we had before.
+It can consider lots of datasets, adapt as data changes, read sitreps in
+French, and scan out data from images with little effort ourselves.
+It is easier to follow our workflow, which is a major motivator for the
+composable org.
+:::
+
+## The steers
+
+Follow-up instructions during the build, verbatim apart from spelling.
+There are four of them so far and the build is not finished, so this is a
+thinner list than the two dozen steers behind the how I LLM deck.
+It is appended to as they arrive.
+
+::: {.prompt}
+Please make sure you get this website up and building and iterate on it.
+Keep working and review using Opus agents against my prompt above to make sure
+it is hitting what I wanted.
+
+I asked for a workflow with heavy agent usage, an Opus and Sonnet mixture.
+
+We probably want to link to their pages:
+<https://pretalx.com/juliacon-2026/talk/AMFLYU/>
+
+Where are the searching context pages and the workflow?
+:::
+
+Three of the four are corrections to the workflow rather than to the content.
+The brief said what the talks should say.
+It did not say how hard to look before saying it, and that is what the steers
+were for.
+
+## How it was built
+
+Eight research agents ran first, one per question, before any slide was
+written.
+They wrote about 3,500 lines of notes into
+[`notes/`](https://github.com/seabbs/Juliacon2026/tree/main/notes) and none of
+them wrote slides.
+
+- the git history and issue trail of primarycensored and
+  CensoredDistributions.jl, for what actually went wrong in Stan and in Julia
+- side by side code snippets in Stan, R, and Julia, each one run to check it
+  works
+- download counts and reverse dependencies for primarycensored and
+  CensoredDistributions.jl
+- the EpiAware organisation itself, its package template, its AD testing, and
+  its CI
+- why the previous attempts at modularity did not work, from epinowcast and
+  EpiNow2
+- agent use across the organisation, and what it has done to pull requests
+- the existing composability decks, and what to cut to reach 15 minutes
+- how SciML, JuMP, and Turing govern themselves, for the questions at the end
+
+They were told never to state a number they had not checked against a repo,
+the GitHub API, or a package registry, and to list separately anything they
+could not verify.
+Several notes have an unverified section, and those claims are not on the
+slides.
+
+Some of what came back contradicted the brief.
+The brief says the Stan side needed an ODE but otherwise AD just worked.
+The Julia history says both languages gave up on adaptive quadrature because
+the differentiator could not follow it, and that 82 of 396 issues in
+CensoredDistributions.jl are about AD or numerics.
+So the deck says that, not the easier version.
+One agent was asked for a lines of code comparison between the two packages
+and refused, on the grounds that the repos are not structured comparably and
+any such number would mislead.
+Another declined to claim public health agency use of primarycensored, because
+the only evidence was the epinowcast team describing its own tools to a public
+health audience.
+
+Writing agents then drafted the three decks from the notes, and review agents
+read them back against this brief for length, for voice, and for claims that
+were not in the notes.
+This page was written while that was still going on, so it records the
+workflow rather than a final tally of what the reviews caught.

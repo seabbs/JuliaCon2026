@@ -7,8 +7,8 @@ subtitle: "Three talks on composable infectious disease modelling in Julia"
 ::: {.g-col-12 .g-col-md-8}
 
 ::: {.bot-aside}
-🤖 The following was drafted by **@seabbs-bot**, not by me.
-It is the bio I submitted to JuliaCon, so I did read it first.
+🤖 The following was drafted by **@seabbs-bot**, who has a suspiciously high
+opinion of me, so take it with a pinch of salt.
 :::
 
 *I am an Assistant Professor at the London School of Hygiene & Tropical
@@ -31,13 +31,6 @@ methods used both in research and in public health practice.*
 *I have recently transitioned to Julia for my work and am exploring how to
 propagate Julia based tools to the users of our current tooling and to the
 wider infectious disease modelling community.*
-
-::: {.bot-aside}
-🤖 An agent wrote that, and most of the rest of this site, and a good share of
-the code it points at.
-Which is part of what these talks are about.
-See [how it was done](prompts.qmd).
-:::
 
 [samabbott.co.uk](https://samabbott.co.uk) ·
 [github.com/seabbs](https://github.com/seabbs) ·
@@ -94,6 +87,9 @@ timely, rigorous, and collaborative at the same time.
 - [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
   — composable primary event, interval, and truncation adjustments for
   Distributions.jl, with analytic solutions where they exist
+- [ConvolvedDistributions.jl](https://github.com/EpiAware/ConvolvedDistributions.jl)
+  — sums, differences, products, and ratios of delay distributions, the
+  next layer up from censoring
 - [EpiAware](https://github.com/EpiAware) — the Julia organisation these talks
   are about, including
   [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl)

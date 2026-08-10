@@ -54,7 +54,34 @@ different infectious disease contexts.
 
 ## Resources
 
-<!-- RESOURCES: filled in during the build workflow -->
+### Papers and writing
+
+- [Read the paper (PDF)](https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/paper.pdf)
+  — the full manuscript this talk summarises
+- [Supplementary information (PDF)](https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/supplementary.pdf)
+  — the extra detail and derivations that did not fit the paper
+- [Zenodo record](https://doi.org/10.5281/zenodo.19097427) — the citable,
+  versioned archive of the manuscript
+
+### Code
+
+- [ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)
+  — the Turing.jl proof of concept this talk demonstrates
+- [Turing.jl](https://github.com/TuringLang/Turing.jl) — the probabilistic
+  programming backend the proof of concept is built on
+
+### The R equivalent
+
+- [EpiAwareR](https://github.com/sbfnk/EpiAwareR) — Sebastian Funk's
+  prototype R interface to the Julia ecosystem
+
+### Related talks
+
+- [Building a composable Julia ecosystem](../roadmap/index.qmd) — the
+  roadmap this proof of concept feeds into, earlier the same day
+- [Estimating epidemiological delay distributions](../delays/index.qmd) —
+  CensoredDistributions.jl, one of the composable parts, earlier the same
+  day
 
 ::: {.talk-qr}
 ![](../figures/qr-composable.png)

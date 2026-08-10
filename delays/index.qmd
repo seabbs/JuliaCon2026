@@ -58,7 +58,34 @@ submodels for partially pooled and flexible delay estimation.
 
 ## Resources
 
-<!-- RESOURCES: filled in during the build workflow -->
+### The R and Stan side this grew out of
+
+- [primarycensored](https://primarycensored.epinowcast.org/) — the R
+  package, over 11,000 CRAN downloads all-time, this talk's starting point
+- [epidist](https://epidist.epinowcast.org/) — the R package that fits
+  delay distributions on top of primarycensored
+- [primarycensored PR #64](https://github.com/epinowcast/primarycensored/pull/64)
+  — the ODE recast forced by Stan's integral solver going unstable
+  mid-sampling
+- [primarycensored issue #277](https://github.com/epinowcast/primarycensored/issues/277)
+  — the dist_id bug: an integer meant Normal in Stan and Weibull in R
+- [primarycensored on Zenodo](https://doi.org/10.5281/zenodo.13632839) —
+  the citable software record for the R package
+
+### Julia
+
+- [ConvolvedDistributions.jl](https://github.com/EpiAware/ConvolvedDistributions.jl)
+  — sums, differences, products, and ratios of delay distributions, the
+  next layer up
+- [CensoredDistributions.jl PR #250](https://github.com/EpiAware/CensoredDistributions.jl/pull/250)
+  — why we also gave up adaptive quadrature, for a different reason than
+  Stan did
+
+### Related talks
+
+- [How to serial interval?](https://samabbott.co.uk/how-to-serial-interval)
+  — more on censoring, delays, and why the serial interval is itself a
+  composition
 
 ::: {.talk-qr}
 ![](../figures/qr-delays.png)

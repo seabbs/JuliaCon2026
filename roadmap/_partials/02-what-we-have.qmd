@@ -1,0 +1,87 @@
+# What we have, and what a package has to be
+
+## Eleven packages, ten registered, two empty repos
+
+:::: {.columns}
+::: {.column width="52%"}
+- 22 repositories. 11 hold a Julia package, 10 of those are in General.
+  `ScoringRules.jl` is not registered
+- Six distribution packages, one fitting protocol, one Turing layer, one
+  scoring port, one package kit, one automatic differentiation toolbox
+- `GenerationTime.jl` and `ReproductionNumber.jl` were created in
+  February and have never been pushed to
+:::
+::: {.column width="48%"}
+- The documentation site lists four of the eleven. The tutorials site is
+  one page. The R interface prototype is three months stale and targets
+  a package name that no longer exists
+
+::: {.callout-note}
+The abstract for this talk says we have `CensoredDistributions.jl` and an
+R prototype. It is ten packages behind, and the website is behind that.
+:::
+
+::: {.attribution}
+`CensoredDistributions.jl` is the 14:45 talk in this room. What you build
+with all of it is the 16:45 talk.
+:::
+:::
+::::
+
+## A rigid template, not a modular one
+
+:::: {.columns}
+::: {.column width="55%"}
+- Most Julia templates are modular and you pick the parts you want.
+  Ours overwrites, and a scheduled job re-applies it
+- `EpiAwarePackageTools.jl` writes 76 files into a package. Most are
+  force-managed, so a package cannot drift away from the standard
+- 20 workflow callers and one composite action, into 23 reusable
+  workflows, each pinned to a commit SHA held in one file
+- JuliaFormatter is pinned in one place that feeds the pre-commit hook,
+  the isolated formatter test and the CI input together
+:::
+::: {.column width="45%"}
+::: {.callout-important}
+Managed files carry a header saying "MANAGED by
+EpiAwarePackageTools.scaffold — do not edit by hand".
+:::
+
+- Ten of the eleven packages are on it. The exception is the package the
+  tooling was extracted from, and there is an issue open about that
+- Uniformity is the point. An agent that has learned one repository has
+  learned all of them
+:::
+::::
+
+## The style guide is a failing test
+
+:::: {.columns}
+::: {.column width="48%"}
+```julia
+const BANNED_README_WORDS = [
+    "comprehensive", "cornerstone",
+    "facilitate", "foster",
+    "framework", "harness",
+    "landscape", "leverage",
+    "novel", "pivotal",
+    "practitioner", "robust",
+    "streamline", "synergy",
+    # ... 20 in total
+]
+```
+:::
+::: {.column width="52%"}
+- Nine quality checks run in every package: Aqua, ExplicitImports,
+  import centralisation, docstring format, README sections, doctests,
+  formatting, JET, extension ambiguities
+- README sections are named and ordered, and a managed block of them is
+  re-rendered on every sync
+- JET and the formatter run in their own environments so the pinned
+  version cannot drift with the test environment
+
+::: {.callout-note}
+A guideline gets ignored. A failing test does not.
+:::
+:::
+::::

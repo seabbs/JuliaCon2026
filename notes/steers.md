@@ -25,3 +25,13 @@ as the steering section.
 > no the point was an llm wrote the outline of me and I wanted that to be clear
 
 > We need anotehr review stager after the fix t oconfirm and potentially loop
+
+> its not really part of what these talks are about cut that. There is less
+> LLM emphasis here than we had in how we llm, less self referential, but we
+> do discuss as in the original prompt
+
+> We already have a robot opener so we don't need the closing one at the end
+> at all I think
+
+> the following was drafted by @seabbs-bot who has a very suspiciously high
+> opinion of me so take it with a pinch of salt

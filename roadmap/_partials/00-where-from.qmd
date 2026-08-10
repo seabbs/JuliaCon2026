@@ -1,0 +1,80 @@
+# Where this comes from
+
+## We built the modular one already
+
+:::: {.columns}
+::: {.column width="58%"}
+- I started `epinowcast` in 2021 to be the modular one. The repository
+  description still says "a modular Bayesian framework for real-time
+  infectious disease surveillance"
+- It was modular in the sense I meant then. Every component had a
+  regression interface and could be switched out
+- It still cannot be taken apart into pieces anyone else can use
+- Large API, hard to contribute to, hard to adapt past what it already
+  supports, and limited in scope despite the ambition
+
+::: {.callout-important}
+The unit of reuse was the whole model, not the epidemiological ideas
+inside it.
+:::
+:::
+::: {.column width="42%"}
+- Before that, `EpiNow2`. After it, `primarycensored` and `epidist`
+- Each one found a real problem, fixed it, and left behind another
+  package that could not be pulled apart
+- Five years of that. The fix is always a new package
+
+::: {.attribution}
+[epinowcast/epinowcast](https://github.com/epinowcast/epinowcast),
+created 2021-10-29 ·
+[epiforecasts/EpiNow2](https://github.com/epiforecasts/EpiNow2),
+created 2020-06-17
+:::
+:::
+::::
+
+## The same request, five and a half years apart
+
+- **EpiNow2 #122**, October 2020, opened by me. Split the Stan code into
+  functions "as adding extensions/reusing code will be easier"
+- **EpiNow2 #1345**, April 2026, opened by me. `epinow()` "orchestrates
+  sequential calls rather than fitting a joint model". Still open
+- The joint model has been written down as an issue three times in four
+  years. None of them landed, because doing it means rewriting the
+  package
+- **#1268** asks us to vendor `primarycensored`'s Stan code into
+  EpiNow2. Sharing a component between two Stan packages means copying
+  its source in
+
+::: {.callout-note}
+Almost all of these are opened by maintainers, not users. Users ask for
+features. We convert those into structural work that never ships.
+:::
+
+## It is not only us
+
+:::: {.columns}
+::: {.column width="52%"}
+- Several packages estimate the reproduction number with renewal
+  approaches in Stan. None share components. Some share authors
+- Wastewater tools are mostly written by people who are not wastewater
+  experts. An expert who wants to contribute has to write a whole model
+- Delay estimation, nowcasting, viral load, severity, forecasting. Each
+  rebuilds the same parts under different names
+:::
+::: {.column width="48%"}
+- We wrote down a workflow for building these models, then found we
+  could not follow it with the tools we had built
+- The paper says so itself. We provided a schematic case study, not
+  code, because the software to do it did not exist
+
+::: {.callout-important}
+The ecosystem is the attempt to make our own workflow followable.
+:::
+
+::: {.attribution}
+A Workflow for Infectious Disease Modelling, Abbott et al.
+[doi:10.5281/zenodo.19097427](https://doi.org/10.5281/zenodo.19097427)
+:::
+:::
+::::

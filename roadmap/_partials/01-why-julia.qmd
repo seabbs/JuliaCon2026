@@ -1,0 +1,60 @@
+# Why Julia, and which Julia
+
+## What the language buys us
+
+:::: {.columns}
+::: {.column width="55%"}
+- `Distributions.jl` is a shared vocabulary that already exists. A
+  censored delay can be a distribution rather than a function in my
+  package
+- Multiple dispatch means someone else's distribution works in my model
+  without either of us having heard of the other
+- One automatic differentiation stack, shared across packages, so
+  gradients are an ecosystem property rather than a per-package one
+- `SciML` and `Turing.jl` are already here, so we add to a stack instead
+  of building one
+:::
+::: {.column width="45%"}
+::: {.callout-note}
+This is a bet, not a result. Julia is the only place I found where all
+of the routes on the next slide can share the same objects and the same
+gradients.
+:::
+
+- The R and Stan version of sharing a component is copying its source
+  into the next package. Here it is a line in a `Project.toml`
+:::
+::::
+
+## We do not know which way of composing wins
+
+:::: {.columns}
+::: {.column width="50%"}
+**A. Composed `Distributions.jl` objects**
+`rand` simulates a case, `logpdf` scores one. No probabilistic
+programming language needed. Strong for individual-level natural
+histories, no story for a time series, and it needs its own fitting
+layer, which is now a package we maintain.
+
+**B. Turing submodels**
+`ComposableTuringIDModels.jl`. Joint inference for free and the whole
+Turing toolchain with it. Inherits one PPL's design decisions, and the
+`@submodel` change broke us.
+:::
+::: {.column width="50%"}
+**C. SciML and dynamical systems**
+`LoweredDistributions.jl` turns a delay into a compartmental generator
+across four backends. Gets solvers and sensitivities. Inference has to
+be supplied separately.
+
+**D. Write the model by hand**
+Fastest to a first answer, and the honest baseline. It is also why
+there are several renewal packages that share nothing.
+:::
+::::
+
+::: {.callout-important}
+We are running A, B and C at once and keeping them interoperable, because
+I cannot tell you which one is right. I would like to know which you
+would pick.
+:::

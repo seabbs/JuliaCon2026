@@ -1,0 +1,94 @@
+# How we are actually building it
+
+## Most of this was written by agents
+
+:::: {.columns}
+::: {.column width="58%"}
+![](_partials/bot-prs-by-month.png){width="100%"}
+:::
+::: {.column width="42%"}
+- We have been applying for funding to do this properly. So far without
+  success. So we started anyway, at whatever pace we can manage
+- **1,138 pull requests** in the EpiAware org from the bot account.
+  84.9% merged, 10.5% closed unmerged, 53 open
+- The same ratio holds across all my organisations, so it is not one
+  easy repository
+- Median time from open to merge on a recent sample is about three hours
+
+::: {.callout-important}
+Ten times the throughput at ten times the review load is not a win.
+:::
+:::
+::::
+
+## What that buys: a live outbreak model
+
+:::: {.columns}
+::: {.column width="38%"}
+- Bundibugyo virus in the DRC. One renewal process, eight streams fitted
+  jointly, about 120 refits since May
+- Situation reports are French PDFs. Agents read them, and a second pass
+  re-scans independently
+- The symptom onset curve has no data table, so we recover it from the
+  bar chart by pixel colour and axis ticks
+- It checks itself against its own past releases, its own past
+  forecasts, and two other groups, on every rebuild
+:::
+::: {.column width="62%"}
+![](_partials/fig-bvd-model.png){width="100%"}
+
+::: {.attribution}
+[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize)
+(Abbott, Sherratt, Brand, Funk), a re-analysis and extension of McCabe
+et al. Diagram from a previous talk.
+:::
+:::
+::::
+
+## What that costs
+
+- Over **30,000 lines** for one outbreak model. 442 commits, 78% from
+  bot identities, 12% typed by a human
+- **18% of pull requests closed without merging.** That is the review
+  gate working, and it is also the bill
+- The full test suite and docs build have hit GitHub's six hour ceiling,
+  so the workflow was redesigned around not waiting for it
+- The onset digitiser undercounted one situation report by **54%** after
+  a change in image compression. A self-check caught it, not a person
+
+::: {.callout-important}
+Test coverage is 93.93%, and the tests were written by the same agents
+that wrote the code. That is evidence the code does what it was told to
+do, not evidence that what it was told was right.
+:::
+
+## An org agent that runs overnight
+
+:::: {.columns}
+::: {.column width="55%"}
+- Designed and coded. A GitHub App identity, one fresh container per
+  work unit, per-repository one hour tokens, systemd timers on a desktop
+- Nightly it would triage issues, draft designs, unstick stalled pull
+  requests and open a trickle of small drafts gated on review debt
+- It never merges and never approves. That is enforced in the harness,
+  not written down in a document
+- Design principle one is "assume every prompt injection succeeds; make
+  the damage boring anyway"
+:::
+::: {.column width="45%"}
+::: {.callout-important}
+The code is written. Turning it on is the part I have not done. And
+nothing in the org tells a human contributor what any of this means for
+them.
+:::
+
+- Where do you run a thing like this safely, and who is accountable for
+  what it opens?
+
+::: {.attribution}
+SciML have been doing the same thing. See "The Agentic AI Maintenance
+Bots of the SciML Organization", Rackauckas, listed elsewhere at this
+conference.
+:::
+:::
+::::

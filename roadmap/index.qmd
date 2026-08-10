@@ -59,7 +59,43 @@ backends are compatible when they combine multiple packages.
 
 ## Resources
 
-<!-- RESOURCES: filled in during the build workflow -->
+### Code
+
+- [EpiAware on GitHub](https://github.com/EpiAware) — 22 repositories, 11
+  Julia packages, 10 registered in the General registry
+- [epiaware.org](https://epiaware.org) — the org's documentation and package
+  site
+- [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl)
+  — one template that keeps every package's tests, docs, and README format
+  in sync
+- [EpiAwareADTools.jl](https://github.com/EpiAware/EpiAwareADTools.jl) — a
+  library of automatic differentiation workarounds, each one deleted once
+  the upstream fix lands
+- [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+  — the most mature package so far, 25 registered releases
+
+### Papers and writing
+
+- [A workflow for infectious disease modelling](https://github.com/seabbs/a-workflow-for-infectious-disease-modelling)
+  — the paper this roadmap is trying to give a proper home to
+- [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize) — a
+  live joint model of the 2026 DRC Ebola outbreak, built the way we want
+  ecosystem packages to compose
+
+### Ecosystems we are learning from
+
+- [SciML governance](https://sciml.ai/governance/) — how roughly 200
+  packages and 20 core maintainers stay coordinated
+- [SpeedyWeather.jl](https://github.com/SpeedyWeather/SpeedyWeather.jl) —
+  the closest thing Julia has to a domain-specific ecosystem at the size we
+  are aiming for
+- [JuMP's governance](https://jump.dev/pages/governance/) — a named BDFL
+  and a steering committee, worth reading before we write ours
+- [MultiDocumenter.jl](https://github.com/JuliaComputing/MultiDocumenter.jl)
+  — how SciML stitches many packages' docs into one site
+- [DifferentiationInterface.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl)
+  — the automatic differentiation abstraction layer every package here
+  depends on
 
 ::: {.talk-qr}
 ![](../figures/qr-roadmap.png)

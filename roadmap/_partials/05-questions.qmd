@@ -1,0 +1,33 @@
+# What I want to ask you
+
+## Four questions I cannot answer
+
+:::: {.columns}
+::: {.column width="50%"}
+**1. What is the smallest governance you can start with?**
+JuMP, SciML and Turing all wrote theirs at or after 1.0. None of them
+says how a new org should start, or how a package joins one.
+
+**2. Julia has no rOpenSci. Should it?**
+The median Julia package has two contributors. No software peer review,
+no agreed maintenance status labels, no disputes procedure. How should I
+decide whether to depend on a package with one maintainer?
+:::
+::: {.column width="50%"}
+**3. Who tells a user which AD backend works for a model built from five
+packages?**
+DifferentiationInterface answers for a function. Its test package lets
+you check your own. Nothing composes.
+
+**4. How do you release twenty packages that have to work together,
+without a monorepo?**
+SciML's downstream and downgrade CI is the best answer available, and it
+exists as workflow files rather than as guidance. Nothing records which
+versions are known to work together.
+:::
+::::
+
+::: {.callout-important}
+And the one behind all of them. Is there a Julia ecosystem whose users
+are mostly not developers? I went looking and could not find one.
+:::
