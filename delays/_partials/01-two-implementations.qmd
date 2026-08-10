@@ -1,30 +1,9 @@
-# Two implementations of the same thing
-
-## Two packages, one problem
-
-:::: {.columns}
-::: {.column width="50%"}
-**primarycensored**, R and Stan
-
-- Density, distribution and quantile functions in R, plus a parallel
-  set of Stan functions so people can fit in either
-- The Stan half is the reason most of this talk exists
-- On CRAN, with four R packages depending on it
-:::
-::: {.column width="50%"}
-**CensoredDistributions.jl**
-
-- `primary_censored`, `interval_censored` and
-  `double_interval_censored`
-- Wrappers around a `Distributions.jl` distribution that return a
-  distribution, so everything downstream still works
-:::
-::::
+# Two implementations, `primarycensored` and `CensoredDistributions.jl`
 
 ## Eighteen branches, or the type you passed
 
 :::: {.columns}
-::: {.column width="52%"}
+::: {.column width="50%"}
 ```stan
 real dist_lcdf(real delay, array[] real params,
                int dist_id) {
@@ -39,54 +18,52 @@ real dist_lcdf(real delay, array[] real params,
               dist_id);
 }
 ```
+
+- And a second table of 10, saying which of those 18 have positive
+  support
 :::
-::: {.column width="48%"}
+::: {.column width="50%"}
 ```julia
-function primarycensored_cdf(
-        dist::D1, primary_event::D2, x::Real,
-        method::NumericSolver
+primarycensored_cdf(dist::Gamma, primary_event::Uniform,
+    x::Real, ::AnalyticalSolver)
+
+primarycensored_cdf(dist::LogNormal, primary_event::Uniform,
+    x::Real, ::AnalyticalSolver)
+
+primarycensored_cdf(dist::Weibull, primary_event::Uniform,
+    x::Real, ::AnalyticalSolver)
+
+primarycensored_cdf(dist::D1, primary_event::D2,
+    x::Real, method::NumericSolver
 ) where {D1 <: UnivariateDistribution,
          D2 <: UnivariateDistribution}
-    function integrand(u, x)
-        return exp(logcdf_ad_safe(dist, u) +
-                   logpdf(primary_event, x - u))
-    end
-end
 ```
+
+- **Three closed forms** picked by the type you passed, and one
+  fallback for any `UnivariateDistribution`
+- `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
+  `0.847`. Nobody wrote that. In Stan `Frechet` needs a new branch, a
+  new integer and a rebuild
 :::
 ::::
-
-::: {.attribution}
-`primarycensored_ode.stan:52-77`, 18 branches, and a second table of 10
-saying which of them have positive support ·
-`primarycensored_cdf.jl:184-201`. `logcdf_ad_safe` comes from
-`EpiAwareADTools.jl` and is `logcdf` plus autodiff workarounds for
-`Gamma` and `Beta`
-:::
-
-## Fréchet
-
-- `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
-  `0.847`. Nobody wrote that
-- `Frechet` is not in the Stan switch, so in primarycensored it needs a
-  new branch, a new integer, and a rebuild
-- `primarycensored_cdf` has six methods in total, three of them closed
-  forms for `Gamma`, `LogNormal` and `Weibull` against a uniform primary
-- The other three take anything that is a `UnivariateDistribution`
-- The one primary distribution neither standard library has,
-  exponential growth, was hand written in both. The Julia one is the
-  longer of the two
 
 ::: {.callout-important}
 The Stan file has to know every distribution it will ever support. The
 Julia file does not have to know any of them.
 :::
 
-## Fitting
+::: {.attribution}
+`primarycensored_ode.stan:52-77` ·
+`primarycensored_cdf.jl:184-201`, `:323`, `:373`, `:415`, v0.2.22
+:::
+
+## The distribution is built from the parameters being sampled
 
 :::: {.columns}
-::: {.column width="46%"}
+::: {.column width="54%"}
 ```julia
+using CensoredDistributions, Distributions, Turing
+
 @model function double_censored_model(values, weights)
     α ~ truncated(Normal(1, 2), 0, Inf)
     θ ~ truncated(Normal(1, 2), 0, Inf)
@@ -100,18 +77,17 @@ model = double_censored_model(values, weights)
 chain = sample(model, NUTS(), MCMCThreads(), 1000, 2)
 ```
 
-- In Stan `dist_id` is data, so the distribution is fixed before
-  sampling starts. Here `Gamma(α, θ)` is built out of the parameters
-  being sampled
-:::
-::: {.column width="54%"}
-![](../figures/delays-fit.png)
-
 ::: {.attribution}
-Model code from `CensoredDistributions.jl/README.md:71-85`. Run for
-this talk on 1000 draws from
-`double_interval_censored(Gamma(2, 3); upper = 15, interval = 1)`, two
-chains of 1000 iterations.
+Model code from `CensoredDistributions.jl/README.md:71-85`, run for
+this talk against v0.2.22
 :::
+:::
+::: {.column width="46%"}
+- In Stan `dist_id` is data, so the distribution is fixed before
+  sampling starts. Here `Gamma(α, θ)` is **built out of the parameters
+  being sampled**
+- `primary_censored` is the $w_P$ integral, `upper` truncates at $C$,
+  `interval_censored` is $w_S$, and `double_interval_censored` stacks
+  all three **in that order**
 :::
 ::::

@@ -33,4 +33,6 @@ format:
 
 {{< include _partials/06-close.qmd >}}
 
+{{< include _partials/80-backup.qmd >}}
+
 {{< include _partials/90-summary.qmd >}}

@@ -1,9 +1,15 @@
 ---
 title: "Prompts"
 subtitle: "The brief that made this site, and the steers that followed"
-description: >-
+description-meta: >-
   The opening brief given to the coding agents that drafted these three
   JuliaCon 2026 decks, and every steer given during the build.
+toc: true
+toc-location: right
+toc-depth: 3
+toc-expand: true
+toc-title: "On this page"
+page-layout: full
 ---
 
 These three decks, the pages around them, and most of the words on them were
@@ -14,18 +20,15 @@ slide at the end.
 There are three decks this time, so the prompts live here and each deck links
 back to this page instead.
 
-::: {.callout-note}
-Writing the brief took about ten minutes.
-Deciding which of the answers coming back were true took most of the day.
-:::
-
 ## The brief
 
 This is my opening prompt, cleaned up for spelling and sentence boundaries and
 grouped under headings.
 The judgements are unchanged.
 The verbatim version, typos and all, is
-[in the repo](https://github.com/seabbs/JuliaCon2026/blob/main/notes/original-brief.md).
+[in the repo][orig].
+
+[orig]: https://github.com/seabbs/JuliaCon2026/blob/main/notes/original-brief.md
 
 ### The site
 
@@ -37,7 +40,8 @@ seabbs.github.io site, with a page per project that has the title and the
 abstract, a link to the slides, and a bullet list of resources that are
 linked.
 I then want a home page that has a bit about me with a link to my website, and
-some links to my other recent work that a JuliaCon user might like.
+some links to my other recent interesting work that a JuliaCon user might
+like.
 
 I want the QR code on the slides to go to the home page of the project on our
 little website, not to the slides this time.
@@ -81,7 +85,7 @@ Most of the templates are fairly modular; I want it to be rigid, to enforce
 uniformity.
 We needed to set up AD testing, as you cannot say which AD backend is best.
 They are all flaky and dodgy, or run by small teams.
-There is no settled tooling for this.
+No robust tooling for this.
 DifferentiationInterfaceTest is very nice but needed more on top.
 The lack of standards for this in wider Julia means making a model is
 basically always a custom affair with lots of iteration.
@@ -92,8 +96,8 @@ Very heavy LLM use for the org, with max Claude driving it.
 Pull in the PR figure from how I LLM.
 What does this mean for contributions?
 Flag the Chris R keynote or long talk on this.
-We are building out an org agent which acts in batch overnight against public
-standards.
+Do we build out an org agent which acts in batch overnight against public
+standards?
 Where does it run safely?
 
 For the org talk I have a bunch of questions.
@@ -143,7 +147,7 @@ presentations.
 
 We have a poster for each of these but I was thinking that we would print the
 QR slide, the title slide, and two others.
-Those two should be interesting.
+Those two should be fancy/interesting.
 Perhaps that has its own bullet, summary slides or similar, that is just
 those.
 :::
@@ -173,6 +177,8 @@ Six are about the workflow, eight about the content, and two about the layout.
 
 ### Workflow
 
+:::: {.steers}
+
 ::: {.prompt}
 Please make sure you get this website up and building and iterate on it.
 Keep working and review using Opus agents against my prompt above to make sure
@@ -200,7 +206,11 @@ Make sure workflow members are reviewing and improving the site as well as
 just the slides.
 :::
 
+::::
+
 ### Content
+
+:::: {.steers}
 
 ::: {.prompt}
 We probably want to link to their pages:
@@ -237,13 +247,17 @@ Link to seabbs-bot GitHub profile.
 :::
 
 ::: {.prompt}
-I think this one is on Friday?
+I think this one is on Friday? [the composable talk, 2026-08-14 16:45-17:00]
 :::
+
+::::
 
 ### Layout
 
+:::: {.steers}
+
 ::: {.prompt}
-Put this in italics, from @seabbs-bot with robot emoji or similar.
+Put this in italics [the bio], from @seabbs-bot with robot emoji or similar.
 Bit of fun, breaks it up for being a bit pompous.
 :::
 
@@ -253,6 +267,8 @@ projects into a line with less length or similar compression to make it more
 interesting?
 :::
 
+::::
+
 Six of the sixteen are corrections to the workflow rather than to the content.
 The brief said what the talks should say.
 It did not say how hard to look before saying it, and that is what those
@@ -261,7 +277,7 @@ The content steers were mostly about what to cut.
 
 ## How it was built
 
-Eight research agents ran first, one per question, before any slide was
+Nine research agents ran first, one per question, before any slide was
 written.
 They wrote about 3,500 lines of notes into
 [`notes/`](https://github.com/seabbs/JuliaCon2026/tree/main/notes) and none of
@@ -280,6 +296,7 @@ them wrote slides.
 - agent use across the organisation, and what it has done to pull requests
 - the existing composability decks, and what to cut to reach 15 minutes
 - how SciML, JuMP, and Turing govern themselves, for the questions at the end
+- the BVDOutbreakSize model, and where a live outbreak analysis fits in
 
 They were told never to state a number they had not checked against a repo,
 the GitHub API, or a package registry, and to list separately anything they
@@ -289,14 +306,15 @@ slides.
 
 Some of what came back contradicted the brief.
 The brief says the Stan side needed an ODE but otherwise AD just worked.
-The Julia history says both languages gave up on adaptive quadrature because
-the differentiator could not follow it, and that 48 of the 396 issues in
-CensoredDistributions.jl have AD, autodiff, gradient, numerical, quadrature,
-precision or performance in the title.
+The Julia history says both languages moved off adaptive quadrature by default
+because the differentiator could not follow it, and that 48 of the 396 issues
+in CensoredDistributions.jl have AD, autodiff, gradient, numerical,
+quadrature, precision or performance in the title.
 So the deck says that, not the easier version.
-One agent was asked for a lines of code comparison between the two packages
-and refused, on the grounds that the repos are not structured comparably and
-any such number would mislead.
+One agent was asked for a lines of code comparison between the two packages.
+It counted the lines in both, then said the number should not go on a slide
+because the scopes are not the same, and gave a claim about where the lines go
+instead.
 Another declined to claim public health agency use of primarycensored, because
 the only evidence was the epinowcast team describing its own tools to a public
 health audience.

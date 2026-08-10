@@ -3,7 +3,8 @@ title: "Estimating epidemiological delay distributions"
 subtitle: "From R/Stan to Julia"
 description: >-
   CensoredDistributions.jl, and an honest comparison with the R and Stan
-  implementation it grew out of. JuliaCon 2026, Sam Abbott.
+  implementation it grew out of.
+page-layout: full
 ---
 
 ::: {.session-meta}
@@ -12,9 +13,12 @@ Muschel — N3 · Sam Abbott
 :::
 
 [Slides](slides.qmd){.btn .btn-primary}
-[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl){.btn .btn-outline-primary}
-[Documentation](https://censoreddistributions.epiaware.org/stable/){.btn .btn-outline-primary}
-[Session on pretalx](https://pretalx.com/juliacon-2026/talk/ZUMSFD/){.btn .btn-outline-primary}
+[CensoredDistributions.jl][cd-repo]{.btn .btn-outline-primary}
+[Documentation][cd-docs]{.btn .btn-outline-primary}
+[Session on pretalx][pretalx]{.btn .btn-outline-primary}
+
+:::: {.talk-body}
+::: {.talk-main}
 
 ## Abstract
 
@@ -54,47 +58,85 @@ downstream projects, and replacing types with integer distribution
 identifiers.
 Stan's integral solver was also unstable for this problem, so we had to
 recast it as an ODE.
-Julia's multiple dispatch removes the integer distribution tables and
-ecosystem composability removes the vendoring tool, but neither removes the
-numerical problem underneath.
+Julia's multiple dispatch and ecosystem composability eliminates all of
+this.
 
 We then summarise our plans to build a composed Julia version of our epidist
 R package, using CensoredDistributions.jl as a foundation with Turing.jl
 submodels for partially pooled and flexible delay estimation.
 :::
 
+One correction since submission.
+Multiple dispatch removes the integer distribution tables and ecosystem
+composability removes the vendoring tool, but neither removes the numerical
+problem underneath.
+CensoredDistributions.jl dropped adaptive quadrature from the default path
+too, for the same reason Stan did.
+Stan swapped the integral for an ODE solver.
+Julia's default is now a fixed 64-node rule, with the adaptive solver still
+there for callers who ask for it.
+Both changes were forced by the differentiator, not by the mathematics.
+
+:::
+
+::: {.talk-side}
+
+::: {.talk-qr}
+![](../figures/qr-delays.png){fig-alt="QR code linking to this page"}
+
+The QR code on the poster and on the closing slide points here.
+:::
+
 ## Resources
 
 ### The R and Stan side this grew out of
 
-- [primarycensored](https://primarycensored.epinowcast.org/), the R
-  package, over 11,000 CRAN downloads all-time, this talk's starting
-  point
-- [epidist](https://epidist.epinowcast.org/) fits delay distributions on
-  top of primarycensored
-- [primarycensored PR #64](https://github.com/epinowcast/primarycensored/pull/64)
-  — the ODE recast forced by Stan's integral solver going unstable
-  mid-sampling
-- [primarycensored PR #277](https://github.com/epinowcast/primarycensored/pull/277),
-  the dist_id bug, where an integer meant Normal in Stan and Weibull in R
-- [primarycensored on Zenodo](https://doi.org/10.5281/zenodo.13632838),
-  the concept DOI, which always resolves to the latest release
+- [primarycensored][pc].
+  The R package, over 11,000 CRAN downloads all-time, and this talk's
+  starting point.
+- [epidist][epidist].
+  Fits delay distributions on top of primarycensored.
+- [primarycensored PR #64][pc-pr64].
+  The ODE recast forced by Stan's integral solver going unstable
+  mid-sampling.
+- [primarycensored PR #277][pc-pr277].
+  The dist_id bug, where an integer meant Normal in Stan and Weibull in R.
+- [primarycensored on Zenodo][pc-zenodo].
+  The concept DOI, which always resolves to the latest release.
 
 ### Julia
 
-- [ConvolvedDistributions.jl](https://github.com/EpiAware/ConvolvedDistributions.jl),
-  sums, differences, products, and ratios of delay distributions, the
-  next layer up
-- [CensoredDistributions.jl PR #250](https://github.com/EpiAware/CensoredDistributions.jl/pull/250)
-  — why we also gave up adaptive quadrature, for a different reason than
-  Stan did
+- [ConvolvedDistributions.jl][conv-repo].
+  Sums, differences, products, and ratios of delay distributions, the next
+  layer up.
+- [CensoredDistributions.jl PR #250][cd-pr250].
+  The switch to a fixed rule, and what it cost.
 
 ### Related talks
 
-- [How to serial interval?](https://samabbott.co.uk/how-to-serial-interval),
-  more on censoring, delays, and why the serial interval is itself a
-  composition
+The other two JuliaCon talks are in the same room on the same day.
 
-::: {.talk-qr}
-![](../figures/qr-delays.png)
+- [Building a composable Julia ecosystem](../roadmap/index.qmd).
+  Where CensoredDistributions.jl sits in the wider ecosystem.
+  14:30–14:45, straight before this one.
+- [Composable probabilistic models](../composable/index.qmd).
+  The case for building models out of parts like these.
+  16:45–17:00.
+- [How to serial interval?][hsi].
+  More on censoring, delays, and why the serial interval is itself a
+  composition.
+
 :::
+::::
+
+[cd-repo]: https://github.com/EpiAware/CensoredDistributions.jl
+[cd-docs]: https://censoreddistributions.epiaware.org/stable/
+[pretalx]: https://pretalx.com/juliacon-2026/talk/ZUMSFD/
+[pc]: https://primarycensored.epinowcast.org/
+[epidist]: https://epidist.epinowcast.org/
+[pc-pr64]: https://github.com/epinowcast/primarycensored/pull/64
+[pc-pr277]: https://github.com/epinowcast/primarycensored/pull/277
+[pc-zenodo]: https://doi.org/10.5281/zenodo.13632838
+[conv-repo]: https://github.com/EpiAware/ConvolvedDistributions.jl
+[cd-pr250]: https://github.com/EpiAware/CensoredDistributions.jl/pull/250
+[hsi]: https://samabbott.co.uk/how-to-serial-interval

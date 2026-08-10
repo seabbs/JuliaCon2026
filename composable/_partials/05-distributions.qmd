@@ -6,31 +6,42 @@
   already an interface the whole of Julia understands, so write the
   epidemiology as distributions and the probabilistic programming
   language becomes optional rather than load bearing
-- `CensoredDistributions.jl` does not depend on Turing. Nothing in the
-  source mentions it. A Turing model can still use the distributions,
-  and nobody has to install Turing to get them
-- A composed delay comes back as
-  `IntervalCensored{Truncated{PrimaryCensored{Convolved{...}}}}` and
-  every generic function you already use still works on it
+- `CensoredDistributions.jl` does not depend on Turing. Nothing in
+  `src/` mentions it, so nobody has to install a probabilistic
+  programming language to get the distributions
+- A composed delay comes back as a plain distribution type, and every
+  generic function you already use still works on it
+:::
+::: {.column width="48%"}
+```julia
+# a serial interval, censored and truncated
+si = double_interval_censored(
+  sequential(generation_time, incubation);
+  upper = 15, interval = 1)
+
+# and what comes back
+IntervalCensored{Truncated{
+  PrimaryCensored{Convolved{...}}}}
+```
+
+::: {.callout-important}
+This works for delays today. A renewal process, an ARIMA latent
+process and an ODE are not distributions, so there is no story yet for
+the time series half of this deck, and none for the fitting layer,
+which is what the probabilistic programming language was doing.
+:::
 
 ::: {.callout-note}
 The language was always meant to be backend agnostic. This is what
 taking that seriously looks like.
 :::
-:::
-::: {.column width="48%"}
-**Where this is going**
-
-- `CensoredDistributions.jl` and `ConvolvedDistributions.jl` are
-  registered and cover censoring and sums of delays. Neither requires
-  the other to work
-- `ComposedDistributions.jl` for a natural history written as chains,
-  branches and outcomes. It fails all six autodiff configurations on
-  `main` today
 
 ::: {.attribution}
-Checked 2026-08-10. The censoring package had its own talk at 14:45,
-which covers the delay side of this in full,
+`CensoredDistributions.jl` v0.2.22, `main` checked 2026-08-10. A
+`DynamicPPL` package extension exists on an unmerged branch, not on
+`main`. Open issue `CensoredDistributions.jl#749` says the joint fit is
+too slow, because reverse mode autodiff through `cdf(Convolved(...))`
+costs too much per step. The delay side of this is written up in full at
 [samabbott.co.uk/JuliaCon2026/delays][delays-talk]
 :::
 :::

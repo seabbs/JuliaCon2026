@@ -1,62 +1,71 @@
 # The honest part
 
-## Julia moved the problem, it did not remove it
-
-:::: {.columns}
-::: {.column width="50%"}
-- 82 of 929 issues and pull requests are about autodiff or numerics, and
-  a maintained list says which backends are broken
-- The default solver is `GaussLegendre(; n = 64)`, not `QuadGKJL()`,
-  because fixed nodes trace through every backend and adaptive ones do
-  not
-- Stan gave up adaptive quadrature for an ODE solver. Julia gave up
-  adaptive quadrature for a 64 node dot product
-:::
-::: {.column width="50%"}
-- The first six backend measurement, merged May 2026, badged three of
-  six as broken or partial. ReverseDiff tape partial, both Enzyme
-  directions broken. The page now says all six cover the scenario set
-- `try`/`catch` had to be taken **out** to unblock Mooncake. In Stan the
-  complaint was that there is none to put in
-:::
-::::
-
-::: {.callout-important}
-In Stan the workarounds are for the language. In Julia they are for the
-autodiff backends.
-:::
-
-::: {.attribution}
-The per-backend CI this rests on, and why an ecosystem needs one, was
-the roadmap talk at 14:30 in this room.
-:::
-
 ## R wins this, by about a hundred to one
 
 :::: {.columns}
 ::: {.column width="42%"}
 |  | R | Julia |
 |---|---:|---:|
-| Downloads, all time | 11,211 | 116 |
-| Downloads, last month | 511 | 49 |
+| Downloads, all time | **11,244** | **116** |
+| Downloads, last month | 528 | 49 |
 
 ::: {.attribution}
-CRAN and JuliaPkgStats, 10 August 2026. Both counts include continuous
-integration and mirrors, so neither is a count of people.
+CRAN and JuliaPkgStats, 10 August 2026. CRAN counts requests to one
+mirror, JuliaPkgStats counts unique IP addresses, so the ratio is an
+upper bound. Both include continuous integration, so neither is a count
+of people.
 :::
 :::
 ::: {.column width="58%"}
-- Four R packages use primarycensored and all four are from my own
-  orgs. Two are on CRAN as reverse imports, one is GitHub only, and one
-  only suggests it
-- Every dependant of CensoredDistributions.jl is mine, Sam Brand's or
-  Sebastian Funk's. I went looking for one from outside and did not
-  find it
-- Last month is the only number moving the right way, 49 against 511
+- **Nine** repositories on GitHub depend on `primarycensored`, two of
+  them on CRAN. Seven are from my own orgs. Two are CDC's, both as
+  suggests
+- Everything that depends on `CensoredDistributions.jl` is mine, Sam
+  Brand's or Sebastian Funk's. I went looking for one from outside and
+  did not find it
+- Last month is the only number moving the right way, 49 against 528
 :::
 ::::
 
 ::: {.callout-note}
-The two packages are a month apart in age. I do not know how much of
-the gap is R having the users and how much is the package.
+Twenty-one months on CRAN against twelve in General. I do not know how
+much of the gap is R having the users and how much is the package.
+:::
+
+## The numerical problem moved, it did not go away
+
+:::: {.columns}
+::: {.column width="44%"}
+| Autodiff backend | Broken |
+|---|---:|
+| ForwardDiff | 0 |
+| ReverseDiff, tape | 0 |
+| Mooncake forward | 3 |
+| Mooncake reverse | 3 |
+| Enzyme forward | 4 |
+| Enzyme reverse | 8 |
+
+::: {.attribution}
+Scenarios registered broken out of 63, in
+`test/ADFixtures/src/ADFixtures.jl`
+:::
+:::
+::: {.column width="56%"}
+- **Six autodiff backends**, each with its own CI workflow. Two of them
+  pass every scenario, four carry scenarios registered broken
+- The default solver is **`GaussLegendre(; n = 64)`** because fixed
+  nodes trace through all six backends and adaptive ones do not
+- Stan gave up adaptive quadrature for an ODE. Julia gave it up for a
+  dot product
+:::
+::::
+
+::: {.callout-note}
+A fixed 64 node dot product is the price of a gradient every backend
+can take.
+:::
+
+::: {.attribution}
+Six per-backend workflows in `.github/workflows/`, over a shared
+`ad-backend.yaml` · `src/censoring/primarycensored_cdf.jl:71-72`
 :::

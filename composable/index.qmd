@@ -2,9 +2,11 @@
 title: >-
   Composable probabilistic models can lower barriers to rigorous
   infectious disease modelling
+subtitle: "The case for composition, and what is still missing"
 description: >-
-  Why composition is how modelling evidence gets to be timely, rigorous and
-  collaborative at once. JuliaCon 2026, Sam Abbott.
+  Why composition might be how modelling evidence gets to be timely, rigorous
+  and collaborative at once, and what is still missing.
+page-layout: full
 ---
 
 ::: {.session-meta}
@@ -13,9 +15,12 @@ Muschel — N3 · Sam Abbott
 :::
 
 [Slides](slides.qmd){.btn .btn-primary}
-[Paper](https://doi.org/10.5281/zenodo.17884675){.btn .btn-outline-primary}
+[Code and data][paper]{.btn .btn-outline-primary}
 [epiaware.org](https://epiaware.org){.btn .btn-outline-primary}
-[Session on pretalx](https://pretalx.com/juliacon-2026/talk/AMFLYU/){.btn .btn-outline-primary}
+[Session on pretalx][pretalx]{.btn .btn-outline-primary}
+
+:::: {.talk-body}
+::: {.talk-main}
 
 ## Abstract
 
@@ -24,7 +29,8 @@ Recent outbreaks of Ebola, COVID-19 and mpox, alongside routine surveillance
 of endemic pathogens, have demonstrated the value of modelling for
 synthesising data to inform decision making.
 For modelling evidence to effectively inform policy it must be timely,
-rigorous, and collaborative, yet most approaches manage only two of the three.
+rigorous, and collaborative, yet current approaches struggle to be all three.
+
 Methods broadly fall into approaches that chain separate models together,
 offering flexibility but losing information and introducing bias, or
 approaches that rigorously analyse all data together but cannot be separated
@@ -34,15 +40,17 @@ rigorous and flexible, enabling rapid collaborative model development.
 We outline design considerations for a composable infectious disease modelling
 framework and present a proof of concept domain-specific language built on the
 Turing.jl probabilistic programming language in Julia with an R interface.
+
 We demonstrate our approach conceptually using models from published
 epidemiological analyses, and in practice through a worked autoregressive
 example.
 We replicate three published analyses, composing elements of our
-autoregressive example with shared and new components: a COVID-19 analysis
+autoregressive example with shared and novel components: a COVID-19 analysis
 for South Korea using a renewal process, adding components for reporting
 delays and day-of-week effects to replicate EpiNow2 for real-time nowcasting,
 and an ordinary differential equation analysis of influenza outbreak data.
 We then discuss strengths, limitations, and alternative approaches.
+
 We find that our proof of concept can address the tension between rigour and
 flexibility, though work remains to realise this potential.
 Our approach enables interdisciplinary collaboration by lowering technical
@@ -52,16 +60,40 @@ For multi-model efforts, common components enable attribution of differences
 to assumptions rather than implementation.
 Our approach is also well suited for large language model assisted model
 construction.
+This study demonstrates that a composable modelling approach has the potential
+to incorporate diverse modelling approaches and domain knowledge across
+different infectious disease contexts.
+:::
+
+One change of view since submission.
+The proof of concept is built on Turing.jl, and that is the part I am now
+least sure about.
+In my use the automatic differentiation backend support has not been complete,
+and the workarounds we host in [EpiAwareADTools.jl][adtools] are mostly there
+for that.
+I am exploring composable distributions as a route to the same thing that does
+not put a single probabilistic programming language underneath everything.
+The talk says this rather than the settled version.
+
+:::
+
+::: {.talk-side}
+
+::: {.talk-qr}
+![](../figures/qr-composable.png){fig-alt="QR code linking to this page"}
+
+The QR code on the poster and on the closing slide points here.
 :::
 
 ## Resources
 
 ### Papers and writing
 
-- [Composable probabilistic models][paper].
-  The paper this talk summarises, with the three replicated analyses and
-  the code that produced them.
-  This is the citable archive; the manuscript site is not public yet.
+- [Composable probabilistic models, code and data][paper].
+  The archive behind the paper this talk summarises, with the three
+  replicated analyses and the code that produced them.
+  It is the citable record.
+  The manuscript site is not public yet.
 - [A workflow for infectious disease modelling][workflow].
   Related work on how these models get built and checked.
   It is the subject of the roadmap talk, not this one.
@@ -82,11 +114,17 @@ construction.
 
 ### Related talks
 
+The other two are in the same room earlier the same day.
+
 - [Building a composable Julia ecosystem](../roadmap/index.qmd).
-  The roadmap this proof of concept feeds into, earlier the same day.
+  The roadmap this proof of concept feeds into.
+  14:30–14:45.
 - [Estimating epidemiological delay distributions](../delays/index.qmd).
-  CensoredDistributions.jl, one of the composable parts, earlier the same
-  day.
+  CensoredDistributions.jl, one of the composable parts.
+  14:45–15:00.
+
+:::
+::::
 
 [paper]: https://doi.org/10.5281/zenodo.17884675
 [workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
@@ -94,10 +132,6 @@ construction.
 [turing]: https://github.com/TuringLang/Turing.jl
 [cd]: https://github.com/EpiAware/CensoredDistributions.jl
 [cvd]: https://github.com/EpiAware/ConvolvedDistributions.jl
+[adtools]: https://github.com/EpiAware/EpiAwareADTools.jl
 [epiawarer]: https://github.com/sbfnk/EpiAwareR
-
-The QR code on the poster and on the closing slide points back here.
-
-::: {.talk-qr}
-![](../figures/qr-composable.png){fig-alt="QR code linking to this page"}
-:::
+[pretalx]: https://pretalx.com/juliacon-2026/talk/AMFLYU/

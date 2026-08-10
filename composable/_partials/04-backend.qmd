@@ -2,41 +2,22 @@
 
 ## The backend, honestly
 
+:::: {.columns}
+::: {.column width="50%"}
 - Turing.jl gave us submodels, a choice of samplers, and the rest of
   Julia. The proof of concept exists because of it, and choosing it was
   right at the time
-- It is still 0.x. First release in 2017, current release v0.46.0 in
-  July 2026
-- Nine breaking releases from v0.37.0 to v0.46.0 in sixteen months. The
-  paper's artefact is pinned to Turing 0.35. Porting `@submodel` to
-  `to_submodel` is what it took to reach v0.46, which the maintained
-  package now runs on
-- Over the last six months one person has written most of the human
-  commits to both Turing.jl and DynamicPPL.jl, where most of the
-  composition machinery lives. Nobody else is in double figures
-
-::: {.callout-important}
-This is not a criticism of the people doing the work, which is good
-work. It is a statement about how much of the stack rests on very few
-of them.
+- It is still 0.x. Eleven breaking releases from v0.35.5, which the
+  paper's artefact pins, to v0.46.0 in nineteen months. Our migration
+  was one rename. The cost is the tracking, not any single change
+- Over the last six months one person has written 17 of 29 human
+  commits on Turing.jl and 47 of 72 on DynamicPPL.jl, where most of the
+  composition machinery lives
+- Automatic differentiation is the part that decided it. For a model
+  somebody acts on during an outbreak, a silently wrong gradient is not
+  a footnote
 :::
-
-::: {.attribution}
-Release dates and commit counts from the GitHub API on 2026-08-10,
-`main` branches, human authors only
-:::
-
-## Automatic differentiation is the part that decided it
-
-:::: {.columns}
-::: {.column width="54%"}
-- Turing is tested most extensively against ForwardDiff, Enzyme,
-  Mooncake, and ReverseDiff. Everything else routes through
-  `DifferentiationInterface.jl`
-- The one public table of which backends worked with which models,
-  `ADTests`, was archived this month, so we run our own matrix
-- For a model somebody acts on during an outbreak, a silently wrong
-  gradient is not a footnote
+::: {.column width="4%"}
 :::
 ::: {.column width="46%"}
 ::: {.callout-important}
@@ -46,41 +27,56 @@ Thus, it is possible that some of them will either error ... or maybe
 even silently give incorrect results"
 :::
 
-::: {.attribution}
-[turinglang.org/docs/usage/automatic-differentiation][turing-ad]
+**Where this showed up in our models**
 
-What we run instead is at
+- Large simulated counts error, and vectors mixing missing and observed
+  values have to be handled by hand
+- Profiling through the layers is hard, because the language rewrites
+  the model before it runs
+
+::: {.callout-note}
+Not a criticism of the people doing the work, which is good work. A
+statement about how much of the stack rests on very few of them.
+:::
+
+::: {.attribution}
+Release dates and commit counts from the GitHub API, 2026-08-10,
+`main`, human authors only, so 17 of 29 and 47 of 72 are per repository
+· [turinglang.org/docs/usage/automatic-differentiation][turing-ad] ·
+The two practical limits are in the paper's discussion · We run six
+autodiff configurations in CI instead, written up at
 [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
 :::
 :::
 ::::
 
-## What it does not do yet
+## What this does not do yet
 
 :::: {.columns}
-::: {.column width="52%"}
-- The component library stops at basic epidemiological patterns. No
-  partial pooling, and no automatic mapping between latent and
-  observed states
-- Changing a component's order does not update the priors that go with
-  it. That stays manual, and it is the part that would make
-  specification quick
-- Large simulated counts error, vectors mixing missing and observed
-  values need handling by hand, and profiling through the layers is
-  hard
-:::
-::: {.column width="48%"}
-**Other ways to do this**
+::: {.column width="50%"}
+**In the proof of concept**
 
-- AlgebraicJulia gives formal compositional guarantees and little
-  support for probabilistic models
-- `JuliaBUGS.jl` and `RxInfer.jl` specify models as graphs, and
-  `ModelingToolkit.jl` composes acausal components symbolically. Each
-  trades some flexibility for structure
+- The component library stops at basic epidemiological patterns. No
+  partial pooling, and no mapping between latent and observed states
+- Changing a component's order does not update the priors that go with
+  it. That stays manual
+- The abstraction layers have a runtime cost. We have not measured it
+  properly
+:::
+::: {.column width="4%"}
+:::
+::: {.column width="46%"}
+**In the claim**
+
+- The title says composable models can lower barriers. Nobody outside
+  the author team has built a model with this yet, so that is an
+  argument rather than a result
+- The design considerations came from the authors and have had no
+  community input
 
 ::: {.callout-note}
-The component structure is also what makes this tractable for a
-language model to assemble. That is a reason to keep the parts small.
+`EpiAwareR`, Sebastian Funk's prototype R interface, ran two of the
+three replications. That is the closest thing to outside use so far.
 :::
 :::
 ::::

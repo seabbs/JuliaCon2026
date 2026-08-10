@@ -1,0 +1,206 @@
+# Backup {visibility="uncounted"}
+
+## What modelling evidence has to be {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="55%"}
+- **Timely.** Evidence that arrives after the decision has been taken
+  is not evidence
+- **Rigorous.** Explicit about methods and limitations, and as simple
+  as it can be without misleading
+- **Collaborative.** Several kinds of expertise have to reach the same
+  model, and the people holding them are not the same people
+
+::: {.callout-important}
+Most approaches manage two of the three.
+:::
+:::
+::: {.column width="45%"}
+![](../figures/composable-whitty.png){width="100%"
+fig-alt="Whitty 2015 editorial on academic papers and health policy"}
+
+::: {.attribution}
+Whitty (2015),
+[doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8)
+:::
+:::
+::::
+
+## Joint models work, and they do not transfer {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="34%"}
+- England's COVID-19 models fitted cases, prevalence, severity, and bed
+  occupancy together, and that evidence reached policy
+- Each took expertise across several domains, and a long time
+- In 2022 mpox spread through sexual contact networks. Those models
+  were not adapted to it, and new single-source models were built
+  instead, at speed
+
+::: {.callout-important}
+The trade-off is not between good and bad models. It is between
+rigour and being able to move.
+:::
+:::
+::: {.column width="33%"}
+![](../figures/composable-birrell.png){width="100%"
+fig-alt="Results from the England COVID-19 joint model"}
+
+::: {.attribution}
+Birrell et al. (2025),
+[doi:10.1093/jrsssa/qnaf030](https://doi.org/10.1093/jrsssa/qnaf030)
+:::
+:::
+::: {.column width="33%"}
+![](../figures/composable-endo.png){width="100%"
+fig-alt="Results from the 2022 mpox sexual contact network model"}
+
+::: {.attribution}
+Endo et al. (2022),
+[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507)
+:::
+:::
+::::
+
+## Chaining models loses information {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="46%"}
+- The ONS COVID-19 Infection Survey tested over four million swabs from
+  more than 150,000 households at a cost above £500 million. Modellers
+  outside saw the published prevalence, not the swabs
+- Prevalence fed incidence and $R_t$, and those fed variant
+  transmissibility and severity
+- Uncertainty was approximated at each step and assumptions were
+  inherited unchecked
+- Chaining steps like these can bias the result and understate the
+  uncertainty. Fitting them together instead is the fix
+
+::: {.callout-important}
+Joint fitting is the fix, and it hands you a model nobody can take
+apart.
+:::
+:::
+::: {.column width="54%"}
+![](../figures/composable-ons-cascade.jpg){width="94%"
+fig-align="center"}
+
+::: {.attribution}
+The chain fitted as one model instead. Prevalence (A), incidence (B),
+antibody prevalence (C) and $R_t$ (D) estimated together from the
+survey data. Abbott and Funk (2022),
+[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101).
+Survey figures from the paper's introduction
+:::
+
+![](../figures/composable-lison.png){width="46%"}
+
+::: {.attribution}
+The bias claim is Lison et al. (2024), nowcasting $R_t$ from line list
+data.
+[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
+:::
+:::
+::::
+
+## Other ways to do this {visibility="uncounted"}
+
+- AlgebraicJulia gives formal compositional guarantees and little
+  support for probabilistic models
+- `JuliaBUGS.jl` and `RxInfer.jl` specify models as graphs
+- `ModelingToolkit.jl` composes acausal components symbolically
+- `Gen.jl` composes through nested generative functions, at a lower
+  level than Turing.jl
+
+::: {.callout-note}
+Each trades some flexibility for structure.
+:::
+
+::: {.attribution}
+The paper's discussion of alternative designs,
+[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
+:::
+
+## What composable modelling would need {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="45%"}
+- **Uncertainty and inference.** Propagate it properly; swap the
+  inference method
+- **Model structure.** Separate infection, latent, and observation
+  processes; nest models inside models
+- **Population heterogeneity.** Stratify any component without hand
+  managing the bookkeeping
+- **Accessibility and interoperability.** Components carry their
+  priors, work standalone, and talk to the rest of Julia
+- **Workflow.** One specification for simulation and for inference
+
+::: {.attribution}
+Table 1 of the paper sets out six themes, condensed to five bullets
+here, with accessibility and interoperability merged. Each design
+consideration is paired with the problem that motivates it. These came
+from the authors and have had no community input.
+:::
+:::
+::: {.column width="55%"}
+![](../figures/composable-requirements.png){width="100%"
+fig-alt="Table 1 of the paper, proposed requirements with motivating
+problems"}
+:::
+::::
+
+## Why keep the parts small {visibility="uncounted"}
+
+- The component structure is what makes this tractable for a language
+  model to assemble. That is a reason to keep the parts small
+- In multi-model work, shared parts would let you attribute a
+  difference in results to an assumption rather than to an
+  implementation
+
+::: {.attribution}
+Both claims are in the paper's discussion. Neither has been tested.
+:::
+
+## Reusing an AR(2) for South Korea {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="40%"}
+- The first replication takes the AR(2) from the worked example, a
+  renewal process with a discretised serial interval, and a negative
+  binomial observation model
+- **A** to **C** are prior predictive checks on each part, **D**
+  compares the continuous serial interval with its discretised form
+- **E** and **F** recover the paper's finding. $R_t$ in South Korea
+  peaked near 10 and dropped below 1 in early March 2020
+
+::: {.attribution}
+Replicating [Mishra et al. (2020)](https://arxiv.org/abs/2006.16487).
+Figure from the paper
+:::
+:::
+::: {.column width="60%"}
+![](../figures/composable-mishra.png){width="88%" fig-align="center"}
+:::
+::::
+
+## Swapping the infection process for an ODE {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="40%"}
+- The third replication drops the renewal process and uses an SIR model
+  built with `ODEProcess` over the SciML solvers instead
+- Everything downstream is unchanged. A Poisson observation model, and
+  a second version wrapping it in `Ascertainment` driven by an AR(1)
+- **C** shows both recovering $R_0 \approx 2$. **E** and **F** show the
+  deterministic fit is the worse calibrated of the two
+
+::: {.attribution}
+Replicating Chatzilena et al. (2019),
+[doi:10.1016/j.epidem.2019.100367][chatzilena].
+Figure from the paper
+:::
+:::
+::: {.column width="60%"}
+![](../figures/composable-sir.png){width="88%" fig-align="center"}
+:::
+::::

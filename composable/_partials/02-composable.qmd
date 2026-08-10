@@ -1,37 +1,5 @@
 # What we built
 
-## What composable modelling would need
-
-:::: {.columns}
-::: {.column width="55%"}
-- **Uncertainty and inference.** Propagate it properly; swap the
-  inference method
-- **Model structure.** Separate infection, latent, and observation
-  processes; nest models inside models
-- **Population heterogeneity.** Stratify any component without hand
-  managing the bookkeeping
-- **Accessibility and interoperability.** Components carry their priors,
-  work standalone, and talk to the rest of Julia
-- **Workflow.** One specification for simulation and for inference
-:::
-::: {.column width="45%"}
-::: {.callout-note}
-## Composable modelling
-Components can be validated on their own, then combined in
-configurations nobody planned for, without losing rigour.
-:::
-
-::: {.callout-warning}
-These came from the authors and have had no community input.
-:::
-
-::: {.attribution}
-Table 1 of the paper. Six themes, each requirement paired with the
-problem that motivates it.
-:::
-:::
-::::
-
 ## The proof of concept
 
 :::: {.columns}
@@ -39,27 +7,31 @@ problem that motivates it.
 - A thin language for epidemiology over a probabilistic backend that
   does the sampling
 - Three component families. Infection, latent, and observation
-  processes, composing across families as well as within them
+  processes, composing across families and within them
 - Components carry their own priors, so domain knowledge travels with
   the component rather than with the person
 - Model definitions do not know about the data, so one definition
   simulates and fits
-- An R interface, so choosing Julia is not a wall for the people who
-  would use it
 
 ::: {.attribution}
-Abbott et al., *Composable probabilistic models can lower barriers to
-rigorous infectious disease modelling*,
+Bullets three and four are design considerations from Table 1 of the
+paper, which sets out what a composable approach would need. That
+table came from the authors and has had no community input · Abbott et
+al., *Composable probabilistic models can lower barriers to rigorous
+infectious disease modelling*,
 [doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
 :::
 :::
 ::: {.column width="48%"}
-![](../figures/composable-structure.png){height="800px"
+![](../figures/composable-structure.png){height="740px"
 fig-align="center"}
 
 ::: {.attribution}
-Four applications. The incubation period model appears in all four, the
-latent infection model in three.
+Four illustrative applications, not implementations. This is the
+conceptual demonstration. The incubation period model appears in all
+four, the latent infection model in three, and the band beneath is
+what those shared components are themselves made of. What was built is
+the three replications that follow.
 :::
 :::
 ::::

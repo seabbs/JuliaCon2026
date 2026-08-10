@@ -3,7 +3,8 @@ title: "Building a composable Julia ecosystem for infectious disease modelling"
 subtitle: "A roadmap, challenges, and questions"
 description: >-
   Where EpiAware is going, what we have got wrong so far, and the questions
-  we would like the Julia community to answer. JuliaCon 2026, Sam Abbott.
+  we would like the Julia community to answer.
+page-layout: full
 ---
 
 ::: {.session-meta}
@@ -14,7 +15,10 @@ Muschel — N3 · Sam Abbott
 [Slides](slides.qmd){.btn .btn-primary}
 [EpiAware on GitHub](https://github.com/EpiAware){.btn .btn-outline-primary}
 [epiaware.org](https://epiaware.org){.btn .btn-outline-primary}
-[Session on pretalx](https://pretalx.com/juliacon-2026/talk/NEWC8H/){.btn .btn-outline-primary}
+[Session on pretalx][pretalx]{.btn .btn-outline-primary}
+
+:::: {.talk-body}
+::: {.talk-main}
 
 ## Abstract
 
@@ -60,49 +64,108 @@ packages, and how to help users understand which automatic differentiation
 backends are compatible when they combine multiple packages.
 :::
 
+:::
+
+::: {.talk-side}
+
+::: {.talk-qr}
+![](../figures/qr-roadmap.png){fig-alt="QR code linking to this page"}
+
+The QR code on the poster and on the closing slide points here.
+:::
+
 ## Resources
 
 ### Code
 
-- [EpiAware on GitHub](https://github.com/EpiAware) — 22 repositories, 19 of
-  them public, 11 Julia packages, 10 registered in the General registry
-- [epiaware.org](https://epiaware.org) — the org's documentation and package
-  site
-- [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl)
-  — one template that keeps ten of the eleven packages' tests, docs, and
-  README format in sync
-- [EpiAwareADTools.jl](https://github.com/EpiAware/EpiAwareADTools.jl) — a
-  library of automatic differentiation workarounds, each one deleted once
-  the upstream fix lands
-- [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
-  — the most mature package so far, 25 registered releases
+- [EpiAware on GitHub][epiaware].
+  22 repositories, 19 of them public, 11 Julia packages, 10 registered in the
+  General registry.
+- [epiaware.org][epiawaresite].
+  The org's documentation and package site.
+- [EpiAwarePackageTools.jl][pkgtools].
+  One template that keeps ten of the eleven packages' tests, docs, and README
+  format in sync.
+- [EpiAwareADTools.jl][adtools].
+  A library of automatic differentiation workarounds, each one deleted once
+  the upstream fix lands.
+- [CensoredDistributions.jl][cd].
+  The most mature package so far, 25 registered releases.
+- [EpiAwareR][epiawarer].
+  Sebastian Funk's prototype R interface to the Julia ecosystem.
+
+### What we built in R
+
+- [epinowcast][epinowcast].
+  The ecosystem this roadmap is trying to build again in Julia.
+- [The epinowcast community forum][forum].
+  The community half of it, alongside the seminar series.
+- [EpiNow2][epinow2].
+  Widely used, and the package whose lack of modularity started this.
+- [scoringutils][scoringutils].
+  Forecast evaluation in R, and one of the packages the plan above has a
+  Julia equivalent for.
 
 ### Papers and writing
 
-- [A workflow for infectious disease modelling](https://github.com/seabbs/a-workflow-for-infectious-disease-modelling)
-  — the paper this roadmap is trying to give a proper home to
-- [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize) — a
-  live joint model of the 2026 DRC Ebola outbreak, built the way we want
-  ecosystem packages to compose
+- [A workflow for infectious disease modelling][workflow].
+  The paper this roadmap is trying to give a proper home to.
+- [BVDOutbreakSize][bvd].
+  A live joint model of the 2026 DRC outbreak of Ebola disease caused by
+  Bundibugyo virus, built the way we want ecosystem packages to compose.
+  It builds on the Imperial (McCabe et al.) report.
+  [Source][bvd-repo].
 
 ### Ecosystems we are learning from
 
-- [SciML governance](https://sciml.ai/governance/) — a steering council, an
-  advisory committee, and a written governance document, for an ecosystem
-  well past the size we are planning for
-- [SpeedyWeather.jl](https://github.com/SpeedyWeather/SpeedyWeather.jl) —
-  the closest thing Julia has to a domain-specific ecosystem at the size we
-  are aiming for
-- [JuMP's governance](https://jump.dev/pages/governance/) — a named BDFL
-  and a steering committee, worth reading before we write ours
-- [MultiDocumenter.jl](https://github.com/JuliaComputing/MultiDocumenter.jl)
-  — how SciML stitches many packages' docs into one site
-- [DifferentiationInterface.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl)
-  — the automatic differentiation abstraction layer every package's AD test
-  suite runs through, alongside DifferentiationInterfaceTest.jl
+- [rOpenSci][ropensci].
+  The community infrastructure model named in the abstract, built around
+  package peer review.
+- [SciML governance][sciml].
+  A steering council, an advisory committee, and a written governance
+  document, for an ecosystem well past the size we are planning for.
+- [SpeedyWeather.jl][speedy].
+  The closest thing Julia has to a domain-specific ecosystem at the size we
+  are aiming for.
+- [JuMP's governance][jump].
+  A named BDFL and a steering committee, worth reading before we write ours.
+- [MultiDocumenter.jl][multidoc].
+  How SciML stitches many packages' docs into one site.
+- [DifferentiationInterface.jl][di].
+  The automatic differentiation abstraction layer every package's AD test
+  suite runs through, alongside DifferentiationInterfaceTest.jl.
 
-The QR code on the poster and on the closing slide points back here.
+### Related talks
 
-::: {.talk-qr}
-![](../figures/qr-roadmap.png){fig-alt="QR code linking to this page"}
+The other two are in the same room on the same day.
+
+- [Estimating epidemiological delay distributions](../delays/index.qmd).
+  CensoredDistributions.jl, the most mature package in the ecosystem.
+  14:45–15:00, straight after this one.
+- [Composable probabilistic models](../composable/index.qmd).
+  The proof of concept this roadmap is trying to build an ecosystem around.
+  16:45–17:00.
+
 :::
+::::
+
+[pretalx]: https://pretalx.com/juliacon-2026/talk/NEWC8H/
+[epiaware]: https://github.com/EpiAware
+[epiawaresite]: https://epiaware.org
+[pkgtools]: https://github.com/EpiAware/EpiAwarePackageTools.jl
+[adtools]: https://github.com/EpiAware/EpiAwareADTools.jl
+[cd]: https://github.com/EpiAware/CensoredDistributions.jl
+[epiawarer]: https://github.com/sbfnk/EpiAwareR
+[epinowcast]: https://www.epinowcast.org/
+[forum]: https://community.epinowcast.org/
+[epinow2]: https://epiforecasts.io/EpiNow2/
+[scoringutils]: https://epiforecasts.io/scoringutils/
+[ropensci]: https://ropensci.org/
+[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+[bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
+[bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
+[sciml]: https://sciml.ai/governance/
+[speedy]: https://github.com/SpeedyWeather/SpeedyWeather.jl
+[jump]: https://jump.dev/pages/governance/
+[multidoc]: https://github.com/JuliaComputing/MultiDocumenter.jl
+[di]: https://github.com/JuliaDiff/DifferentiationInterface.jl

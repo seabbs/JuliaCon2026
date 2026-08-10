@@ -1,21 +1,20 @@
 # Where this goes
 
-## Splitting it up
+## epidist, composed
 
 :::: {.columns}
 ::: {.column width="52%"}
-- Censoring was the first piece. It is now one package among several,
-  all of them wrappers over `Distributions.jl`
-- `ConvolvedDistributions.jl` does the sum of independent delays, with
-  closed forms where they exist and the same fixed node quadrature
-  where they do not, plus differences, products and ratios
-- `DistributionsInference.jl` turns a distribution into a
-  `LogDensityProblems` problem once you write `parameter_rows` and
-  `reconstruct` for it. Today only `ComposedDistributions.jl` has those
-  shipped
-- The example on the right is plain `Distributions.jl` dispatch. Where
-  the two packages do talk to each other it is through one package
-  extension, not a hard dependency
+- `epidist` is our R package for fitting delay distributions. It sits
+  on `primarycensored` and `brms`, and it holds **partial pooling** and
+  flexible delay shapes
+- `ConvolvedDistributions.jl` does sums of independent delays, plus
+  differences, products and ratios. It and `CensoredDistributions.jl`
+  do not depend on each other
+- The Julia `epidist` is a **composed** one. Censoring for the
+  observation process, Turing submodels for partial pooling and for
+  shapes not forced to be a gamma
+- The generation time is the same shape of problem, a convolution and a
+  difference and a censoring adjustment stacked
 :::
 ::: {.column width="48%"}
 ```julia
@@ -34,46 +33,40 @@ cdf(observed, 5.0)   # 0.4561
 ```
 
 ::: {.attribution}
-Composed for this talk rather than lifted from a README, which is the
-point of the slide. Run against `CensoredDistributions.jl` v0.2.22 and
-`ConvolvedDistributions.jl`
+Plain `Distributions.jl` dispatch, composed for this talk rather than
+lifted from a README, which is the point of the slide. Run against
+`CensoredDistributions.jl` v0.2.22 and `ConvolvedDistributions.jl`
 :::
 :::
 ::::
 
-## epidist, composed
-
-- `epidist` is our R package for fitting delay distributions. It sits
-  on `primarycensored` and on `brms`, and it is where partial pooling
-  and flexible delay shapes live
-- The Julia version is a composed one. `CensoredDistributions.jl` for
-  the observation process, Turing submodels for the rest
-- Partial pooling across strata, so a delay estimated by age group or
-  by region borrows strength instead of being fitted on its own
-- Flexible delay shapes, so the delay is not forced to be a gamma or a
-  lognormal
-- None of it is written yet. The generation time is the same shape of
-  problem, a convolution and a difference and a censoring adjustment
-  stacked, and `GenerationTime.jl` is an empty repository
-
-::: {.attribution}
-Open issue `CensoredDistributions.jl#749` says the joint fit is too
-slow, because reverse mode autodiff through `cdf(Convolved(...))` costs
-too much per leapfrog step.
+::: {.callout-important}
+The `epidist` layer on top is not written yet. Open issue
+`CensoredDistributions.jl#749` says the joint fit is too slow, reverse
+mode autodiff through `cdf(Convolved(...))` costs too much per leapfrog
+step.
 :::
 
 ## What I would use today
 
 - If you estimate delays in R, use `primarycensored`. It works, it is on
   CRAN, and there are packages built on top of it
-- If you are writing a model in Julia, the composition is worth more
-  than the package. Any distribution, any sampler, no integer tables
+- If you are writing a model in Julia, **the composition is worth more
+  than the package**. Any distribution, any sampler, no integer tables
 - Multiple dispatch removed a class of bug that R and Stan could only
   write a test for
-- It did not remove the numerical problem. That moved to a list of
-  which autodiff backends work
+- Budget for the autodiff work. It is where the numerical problem went,
+  and it is not a one off cost
 
 ::: {.callout-important}
 The composition is the reusable part. The package is only where the
 censoring happens to live.
 :::
+
+::: {.attribution}
+The per-backend CI this rests on, and why an ecosystem needs one, was
+the 14:30 talk in this room,
+[samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
+:::
+
+[roadmap-talk]: https://samabbott.co.uk/JuliaCon2026/roadmap/

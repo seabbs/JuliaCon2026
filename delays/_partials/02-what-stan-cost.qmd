@@ -5,16 +5,20 @@
 :::: {.columns}
 ::: {.column width="50%"}
 ```
-Error in function tanh_sinh<double>::integrate:
-The tanh_sinh quadrature evaluated your function
-at a singular point and got -inf.
+Chain 252 Exception: Error in function
+tanh_sinh<double>::integrate: The tanh_sinh
+quadrature evaluated your function at a singular
+point and got -0.038716888888388652. Integration
+bounds were automatically narrowed, but the
+integral was found to be increasing at the new
+endpoint. ...
 
 Warning: 243 chain(s) finished unexpectedly!
 ```
 
-- 243 of 256 chains, dying after warmup, in the middle of sampling
+- **243 of 256** chains, dying after warmup, in the middle of sampling
 - A day of tolerances, boundary fractions and midpoint approximations
-  got that to 70 of 600
+  got that to **70 of 600**
 - `integrate_1d` errors rather than rejecting, and there is no
   `try`/`catch` to wrap it in
 :::
@@ -65,13 +69,14 @@ stanvars_functions[[1]]$scode <- gsub(
 ::: {.column width="52%"}
 - The type parameter is an integer, pushed into Stan source as text,
   from another language
-- `dist_id = 3` meant Normal in Stan and Weibull in R. On the numerical
-  path, which is anything but a uniform primary event, asking for a
-  Weibull fitted a normal and returned numbers
-- Every distribution was affected except lognormal, gamma and
-  exponential
-- The fix came with a 228 line test whose only job is checking that two
-  integer tables agree
+- **`dist_id = 3` meant Normal in Stan and Weibull in R.** On the
+  numerical path, which is anything outside gamma, lognormal and
+  Weibull with a uniform primary, asking for a Weibull fitted a normal
+  and returned numbers
+- The two integer tables agreed on lognormal, gamma and exponential,
+  and on nothing else
+- The fix came with a **228 line test** whose only job is checking that
+  two integer tables agree
 :::
 ::::
 
@@ -79,29 +84,3 @@ stanvars_functions[[1]]$scode <- gsub(
 `primary_censored(Weibull(2, 1), Uniform(0, 1))` carries the type. There
 is no second table for it to disagree with.
 :::
-
-## No imports, so we wrote a vendoring tool
-
-:::: {.columns}
-::: {.column width="52%"}
-```stan
-// Stan functions from primarycensored version 1.3.0.9000
-/**
-  * Exponential growth probability density function (PDF)
-  ...
-```
-
-::: {.attribution}
-The first lines of `pcd_functions.stan`, the 1081 line bundle the tool
-writes and we check in. That comment is the whole dependency record.
-:::
-:::
-::: {.column width="48%"}
-- Stan has no package manager and no import statement, so a downstream
-  model has to physically contain the text of the functions
-- `R/pcd-stan-tools.R` is 453 lines. It lists the Stan functions,
-  returns their source as an R string, and resolves the call graph in
-  topological order
-- A hand-rolled parser, in R, over Stan source, to do what `using` does
-:::
-::::

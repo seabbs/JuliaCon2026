@@ -17,10 +17,10 @@ whether to depend on a one-maintainer package?
 packages?**
 DifferentiationInterface answers for a function. Nothing composes.
 
-**4. How do you release twenty packages that have to work together?**
-SciML runs downstream CI against packages outside its own org, and that
-is workflow files rather than guidance. Nothing publishes a tested
-version set for an ecosystem.
+**4. How do you release eleven packages that have to work together?**
+SciML runs downstream CI outside its own org, but that is workflow files
+rather than guidance, and nothing publishes a tested version set.
+Twenty when we get there.
 :::
 ::::
 
@@ -28,3 +28,6 @@ version set for an ecosystem.
 And the one behind all of them. Is there a Julia ecosystem whose users
 are mostly not developers? I went looking and could not find one.
 :::
+
+`EpiAwareR`, Sebastian Funk's R interface prototype, is our attempt at
+that question. It is the piece I am least sure how to sustain.

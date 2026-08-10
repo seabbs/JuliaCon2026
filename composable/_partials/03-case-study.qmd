@@ -3,77 +3,85 @@
 :::: {.columns}
 ::: {.column width="58%"}
 ```julia
-ar2 = AR(;
-  damp_priors = [
-    truncated(Normal(0.2, 0.2), 0, 1),
-    truncated(Normal(0.1, 0.05), 0, 1)],
-  ϵ_t = HierarchicalNormal(std_prior = HalfNormal(0.1)))
+using ComposableTuringIDModels, Distributions, Turing, Accessors
 
+ar2 = AR(;
+  damp = [truncated(Normal(0.2, 0.2), 0, 1),
+          truncated(Normal(0.1, 0.05), 0, 1)],
+  ϵ_t = HierarchicalNormal(std = HalfNormal(0.1)))
 ma1 = MA(;
-  θ_priors = [truncated(Normal(0.0, 0.2), -1, 1)],
-  ϵ_t = HierarchicalNormal(std_prior = HalfNormal(0.1)))
+  θ = [truncated(Normal(0.0, 0.2), -1, 1)],
+  ϵ_t = HierarchicalNormal(std = HalfNormal(0.1)))
 
 arma21 = @set ar2.ϵ_t = ma1
-arima211 = DiffLatentModel(
-  arma21, Normal(0, 0.2); d = 1)
+arima211 = DiffLatentModel(arma21, Normal(0, 0.2); d = 1)
+
+mdl = IDModel(
+  DirectInfections(; Z = arima211, initialisation = Normal()),
+  PoissonError())
+chain = sample(as_turing_model(mdl, cases, n), NUTS(), 1_000)
 ```
 :::
 ::: {.column width="42%"}
-![](../figures/composable-arima.png){height="480px" fig-align="center"}
+![](../figures/composable-arima.png){height="440px" fig-align="center"}
 
 ::: {.callout-note}
 `@set` is Accessors.jl, not ours. It works because the components are
 plain immutable structs. `AR` was never told that `MA` exists.
 :::
-:::
-::::
-
-## Rebuilding EpiNow2 by composing parts
-
-:::: {.columns}
-::: {.column width="44%"}
-- Reuse the ARIMA(2,1,1) from this worked example and the negative
-  binomial observation model from the South Korea replication, both
-  unchanged
-- `broadcast_weekly` turns the daily latent process into piecewise
-  constant weekly $R_t$
-- Day-of-week ascertainment wraps the observation model
-- Two `LatentDelay` wrappers, nested inside the single delay node in
-  the diagram, add the incubation period and then the reporting delay
-:::
-::: {.column width="56%"}
-![](../figures/composable-epinow2-model.png){width="100%"}
-
-::: {.callout-important}
-Nothing here required editing a component that already existed. The new
-code was the layers, not the model.
-:::
-:::
-::::
-
-## And it works
-
-:::: {.columns}
-::: {.column width="38%"}
-- **A** and **B** check the weekly $R_t$ process and the latent
-  infections on their own, before anything is composed
-- **C** and **D** check the day-of-week effect and the two delay
-  distributions the same way
-- **E** and **F** are the joint fit. Cases are recovered through the
-  delays, and $R_t$ with them
-- The parts were validated separately and the composition was fitted
-  together. That is the whole claim
 
 ::: {.attribution}
-One of three replications in the paper, alongside a renewal model of
-South Korea and an ordinary differential equation model of influenza.
-This is the one that reuses the most. Replicating
+Keywords track `main`. The paper's artefact pins an earlier release,
+where these were `damp_priors`, `θ_priors` and `std_prior` ·
+[github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
+[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
+:::
+:::
+::::
+
+## A common `EpiNow2` configuration, rebuilt out of parts
+
+:::: {.columns}
+::: {.column width="42%"}
+- An ARIMA(2,1,1) latent process and a negative binomial observation
+  model, both lifted unchanged from the worked example and the South
+  Korea replication
+- `broadcast_weekly` for weekly $R_t$, day-of-week ascertainment around
+  the observation model, and two `LatentDelay` wrappers for the
+  incubation period and the reporting delay
+- **A** to **D** validate each part on its own. **E** and **F** are the
+  joint fit, recovering cases through the delays and $R_t$ with them
+- The same parts rebuild a renewal model of South Korea and an ODE
+  model of influenza, neither of them edited to fit
+
+::: {.callout-important}
+No component was edited and no new component code was written. Parts
+validated separately, composition fitted together. That is the whole
+claim.
+:::
+
+::: {.attribution}
+Structure is the `EpiNow2` panel of Figure 2 of the paper, results are
+Figure 4. Daily COVID-19 cases from Italy, February to June 2020, the
+example data shipped with `EpiNow2`. We put an ARIMA(2,1,1) on weekly
+$R_t$ rather than `EpiNow2`'s default differenced Matern Gaussian
+process, and there is no side-by-side against `EpiNow2` itself.
+Replicating
 [EpiNow2](https://doi.org/10.12688/wellcomeopenres.16006.2)
-(Abbott et al., 2020). Figure from the paper
+(Abbott et al., 2020),
+[Mishra et al. (2020)](https://arxiv.org/abs/2006.16487) and
+[Chatzilena et al. (2019)][chatzilena]. The other two are backup
+slides
 :::
 :::
-::: {.column width="62%"}
-![](../figures/composable-epinow2-results.png){width="82%"
+::: {.column width="58%"}
+![](../figures/composable-epinow2-model.png){height="270px"
+fig-align="center"}
+
+![](../figures/composable-epinow2-results.png){height="500px"
 fig-align="center"}
 :::
 ::::
+
+[ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
+[chatzilena]: https://doi.org/10.1016/j.epidem.2019.100367

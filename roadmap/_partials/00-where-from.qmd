@@ -1,71 +1,95 @@
 # Where this comes from
 
-## We built the modular one already
+We are building an ecosystem of composable Julia packages for infectious
+disease modelling. I will end with four questions for this room.
+
+## Chains of models lose the uncertainty
 
 :::: {.columns}
-::: {.column width="58%"}
-- I started `epinowcast` in 2021 to be the modular one. The repository
-  description still says "a modular Bayesian framework for real-time
-  infectious disease surveillance"
-- It was modular in the sense I meant then. Every component had a
-  regression interface and could be switched out
-- It still cannot be taken apart into pieces anyone else can use
+::: {.column width="44%"}
+- Fitting models in sequence and passing estimates on is flexible, but
+  uncertainty is approximated at every handover and the answers can be
+  biased
+- The ONS infection survey ran that way. Prevalence fed incidence,
+  incidence fed $R_t$, and $R_t$ fed the variant severity analyses
+- Fitting everything together avoids that, and is slower to build,
+  because each model gets written from scratch
 
 ::: {.callout-important}
-You can reuse the package. You cannot reuse anything inside it.
+We know what to build. We do not have the parts to build it with.
 :::
 :::
-::: {.column width="42%"}
-- Before that, `EpiNow2`. After it, `primarycensored` and `epidist`.
-  Each one found a real problem, fixed it, and left behind another
-  package that could not be pulled apart
-- Six years of that. The fix is always a new package
+::: {.column width="56%"}
+![](../figures/fig-bvd-model.png){width="100%"}
 
 ::: {.attribution}
-[epinowcast/epinowcast](https://github.com/epinowcast/epinowcast),
-created 2021-10-29 ·
-[epiforecasts/EpiNow2](https://github.com/epiforecasts/EpiNow2),
-created 2020-06-17
+Cascade and joint modelling argument from the composable modelling
+paper, Abbott et al., in preparation, after Lison et al. 2024 ·
+figure is the 2026 DRC Bundibugyo outbreak model,
+[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize),
+one renewal process and many observation streams.
 :::
 :::
 ::::
 
-## The same request, five and a half years apart
+## We built the modular one already
 
-- **EpiNow2 #122**, October 2020, opened by me. Split the Stan code into
-  functions "as adding extensions/reusing code will be easier"
-- **EpiNow2 #1345**, April 2026. `epinow()` "orchestrates sequential
-  calls rather than fitting a joint model". Still open
-- The joint model has been written down as an issue three times in four
-  years. None of them landed, because doing it means rewriting the
-  package
-- **#1268** asks us to vendor `primarycensored`'s Stan code into
-  EpiNow2. Sharing a component between two Stan packages means copying
-  its source in
-- Almost all of these were opened by maintainers, not users. Users ask
-  for features. We turn those into structural work that never ships
+:::: {.columns}
+::: {.column width="56%"}
+- I started `epinowcast` in 2021 to be the modular one. Every
+  component had a regression interface and could be switched out. It
+  still cannot be taken apart into pieces anyone else can use
+- The same structural request has been written down in `EpiNow2` four
+  times since 2020. The two closed as done left the package no easier
+  to take apart. The two still open ask for structure it cannot give
+- Before it `EpiNow2`, after it `primarycensored` and `epidist`. Each
+  found a real problem, fixed it, and left another package that could
+  not be pulled apart
+:::
+::: {.column width="44%"}
+::: {.callout-important}
+You can reuse the package. You cannot reuse anything inside it.
+:::
+
+::: {.attribution}
+Four `EpiNow2` issues read 2026-08-10 ·
+[#122](https://github.com/epiforecasts/EpiNow2/issues/122),
+[#313](https://github.com/epiforecasts/EpiNow2/issues/313),
+[#1268](https://github.com/epiforecasts/EpiNow2/issues/1268),
+[#1345](https://github.com/epiforecasts/EpiNow2/issues/1345).
+:::
+:::
+::::
 
 ## It is not only us
 
 :::: {.columns}
 ::: {.column width="52%"}
-- At least seven packages estimate the reproduction number by renewal in
-  Stan. Two of them share a component. Both of those are mine
-- Wastewater tools are mostly written by people who are not wastewater
-  experts. An expert who wants to contribute has to write a whole model
-- Delay estimation, nowcasting, viral load, severity, forecasting. Each
-  rebuilds the same parts under different names
+- At least seven packages fit renewal models in Stan. None of them
+  share a component
+- The only sharing I know of anywhere is `epinowcast` copying
+  `primarycensored`'s Stan source in, licence file and all. Both of
+  those are mine
+- The two wastewater packages, `EpiSewer` and `wwinference`, share no
+  components either, and it is not clear which of their modelling
+  choices matter
 :::
 ::: {.column width="48%"}
-- We wrote down a workflow for building these models, then found we
-  could not follow it with the tools we had built
-- The paper says so itself. We provided a schematic case study, not
-  code, because the software to do it did not exist
-- The ecosystem is the attempt to make our own workflow followable
+- We wrote down a workflow for building these models, then could not
+  follow it with the tools we had built. The paper gives a schematic
+  case study rather than code, because the software did not exist
+
+::: {.callout-important}
+The unit of reuse is the whole package. It should be the
+epidemiological concept.
+:::
 
 ::: {.attribution}
+Renewal and wastewater counts from the composable modelling paper,
+Abbott et al., in preparation ·
+`inst/stan/functions/LICENSE.primarycensored` in `epinowcast` ·
 A Workflow for Infectious Disease Modelling, Abbott et al.
-[doi:10.5281/zenodo.19097427](https://doi.org/10.5281/zenodo.19097427)
+[doi:10.5281/zenodo.19097427](https://doi.org/10.5281/zenodo.19097427).
 :::
 :::
 ::::

@@ -6,29 +6,26 @@
 ::: {.column width="54%"}
 ![](../figures/delays-double-censoring.png)
 
+::: {.attribution}
+Diagram drawn for this talk, `scripts/delays-double-censoring.py`
+:::
+
 $$
-F_{\mathrm{pc}}(t) \;=\; \int_{0}^{w} F_{d}(t - u)\, f_{p}(u)\,
+F_{\mathrm{pc}}(t) \;=\; \int_{0}^{w_P} F_{d}(t - u)\, f_{p}(u)\,
 \mathrm{d}u
 $$
 
-::: {.attribution}
-$F_d$ is the delay CDF and $f_p$ the density of when, inside a window
-of width $w$, the primary event happened. Secondary censoring is a
-difference of $F_{\mathrm{pc}}$ across the observation window, and
-truncation divides by $F_{\mathrm{pc}}(D)$.
-:::
+$F_d$ is the delay CDF and $f_p$ the density of when, inside a primary
+window of width $w_P$, the primary event happened.
 :::
 ::: {.column width="46%"}
 - A delay is the time between two events. Infection to symptom onset,
   onset to hospitalisation, onset to death
 - Neither event is seen at a point in time. Both arrive as a day,
-  sometimes a week
-- In real time the data is right truncated as well. Long delays have
-  not had time to be observed
-- Ignore any of that and the estimate is biased, and the forecasts and
-  transmission models fed by it inherit the bias
-- Three pairs of delay and primary distribution have a closed form.
-  Everything else needs the integral
+  sometimes a week, and in real time the long delays have not had time
+  to be seen at all
+- Ignore any of that and the estimate is **biased**, and the forecasts
+  and transmission models fed by it inherit the bias
 :::
 ::::
 

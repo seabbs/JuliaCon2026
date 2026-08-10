@@ -5,57 +5,19 @@
 :::: {.columns}
 ::: {.column width="55%"}
 - `Distributions.jl` is a shared vocabulary that already exists. A
-  censored delay can be a distribution rather than a function in my
-  package
+  censored delay can be a distribution, not a function in my package
 - Multiple dispatch means someone else's distribution works in my model
   without either of us having heard of the other
-- One automatic differentiation stack, shared across packages, so
-  gradients are an ecosystem property rather than a per-package one
-- `SciML` and `Turing.jl` are already here, so we add to a stack instead
-  of building one
+- One automatic differentiation stack, so gradients are an ecosystem
+  property rather than a per-package one
+- Package extensions let two packages work together without either
+  taking a dependency on the other
 :::
 ::: {.column width="45%"}
 ::: {.callout-note}
-This is a bet, not a result. Julia is the only place I found where all
-of the routes on the next slide can share the same objects and the same
+A bet, not a result. Julia is the only place I found where every way of
+composing we are trying can share the same objects and the same
 gradients.
 :::
-
-- Package extensions let two packages work together without either one
-  taking a dependency on the other
 :::
 ::::
-
-## We do not know which way of composing wins
-
-:::: {.columns}
-::: {.column width="50%"}
-**A. Composed `Distributions.jl` objects**
-`rand` simulates a case, `logpdf` scores one. No probabilistic
-programming language needed. Strong for individual-level natural
-histories, no story for a time series, and it needs its own fitting
-layer, which is now a package we maintain.
-
-**B. Turing submodels**
-`ComposableTuringIDModels.jl`. Joint inference for free and the whole
-Turing toolchain with it. Inherits one PPL's design decisions, and the
-`@submodel` change broke us.
-:::
-::: {.column width="50%"}
-**C. SciML and dynamical systems**
-`LoweredDistributions.jl` turns a delay into a compartmental generator
-across four backends. Gets solvers and sensitivities. Inference has to
-be supplied separately.
-
-**D. Write the model by hand**
-Fastest to a first answer, and the honest baseline. It is also why
-there are several renewal packages that share nothing.
-:::
-::::
-
-We are running A, B and C at once and keeping them interoperable,
-because I cannot tell you which one is right. I would like to know which
-you would pick.
-
-Two more talks from me in this room take one route each. A at 14:45,
-delay distributions. B at 16:45, composable models.

@@ -15,6 +15,9 @@ website:
   site-url: "https://samabbott.co.uk/JuliaCon2026"
   repo-url: "https://github.com/seabbs/JuliaCon2026"
   favicon: figures/epiaware-logo.svg
+  # Off because the index is dominated by slide fragments, which drop the
+  # reader into the middle of a deck. seabbs.github.io does the same.
+  search: false
   open-graph:
     image: "https://samabbott.co.uk/JuliaCon2026/figures/sam.jpg"
     image-alt: "Sam Abbott"
@@ -52,3 +55,7 @@ format:
     css: site.css
     toc: false
     link-external-newwindow: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

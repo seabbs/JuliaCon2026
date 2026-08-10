@@ -1,94 +1,31 @@
 # How we are actually building it
 
-## Most of this was written by agents
+## Agents, no funding, and what that costs
 
 :::: {.columns}
-::: {.column width="58%"}
+::: {.column width="52%"}
 ![](../figures/bot-prs-by-month.png){width="100%"}
 
 ::: {.attribution}
-All of my organisations. Pull requests opened since January 2026, to the
-end of July.
+All of my organisations, `seabbs-bot` only, January to July 2026 ·
+EpiAware counts from `gh api search/issues`, read 2026-08-10 ·
+more in "How I use coding agents".
 :::
 :::
-::: {.column width="42%"}
-- We have been applying for funding to do this properly. So far without
-  success. So we started anyway, at whatever pace we can manage
-- **1,143 pull requests** in the EpiAware org from the bot account, all
-  time, counted on 10 August. 966 merged, 119 closed unmerged, 58 open
-- The same ratio holds across all my organisations, so it is not one
-  easy repository
-- Median time from open to merge is about four hours, over the 300 most
-  recently merged
+::: {.column width="48%"}
+- We have been applying for funding to do this properly, so far without
+  success. So we started anyway, with coding agents
+- **1,144 pull requests** in the EpiAware org from the bot account, all
+  time. 966 merged, 119 closed unmerged, the same ratio as my other
+  organisations, so it is not one easy repository
+- On the live DRC outbreak model the tests were written by the same
+  agents that wrote the code. A green suite says the code does what it
+  was told, not that what it was told was right
+- Its chart digitiser undercounted one situation report by **54%** after
+  a change in image compression. A self-check caught it, not a person
 
 ::: {.callout-important}
 Ten times the throughput at ten times the review load is not a win.
-:::
-:::
-::::
-
-## What that buys: a live outbreak model
-
-:::: {.columns}
-::: {.column width="38%"}
-- Bundibugyo virus in the DRC. One renewal process, six surveillance
-  streams fitted jointly, about 120 refits since May
-- Situation reports are French PDFs. Agents read them, and a second pass
-  re-scans independently
-- The symptom onset curve has no data table, so we recover it from the
-  bar chart by pixel colour and axis ticks
-- It checks itself against its own past releases, its own past
-  forecasts, and two other groups, on every rebuild
-:::
-::: {.column width="62%"}
-![](../figures/fig-bvd-model.png){width="100%"}
-
-::: {.attribution}
-[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize)
-(Abbott, Sherratt, Brand, Funk), a re-analysis and extension of McCabe
-et al. Diagram from a previous talk.
-:::
-:::
-::::
-
-## What that costs
-
-- Over **30,000 lines** for one outbreak model. 442 commits, 78% from
-  agent identities, 10% from Dependabot, 12% typed by a human
-- **18% of pull requests closed without merging.** That is the review
-  gate working, and it is also the bill
-- The full test suite and docs build have hit GitHub's six hour ceiling,
-  so the workflow was redesigned around not waiting for it
-- The onset digitiser undercounted one situation report by **54%** after
-  a change in image compression. A self-check caught it, not a person
-- Test coverage is **93.93%**, and the tests were written by the same
-  agents that wrote the code. That is evidence the code does what it was
-  told to do, not evidence that what it was told was right
-
-## An org agent that runs overnight
-
-:::: {.columns}
-::: {.column width="55%"}
-- Designed and coded. A GitHub App identity, one fresh container per
-  work unit, per-repository one hour tokens, systemd timers on a desktop
-- Nightly it would triage issues, draft designs, unstick stalled pull
-  requests and open a trickle of small drafts gated on review debt
-- It never merges and never approves. That is enforced in the runner,
-  not written down in a document
-- Design principle one is to assume every prompt injection succeeds and
-  make the damage boring anyway
-:::
-::: {.column width="45%"}
-- **The code is written. Turning it on is the part I have not done.**
-  And nothing in the org tells a human contributor what any of this
-  means for them
-- Where do you run a thing like this safely, and who is accountable for
-  what it opens?
-
-::: {.attribution}
-SciML have been doing the same thing. See "The Agentic AI Maintenance
-Bots of the SciML Organization", Rackauckas, earlier this week at this
-conference.
 :::
 :::
 ::::

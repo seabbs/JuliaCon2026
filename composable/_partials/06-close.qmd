@@ -30,30 +30,5 @@ Sam Abbott, LSHTM ·
 :::
 ::::
 
-# Backup {visibility="uncounted"}
-
-## Swapping the infection process for an ODE {visibility="uncounted"}
-
-:::: {.columns}
-::: {.column width="40%"}
-- The third replication drops the renewal process and uses an SIR model
-  built with `ODEProcess` over the SciML solvers instead
-- Everything downstream is unchanged. A Poisson observation model, and
-  a second version wrapping it in `Ascertainment` driven by an AR(1)
-- **C** shows both recovering $R_0 \approx 2$. **E** and **F** show the
-  deterministic fit is the worse calibrated of the two
-
-::: {.attribution}
-Replicating Chatzilena et al. (2019),
-[doi:10.1016/j.epidem.2019.100367][chatzilena].
-Figure from the paper
-:::
-:::
-::: {.column width="60%"}
-![](../figures/composable-sir.png){width="88%" fig-align="center"}
-:::
-::::
-
 [composable-talk]: https://samabbott.co.uk/JuliaCon2026/composable/
 [prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html
-[chatzilena]: https://doi.org/10.1016/j.epidem.2019.100367

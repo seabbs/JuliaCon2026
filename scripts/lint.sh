@@ -8,7 +8,9 @@ cd "$(dirname "$0")/.."
 
 status=0
 
-files=$(git ls-files '*.qmd' '*.css' '*.yml' '*.sh' | grep -v '^notes/')
+# Untracked files are checked too, so a new partial is not silently skipped.
+files=$(git ls-files --cached --others --exclude-standard \
+  '*.qmd' '*.css' '*.yml' '*.sh' | grep -v '^notes/')
 
 for f in $files; do
   while IFS= read -r line; do
