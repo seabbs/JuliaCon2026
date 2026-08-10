@@ -37,8 +37,8 @@ created 2020-06-17
 
 - **EpiNow2 #122**, October 2020, opened by me. Split the Stan code into
   functions "as adding extensions/reusing code will be easier"
-- **EpiNow2 #1345**, April 2026, opened by me. `epinow()` "orchestrates
-  sequential calls rather than fitting a joint model". Still open
+- **EpiNow2 #1345**, April 2026. `epinow()` "orchestrates sequential
+  calls rather than fitting a joint model". Still open
 - The joint model has been written down as an issue three times in four
   years. None of them landed, because doing it means rewriting the
   package

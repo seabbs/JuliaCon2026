@@ -1,0 +1,92 @@
+# What Stan cost us
+
+## The integral solver would not hold
+
+:::: {.columns}
+::: {.column width="50%"}
+```
+Error in function tanh_sinh<double>::integrate:
+The tanh_sinh quadrature evaluated your function
+at a singular point and got -inf.
+
+Warning: 243 chain(s) finished unexpectedly!
+```
+
+- 243 of 256 chains, dying after warmup, in the middle of sampling
+- Nine days of tolerances, boundary fractions and midpoint
+  approximations got that to 70 of 600
+- `integrate_1d` errors rather than rejecting, and there is no
+  `try`/`catch` to wrap it in
+:::
+::: {.column width="50%"}
+```stan
+// before
+result = integrate_1d(
+  primary_censored_integrand, lower_bound, d,
+  theta, {d, pwindow}, ids, 1e-2
+);
+
+// after
+result = ode_rk45(
+  primary_censored_ode, y0, lower_bound, {d},
+  theta, {d, pwindow}, ids
+)[1, 1];
+```
+
+- Recast as an ODE, **0 of 600**
+:::
+::::
+
+::: {.attribution}
+epinowcast/primarycensored#34 and PR #64, commit `1c4e6f1`, September
+2024. Also reported four to five times faster, from one run rather than
+a benchmark.
+:::
+
+## No user types, so distributions became integers
+
+:::: {.columns}
+::: {.column width="48%"}
+```r
+dist_id <- pcd_stan_dist_id(family_name)
+
+stanvars_functions[[1]]$scode <- gsub(
+  "dist_id", dist_id,
+  stanvars_functions[[1]]$scode,
+  fixed = TRUE
+)
+```
+
+::: {.attribution}
+`epidist/R/marginal_model.R:339-368`
+:::
+:::
+::: {.column width="52%"}
+- The type parameter is an integer, pushed into Stan source as text,
+  from another language
+- `dist_id = 3` meant Normal in Stan and Weibull in R. Asking for a
+  Weibull fitted a normal and returned numbers
+- Every distribution was affected except lognormal, gamma and
+  exponential
+- The fix was a 228 line test whose only job is checking that two
+  integer tables agree
+:::
+::::
+
+::: {.callout-important}
+`primary_censored(Weibull(2, 1), Uniform(0, 1))` carries the type. There
+is no second table for it to disagree with.
+:::
+
+## No imports, so we wrote a vendoring tool
+
+- Stan has no package manager and no import statement, so a downstream
+  model has to physically contain the text of the functions
+- `R/pcd-stan-tools.R` is 453 lines. It lists the Stan functions,
+  returns their source as an R string, and resolves the call graph in
+  topological order
+- The bundle it writes is checked in as `pcd_functions.stan`, 1081
+  lines, and its first line is a comment reading
+  `// Stan functions from primarycensored version 1.3.0.9000`
+- A version number in a comment is the entire dependency story
+- A hand-rolled parser, in R, over Stan source, to do what `using` does

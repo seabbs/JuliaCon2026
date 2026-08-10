@@ -12,8 +12,8 @@ website:
   description: |
     Three talks on composable infectious disease modelling in Julia,
     JuliaCon 2026, Sam Abbott.
-  site-url: "https://samabbott.co.uk/Juliacon2026"
-  repo-url: "https://github.com/seabbs/Juliacon2026"
+  site-url: "https://samabbott.co.uk/JuliaCon2026"
+  repo-url: "https://github.com/seabbs/JuliaCon2026"
   favicon: figures/epiaware-logo.svg
   navbar:
     title: "JuliaCon 2026"
@@ -32,10 +32,10 @@ website:
       - text: "samabbott.co.uk"
         href: https://samabbott.co.uk
       - icon: github
-        href: https://github.com/seabbs/Juliacon2026
+        href: https://github.com/seabbs/JuliaCon2026
   page-footer:
     left: "Sam Abbott, London School of Hygiene & Tropical Medicine"
-    right: "[Source](https://github.com/seabbs/Juliacon2026)"
+    right: "[Source](https://github.com/seabbs/JuliaCon2026)"
 
 format:
   html:

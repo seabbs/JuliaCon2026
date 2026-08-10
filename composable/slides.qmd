@@ -25,4 +25,4 @@ format:
 
 ![](../figures/qr-composable.png){width="20%"}
 
-[samabbott.co.uk/Juliacon2026/composable](https://samabbott.co.uk/Juliacon2026/composable/)
+[samabbott.co.uk/JuliaCon2026/composable](https://samabbott.co.uk/JuliaCon2026/composable/)

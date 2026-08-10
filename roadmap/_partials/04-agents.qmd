@@ -5,6 +5,11 @@
 :::: {.columns}
 ::: {.column width="58%"}
 ![](_partials/bot-prs-by-month.png){width="100%"}
+
+::: {.attribution}
+All of my organisations, to the end of July. The EpiAware share of that
+is 1,138 pull requests.
+:::
 :::
 ::: {.column width="42%"}
 - We have been applying for funding to do this properly. So far without

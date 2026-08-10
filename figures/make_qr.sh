@@ -5,7 +5,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-BASE="https://samabbott.co.uk/Juliacon2026"
+BASE="https://samabbott.co.uk/JuliaCon2026"
 
 for talk in roadmap delays composable; do
   uvx --from segno segno \

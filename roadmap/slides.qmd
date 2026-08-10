@@ -50,7 +50,7 @@ Tell me which of the four questions you already have an answer to.
 ![](../figures/qr-roadmap.png){width="62%" fig-align="center"}
 
 ::: {.attribution}
-[samabbott.co.uk/Juliacon2026](https://samabbott.co.uk/Juliacon2026/roadmap/)
+[samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026/roadmap/)
 :::
 :::
 ::::

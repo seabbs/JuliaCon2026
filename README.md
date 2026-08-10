@@ -1,11 +1,11 @@
 # JuliaCon 2026
 
-Talk pages and slides for three talks at JuliaCon 2026, Thursday 14 August
+Talk pages and slides for three talks at JuliaCon 2026, Friday 14 August
 2026, Muschel — N3.
 
 Sam Abbott, London School of Hygiene & Tropical Medicine.
 
-Rendered: [samabbott.co.uk/Juliacon2026](https://samabbott.co.uk/Juliacon2026)
+Rendered: [samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026)
 
 ## The talks
 

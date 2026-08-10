@@ -4,7 +4,7 @@ subtitle: "From R/Stan to Julia"
 ---
 
 ::: {.session-meta}
-JuliaCon 2026 · Thursday 14 August 2026, 14:45–15:00 (Europe/Berlin) ·
+JuliaCon 2026 · Friday 14 August 2026, 14:45–15:00 (Europe/Berlin) ·
 Muschel — N3 · Sam Abbott
 :::
 

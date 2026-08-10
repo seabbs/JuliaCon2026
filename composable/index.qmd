@@ -3,7 +3,7 @@ title: "Composable probabilistic models can lower barriers to rigorous infectiou
 ---
 
 ::: {.session-meta}
-JuliaCon 2026 · Thursday 14 August 2026, 16:45–17:00 (Europe/Berlin) ·
+JuliaCon 2026 · Friday 14 August 2026, 16:45–17:00 (Europe/Berlin) ·
 Muschel — N3 · Sam Abbott
 :::
 

@@ -239,7 +239,7 @@ Do not reuse:
   not in `embed-resources: true` slides.
 
 All of these live outside this repo, so copy the ones we keep into
-`Juliacon2026/figures/composable/` before rendering rather than referencing
+`JuliaCon2026/figures/composable/` before rendering rather than referencing
 across repositories.
 
 ## Verified facts

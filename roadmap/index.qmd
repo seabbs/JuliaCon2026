@@ -4,7 +4,7 @@ subtitle: "A roadmap, challenges, and questions"
 ---
 
 ::: {.session-meta}
-JuliaCon 2026 · Thursday 14 August 2026, 14:30–14:45 (Europe/Berlin) ·
+JuliaCon 2026 · Friday 14 August 2026, 14:30–14:45 (Europe/Berlin) ·
 Muschel — N3 · Sam Abbott
 :::
 

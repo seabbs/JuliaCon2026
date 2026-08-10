@@ -35,3 +35,9 @@ as the steering section.
 
 > the following was drafted by @seabbs-bot who has a very suspiciously high
 > opinion of me so take it with a pinch of salt
+
+> that is kind of what we want I think
+
+> Link to seabbs-bot github profile
+
+> I think this one is on friday? [the composable talk, 2026-08-14 16:45-17:00]

@@ -25,4 +25,4 @@ format:
 
 ![](../figures/qr-delays.png){width="20%"}
 
-[samabbott.co.uk/Juliacon2026/delays](https://samabbott.co.uk/Juliacon2026/delays/)
+[samabbott.co.uk/JuliaCon2026/delays](https://samabbott.co.uk/JuliaCon2026/delays/)

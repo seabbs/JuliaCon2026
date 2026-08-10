@@ -22,12 +22,12 @@ This is my opening prompt, cleaned up for spelling and sentence boundaries and
 grouped under headings.
 The judgements are unchanged.
 The verbatim version, typos and all, is
-[in the repo](https://github.com/seabbs/Juliacon2026/blob/main/notes/original-brief.md).
+[in the repo](https://github.com/seabbs/JuliaCon2026/blob/main/notes/original-brief.md).
 
 ### The site
 
 ::: {.prompt}
-I have made a new repo, Juliacon2026, and invited seabbs-bot to it.
+I have made a new repo, JuliaCon2026, and invited seabbs-bot to it.
 I need to give three presentations with three posters this week at JuliaCon.
 What I want is a simple home page in Quarto, in the style of my personal
 seabbs.github.io site, with a page per project that has the title and the
@@ -189,7 +189,7 @@ were for.
 Eight research agents ran first, one per question, before any slide was
 written.
 They wrote about 3,500 lines of notes into
-[`notes/`](https://github.com/seabbs/Juliacon2026/tree/main/notes) and none of
+[`notes/`](https://github.com/seabbs/JuliaCon2026/tree/main/notes) and none of
 them wrote slides.
 
 - the git history and issue trail of primarycensored and

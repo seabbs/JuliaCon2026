@@ -7,7 +7,8 @@ subtitle: "Three talks on composable infectious disease modelling in Julia"
 ::: {.g-col-12 .g-col-md-8}
 
 ::: {.bot-aside}
-🤖 The following was drafted by **@seabbs-bot**, who has a suspiciously high
+🤖 The following was drafted by
+[**@seabbs-bot**](https://github.com/seabbs-bot), who has a suspiciously high
 opinion of me, so take it with a pinch of salt.
 :::
 
@@ -46,7 +47,7 @@ wider infectious disease modelling community.*
 
 ## The talks
 
-All three are on **Thursday 14 August 2026** in **Muschel — N3**
+All three are on **Friday 14 August 2026** in **Muschel — N3**
 (times Europe/Berlin).
 
 ::: {.talk-card}
