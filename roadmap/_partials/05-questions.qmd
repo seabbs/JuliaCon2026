@@ -5,25 +5,22 @@
 :::: {.columns}
 ::: {.column width="50%"}
 **1. What is the smallest governance you can start with?**
-JuMP, SciML and Turing all wrote theirs at or after 1.0. None of them
-says how a new org should start, or how a package joins one.
+JuMP and SciML have written theirs. Turing has not. None of them says
+how an org starts, or how a package joins one.
 
 **2. Julia has no rOpenSci. Should it?**
-The median Julia package has two contributors. No software peer review,
-no agreed maintenance status labels, no disputes procedure. How should I
-decide whether to depend on a package with one maintainer?
+No maintenance status labels, no disputes procedure. How do I decide
+whether to depend on a one-maintainer package?
 :::
 ::: {.column width="50%"}
-**3. Who tells a user which AD backend works for a model built from five
+**3. Who tells a user which backend works for a model built from five
 packages?**
-DifferentiationInterface answers for a function. Its test package lets
-you check your own. Nothing composes.
+DifferentiationInterface answers for a function. Nothing composes.
 
-**4. How do you release twenty packages that have to work together,
-without a monorepo?**
-SciML's downstream and downgrade CI is the best answer available, and it
-exists as workflow files rather than as guidance. Nothing records which
-versions are known to work together.
+**4. How do you release twenty packages that have to work together?**
+SciML runs downstream CI against packages outside its own org, and that
+is workflow files rather than guidance. Nothing publishes a tested
+version set for an ecosystem.
 :::
 ::::
 

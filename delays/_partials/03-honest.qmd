@@ -4,8 +4,8 @@
 
 :::: {.columns}
 ::: {.column width="50%"}
-- 82 of 396 issues and pull requests are about autodiff or numerics.
-  There is a CI job per backend and a maintained list of what is broken
+- 82 of 929 issues and pull requests are about autodiff or numerics, and
+  a maintained list says which backends are broken
 - The default solver is `GaussLegendre(; n = 64)`, not `QuadGKJL()`,
   because fixed nodes trace through every backend and adaptive ones do
   not
@@ -13,18 +13,22 @@
   adaptive quadrature for a 64 node dot product
 :::
 ::: {.column width="50%"}
-- The first proper measurement of this package, April 2026, found four
-  of six backend configurations broken or only partly working
+- The first six backend measurement, merged May 2026, badged three of
+  six as broken or partial. ReverseDiff tape partial, both Enzyme
+  directions broken. The page now says all six cover the scenario set
 - `try`/`catch` had to be taken **out** to unblock Mooncake. In Stan the
   complaint was that there is none to put in
-- `logpdf` is a central difference of `logcdf` with a step hardcoded at
-  `1e-8`, which is why finite differences cannot be the test reference
 :::
 ::::
 
 ::: {.callout-important}
 In Stan the workarounds are for the language. In Julia they are for the
 autodiff backends.
+:::
+
+::: {.attribution}
+The per-backend CI this rests on, and why an ecosystem needs one, was
+the roadmap talk at 14:30 in this room.
 :::
 
 ## R wins this, by about a hundred to one
@@ -42,17 +46,17 @@ integration and mirrors, so neither is a count of people.
 :::
 :::
 ::: {.column width="58%"}
-- Four R packages use primarycensored, and three of the four are ours
+- Four R packages use primarycensored and all four are from my own
+  orgs. Two are on CRAN as reverse imports, one is GitHub only, and one
+  only suggests it
 - Every dependant of CensoredDistributions.jl is mine, Sam Brand's or
   Sebastian Funk's. I went looking for one from outside and did not
   find it
-- primarycensored turns up in public health delay estimation, but the
-  guide that recommends it is a guide we wrote
 - Last month is the only number moving the right way, 49 against 511
 :::
 ::::
 
-::: {.callout-important}
-The two packages are a month apart in age. The difference is the
-ecosystem each landed in, not the language.
+::: {.callout-note}
+The two packages are a month apart in age. I do not know how much of
+the gap is R having the users and how much is the package.
 :::

@@ -33,24 +33,32 @@ format:
 
 :::: {.columns}
 ::: {.column width="62%"}
+::: {.callout-important}
+Tell me which of the four questions you already have an answer to.
+:::
+
 - [epiaware.org](https://epiaware.org) — the packages, the docs, and how
   to get involved
 - [github.com/EpiAware](https://github.com/EpiAware) — including
   `EpiAwarePackageTools.jl` and `EpiAwareADTools.jl`
 - [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize) —
   the live DRC outbreak size model
-- Two more from me in this room. Delay distributions at 14:45,
-  composable models at 16:45
-
-::: {.callout-important}
-Tell me which of the four questions you already have an answer to.
-:::
+- [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
 ![](../figures/qr-roadmap.png){width="62%" fig-align="center"}
 
 ::: {.attribution}
-[samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026/roadmap/)
+[samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
+
+Sam Abbott, LSHTM ·
+[epiaware.org](https://epiaware.org) ·
+[github.com/seabbs](https://github.com/seabbs)
 :::
 :::
 ::::
+
+{{< include _partials/90-summary.qmd >}}
+
+[roadmap-talk]: https://samabbott.co.uk/JuliaCon2026/roadmap/
+[prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html

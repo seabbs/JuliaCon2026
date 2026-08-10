@@ -1,6 +1,9 @@
 ---
 title: "Prompts"
 subtitle: "The brief that made this site, and the steers that followed"
+description: >-
+  The opening brief given to the coding agents that drafted these three
+  JuliaCon 2026 decks, and every steer given during the build.
 ---
 
 These three decks, the pages around them, and most of the words on them were
@@ -162,27 +165,99 @@ composable org.
 ## The steers
 
 Follow-up instructions during the build, verbatim apart from spelling.
-There are four of them so far and the build is not finished, so this is a
+There are sixteen so far and the build is not finished, so this is still a
 thinner list than the two dozen steers behind the how I LLM deck.
-It is appended to as they arrive.
+It is appended to as they arrive, and the running version is
+[in the repo](https://github.com/seabbs/JuliaCon2026/blob/main/notes/steers.md).
+Six are about the workflow, eight about the content, and two about the layout.
+
+### Workflow
 
 ::: {.prompt}
 Please make sure you get this website up and building and iterate on it.
 Keep working and review using Opus agents against my prompt above to make sure
 it is hitting what I wanted.
+:::
 
+::: {.prompt}
 I asked for a workflow with heavy agent usage, an Opus and Sonnet mixture.
+:::
 
-We probably want to link to their pages:
-<https://pretalx.com/juliacon-2026/talk/AMFLYU/>
-
+::: {.prompt}
 Where are the searching context pages and the workflow?
 :::
 
-Three of the four are corrections to the workflow rather than to the content.
+::: {.prompt}
+We need another review stage after the fix to confirm and potentially loop.
+:::
+
+::: {.prompt}
+That is kind of what we want I think.
+:::
+
+::: {.prompt}
+Make sure workflow members are reviewing and improving the site as well as
+just the slides.
+:::
+
+### Content
+
+::: {.prompt}
+We probably want to link to their pages:
+<https://pretalx.com/juliacon-2026/talk/AMFLYU/>
+:::
+
+::: {.prompt}
+Other recent work might want to link to i.e epinowcast?
+:::
+
+::: {.prompt}
+No, the point was an LLM wrote the outline of me and I wanted that to be
+clear.
+:::
+
+::: {.prompt}
+It is not really part of what these talks are about, cut that.
+There is less LLM emphasis here than we had in how I LLM, less self
+referential, but we do discuss as in the original prompt.
+:::
+
+::: {.prompt}
+We already have a robot opener so we do not need the closing one at the end at
+all I think.
+:::
+
+::: {.prompt}
+The following was drafted by @seabbs-bot who has a very suspiciously high
+opinion of me so take it with a pinch of salt.
+:::
+
+::: {.prompt}
+Link to seabbs-bot GitHub profile.
+:::
+
+::: {.prompt}
+I think this one is on Friday?
+:::
+
+### Layout
+
+::: {.prompt}
+Put this in italics, from @seabbs-bot with robot emoji or similar.
+Bit of fun, breaks it up for being a bit pompous.
+:::
+
+::: {.prompt}
+The home page is long and kind of empty, can we make it wider or move the
+projects into a line with less length or similar compression to make it more
+interesting?
+:::
+
+Six of the sixteen are corrections to the workflow rather than to the content.
 The brief said what the talks should say.
-It did not say how hard to look before saying it, and that is what the steers
-were for.
+It did not say how hard to look before saying it, and that is what those
+steers were for.
+The content steers were mostly about what to cut.
 
 ## How it was built
 
@@ -215,8 +290,9 @@ slides.
 Some of what came back contradicted the brief.
 The brief says the Stan side needed an ODE but otherwise AD just worked.
 The Julia history says both languages gave up on adaptive quadrature because
-the differentiator could not follow it, and that 82 of 396 issues in
-CensoredDistributions.jl are about AD or numerics.
+the differentiator could not follow it, and that 48 of the 396 issues in
+CensoredDistributions.jl have AD, autodiff, gradient, numerical, quadrature,
+precision or performance in the title.
 So the deck says that, not the easier version.
 One agent was asked for a lines of code comparison between the two packages
 and refused, on the grounds that the repos are not structured comparably and

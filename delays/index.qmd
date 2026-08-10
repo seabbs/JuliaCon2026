@@ -1,6 +1,9 @@
 ---
 title: "Estimating epidemiological delay distributions"
 subtitle: "From R/Stan to Julia"
+description: >-
+  CensoredDistributions.jl, and an honest comparison with the R and Stan
+  implementation it grew out of. JuliaCon 2026, Sam Abbott.
 ---
 
 ::: {.session-meta}
@@ -16,12 +19,12 @@ Muschel — N3 · Sam Abbott
 ## Abstract
 
 ::: {.abstract}
-Delay distributions describe the time between epidemiological events, such as
-infection to symptom onset or symptom onset to hospitalisation.
+Delay distributions describe the time between epidemiological events, such
+as infection to symptom onset or symptom onset to hospitalisation.
 Estimating these distributions from outbreak data is difficult because both
 the primary event (e.g. infection) and the secondary event (e.g. symptom
-onset) are usually only known to have occurred within a time window, such as a
-day.
+onset) are usually only known to have occurred within a time window, such as
+a day.
 Real-time outbreak data is also often right-truncated as longer delays have
 not yet been observed.
 Ignoring double interval censoring and truncation biases parameter estimates
@@ -31,8 +34,8 @@ Adjusting distributions for primary event censoring addresses this by
 integrating the delay CDF over the primary event window, weighted by the
 density of when, within the window, the event occurred.
 This can then be combined with truncation and secondary interval-censoring
-adjustments to produce a double-interval-censored and right-truncation-adjusted
-distribution.
+adjustments to produce a double-interval-censored and
+right-truncation-adjusted distribution.
 
 In this talk, we present CensoredDistributions.jl, which implements these
 adjustments as `primary_censored`, `interval_censored`, and
@@ -42,17 +45,21 @@ distribution pairs where these are available, and falls back to numerical
 integration otherwise.
 We demo the package standalone and with Turing.jl for parameter estimation.
 
-We then compare to primarycensored, our equivalent R package, which also ships
-a duplicate set of Stan functions so users can fit models in either language.
-Maintaining two parallel implementations required reimplementing distribution
-functions in Stan, building tooling to vendor Stan code into downstream
-projects, and replacing types with integer distribution identifiers.
-Stan's integral solver was also unstable for this problem, so we had to recast
-it as an ODE.
-Julia's multiple dispatch and ecosystem composability eliminates all of this.
+We then compare to primarycensored, our equivalent R package, which also
+ships a duplicate set of Stan functions so users can fit models in either
+language.
+Maintaining two parallel implementations required reimplementing
+distribution functions in Stan, building tooling to vendor Stan code into
+downstream projects, and replacing types with integer distribution
+identifiers.
+Stan's integral solver was also unstable for this problem, so we had to
+recast it as an ODE.
+Julia's multiple dispatch removes the integer distribution tables and
+ecosystem composability removes the vendoring tool, but neither removes the
+numerical problem underneath.
 
-We then summarise our plans to build a composed Julia version of our epidist R
-package, using CensoredDistributions.jl as a foundation with Turing.jl
+We then summarise our plans to build a composed Julia version of our epidist
+R package, using CensoredDistributions.jl as a foundation with Turing.jl
 submodels for partially pooled and flexible delay estimation.
 :::
 
@@ -60,22 +67,23 @@ submodels for partially pooled and flexible delay estimation.
 
 ### The R and Stan side this grew out of
 
-- [primarycensored](https://primarycensored.epinowcast.org/) — the R
-  package, over 11,000 CRAN downloads all-time, this talk's starting point
-- [epidist](https://epidist.epinowcast.org/) — the R package that fits
-  delay distributions on top of primarycensored
+- [primarycensored](https://primarycensored.epinowcast.org/), the R
+  package, over 11,000 CRAN downloads all-time, this talk's starting
+  point
+- [epidist](https://epidist.epinowcast.org/) fits delay distributions on
+  top of primarycensored
 - [primarycensored PR #64](https://github.com/epinowcast/primarycensored/pull/64)
   — the ODE recast forced by Stan's integral solver going unstable
   mid-sampling
-- [primarycensored issue #277](https://github.com/epinowcast/primarycensored/issues/277)
-  — the dist_id bug: an integer meant Normal in Stan and Weibull in R
-- [primarycensored on Zenodo](https://doi.org/10.5281/zenodo.13632839) —
-  the citable software record for the R package
+- [primarycensored PR #277](https://github.com/epinowcast/primarycensored/pull/277),
+  the dist_id bug, where an integer meant Normal in Stan and Weibull in R
+- [primarycensored on Zenodo](https://doi.org/10.5281/zenodo.13632838),
+  the concept DOI, which always resolves to the latest release
 
 ### Julia
 
-- [ConvolvedDistributions.jl](https://github.com/EpiAware/ConvolvedDistributions.jl)
-  — sums, differences, products, and ratios of delay distributions, the
+- [ConvolvedDistributions.jl](https://github.com/EpiAware/ConvolvedDistributions.jl),
+  sums, differences, products, and ratios of delay distributions, the
   next layer up
 - [CensoredDistributions.jl PR #250](https://github.com/EpiAware/CensoredDistributions.jl/pull/250)
   — why we also gave up adaptive quadrature, for a different reason than
@@ -83,8 +91,8 @@ submodels for partially pooled and flexible delay estimation.
 
 ### Related talks
 
-- [How to serial interval?](https://samabbott.co.uk/how-to-serial-interval)
-  — more on censoring, delays, and why the serial interval is itself a
+- [How to serial interval?](https://samabbott.co.uk/how-to-serial-interval),
+  more on censoring, delays, and why the serial interval is itself a
   composition
 
 ::: {.talk-qr}

@@ -1,56 +1,27 @@
-# What we have, and what a package has to be
+# What we have, and what comes next
 
 ## Eleven packages, ten registered, two empty repos
 
 :::: {.columns}
 ::: {.column width="52%"}
-- 22 repositories. 11 hold a Julia package, 10 of those are in General.
-  `ScoringRules.jl` is not registered
+- 22 repositories, 19 of them public. 11 hold a Julia package, 10 of
+  those are in General. `ScoringRules.jl` is not registered
 - Six distribution packages, one fitting protocol, one Turing layer, one
   scoring port, one package kit, one automatic differentiation toolbox
 - `GenerationTime.jl` and `ReproductionNumber.jl` were created in
   February and have never been pushed to
 :::
 ::: {.column width="48%"}
-- The documentation site lists four of the eleven. The tutorials site is
-  one page. The R interface prototype is three months stale and targets
-  a package name that no longer exists
-
-::: {.callout-note}
-The abstract for this talk says we have `CensoredDistributions.jl` and an
-R prototype. It is ten packages behind, and the website is behind that.
-:::
+- The documentation site lists ten of the eleven. `ScoringRules.jl` is
+  missing, and the deployed site trails `main` by one more
+- The abstract for this talk says we have `CensoredDistributions.jl` and
+  an R interface prototype. It is ten packages behind, and the prototype
+  points at the old CDC `EpiAware` package rather than anything here
 
 ::: {.attribution}
-`CensoredDistributions.jl` is the 14:45 talk in this room. What you build
-with all of it is the 16:45 talk.
+The R prototype is `sbfnk/EpiAwareR`, by Sebastian Funk. Last pushed
+2026-06-22, about seven weeks ago.
 :::
-:::
-::::
-
-## A rigid template, not a modular one
-
-:::: {.columns}
-::: {.column width="55%"}
-- Most Julia templates are modular and you pick the parts you want.
-  Ours overwrites, and a scheduled job re-applies it
-- `EpiAwarePackageTools.jl` writes 76 files into a package. Most are
-  force-managed, so a package cannot drift away from the standard
-- 20 workflow callers and one composite action, into 23 reusable
-  workflows, each pinned to a commit SHA held in one file
-- JuliaFormatter is pinned in one place that feeds the pre-commit hook,
-  the isolated formatter test and the CI input together
-:::
-::: {.column width="45%"}
-::: {.callout-important}
-Managed files carry a header saying "MANAGED by
-EpiAwarePackageTools.scaffold — do not edit by hand".
-:::
-
-- Ten of the eleven packages are on it. The exception is the package the
-  tooling was extracted from, and there is an issue open about that
-- Uniformity is the point. An agent that has learned one repository has
-  learned all of them
 :::
 ::::
 
@@ -72,16 +43,47 @@ const BANNED_README_WORDS = [
 ```
 :::
 ::: {.column width="52%"}
-- Nine quality checks run in every package: Aqua, ExplicitImports,
+- Nine quality checks run in every package. Aqua, ExplicitImports,
   import centralisation, docstring format, README sections, doctests,
   formatting, JET, extension ambiguities
-- README sections are named and ordered, and a managed block of them is
-  re-rendered on every sync
-- JET and the formatter run in their own environments so the pinned
-  version cannot drift with the test environment
+- `EpiAwarePackageTools.jl` writes up to 69 files into a package, most
+  of them force-managed, so a package cannot drift from the standard
+- Ten of the eleven are on it. The exception is the package the tooling
+  was extracted from. Uniformity is the point, and an agent that has
+  learned one repository has learned all of them
+- The bill is 8,600 lines of Julia to hold eleven packages rigid, and a
+  contributor cannot change one repository's tooling on their own
 
 ::: {.callout-note}
 A guideline gets ignored. A failing test does not.
 :::
 :::
 ::::
+
+## What we said we would build, and where it has got to
+
+:::: {.columns}
+::: {.column width="50%"}
+**Distribution extensions**
+Six packages, all registered. Enough to build on.
+
+**Delay and generation time estimation**
+`DistributionsInference.jl` is the fit protocol. `GenerationTime.jl` has
+been an empty repository since February.
+:::
+::: {.column width="50%"}
+**Disease dynamics**
+`ComposableTuringIDModels.jl` is the Turing layer.
+`ReproductionNumber.jl` is empty too.
+
+**Forecast evaluation**
+`ScoringRules.jl` runs, and is not registered.
+:::
+::::
+
+- Every package also has to meet the same standard. Docstrings through
+  DocStringExtensions, references through DocumenterCitations, and
+  optional integrations as package extensions rather than dependencies.
+  `EpiAwareADTools.jl` carries seven of them
+- Sustaining it needs two things we do not have. One documentation site
+  that is not behind the code, and a governance document

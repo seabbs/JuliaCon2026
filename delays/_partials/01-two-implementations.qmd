@@ -9,7 +9,7 @@
 - Density, distribution and quantile functions in R, plus a parallel
   set of Stan functions so people can fit in either
 - The Stan half is the reason most of this talk exists
-- On CRAN. `EpiNow2`, `epidist`, `epinowcast` and `distspec` use it
+- On CRAN, with four R packages depending on it
 :::
 ::: {.column width="50%"}
 **CensoredDistributions.jl**
@@ -18,57 +18,8 @@
   `double_interval_censored`
 - Wrappers around a `Distributions.jl` distribution that return a
   distribution, so everything downstream still works
-- Started a month after the R one and grew alongside it
 :::
 ::::
-
-::: {.callout-note}
-You have just heard the case for a composable ecosystem. This is one
-package's worth of evidence for it, including where it did not help.
-:::
-
-## Building the distribution
-
-:::: {.columns}
-::: {.column width="50%"}
-```r
-dprimarycensored(
-  x, pdist, pwindow = 1, swindow = 1,
-  L = -Inf, D = Inf,
-  dprimary = stats::dunif,
-  dprimary_args = list(), log = FALSE, ...
-)
-
-dprimarycensored(1:9, pweibull, L = 1, D = 10,
-                 shape = 1.5, scale = 2.0)
-```
-
-::: {.attribution}
-`primarycensored/R/dprimarycensored.R:69-81`
-:::
-:::
-::: {.column width="50%"}
-```julia
-d = double_interval_censored(
-    Gamma(2, 3); upper = 15, interval = 1
-)
-
-pdf(d, 3.0)        # 0.1274
-cdf(d, 7.0)        # 0.6677
-quantile(d, 0.5)
-rand(d, 10)
-```
-
-::: {.attribution}
-`CensoredDistributions.jl/README.md:39-40`
-:::
-:::
-::::
-
-::: {.callout-note}
-R takes the pieces as arguments to one function. Julia composes them
-and hands back an object the rest of the ecosystem already understands.
-:::
 
 ## Eighteen branches, or the type you passed
 
@@ -97,7 +48,7 @@ function primarycensored_cdf(
 ) where {D1 <: UnivariateDistribution,
          D2 <: UnivariateDistribution}
     function integrand(u, x)
-        return exp(_logcdf_ad_safe(dist, u) +
+        return exp(logcdf_ad_safe(dist, u) +
                    logpdf(primary_event, x - u))
     end
 end
@@ -108,8 +59,9 @@ end
 ::: {.attribution}
 `primarycensored_ode.stan:52-77`, 18 branches, and a second table of 10
 saying which of them have positive support ·
-`primarycensored_cdf.jl:208-229`, where `_logcdf_ad_safe` is `logcdf`
-plus one autodiff workaround for `Gamma`
+`primarycensored_cdf.jl:184-201`. `logcdf_ad_safe` comes from
+`EpiAwareADTools.jl` and is `logcdf` plus autodiff workarounds for
+`Gamma` and `Beta`
 :::
 
 ## Fréchet
@@ -121,6 +73,9 @@ plus one autodiff workaround for `Gamma`
 - `primarycensored_cdf` has six methods in total, three of them closed
   forms for `Gamma`, `LogNormal` and `Weibull` against a uniform primary
 - The other three take anything that is a `UnivariateDistribution`
+- The one primary distribution neither standard library has,
+  exponential growth, was hand written in both. The Julia one is the
+  longer of the two
 
 ::: {.callout-important}
 The Stan file has to know every distribution it will ever support. The
@@ -130,20 +85,7 @@ Julia file does not have to know any of them.
 ## Fitting
 
 :::: {.columns}
-::: {.column width="52%"}
-```stan
-model {
-  for (i in 1:N) {
-    target += n[i] * primarycensored_lpmf(
-      d[i] | dist_id, to_array_1d(params),
-      pwindow[i], d_upper[i], L[i], D[i],
-      primary_id, to_array_1d(primary_params)
-    );
-  }
-}
-```
-:::
-::: {.column width="48%"}
+::: {.column width="46%"}
 ```julia
 @model function double_censored_model(values, weights)
     α ~ truncated(Normal(1, 2), 0, Inf)
@@ -153,12 +95,23 @@ model {
     )
     values ~ weight(d, weights)
 end
+
+model = double_censored_model(values, weights)
+chain = sample(model, NUTS(), MCMCThreads(), 1000, 2)
 ```
+
+- In Stan `dist_id` is data, so the distribution is fixed before
+  sampling starts. Here `Gamma(α, θ)` is built out of the parameters
+  being sampled
+:::
+::: {.column width="54%"}
+![](../figures/delays-fit.png)
+
+::: {.attribution}
+Model code from `CensoredDistributions.jl/README.md:71-85`. Run for
+this talk on 1000 draws from
+`double_interval_censored(Gamma(2, 3); upper = 15, interval = 1)`, two
+chains of 1000 iterations.
+:::
 :::
 ::::
-
-::: {.callout-note}
-`dist_id` is data. The distribution is fixed before sampling starts and
-is chosen in R by a string. The Turing model builds `Gamma(α, θ)` out of
-the parameters it is sampling.
-:::

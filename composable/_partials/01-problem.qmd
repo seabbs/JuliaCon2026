@@ -1,9 +1,12 @@
+# The problem
+
 ## What modelling evidence has to be
 
 :::: {.columns}
 ::: {.column width="52%"}
-- Chris Whitty, then Chief Scientific Adviser and later Chief Medical
-  Officer for England, set out what evidence has to be to inform policy
+- Chris Whitty, then Chief Scientific Adviser at the Department for
+  International Development and later Chief Medical Officer for
+  England, set out what evidence has to be to inform policy
 - Timely enough to still be useful, explicit about its methods, and as
   simple as it can be while staying rigorous
 - Add collaborative, because no one group holds all the data or all the
@@ -16,10 +19,11 @@ rigour and being able to move.
 :::
 :::
 ::: {.column width="48%"}
-![](../figures/composable-whitty.png){width="100%"}
+![](../figures/composable-whitty.png){width="100%"
+fig-alt="First page of Whitty's 2015 editorial"}
 
 ::: {.attribution}
-Whitty (2015),
+Whitty (2015), an editorial rather than a study,
 [doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8)
 :::
 :::
@@ -37,7 +41,8 @@ Whitty (2015),
 - New single-source models were built instead, at speed
 :::
 ::: {.column width="33%"}
-![](../figures/composable-birrell.png){width="100%"}
+![](../figures/composable-birrell.png){width="100%"
+fig-alt="Results from the England COVID-19 joint model"}
 
 ::: {.attribution}
 Birrell et al. (2025),
@@ -45,7 +50,8 @@ Birrell et al. (2025),
 :::
 :::
 ::: {.column width="33%"}
-![](../figures/composable-endo.png){width="100%"}
+![](../figures/composable-endo.png){width="100%"
+fig-alt="Results from the 2022 mpox sexual contact network model"}
 
 ::: {.attribution}
 Endo et al. (2022),
@@ -57,11 +63,11 @@ Endo et al. (2022),
 ## Chaining models loses information
 
 :::: {.columns}
-::: {.column width="42%"}
-- The ONS Infection Survey tested over four million swabs from more
-  than 150,000 households at a cost above £500 million. Modellers
+::: {.column width="46%"}
+- The ONS COVID-19 Infection Survey tested over four million swabs from
+  more than 150,000 households at a cost above £500 million. Modellers
   outside saw the published prevalence, not the swabs
-- Prevalence fed incidence, incidence fed $R_t$, and $R_t$ fed variant
+- Prevalence fed incidence and $R_t$, and those fed variant
   transmissibility and severity
 - Uncertainty was approximated at each step and assumptions were
   inherited unchecked
@@ -73,17 +79,16 @@ Joint fitting is the fix, and it hands you a model nobody can take
 apart.
 :::
 :::
-::: {.column width="58%"}
-![](../figures/composable-ons-cascade.jpg){width="76%"
+::: {.column width="54%"}
+![](../figures/composable-ons-cascade.jpg){width="94%"
 fig-align="center"}
 
-![](../figures/composable-lison.png){width="60%" fig-align="center"}
-
 ::: {.attribution}
-Top, survey prevalence, the incidence implied by it, and the $R_t$
-implied by that, each from a separate model. Survey figures from the
-paper's introduction. Bottom, Lison et al. (2024),
-[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
+The chain fitted as one model instead. Prevalence (A), incidence (B),
+antibody prevalence (C) and $R_t$ (D) estimated together from the
+survey data. Abbott and Funk (2022),
+[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101).
+Survey figures from the paper's introduction
 :::
 :::
 ::::
@@ -92,25 +97,29 @@ paper's introduction. Bottom, Lison et al. (2024),
 
 :::: {.columns}
 ::: {.column width="52%"}
-- Seven packages estimate $R_t$ by renewal in Stan. None of them share
-  components, and some of them share authors
-- Wastewater $R_t$ tools were written by people who are not wastewater
-  experts, and it is unclear which of those choices matter
-- Shared parts do exist. `primarycensored` is one, and the $R_t$
-  packages have largely not picked it up
-- I wrote and maintain several of these packages, so this is my problem
-  before it is anyone else's
+- At least seven packages estimate $R_t$ by renewal in Stan. Only two
+  of them share any component, and I wrote both
+- The wastewater $R_t$ tools make different choices about how much of
+  the sampling to represent, and share nothing. It is not clear which
+  of those choices matter
+- Shared parts do exist. `primarycensored` is one, and uptake outside
+  my own packages is thin
+- In multi-model work, shared parts would let you attribute a
+  difference in results to an assumption rather than to an
+  implementation
 
 ::: {.callout-important}
 The unit of reuse is the whole model, not the epidemiology inside it.
 :::
 :::
 ::: {.column width="48%"}
-![](../figures/composable-epinow2-pkg.png){width="100%"}
+![](../figures/composable-epinow2-pkg.png){width="100%"
+fig-alt="The EpiNow2 package documentation site"}
 
 ::: {.attribution}
-epidemia, EpiNow2, epinowcast, epimap, epiline, EpiSewer, wwinference.
-[epiforecasts.io/EpiNow2](https://epiforecasts.io/EpiNow2)
+The packages behind the count are epidemia, EpiNow2, epinowcast,
+epimap, epiline, EpiSewer and wwinference. The screenshot is one of
+them, [epiforecasts.io/EpiNow2](https://epiforecasts.io/EpiNow2)
 :::
 :::
 ::::

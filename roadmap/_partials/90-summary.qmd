@@ -1,0 +1,80 @@
+<!-- poster -->
+
+## Six years of packages, none of which come apart {visibility="uncounted"}
+
+| Created | Package | What it fixed | What can be reused |
+|---|---|---|---|
+| Jun 2020 | `EpiNow2` | Real-time $R_t$ | The whole package |
+| Oct 2021 | `epinowcast` | Reporting delays | The whole package |
+| Jul 2023 | `epidist` | Delay estimation | The whole package |
+| Aug 2024 | `primarycensored` | Censoring bias | Stan source, copied in |
+| Sep 2024 | `CensoredDistributions.jl` | Censoring bias | The distribution |
+
+:::: {.columns}
+::: {.column width="52%"}
+::: {.callout-important}
+Each one found a real problem, fixed it, and left behind another package
+that cannot be taken apart. The fix is always a new package.
+:::
+:::
+::: {.column width="48%"}
+- The same structural request has been written down in `EpiNow2` as an
+  issue three times in four years. None of them landed
+- Sharing a component between two Stan packages means copying its source
+  in. Issue **#1268** asks us to do exactly that
+
+::: {.attribution}
+Repository creation dates from the GitHub API, 2026-08-10 ·
+[epiforecasts/EpiNow2#122](https://github.com/epiforecasts/EpiNow2/issues/122),
+[#1268](https://github.com/epiforecasts/EpiNow2/issues/1268),
+[#1345](https://github.com/epiforecasts/EpiNow2/issues/1345)
+:::
+:::
+::::
+
+<!-- poster -->
+
+## Eleven packages, and four questions {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="50%"}
+**What exists**
+
+- 22 repositories, 19 public. 11 hold a Julia package, 10 of those are
+  registered in General
+- Six distribution packages, all registered. Enough to build on
+- `DistributionsInference.jl` is the fit protocol.
+  `ComposableTuringIDModels.jl` is the Turing layer
+- `ScoringRules.jl` runs and is not registered.
+  `GenerationTime.jl` and `ReproductionNumber.jl` are empty repositories
+
+**What holds it together**
+
+- `EpiAwarePackageTools.jl` writes up to 69 files into a package and
+  runs nine quality checks, so a package cannot drift from the standard
+- Six automatic differentiation configurations run in CI, from one list
+  that also generates the badges and the published support table.
+  `EpiAwareADTools.jl` holds the workarounds, each one documented
+  against the upstream issue that should delete it
+:::
+::: {.column width="50%"}
+**What we cannot answer**
+
+1. What is the smallest governance an ecosystem can start with?
+2. Julia has no rOpenSci. Should it?
+3. Who tells a user which backend works for a model built from five
+   packages?
+4. How do you release twenty packages that have to work together?
+
+::: {.callout-important}
+And the one behind all of them. Is there a Julia ecosystem whose users
+are mostly not developers? I went looking and could not find one.
+:::
+
+::: {.attribution}
+Counted on 2026-08-10 ·
+[epiaware.org](https://epiaware.org) ·
+[github.com/EpiAware](https://github.com/EpiAware)
+:::
+:::
+::::

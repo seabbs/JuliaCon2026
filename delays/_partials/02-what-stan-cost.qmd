@@ -13,8 +13,8 @@ Warning: 243 chain(s) finished unexpectedly!
 ```
 
 - 243 of 256 chains, dying after warmup, in the middle of sampling
-- Nine days of tolerances, boundary fractions and midpoint
-  approximations got that to 70 of 600
+- A day of tolerances, boundary fractions and midpoint approximations
+  got that to 70 of 600
 - `integrate_1d` errors rather than rejecting, and there is no
   `try`/`catch` to wrap it in
 :::
@@ -39,8 +39,9 @@ result = ode_rk45(
 
 ::: {.attribution}
 epinowcast/primarycensored#34 and PR #64, commit `1c4e6f1`, September
-2024. Also reported four to five times faster, from one run rather than
-a benchmark.
+2024. Nine days from opening the issue to merging the ODE recast. Also
+reported four to five times faster, from one run rather than a
+benchmark.
 :::
 
 ## No user types, so distributions became integers
@@ -58,17 +59,18 @@ stanvars_functions[[1]]$scode <- gsub(
 ```
 
 ::: {.attribution}
-`epidist/R/marginal_model.R:339-368`
+`epidist/R/marginal_model.R:339-347`
 :::
 :::
 ::: {.column width="52%"}
 - The type parameter is an integer, pushed into Stan source as text,
   from another language
-- `dist_id = 3` meant Normal in Stan and Weibull in R. Asking for a
+- `dist_id = 3` meant Normal in Stan and Weibull in R. On the numerical
+  path, which is anything but a uniform primary event, asking for a
   Weibull fitted a normal and returned numbers
 - Every distribution was affected except lognormal, gamma and
   exponential
-- The fix was a 228 line test whose only job is checking that two
+- The fix came with a 228 line test whose only job is checking that two
   integer tables agree
 :::
 ::::
@@ -80,13 +82,26 @@ is no second table for it to disagree with.
 
 ## No imports, so we wrote a vendoring tool
 
+:::: {.columns}
+::: {.column width="52%"}
+```stan
+// Stan functions from primarycensored version 1.3.0.9000
+/**
+  * Exponential growth probability density function (PDF)
+  ...
+```
+
+::: {.attribution}
+The first lines of `pcd_functions.stan`, the 1081 line bundle the tool
+writes and we check in. That comment is the whole dependency record.
+:::
+:::
+::: {.column width="48%"}
 - Stan has no package manager and no import statement, so a downstream
   model has to physically contain the text of the functions
 - `R/pcd-stan-tools.R` is 453 lines. It lists the Stan functions,
   returns their source as an R string, and resolves the call graph in
   topological order
-- The bundle it writes is checked in as `pcd_functions.stan`, 1081
-  lines, and its first line is a comment reading
-  `// Stan functions from primarycensored version 1.3.0.9000`
-- A version number in a comment is the entire dependency story
 - A hand-rolled parser, in R, over Stan source, to do what `using` does
+:::
+::::

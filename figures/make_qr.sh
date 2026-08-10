@@ -14,9 +14,3 @@ for talk in roadmap delays composable; do
     --dark "#333333" --light "#ffffff" \
     "${BASE}/${talk}/"
 done
-
-uvx --from segno segno \
-  --output "qr-site.png" \
-  --scale 10 --border 2 --error H \
-  --dark "#333333" --light "#ffffff" \
-  "${BASE}/"

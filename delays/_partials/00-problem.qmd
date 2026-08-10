@@ -3,42 +3,34 @@
 ## Two events, two windows
 
 :::: {.columns}
-::: {.column width="50%"}
-- A delay is the time between two events. Infection to symptom onset,
-  onset to hospitalisation, onset to death
-- Neither event is seen at a point in time. Both arrive as a day,
-  sometimes a week
-- In real time the data is right truncated as well. Long delays have
-  not had time to be observed
-:::
-::: {.column width="50%"}
-- Ignore any of that and the estimate is biased
-- The estimate is then used as an input to forecasts and to
-  transmission models, which inherit the bias
-- Everyone in this field hits the same three adjustments, and most of
-  us have written them at least once
-:::
-::::
-
-::: {.callout-note}
-The maths has been settled for years. What follows is about what it
-took to make it usable twice, in two languages.
-:::
-
-## The adjustment
+::: {.column width="54%"}
+![](../figures/delays-double-censoring.png)
 
 $$
 F_{\mathrm{pc}}(t) \;=\; \int_{0}^{w} F_{d}(t - u)\, f_{p}(u)\,
 \mathrm{d}u
 $$
 
-- $F_d$ is the delay CDF and $f_p$ the density of when, inside a window
-  of width $w$, the primary event happened
-- Secondary interval censoring is then a difference of $F_{\mathrm{pc}}$
-  across the observation window
-- Right truncation divides by $F_{\mathrm{pc}}(D)$
-- Three pairs of delay and primary distribution are implemented in
-  closed form. Everything else needs the integral
+::: {.attribution}
+$F_d$ is the delay CDF and $f_p$ the density of when, inside a window
+of width $w$, the primary event happened. Secondary censoring is a
+difference of $F_{\mathrm{pc}}$ across the observation window, and
+truncation divides by $F_{\mathrm{pc}}(D)$.
+:::
+:::
+::: {.column width="46%"}
+- A delay is the time between two events. Infection to symptom onset,
+  onset to hospitalisation, onset to death
+- Neither event is seen at a point in time. Both arrive as a day,
+  sometimes a week
+- In real time the data is right truncated as well. Long delays have
+  not had time to be observed
+- Ignore any of that and the estimate is biased, and the forecasts and
+  transmission models fed by it inherit the bias
+- Three pairs of delay and primary distribution have a closed form.
+  Everything else needs the integral
+:::
+::::
 
 ::: {.callout-important}
 The whole engineering story is that integral, and the fact that a

@@ -31,25 +31,32 @@ format:
 
 :::: {.columns}
 ::: {.column width="62%"}
-- [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
-  — the Julia package
-- [primarycensored](https://github.com/epinowcast/primarycensored) — the
-  R and Stan one, still the one to use in R
-- [epiaware.org](https://epiaware.org) — `ConvolvedDistributions.jl`,
-  `DistributionsInference.jl` and the rest
-- [samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026/) —
-  all three talks, and the prompts that built them. Composable models at
-  16:45, same room
-
 ::: {.callout-important}
 Tell me about a delay you cannot write down as a composition.
 :::
+
+- [CensoredDistributions](https://github.com/EpiAware/CensoredDistributions.jl),
+  the Julia package
+- [primarycensored](https://github.com/epinowcast/primarycensored), the
+  R and Stan one, still the one to use in R
+- [epiaware.org](https://epiaware.org) for
+  `ConvolvedDistributions.jl`, `DistributionsInference.jl` and the rest
+- [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
 ![](../figures/qr-delays.png){width="62%" fig-align="center"}
 
 ::: {.attribution}
-[samabbott.co.uk/JuliaCon2026/delays](https://samabbott.co.uk/JuliaCon2026/delays/)
+[samabbott.co.uk/JuliaCon2026/delays][delays-talk]
+
+Sam Abbott, LSHTM ·
+[epiaware.org](https://epiaware.org) ·
+[github.com/seabbs](https://github.com/seabbs)
 :::
 :::
 ::::
+
+{{< include _partials/90-summary.qmd >}}
+
+[delays-talk]: https://samabbott.co.uk/JuliaCon2026/delays/
+[prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html

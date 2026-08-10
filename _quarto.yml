@@ -15,8 +15,17 @@ website:
   site-url: "https://samabbott.co.uk/JuliaCon2026"
   repo-url: "https://github.com/seabbs/JuliaCon2026"
   favicon: figures/epiaware-logo.svg
+  open-graph:
+    image: "https://samabbott.co.uk/JuliaCon2026/figures/sam.jpg"
+    image-alt: "Sam Abbott"
+  twitter-card:
+    creator: "@seabbs"
+    card-style: summary
+    image: "https://samabbott.co.uk/JuliaCon2026/figures/sam.jpg"
+    image-alt: "Sam Abbott"
   navbar:
     title: "JuliaCon 2026"
+    logo: figures/epiaware-logo.svg
     left:
       - text: "About"
         href: index.qmd

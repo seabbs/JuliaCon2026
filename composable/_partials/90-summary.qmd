@@ -1,0 +1,89 @@
+<!-- poster -->
+
+## Three ways to combine models {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="33%"}
+**Chained**
+
+Run one model on the output of the last. Prevalence feeds incidence and
+$R_t$, and those feed transmissibility and severity.
+
+Flexible, quick, and the uncertainty is approximated at each step while
+assumptions are inherited unchecked. We rebuilt a chain like this and
+found bias at every stage.
+:::
+::: {.column width="33%"}
+**Joint**
+
+Fit every data source in one model. England's COVID-19 models fitted
+cases, prevalence, severity and bed occupancy together, and that
+evidence reached policy.
+
+Rigorous, and it hands you a model nobody can take apart. When mpox
+spread through sexual contact networks in 2022, those models could not
+represent it, so new ones were built from scratch.
+:::
+::: {.column width="33%"}
+**Composable**
+
+Validate each part on its own, then compose the parts and fit
+everything together.
+
+Components carry their own priors, so domain knowledge travels with the
+component rather than with the person. Model definitions do not know
+about the data, so one definition simulates and fits.
+:::
+::::
+
+::: {.callout-important}
+The trade-off is not between good and bad models. It is between rigour
+and being able to move.
+:::
+
+::: {.attribution}
+Birrell et al. (2025),
+[doi:10.1093/jrsssa/qnaf030](https://doi.org/10.1093/jrsssa/qnaf030) ·
+Endo et al. (2022),
+[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507) ·
+Abbott and Funk (2022),
+[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101)
+:::
+
+<!-- poster -->
+
+## EpiNow2, rebuilt out of parts {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="34%"}
+- An ARIMA(2,1,1) latent process and a negative binomial observation
+  model, both lifted unchanged from other applications
+- `broadcast_weekly` for piecewise constant weekly $R_t$, day-of-week
+  ascertainment around the observation model, and two `LatentDelay`
+  wrappers for the incubation period and the reporting delay
+- **A** to **D** validate each part on its own. **E** and **F** are the
+  joint fit, recovering cases through the delays and $R_t$ with them
+- Nothing here required editing a component that already existed. The
+  new code was the layers, not the model
+
+::: {.callout-important}
+The parts were validated separately and the composition was fitted
+together. That is the whole claim.
+:::
+
+::: {.attribution}
+One of three replications in the paper, alongside a renewal model of
+South Korea and an ordinary differential equation model of influenza.
+Replicating [EpiNow2](https://doi.org/10.12688/wellcomeopenres.16006.2)
+(Abbott et al., 2020). Figures from the paper,
+[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
+:::
+:::
+::: {.column width="66%"}
+![](../figures/composable-epinow2-model.png){height="380px"
+fig-align="center"}
+
+![](../figures/composable-epinow2-results.png){height="480px"
+fig-align="center"}
+:::
+::::

@@ -272,9 +272,14 @@ There is no second table to disagree with.
 
 The "it just worked with AD" line does not survive contact with the issue
 tracker.
-Of 396 issues and PRs listed on `CensoredDistributions.jl`, **82** have
-AD, autodiff, gradient, numerical, quadrature, precision or performance in the
-title.
+`CensoredDistributions.jl` has 396 issues and, separately, 533 pull requests.
+Of the 396 issues, **48** have AD, autodiff, gradient, numerical, quadrature,
+precision or performance in the title.
+Counting rule, so it can be re-run: fetch every issue title with
+`gh api --paginate 'repos/EpiAware/CensoredDistributions.jl/issues?state=all&per_page=100'`,
+drop anything carrying a `pull_request` key, then count word-boundary matches
+with `grep -icE '\b(AD|autodiff|gradient|numerical|quadrature|precision|performance)\b'`.
+Checked 2026-08-10.
 There is a dedicated `test/ad/` sub-environment, a `test/ADFixtures` path
 package, a separate CI job per backend, and a hand-maintained registry of
 known-broken backend and scenario combinations.

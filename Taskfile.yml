@@ -14,7 +14,7 @@ tasks:
   qr:
     desc: Regenerate the QR codes for each talk page
     cmds:
-      - python3 figures/make_qr.py
+      - ./figures/make_qr.sh
 
   check:
     desc: Validate the Quarto project

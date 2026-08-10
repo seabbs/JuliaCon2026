@@ -21,8 +21,8 @@ of the routes on the next slide can share the same objects and the same
 gradients.
 :::
 
-- The R and Stan version of sharing a component is copying its source
-  into the next package. Here it is a line in a `Project.toml`
+- Package extensions let two packages work together without either one
+  taking a dependency on the other
 :::
 ::::
 
@@ -53,8 +53,9 @@ there are several renewal packages that share nothing.
 :::
 ::::
 
-::: {.callout-important}
-We are running A, B and C at once and keeping them interoperable, because
-I cannot tell you which one is right. I would like to know which you
-would pick.
-:::
+We are running A, B and C at once and keeping them interoperable,
+because I cannot tell you which one is right. I would like to know which
+you would pick.
+
+Two more talks from me in this room take one route each. A at 14:45,
+delay distributions. B at 16:45, composable models.

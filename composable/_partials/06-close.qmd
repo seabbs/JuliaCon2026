@@ -1,7 +1,12 @@
-## What I want from you
+## Thank you
 
 :::: {.columns}
 ::: {.column width="62%"}
+::: {.callout-important}
+Is a probabilistic programming language the right foundation for this,
+or does `Distributions.jl` get you further with fewer dependencies?
+:::
+
 - **Counter-examples.** Where is practice already timely, rigorous, and
   collaborative? I would like to be shown that this problem is smaller
   than I think
@@ -10,21 +15,45 @@
 - **Build it in Julia.** The infectious disease ecosystem here is
   small, and composition needs something to compose with. If you are
   about to write a tool, come and find me first
-
-::: {.callout-important}
-Is a probabilistic programming language the right foundation for this,
-or does `Distributions.jl` get you further with fewer dependencies?
-:::
+- [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
-![](../figures/qr-composable.png){width="55%" fig-align="center"}
+![](../figures/qr-composable.png){width="62%" fig-align="center"}
 
 ::: {.attribution}
-[samabbott.co.uk/Juliacon2026/composable](https://samabbott.co.uk/Juliacon2026/composable/)
+[samabbott.co.uk/JuliaCon2026/composable][composable-talk]
 
-Sam Abbott, LSHTM.
+Sam Abbott, LSHTM ·
 [epiaware.org](https://epiaware.org) ·
 [github.com/seabbs](https://github.com/seabbs)
 :::
 :::
 ::::
+
+# Backup {visibility="uncounted"}
+
+## Swapping the infection process for an ODE {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="40%"}
+- The third replication drops the renewal process and uses an SIR model
+  built with `ODEProcess` over the SciML solvers instead
+- Everything downstream is unchanged. A Poisson observation model, and
+  a second version wrapping it in `Ascertainment` driven by an AR(1)
+- **C** shows both recovering $R_0 \approx 2$. **E** and **F** show the
+  deterministic fit is the worse calibrated of the two
+
+::: {.attribution}
+Replicating Chatzilena et al. (2019),
+[doi:10.1016/j.epidem.2019.100367][chatzilena].
+Figure from the paper
+:::
+:::
+::: {.column width="60%"}
+![](../figures/composable-sir.png){width="88%" fig-align="center"}
+:::
+::::
+
+[composable-talk]: https://samabbott.co.uk/JuliaCon2026/composable/
+[prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html
+[chatzilena]: https://doi.org/10.1016/j.epidem.2019.100367

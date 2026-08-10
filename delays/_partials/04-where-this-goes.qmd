@@ -9,11 +9,13 @@
 - `ConvolvedDistributions.jl` does the sum of independent delays, with
   closed forms where they exist and the same fixed node quadrature
   where they do not, plus differences, products and ratios
-- `DistributionsInference.jl` turns any of them into a
-  `LogDensityProblems` problem, so the sampler stops being the
-  package's choice
-- Neither of those two packages knows the other exists. The example on
-  the right works because both of them speak `Distributions.jl`
+- `DistributionsInference.jl` turns a distribution into a
+  `LogDensityProblems` problem once you write `parameter_rows` and
+  `reconstruct` for it. Today only `ComposedDistributions.jl` has those
+  shipped
+- The example on the right is plain `Distributions.jl` dispatch. Where
+  the two packages do talk to each other it is through one package
+  extension, not a hard dependency
 :::
 ::: {.column width="48%"}
 ```julia
@@ -30,25 +32,34 @@ observed = double_interval_censored(
 
 cdf(observed, 5.0)   # 0.4561
 ```
+
+::: {.attribution}
+Composed for this talk rather than lifted from a README, which is the
+point of the slide. Run against `CensoredDistributions.jl` v0.2.22 and
+`ConvolvedDistributions.jl`
+:::
 :::
 ::::
 
-## Compound distributions
+## epidist, composed
 
-- The generation time is the delay between one infection and the next.
-  It is never observed, so it is inferred through the serial interval
-  and the incubation period
-- That is a convolution, a difference and a censoring adjustment
-  stacked on each other, which is exactly what these packages are for
-- `GenerationTime.jl` is currently an empty repository. That is the
-  honest state of it
-- Next is a composed Julia version of `epidist`, our R package for
-  delay estimation, with Turing submodels for partially pooled and
-  flexible delays
+- `epidist` is our R package for fitting delay distributions. It sits
+  on `primarycensored` and on `brms`, and it is where partial pooling
+  and flexible delay shapes live
+- The Julia version is a composed one. `CensoredDistributions.jl` for
+  the observation process, Turing submodels for the rest
+- Partial pooling across strata, so a delay estimated by age group or
+  by region borrows strength instead of being fitted on its own
+- Flexible delay shapes, so the delay is not forced to be a gamma or a
+  lognormal
+- None of it is written yet. The generation time is the same shape of
+  problem, a convolution and a difference and a censoring adjustment
+  stacked, and `GenerationTime.jl` is an empty repository
 
 ::: {.attribution}
-Open issue #749 says the joint fit is too slow, because reverse mode
-autodiff through `cdf(Convolved(...))` costs too much per leapfrog step.
+Open issue `CensoredDistributions.jl#749` says the joint fit is too
+slow, because reverse mode autodiff through `cdf(Convolved(...))` costs
+too much per leapfrog step.
 :::
 
 ## What I would use today

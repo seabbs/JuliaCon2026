@@ -1,6 +1,9 @@
 ---
 title: "JuliaCon 2026"
 subtitle: "Three talks on composable infectious disease modelling in Julia"
+description: >-
+  Sam Abbott's three JuliaCon 2026 talks on composable infectious disease
+  modelling in Julia, with slides, abstracts, and resources.
 page-layout: full
 ---
 
@@ -17,10 +20,12 @@ page-layout: full
 ::: {.g-col-12 .g-col-sm-8 .g-col-md-9}
 
 ::: {.bot-aside}
-🤖 The following was drafted by
+🤖 Everything on this site apart from the bio below was drafted by
 [**@seabbs-bot**](https://github.com/seabbs-bot), who has a suspiciously high
 opinion of me, so take it with a pinch of salt.
 :::
+
+[My submitted conference bio]{.bio-label}
 
 ::: {.bio}
 *I am an Assistant Professor at the London School of Hygiene & Tropical

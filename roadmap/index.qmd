@@ -1,6 +1,9 @@
 ---
 title: "Building a composable Julia ecosystem for infectious disease modelling"
 subtitle: "A roadmap, challenges, and questions"
+description: >-
+  Where EpiAware is going, what we have got wrong so far, and the questions
+  we would like the Julia community to answer. JuliaCon 2026, Sam Abbott.
 ---
 
 ::: {.session-meta}
@@ -61,13 +64,13 @@ backends are compatible when they combine multiple packages.
 
 ### Code
 
-- [EpiAware on GitHub](https://github.com/EpiAware) — 22 repositories, 11
-  Julia packages, 10 registered in the General registry
+- [EpiAware on GitHub](https://github.com/EpiAware) — 22 repositories, 19 of
+  them public, 11 Julia packages, 10 registered in the General registry
 - [epiaware.org](https://epiaware.org) — the org's documentation and package
   site
 - [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl)
-  — one template that keeps every package's tests, docs, and README format
-  in sync
+  — one template that keeps ten of the eleven packages' tests, docs, and
+  README format in sync
 - [EpiAwareADTools.jl](https://github.com/EpiAware/EpiAwareADTools.jl) — a
   library of automatic differentiation workarounds, each one deleted once
   the upstream fix lands
@@ -84,8 +87,9 @@ backends are compatible when they combine multiple packages.
 
 ### Ecosystems we are learning from
 
-- [SciML governance](https://sciml.ai/governance/) — how roughly 200
-  packages and 20 core maintainers stay coordinated
+- [SciML governance](https://sciml.ai/governance/) — a steering council, an
+  advisory committee, and a written governance document, for an ecosystem
+  well past the size we are planning for
 - [SpeedyWeather.jl](https://github.com/SpeedyWeather/SpeedyWeather.jl) —
   the closest thing Julia has to a domain-specific ecosystem at the size we
   are aiming for
@@ -94,9 +98,11 @@ backends are compatible when they combine multiple packages.
 - [MultiDocumenter.jl](https://github.com/JuliaComputing/MultiDocumenter.jl)
   — how SciML stitches many packages' docs into one site
 - [DifferentiationInterface.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl)
-  — the automatic differentiation abstraction layer every package here
-  depends on
+  — the automatic differentiation abstraction layer every package's AD test
+  suite runs through, alongside DifferentiationInterfaceTest.jl
+
+The QR code on the poster and on the closing slide points back here.
 
 ::: {.talk-qr}
-![](../figures/qr-roadmap.png)
+![](../figures/qr-roadmap.png){fig-alt="QR code linking to this page"}
 :::

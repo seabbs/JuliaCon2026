@@ -13,14 +13,17 @@
 - `ComposedDistributions.jl` fails all six on `main` today
 :::
 ::: {.column width="45%"}
-::: {.callout-important}
-DifferentiationInterface tells you about a function. Turing tells you
-what Turing tests. Nothing tells you about a model assembled from five
-packages that each tested on their own.
-:::
-
+- DifferentiationInterface tells you about a function. Turing tells you
+  what Turing tests. Nothing tells you about a model assembled from five
+  packages that each tested on their own
 - The one public per-backend table for a probabilistic programming
-  stack, `TuringLang/ADTests`, was archived in June 2026
+  stack, `TuringLang/ADTests`, was archived this month. The table it
+  produced is still up
+
+::: {.attribution}
+[TuringLang/ADTests](https://github.com/TuringLang/ADTests), archived ·
+[turinglang.org/ADTests](https://turinglang.org/ADTests/), still live
+:::
 :::
 ::::
 
@@ -28,29 +31,25 @@ packages that each tested on their own.
 
 :::: {.columns}
 ::: {.column width="55%"}
-- DifferentiationInterfaceTest is the right tool and we use it. It works
-  per function and per package
-- We added a registry where a package declares which scenarios are
-  broken on which backend, and `check_broken` re-runs them, so a broken
-  scenario that starts passing gets flagged rather than left stale
+- DifferentiationInterfaceTest is the right tool and we use it, but it
+  works per function and per package. We added a registry where a
+  package declares which scenarios are broken on which backend, and
+  `check_broken` re-runs them, so a stale declaration gets flagged
 - One list generates the CI matrix, the Codecov flags, the README badges
   and the published support table, so the docs cannot drift from CI
 - `EpiAwareADTools.jl` holds the workarounds. `gamma_inc` and `beta_inc`
-  are not differentiable, so we hand-wrote those derivatives
+  carry no AD rules, so we hand-wrote those derivatives
+- Mooncake returned a wrong gradient for a Gamma shape at `shape == 1`.
+  Not an error. A wrong number
 :::
 ::: {.column width="45%"}
 ::: {.callout-important}
-Mooncake returned a wrong gradient for a Gamma shape at `shape == 1`.
-Not an error. A wrong number.
+Without this, building a model is a custom job with a lot of iteration.
+That is not realistic in an outbreak.
 :::
 
 - Every workaround is documented against the upstream issue that should
   delete it. It is a staging ground, not a feature
 - `ScoringRules.jl` hit the same two functions from scratch
-
-::: {.attribution}
-Without this, building a model is a custom job with a lot of iteration.
-That is not realistic in an outbreak.
-:::
 :::
 ::::

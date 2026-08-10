@@ -1,5 +1,27 @@
 /* Site styling for the JuliaCon 2026 talk pages. */
 
+/* Typography from seabbs.github.io, so this reads as the same person's site.
+   The accent colours stay Julia green, purple, and red for this audience. */
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+/* Cardo runs small next to Source Sans Pro, so nudge the base size up. */
+body {
+  font-family: 'Cardo', serif;
+  font-size: 1.05rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar,
+.quarto-title-block .subtitle {
+  font-family: 'Alata', sans-serif;
+}
+
 /* Full-width layout, capped so it does not sprawl on a wide monitor. */
 main.page-columns,
 .page-columns .content {
@@ -25,6 +47,16 @@ body .page-full {
 
 .hero a {
   font-size: 0.9rem;
+}
+
+.bio-label {
+  display: block;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin: 0.9rem 0 0.35rem 0;
 }
 
 /* The submitted bio, set smaller so it does not dominate the page. */

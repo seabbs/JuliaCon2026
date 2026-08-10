@@ -2,6 +2,9 @@
 title: >-
   Composable probabilistic models can lower barriers to rigorous
   infectious disease modelling
+description: >-
+  Why composition is how modelling evidence gets to be timely, rigorous and
+  collaborative at once. JuliaCon 2026, Sam Abbott.
 ---
 
 ::: {.session-meta}
@@ -10,7 +13,7 @@ Muschel — N3 · Sam Abbott
 :::
 
 [Slides](slides.qmd){.btn .btn-primary}
-[Paper](https://github.com/seabbs/a-workflow-for-infectious-disease-modelling){.btn .btn-outline-primary}
+[Paper](https://doi.org/10.5281/zenodo.17884675){.btn .btn-outline-primary}
 [epiaware.org](https://epiaware.org){.btn .btn-outline-primary}
 [Session on pretalx](https://pretalx.com/juliacon-2026/talk/AMFLYU/){.btn .btn-outline-primary}
 
@@ -21,7 +24,7 @@ Recent outbreaks of Ebola, COVID-19 and mpox, alongside routine surveillance
 of endemic pathogens, have demonstrated the value of modelling for
 synthesising data to inform decision making.
 For modelling evidence to effectively inform policy it must be timely,
-rigorous, and collaborative, yet current approaches struggle to be all three.
+rigorous, and collaborative, yet most approaches manage only two of the three.
 Methods broadly fall into approaches that chain separate models together,
 offering flexibility but losing information and introducing bias, or
 approaches that rigorously analyse all data together but cannot be separated
@@ -35,7 +38,7 @@ We demonstrate our approach conceptually using models from published
 epidemiological analyses, and in practice through a worked autoregressive
 example.
 We replicate three published analyses, composing elements of our
-autoregressive example with shared and novel components: a COVID-19 analysis
+autoregressive example with shared and new components: a COVID-19 analysis
 for South Korea using a renewal process, adding components for reporting
 delays and day-of-week effects to replicate EpiNow2 for real-time nowcasting,
 and an ordinary differential equation analysis of influenza outbreak data.
@@ -49,42 +52,52 @@ For multi-model efforts, common components enable attribution of differences
 to assumptions rather than implementation.
 Our approach is also well suited for large language model assisted model
 construction.
-This study demonstrates that a composable modelling approach has the potential
-to incorporate diverse modelling approaches and domain knowledge across
-different infectious disease contexts.
 :::
 
 ## Resources
 
 ### Papers and writing
 
-- [Read the paper (PDF)](https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/paper.pdf)
-  — the full manuscript this talk summarises
-- [Supplementary information (PDF)](https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/supplementary.pdf)
-  — the extra detail and derivations that did not fit the paper
-- [Zenodo record](https://doi.org/10.5281/zenodo.19097427) — the citable,
-  versioned archive of the manuscript
+- [Composable probabilistic models][paper].
+  The paper this talk summarises, with the three replicated analyses and
+  the code that produced them.
+  This is the citable archive; the manuscript site is not public yet.
+- [A workflow for infectious disease modelling][workflow].
+  Related work on how these models get built and checked.
+  It is the subject of the roadmap talk, not this one.
 
 ### Code
 
-- [ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)
-  — the Turing.jl proof of concept this talk demonstrates
-- [Turing.jl](https://github.com/TuringLang/Turing.jl) — the probabilistic
-  programming backend the proof of concept is built on
+- [ComposableTuringIDModels.jl][ctim].
+  The Turing.jl proof of concept this talk demonstrates.
+- [Turing.jl][turing].
+  The probabilistic programming backend the proof of concept is built on.
+- [CensoredDistributions.jl][cd] and [ConvolvedDistributions.jl][cvd].
+  The delay components the closing section is built on.
 
 ### The R equivalent
 
-- [EpiAwareR](https://github.com/sbfnk/EpiAwareR) — Sebastian Funk's
-  prototype R interface to the Julia ecosystem
+- [EpiAwareR][epiawarer].
+  Sebastian Funk's prototype R interface to the Julia ecosystem.
 
 ### Related talks
 
-- [Building a composable Julia ecosystem](../roadmap/index.qmd) — the
-  roadmap this proof of concept feeds into, earlier the same day
-- [Estimating epidemiological delay distributions](../delays/index.qmd) —
+- [Building a composable Julia ecosystem](../roadmap/index.qmd).
+  The roadmap this proof of concept feeds into, earlier the same day.
+- [Estimating epidemiological delay distributions](../delays/index.qmd).
   CensoredDistributions.jl, one of the composable parts, earlier the same
-  day
+  day.
+
+[paper]: https://doi.org/10.5281/zenodo.17884675
+[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+[ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
+[turing]: https://github.com/TuringLang/Turing.jl
+[cd]: https://github.com/EpiAware/CensoredDistributions.jl
+[cvd]: https://github.com/EpiAware/ConvolvedDistributions.jl
+[epiawarer]: https://github.com/sbfnk/EpiAwareR
+
+The QR code on the poster and on the closing slide points back here.
 
 ::: {.talk-qr}
-![](../figures/qr-composable.png)
+![](../figures/qr-composable.png){fig-alt="QR code linking to this page"}
 :::

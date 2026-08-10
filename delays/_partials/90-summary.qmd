@@ -1,0 +1,72 @@
+<!-- poster -->
+
+## The same component, in two languages {visibility="uncounted"}
+
+| | `primarycensored`, R and Stan | `CensoredDistributions.jl` |
+|---|---|---|
+| Adding a distribution | New branch, new integer, rebuild | Pass the type |
+| Distributions covered | 18, listed in a switch | Any univariate one |
+| Choosing one | An integer, set before sampling | The object itself |
+| Sharing the code | Copy 1,081 lines of Stan in | A line in `Project.toml` |
+| The integral | `integrate_1d`, then an ODE recast | 64 fixed nodes |
+| Worst failure | 243 of 256 chains died | Broken on 3 of 6 backends |
+
+::: {.callout-important}
+The Stan file has to know every distribution it will ever support. The
+Julia file does not have to know any of them.
+:::
+
+::: {.attribution}
+`primarycensored_ode.stan:52-77` and `pcd_functions.stan` ·
+`primarycensored_cdf.jl:184-201` ·
+[epinowcast/primarycensored#34](https://github.com/epinowcast/primarycensored/issues/34)
+and PR #64, September 2024
+:::
+
+<!-- poster -->
+
+## What the move fixed, and what it did not {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="33%"}
+**Removed**
+
+A class of bug. `dist_id = 3` meant Normal in Stan and Weibull in R, so
+asking for a Weibull fitted a normal and returned numbers. Every
+distribution was affected except lognormal, gamma and exponential.
+
+`primary_censored(Weibull(2, 1), Uniform(0, 1))` carries the type. There
+is no second table for it to disagree with.
+:::
+::: {.column width="33%"}
+**Moved**
+
+The numerical problem, from the language to the autodiff backends. 82 of
+929 issues and pull requests are about autodiff or numerics.
+
+The default solver is `GaussLegendre(; n = 64)` because fixed nodes
+trace through every backend and adaptive ones do not. Stan gave up
+adaptive quadrature for an ODE. Julia gave it up for a dot product.
+:::
+::: {.column width="33%"}
+**Unchanged**
+
+Who uses it. 11,211 downloads all time against 116, and 511 last month
+against 49.
+
+Every package that depends on either one is mine, Sam Brand's or
+Sebastian Funk's. The two packages are a month apart in age, so some of
+that gap is R having the users and some is the package.
+:::
+::::
+
+::: {.callout-important}
+The composition is the reusable part. The package is only where the
+censoring happens to live.
+:::
+
+::: {.attribution}
+CRAN and JuliaPkgStats, 10 August 2026. Both counts include continuous
+integration and mirrors, so neither is a count of people ·
+`epidist/R/marginal_model.R:339-347`
+:::
