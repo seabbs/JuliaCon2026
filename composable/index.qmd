@@ -10,6 +10,7 @@ Muschel — N3 · Sam Abbott
 [Slides](slides.qmd){.btn .btn-primary}
 [Paper](https://github.com/seabbs/a-workflow-for-infectious-disease-modelling){.btn .btn-outline-primary}
 [epiaware.org](https://epiaware.org){.btn .btn-outline-primary}
+[Session on pretalx](https://pretalx.com/juliacon-2026/talk/AMFLYU/){.btn .btn-outline-primary}
 
 ## Abstract
 

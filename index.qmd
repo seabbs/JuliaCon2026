@@ -51,6 +51,7 @@ far, and the questions we would like the Julia community to answer.
 
 [Page](roadmap/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](roadmap/slides.qmd){.btn .btn-sm .btn-outline-primary}
+[Session](https://pretalx.com/juliacon-2026/talk/NEWC8H/){.btn .btn-sm .btn-outline-primary}
 :::
 
 ::: {.talk-card}
@@ -61,6 +62,7 @@ R and Stan implementation it grew out of.
 
 [Page](delays/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](delays/slides.qmd){.btn .btn-sm .btn-outline-primary}
+[Session](https://pretalx.com/juliacon-2026/talk/ZUMSFD/){.btn .btn-sm .btn-outline-primary}
 :::
 
 ::: {.talk-card}
@@ -71,6 +73,7 @@ timely, rigorous, and collaborative at the same time.
 
 [Page](composable/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](composable/slides.qmd){.btn .btn-sm .btn-outline-primary}
+[Session](https://pretalx.com/juliacon-2026/talk/AMFLYU/){.btn .btn-sm .btn-outline-primary}
 :::
 
 ## Other recent work you might like

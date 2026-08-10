@@ -11,6 +11,7 @@ Muschel — N3 · Sam Abbott
 [Slides](slides.qmd){.btn .btn-primary}
 [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl){.btn .btn-outline-primary}
 [Documentation](https://censoreddistributions.epiaware.org/stable/){.btn .btn-outline-primary}
+[Session on pretalx](https://pretalx.com/juliacon-2026/talk/ZUMSFD/){.btn .btn-outline-primary}
 
 ## Abstract
 

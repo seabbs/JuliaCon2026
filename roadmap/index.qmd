@@ -11,6 +11,7 @@ Muschel — N3 · Sam Abbott
 [Slides](slides.qmd){.btn .btn-primary}
 [EpiAware on GitHub](https://github.com/EpiAware){.btn .btn-outline-primary}
 [epiaware.org](https://epiaware.org){.btn .btn-outline-primary}
+[Session on pretalx](https://pretalx.com/juliacon-2026/talk/NEWC8H/){.btn .btn-outline-primary}
 
 ## Abstract
 
