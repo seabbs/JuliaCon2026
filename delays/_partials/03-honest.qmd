@@ -1,0 +1,58 @@
+# The honest part
+
+## Julia moved the problem, it did not remove it
+
+:::: {.columns}
+::: {.column width="50%"}
+- 82 of 396 issues and pull requests are about autodiff or numerics.
+  There is a CI job per backend and a maintained list of what is broken
+- The default solver is `GaussLegendre(; n = 64)`, not `QuadGKJL()`,
+  because fixed nodes trace through every backend and adaptive ones do
+  not
+- Stan gave up adaptive quadrature for an ODE solver. Julia gave up
+  adaptive quadrature for a 64 node dot product
+:::
+::: {.column width="50%"}
+- The first proper measurement of this package, April 2026, found four
+  of six backend configurations broken or only partly working
+- `try`/`catch` had to be taken **out** to unblock Mooncake. In Stan the
+  complaint was that there is none to put in
+- `logpdf` is a central difference of `logcdf` with a step hardcoded at
+  `1e-8`, which is why finite differences cannot be the test reference
+:::
+::::
+
+::: {.callout-important}
+In Stan the workarounds are for the language. In Julia they are for the
+autodiff backends.
+:::
+
+## R wins this, by about a hundred to one
+
+:::: {.columns}
+::: {.column width="42%"}
+|  | R | Julia |
+|---|---:|---:|
+| Downloads, all time | 11,211 | 116 |
+| Downloads, last month | 511 | 49 |
+
+::: {.attribution}
+CRAN and JuliaPkgStats, 10 August 2026. Both counts include continuous
+integration and mirrors, so neither is a count of people.
+:::
+:::
+::: {.column width="58%"}
+- Four R packages use primarycensored, and three of the four are ours
+- Every dependant of CensoredDistributions.jl is mine, Sam Brand's or
+  Sebastian Funk's. I went looking for one from outside and did not
+  find it
+- primarycensored turns up in public health delay estimation, but the
+  guide that recommends it is a guide we wrote
+- Last month is the only number moving the right way, 49 against 511
+:::
+::::
+
+::: {.callout-important}
+The two packages are a month apart in age. The difference is the
+ecosystem each landed in, not the language.
+:::

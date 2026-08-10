@@ -1,0 +1,61 @@
+## So what is the composable unit?
+
+:::: {.columns}
+::: {.column width="50%"}
+- Turn the question around. A `Distributions.jl` distribution is
+  already an interface that the whole of Julia understands
+- Write the epidemiology as distributions and the probabilistic
+  programming language becomes optional rather than load bearing
+- These two packages do not depend on each other. They compose because
+  they both speak `Distributions.jl`
+- In `CensoredDistributions.jl`, Turing is a package extension. You can
+  fit with it, and you do not have to install it to use the package
+
+::: {.callout-note}
+The language was always meant to be backend agnostic. This is what
+taking that seriously looks like.
+:::
+:::
+::: {.column width="50%"}
+```julia
+incubation = Gamma(2.0, 1.0)
+reporting = LogNormal(1.0, 0.5)
+
+delay = convolved(incubation, reporting)
+
+obs = double_interval_censored(
+  delay; upper = 15, interval = 1)
+
+pdf(obs, 3.0)   # 0.1674
+```
+
+::: {.attribution}
+`IntervalCensored{Truncated{PrimaryCensored{Convolved{...}}}}`. Run on
+`ConvolvedDistributions` v0.4.0 and `CensoredDistributions` v0.2.22,
+2026-08-10.
+:::
+:::
+::::
+
+## Where this is going
+
+- **`CensoredDistributions.jl`** for primary event and interval
+  censoring, and the truncation that comes with them. Registered, six
+  automatic differentiation backends tested in CI
+- **`ConvolvedDistributions.jl`** for the sum of arbitrary delays.
+  Closed form where one exists, quadrature where it does not
+- **`ComposedDistributions.jl`** for a natural history written as
+  chains, branches, and outcomes rather than as a bespoke likelihood
+- Then compound quantities. A generation time is a distribution built
+  out of other distributions, so estimate it as one
+
+::: {.callout-note}
+Each of these is useful to someone who has never heard of me. That is
+the test I now care about.
+:::
+
+::: {.attribution}
+[epiaware.org](https://epiaware.org). The censoring package had its own
+talk earlier today,
+[samabbott.co.uk/Juliacon2026/delays](https://samabbott.co.uk/Juliacon2026/delays/).
+:::

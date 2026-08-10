@@ -1,0 +1,30 @@
+## What I want from you
+
+:::: {.columns}
+::: {.column width="62%"}
+- **Counter-examples.** Where is practice already timely, rigorous, and
+  collaborative? I would like to be shown that this problem is smaller
+  than I think
+- **Ideas that are not composable models.** Category theory, symbolic
+  approaches, or something I have not thought of
+- **Build it in Julia.** The infectious disease ecosystem here is
+  small, and composition needs something to compose with. If you are
+  about to write a tool, come and find me first
+
+::: {.callout-important}
+Is a probabilistic programming language the right foundation for this,
+or does `Distributions.jl` get you further with fewer dependencies?
+:::
+:::
+::: {.column width="38%"}
+![](../figures/qr-composable.png){width="55%" fig-align="center"}
+
+::: {.attribution}
+[samabbott.co.uk/Juliacon2026/composable](https://samabbott.co.uk/Juliacon2026/composable/)
+
+Sam Abbott, LSHTM.
+[epiaware.org](https://epiaware.org) ·
+[github.com/seabbs](https://github.com/seabbs)
+:::
+:::
+::::

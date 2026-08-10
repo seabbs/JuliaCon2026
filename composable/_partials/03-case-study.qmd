@@ -1,0 +1,79 @@
+## What composition looks like
+
+:::: {.columns}
+::: {.column width="58%"}
+```julia
+ar2 = AR(;
+  damp_priors = [
+    truncated(Normal(0.2, 0.2), 0, 1),
+    truncated(Normal(0.1, 0.05), 0, 1)],
+  init_priors = [Normal(0, 0.2), Normal(0, 0.2)],
+  ϵ_t = HierarchicalNormal(
+    std_prior = HalfNormal(0.1)))
+
+ma1 = MA(;
+  θ_priors = [truncated(Normal(0.0, 0.2), -1, 1)],
+  ϵ_t = HierarchicalNormal(
+    std_prior = HalfNormal(0.1)))
+
+arma21 = @set ar2.ϵ_t = ma1
+arima211 = DiffLatentModel(
+  arma21, Normal(0, 0.2); d = 1)
+```
+:::
+::: {.column width="42%"}
+![](../figures/composable-arima.png){height="480px" fig-align="center"}
+
+::: {.callout-note}
+`@set` swaps the AR innovations for the MA process. `AR` was never
+told that `MA` exists.
+:::
+:::
+::::
+
+## Rebuilding EpiNow2 by composing parts
+
+:::: {.columns}
+::: {.column width="44%"}
+- Reuse the ARIMA(2,1,1) and the negative binomial observation model
+  from the worked example, unchanged
+- `broadcast_weekly` turns the daily latent process into piecewise
+  constant weekly $R_t$
+- Day-of-week ascertainment wraps the observation model
+- Two `LatentDelay` wrappers add the incubation period and then the
+  reporting delay
+:::
+::: {.column width="56%"}
+![](../figures/composable-epinow2-model.png){width="100%"}
+
+::: {.callout-important}
+Nothing here required editing a component that already existed. The new
+code was the layers, not the model.
+:::
+:::
+::::
+
+## And it works
+
+:::: {.columns}
+::: {.column width="38%"}
+- **A** and **B** check the weekly $R_t$ process and the latent
+  infections on their own, before anything is composed
+- **C** and **D** check the day-of-week effect and the two delay
+  distributions the same way
+- **E** and **F** are the joint fit. Cases are recovered through the
+  delays, and $R_t$ with them
+- The parts were validated separately and the composition was fitted
+  together. That is the whole claim
+
+::: {.attribution}
+Replicating
+[EpiNow2](https://doi.org/10.12688/wellcomeopenres.16006.2)
+(Abbott et al., 2020). Figure from the paper.
+:::
+:::
+::: {.column width="62%"}
+![](../figures/composable-epinow2-results.png){width="82%"
+fig-align="center"}
+:::
+::::

@@ -17,12 +17,39 @@ format:
     link-external-newwindow: true
 ---
 
-## Placeholder
+{{< include _partials/00-problem.qmd >}}
 
-- Scaffold only; content is filled in by the build workflow.
+{{< include _partials/01-two-implementations.qmd >}}
+
+{{< include _partials/02-what-stan-cost.qmd >}}
+
+{{< include _partials/03-honest.qmd >}}
+
+{{< include _partials/04-where-this-goes.qmd >}}
 
 ## Thank you
 
-![](../figures/qr-delays.png){width="20%"}
+:::: {.columns}
+::: {.column width="62%"}
+- [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+  — the Julia package
+- [primarycensored](https://github.com/epinowcast/primarycensored) — the
+  R and Stan one, still the one to use in R
+- [epiaware.org](https://epiaware.org) — `ConvolvedDistributions.jl`,
+  `DistributionsInference.jl` and the rest
+- [samabbott.co.uk/JuliaCon2026](https://samabbott.co.uk/JuliaCon2026/) —
+  all three talks, and the prompts that built them. Composable models at
+  16:45, same room
 
+::: {.callout-important}
+Tell me about a delay you cannot write down as a composition.
+:::
+:::
+::: {.column width="38%"}
+![](../figures/qr-delays.png){width="62%" fig-align="center"}
+
+::: {.attribution}
 [samabbott.co.uk/JuliaCon2026/delays](https://samabbott.co.uk/JuliaCon2026/delays/)
+:::
+:::
+::::

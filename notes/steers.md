@@ -41,3 +41,7 @@ as the steering section.
 > Link to seabbs-bot github profile
 
 > I think this one is on friday? [the composable talk, 2026-08-14 16:45-17:00]
+
+> The home page is long and kind of empty, can we make it wider or move the
+> projects into a line with less length or similar compression to make it more
+> interesting?

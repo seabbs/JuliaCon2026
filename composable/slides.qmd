@@ -1,8 +1,10 @@
 ---
 title: "Composable probabilistic models can lower barriers to rigorous infectious disease modelling"
-
+subtitle: "And a change of mind about the backend"
 author: "Sam Abbott"
 institute: "London School of Hygiene & Tropical Medicine"
+title-slide-attributes:
+  data-notes: ""
 date: 2026-08-14
 date-format: "D MMMM YYYY"
 format:
@@ -17,12 +19,16 @@ format:
     link-external-newwindow: true
 ---
 
-## Placeholder
+{{< include _partials/00-tldr.qmd >}}
 
-- Scaffold only; content is filled in by the build workflow.
+{{< include _partials/01-problem.qmd >}}
 
-## Thank you
+{{< include _partials/02-composable.qmd >}}
 
-![](../figures/qr-composable.png){width="20%"}
+{{< include _partials/03-case-study.qmd >}}
 
-[samabbott.co.uk/JuliaCon2026/composable](https://samabbott.co.uk/JuliaCon2026/composable/)
+{{< include _partials/04-backend.qmd >}}
+
+{{< include _partials/05-distributions.qmd >}}
+
+{{< include _partials/06-close.qmd >}}

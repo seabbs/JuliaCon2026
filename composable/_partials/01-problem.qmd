@@ -1,0 +1,115 @@
+## What modelling evidence has to be
+
+:::: {.columns}
+::: {.column width="52%"}
+- Chris Whitty, then Chief Scientific Adviser and later Chief Medical
+  Officer for England, set out what evidence has to be to inform policy
+- Timely enough to still be useful, explicit about its methods, and as
+  simple as it can be while staying rigorous
+- Add collaborative, because no one group holds all the data or all the
+  expertise
+- Almost nothing we build is all of these at once
+
+::: {.callout-important}
+The trade-off is not between good and bad models. It is between
+rigour and being able to move.
+:::
+:::
+::: {.column width="48%"}
+![](../figures/composable-whitty.png){width="100%"}
+
+::: {.attribution}
+Whitty (2015),
+[doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8)
+:::
+:::
+::::
+
+## Joint models work, and they do not transfer
+
+:::: {.columns}
+::: {.column width="34%"}
+- England's COVID-19 models fitted cases, prevalence, severity, and bed
+  occupancy together, and that evidence reached policy
+- Each took expertise across several domains, and a long time
+- In 2022 mpox spread through sexual contact networks. Those models
+  could not represent that
+- New single-source models were built instead, at speed
+:::
+::: {.column width="33%"}
+![](../figures/composable-birrell.png){width="100%"}
+
+::: {.attribution}
+Birrell et al. (2025),
+[doi:10.1093/jrsssa/qnaf030](https://doi.org/10.1093/jrsssa/qnaf030)
+:::
+:::
+::: {.column width="33%"}
+![](../figures/composable-endo.png){width="100%"}
+
+::: {.attribution}
+Endo et al. (2022),
+[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507)
+:::
+:::
+::::
+
+## Chaining models loses information
+
+:::: {.columns}
+::: {.column width="42%"}
+- The ONS Community Infection Survey swabbed random households in
+  England throughout the pandemic. Modellers outside saw the published
+  prevalence, not the tests
+- Prevalence fed incidence, incidence fed $R_t$, and $R_t$ fed variant
+  severity
+- Uncertainty was approximated at each step and assumptions were
+  inherited unchecked
+- Lison et al. rebuilt a chain like this and found bias at every stage.
+  Fitting the steps together removed it
+
+::: {.callout-important}
+Joint fitting is the fix, and it hands you a model nobody can take
+apart.
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-ons-cascade.jpg){width="72%"
+fig-align="center"}
+
+![](../figures/composable-lison.png){width="72%" fig-align="center"}
+
+::: {.attribution}
+Riley et al. (2020),
+[doi:10.1016/S2468-2667(20)30282-6](https://doi.org/10.1016/S2468-2667(20)30282-6);
+Lison et al. (2024),
+[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
+:::
+:::
+::::
+
+## So everyone rebuilds the whole model
+
+:::: {.columns}
+::: {.column width="52%"}
+- The $R_t$ packages I know of each carry their own Stan
+  implementation of the renewal equation. Some of them share authors
+- Wastewater $R_t$ tools were written by people who are not wastewater
+  experts, and it is unclear which of those choices matter
+- Shared parts do exist. `primarycensored` is one, and the $R_t$
+  packages have largely not picked it up
+- I wrote and maintain several of these packages, so this is my
+  problem before it is anyone else's
+
+::: {.callout-important}
+The unit of reuse is the whole model, not the epidemiology inside it.
+:::
+:::
+::: {.column width="48%"}
+![](../figures/composable-epinow2-pkg.png){width="100%"}
+
+::: {.attribution}
+[epiforecasts.io/EpiNow2](https://epiforecasts.io/EpiNow2)
+:::
+:::
+::::

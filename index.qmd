@@ -1,10 +1,20 @@
 ---
 title: "JuliaCon 2026"
 subtitle: "Three talks on composable infectious disease modelling in Julia"
+page-layout: full
 ---
 
-::: {.grid}
-::: {.g-col-12 .g-col-md-8}
+::: {.grid .hero}
+::: {.g-col-12 .g-col-sm-4 .g-col-md-3}
+
+![](figures/sam.jpg){.headshot fig-alt="Sam Abbott"}
+
+[samabbott.co.uk](https://samabbott.co.uk)\
+[github.com/seabbs](https://github.com/seabbs)\
+[epiaware.org](https://epiaware.org)
+
+:::
+::: {.g-col-12 .g-col-sm-8 .g-col-md-9}
 
 ::: {.bot-aside}
 🤖 The following was drafted by
@@ -12,6 +22,7 @@ subtitle: "Three talks on composable infectious disease modelling in Julia"
 opinion of me, so take it with a pinch of salt.
 :::
 
+::: {.bio}
 *I am an Assistant Professor at the London School of Hygiene & Tropical
 Medicine.*
 *I did my PhD in the optimal usage of the BCG vaccine, transitioning to work on
@@ -32,95 +43,117 @@ methods used both in research and in public health practice.*
 *I have recently transitioned to Julia for my work and am exploring how to
 propagate Julia based tools to the users of our current tooling and to the
 wider infectious disease modelling community.*
-
-[samabbott.co.uk](https://samabbott.co.uk) ·
-[github.com/seabbs](https://github.com/seabbs) ·
-[epiaware.org](https://epiaware.org)
+:::
 
 :::
+:::
+
+## The talks {.section-tight}
+
+All three are on **Friday 14 August 2026** in **Muschel — N3**, times
+Europe/Berlin.
+
+::: {.grid .talk-row}
 ::: {.g-col-12 .g-col-md-4}
-
-![](figures/sam.jpg){.headshot fig-alt="Sam Abbott"}
-
-:::
-:::
-
-## The talks
-
-All three are on **Friday 14 August 2026** in **Muschel — N3**
-(times Europe/Berlin).
-
 ::: {.talk-card}
-### [Building a composable Julia ecosystem for infectious disease modelling: a roadmap, challenges, and questions](roadmap/index.qmd) {.talk-title}
+[14:30–14:45]{.talk-time}
 
-**14:30–14:45** · Where we are going with EpiAware, what we have got wrong so
-far, and the questions we would like the Julia community to answer.
+#### [A composable Julia ecosystem for infectious disease modelling](roadmap/index.qmd)
+
+[A roadmap, challenges, and questions]{.talk-sub}
+
+Where EpiAware is going, what we have got wrong so far, and the questions we
+would like the Julia community to answer.
 
 [Page](roadmap/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](roadmap/slides.qmd){.btn .btn-sm .btn-outline-primary}
 [Session](https://pretalx.com/juliacon-2026/talk/NEWC8H/){.btn .btn-sm .btn-outline-primary}
 :::
+:::
 
+::: {.g-col-12 .g-col-md-4}
 ::: {.talk-card}
-### [Estimating epidemiological delay distributions: from R/Stan to Julia](delays/index.qmd) {.talk-title}
+[14:45–15:00]{.talk-time}
 
-**14:45–15:00** · CensoredDistributions.jl, and an honest comparison with the
-R and Stan implementation it grew out of.
+#### [Estimating epidemiological delay distributions](delays/index.qmd)
+
+[From R/Stan to Julia]{.talk-sub}
+
+CensoredDistributions.jl, and an honest comparison with the R and Stan
+implementation it grew out of.
 
 [Page](delays/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](delays/slides.qmd){.btn .btn-sm .btn-outline-primary}
 [Session](https://pretalx.com/juliacon-2026/talk/ZUMSFD/){.btn .btn-sm .btn-outline-primary}
 :::
+:::
 
+::: {.g-col-12 .g-col-md-4}
 ::: {.talk-card}
-### [Composable probabilistic models can lower barriers to rigorous infectious disease modelling](composable/index.qmd) {.talk-title}
+[16:45–17:00]{.talk-time}
 
-**16:45–17:00** · Why composition is the way to make modelling evidence
-timely, rigorous, and collaborative at the same time.
+#### [Composable probabilistic models](composable/index.qmd)
+
+[Lowering barriers to rigorous infectious disease modelling]{.talk-sub}
+
+Why composition is how modelling evidence gets to be timely, rigorous and
+collaborative at once.
 
 [Page](composable/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](composable/slides.qmd){.btn .btn-sm .btn-outline-primary}
 [Session](https://pretalx.com/juliacon-2026/talk/AMFLYU/){.btn .btn-sm .btn-outline-primary}
 :::
+:::
+:::
 
-## Other recent work you might like
+## Other recent work you might like {.section-tight}
+
+::: {.grid .links-row}
+::: {.g-col-12 .g-col-md-4}
+##### Julia
 
 - [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
-  — composable primary event, interval, and truncation adjustments for
-  Distributions.jl, with analytic solutions where they exist
+  — censoring and truncation for Distributions.jl
 - [ConvolvedDistributions.jl](https://github.com/EpiAware/ConvolvedDistributions.jl)
-  — sums, differences, products, and ratios of delay distributions, the
-  next layer up from censoring
-- [EpiAware](https://github.com/EpiAware) — the Julia organisation these talks
-  are about, including
-  [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl)
-  for a shared package template and
-  [EpiAwareADTools.jl](https://github.com/EpiAware/EpiAwareADTools.jl) for
-  treating automatic differentiation as something you test, not something you
-  hope for
+  — the next layer up, combining delays
+- [EpiAware](https://github.com/EpiAware) — the organisation these talks are
+  about
+- [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl)
+  — one rigid package template
+- [EpiAwareADTools.jl](https://github.com/EpiAware/EpiAwareADTools.jl) —
+  automatic differentiation as something you test
+:::
+
+::: {.g-col-12 .g-col-md-4}
+##### R
+
+- [epinowcast](https://www.epinowcast.org/) — the ecosystem this is trying to
+  become in Julia, with a
+  [community forum](https://community.epinowcast.org/) and seminar series
+- [primarycensored](https://primarycensored.epinowcast.org/) — the R and Stan
+  package behind the delays talk
+- [epidist](https://epidist.epinowcast.org/) — individual-level delay
+  estimation
+- [EpiNow2](https://epiforecasts.io/EpiNow2/) and
+  [scoringutils](https://epiforecasts.io/scoringutils/) — widely used, and
+  what I want a better foundation for
+:::
+
+::: {.g-col-12 .g-col-md-4}
+##### Papers and talks
+
 - [A workflow for infectious disease modelling](https://github.com/seabbs/a-workflow-for-infectious-disease-modelling)
   — the paper behind the composable models talk
 - [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize) —
-  real-time estimation of outbreak size for the 2026 Ebola outbreak in the
-  Democratic Republic of the Congo, built almost entirely with coding agents
-- [How I am LLM](https://samabbott.co.uk/how-I-llm) — a talk on what coding
-  agents do and do not do in a research workflow
+  outbreak size for the 2026 Ebola outbreak in the DRC, in real time
+- [How I am LLM](https://samabbott.co.uk/how-I-llm) — what coding agents do
+  and do not do in a research workflow
 - [How to serial interval?](https://samabbott.co.uk/how-to-serial-interval) —
-  a talk on delays, censoring, and why the serial interval is a composition
-- [epinowcast](https://www.epinowcast.org/) — the R ecosystem this is all
-  trying to become in Julia, including the
-  [community forum](https://community.epinowcast.org/) and the seminar series,
-  plus the packages themselves:
-  [epinowcast](https://package.epinowcast.org/),
-  [primarycensored](https://primarycensored.epinowcast.org/) and
-  [epidist](https://epidist.epinowcast.org/)
-- [EpiNow2](https://epiforecasts.io/EpiNow2/) and
-  [scoringutils](https://epiforecasts.io/scoringutils/) — the widely used R
-  packages I am trying to find a better foundation for
+  delays, censoring, and the serial interval as a composition
+:::
+:::
 
-## How these were made
-
-Every slide, page, and figure here was drafted by coding agents and then
-steered.
-The [prompts page](prompts.qmd) has the brief that started it and the steers
-that followed.
+::: {.made-note}
+These pages and slides were drafted by coding agents and then steered.
+The [prompts page](prompts.qmd) has the brief and the steers.
+:::

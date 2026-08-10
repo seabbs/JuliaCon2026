@@ -1,0 +1,57 @@
+# What I would change
+
+## The backend, honestly
+
+- Turing.jl gave us submodels, a choice of samplers, and the rest of
+  Julia. The proof of concept exists because of it, and choosing it was
+  right at the time
+- It is still 0.x. First release in 2017, current release v0.46.0 in
+  July 2026
+- Ten breaking releases between v0.37.0 and v0.46.0 in eighteen months.
+  The submodel interface change left our own language incompatible with
+  the current release
+- Since February, one person has written 17 of the commits to Turing.jl
+  and 47 of the commits to DynamicPPL.jl, where most of the composition
+  machinery lives. Nobody else is above nine
+
+::: {.callout-important}
+This is not a criticism of the people doing the work, which is good
+work. It is a statement about how much of the stack rests on very few
+of them.
+:::
+
+::: {.attribution}
+Counts from the GitHub API on 2026-08-10, `main` branches, human
+authors only.
+:::
+
+## Automatic differentiation is the part that decided it
+
+:::: {.columns}
+::: {.column width="54%"}
+- Turing is tested most extensively against four backends. Everything
+  else routes through `DifferentiationInterface.jl`
+- `ADTests`, the one public table of which backends worked with which
+  Turing models, was archived in June 2026 and has not been replaced
+- So we run our own matrix in CI. Six backends per package, each with
+  its own badge and its own coverage flag
+- We also keep a package whose entire job is holding gradient
+  workarounds until the upstream fix lands, and then deleting them
+:::
+::: {.column width="46%"}
+::: {.callout-important}
+## From the Turing.jl documentation
+"not all AD libraries in there are thoroughly tested on Turing models.
+Thus, it is possible that some of them will either error ... or maybe
+even silently give incorrect results"
+:::
+
+- For a model somebody acts on during an outbreak, a silently wrong
+  gradient is not a footnote
+
+::: {.attribution}
+[turinglang.org/docs/usage/automatic-differentiation](https://turinglang.org/docs/usage/automatic-differentiation/);
+[EpiAwareADTools.jl](https://github.com/EpiAware/EpiAwareADTools.jl)
+:::
+:::
+::::

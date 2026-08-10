@@ -1,0 +1,68 @@
+# Where this goes
+
+## Splitting it up
+
+:::: {.columns}
+::: {.column width="52%"}
+- Censoring was the first piece. It is now one package among several,
+  all of them wrappers over `Distributions.jl`
+- `ConvolvedDistributions.jl` does the sum of independent delays, with
+  closed forms where they exist and the same fixed node quadrature
+  where they do not, plus differences, products and ratios
+- `DistributionsInference.jl` turns any of them into a
+  `LogDensityProblems` problem, so the sampler stops being the
+  package's choice
+- Neither of those two packages knows the other exists. The example on
+  the right works because both of them speak `Distributions.jl`
+:::
+::: {.column width="48%"}
+```julia
+using CensoredDistributions
+using ConvolvedDistributions, Distributions
+
+incubation = Gamma(2.0, 1.0)
+reporting = LogNormal(1.0, 0.5)
+
+d = convolved(incubation, reporting)
+observed = double_interval_censored(
+    d; upper = 15, interval = 1
+)
+
+cdf(observed, 5.0)   # 0.4561
+```
+:::
+::::
+
+## Compound distributions
+
+- The generation time is the delay between one infection and the next.
+  It is never observed, so it is inferred through the serial interval
+  and the incubation period
+- That is a convolution, a difference and a censoring adjustment
+  stacked on each other, which is exactly what these packages are for
+- `GenerationTime.jl` is currently an empty repository. That is the
+  honest state of it
+- Next is a composed Julia version of `epidist`, our R package for
+  delay estimation, with Turing submodels for partially pooled and
+  flexible delays
+
+::: {.attribution}
+Open issue #749 says the joint fit is too slow, because reverse mode
+autodiff through `cdf(Convolved(...))` costs too much per leapfrog step.
+:::
+
+## What I would use today
+
+- If you estimate delays in R, use `primarycensored`. It works, it is on
+  CRAN, and there are packages built on top of it
+- If you are writing a model in Julia, the composition is worth more
+  than the package. Any distribution, any sampler, no integer tables
+- Multiple dispatch removed a class of bug that R and Stan could only
+  write a test for
+- It did not remove the numerical problem. That moved to a list of
+  which autodiff backends work
+
+::: {.callout-important}
+The composition is the reusable part. The package is only where the
+censoring happens to live.
+:::

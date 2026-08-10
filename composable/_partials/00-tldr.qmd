@@ -1,0 +1,19 @@
+## TL;DR
+
+::: {.callout-note}
+## The paper
+[epiaware.org/ComposableProbabilisticIDModels](https://epiaware.org/ComposableProbabilisticIDModels)
+:::
+
+- Modelling evidence for policy has to be timely, rigorous, and
+  collaborative. Most of what we build manages two of the three
+- **Chaining** models keeps you flexible and loses information.
+  **Joint** models are rigorous and produce something nobody can take
+  apart
+- **Composable** parts can be both. Validate each part on its own, then
+  compose them and fit everything together
+- We built a proof of concept in Julia on Turing.jl and used it to
+  rebuild `EpiNow2`, a package I maintain, out of parts that already
+  existed
+- I am now less sure the backend should be a probabilistic programming
+  language at all. The last third of this talk is why
