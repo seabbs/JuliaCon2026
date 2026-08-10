@@ -6,8 +6,8 @@
   already an interface that the whole of Julia understands
 - Write the epidemiology as distributions and the probabilistic
   programming language becomes optional rather than load bearing
-- These two packages do not depend on each other. They compose because
-  they both speak `Distributions.jl`
+- `ConvolvedDistributions` and `CensoredDistributions` do not depend on
+  each other. They compose because they both speak `Distributions.jl`
 - In `CensoredDistributions.jl`, Turing is a package extension. You can
   fit with it, and you do not have to install it to use the package
 

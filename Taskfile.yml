@@ -25,3 +25,9 @@ tasks:
     desc: Check line lengths and trailing whitespace in source files
     cmds:
       - ./scripts/lint.sh
+
+  shot:
+    desc: Screenshot the rendered pages for layout review
+    cmds:
+      - ./scripts/shot.py _shots 1440 index.html prompts.html
+      - ./scripts/shot.py _shots 390 index.html

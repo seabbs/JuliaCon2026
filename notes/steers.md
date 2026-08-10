@@ -45,3 +45,6 @@ as the steering section.
 > The home page is long and kind of empty, can we make it wider or move the
 > projects into a line with less length or similar compression to make it more
 > interesting?
+
+> Make sure workflow members are reviewing and improving the site as well as
+> just the slides

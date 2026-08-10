@@ -58,15 +58,15 @@ Endo et al. (2022),
 
 :::: {.columns}
 ::: {.column width="42%"}
-- The ONS Community Infection Survey swabbed random households in
-  England throughout the pandemic. Modellers outside saw the published
-  prevalence, not the tests
+- The ONS Infection Survey tested over four million swabs from more
+  than 150,000 households at a cost above £500 million. Modellers
+  outside saw the published prevalence, not the swabs
 - Prevalence fed incidence, incidence fed $R_t$, and $R_t$ fed variant
-  severity
+  transmissibility and severity
 - Uncertainty was approximated at each step and assumptions were
   inherited unchecked
-- Lison et al. rebuilt a chain like this and found bias at every stage.
-  Fitting the steps together removed it
+- We rebuilt a chain like this for a different problem and found bias
+  at every stage. Fitting the steps together removed it
 
 ::: {.callout-important}
 Joint fitting is the fix, and it hands you a model nobody can take
@@ -74,15 +74,15 @@ apart.
 :::
 :::
 ::: {.column width="58%"}
-![](../figures/composable-ons-cascade.jpg){width="72%"
+![](../figures/composable-ons-cascade.jpg){width="76%"
 fig-align="center"}
 
-![](../figures/composable-lison.png){width="72%" fig-align="center"}
+![](../figures/composable-lison.png){width="60%" fig-align="center"}
 
 ::: {.attribution}
-Riley et al. (2020),
-[doi:10.1016/S2468-2667(20)30282-6](https://doi.org/10.1016/S2468-2667(20)30282-6);
-Lison et al. (2024),
+Top, survey prevalence, the incidence implied by it, and the $R_t$
+implied by that, each from a separate model. Survey figures from the
+paper's introduction. Bottom, Lison et al. (2024),
 [doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
 :::
 :::
@@ -92,14 +92,14 @@ Lison et al. (2024),
 
 :::: {.columns}
 ::: {.column width="52%"}
-- The $R_t$ packages I know of each carry their own Stan
-  implementation of the renewal equation. Some of them share authors
+- Seven packages estimate $R_t$ by renewal in Stan. None of them share
+  components, and some of them share authors
 - Wastewater $R_t$ tools were written by people who are not wastewater
   experts, and it is unclear which of those choices matter
 - Shared parts do exist. `primarycensored` is one, and the $R_t$
   packages have largely not picked it up
-- I wrote and maintain several of these packages, so this is my
-  problem before it is anyone else's
+- I wrote and maintain several of these packages, so this is my problem
+  before it is anyone else's
 
 ::: {.callout-important}
 The unit of reuse is the whole model, not the epidemiology inside it.
@@ -109,6 +109,7 @@ The unit of reuse is the whole model, not the epidemiology inside it.
 ![](../figures/composable-epinow2-pkg.png){width="100%"}
 
 ::: {.attribution}
+epidemia, EpiNow2, epinowcast, epimap, epiline, EpiSewer, wwinference.
 [epiforecasts.io/EpiNow2](https://epiforecasts.io/EpiNow2)
 :::
 :::

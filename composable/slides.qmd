@@ -1,5 +1,7 @@
 ---
-title: "Composable probabilistic models can lower barriers to rigorous infectious disease modelling"
+title: >-
+  Composable probabilistic models can lower barriers to rigorous
+  infectious disease modelling
 subtitle: "And a change of mind about the backend"
 author: "Sam Abbott"
 institute: "London School of Hygiene & Tropical Medicine"

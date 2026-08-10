@@ -29,8 +29,9 @@ authors only.
 
 :::: {.columns}
 ::: {.column width="54%"}
-- Turing is tested most extensively against four backends. Everything
-  else routes through `DifferentiationInterface.jl`
+- Turing is tested most extensively against ForwardDiff, Enzyme,
+  Mooncake, and ReverseDiff. Everything else routes through
+  `DifferentiationInterface.jl`
 - `ADTests`, the one public table of which backends worked with which
   Turing models, was archived in June 2026 and has not been replaced
 - So we run our own matrix in CI. Six backends per package, each with
