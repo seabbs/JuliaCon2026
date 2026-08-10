@@ -1,0 +1,6 @@
+---
+title: "Prompts"
+subtitle: "The brief that made this site, and the steers that followed"
+---
+
+<!-- PROMPTS: filled in during the build workflow -->

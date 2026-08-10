@@ -1,0 +1,60 @@
+---
+title: "Composable probabilistic models can lower barriers to rigorous infectious disease modelling"
+---
+
+::: {.session-meta}
+JuliaCon 2026 · Thursday 14 August 2026, 16:45–17:00 (Europe/Berlin) ·
+Muschel — N3 · Sam Abbott
+:::
+
+[Slides](slides.qmd){.btn .btn-primary}
+[Paper](https://github.com/seabbs/a-workflow-for-infectious-disease-modelling){.btn .btn-outline-primary}
+[epiaware.org](https://epiaware.org){.btn .btn-outline-primary}
+
+## Abstract
+
+::: {.abstract}
+Recent outbreaks of Ebola, COVID-19 and mpox, alongside routine surveillance
+of endemic pathogens, have demonstrated the value of modelling for
+synthesising data to inform decision making.
+For modelling evidence to effectively inform policy it must be timely,
+rigorous, and collaborative, yet current approaches struggle to be all three.
+Methods broadly fall into approaches that chain separate models together,
+offering flexibility but losing information and introducing bias, or
+approaches that rigorously analyse all data together but cannot be separated
+into reusable parts.
+Composable models, where components can be reused across contexts, can be both
+rigorous and flexible, enabling rapid collaborative model development.
+We outline design considerations for a composable infectious disease modelling
+framework and present a proof of concept domain-specific language built on the
+Turing.jl probabilistic programming language in Julia with an R interface.
+We demonstrate our approach conceptually using models from published
+epidemiological analyses, and in practice through a worked autoregressive
+example.
+We replicate three published analyses, composing elements of our
+autoregressive example with shared and novel components: a COVID-19 analysis
+for South Korea using a renewal process, adding components for reporting
+delays and day-of-week effects to replicate EpiNow2 for real-time nowcasting,
+and an ordinary differential equation analysis of influenza outbreak data.
+We then discuss strengths, limitations, and alternative approaches.
+We find that our proof of concept can address the tension between rigour and
+flexibility, though work remains to realise this potential.
+Our approach enables interdisciplinary collaboration by lowering technical
+barriers for domain experts to contribute specialised components, supporting
+both routine surveillance and outbreak response.
+For multi-model efforts, common components enable attribution of differences
+to assumptions rather than implementation.
+Our approach is also well suited for large language model assisted model
+construction.
+This study demonstrates that a composable modelling approach has the potential
+to incorporate diverse modelling approaches and domain knowledge across
+different infectious disease contexts.
+:::
+
+## Resources
+
+<!-- RESOURCES: filled in during the build workflow -->
+
+::: {.talk-qr}
+![](../figures/qr-composable.png)
+:::

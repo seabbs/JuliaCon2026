@@ -1,0 +1,65 @@
+---
+title: "Building a composable Julia ecosystem for infectious disease modelling"
+subtitle: "A roadmap, challenges, and questions"
+---
+
+::: {.session-meta}
+JuliaCon 2026 · Thursday 14 August 2026, 14:30–14:45 (Europe/Berlin) ·
+Muschel — N3 · Sam Abbott
+:::
+
+[Slides](slides.qmd){.btn .btn-primary}
+[EpiAware on GitHub](https://github.com/EpiAware){.btn .btn-outline-primary}
+[epiaware.org](https://epiaware.org){.btn .btn-outline-primary}
+
+## Abstract
+
+::: {.abstract}
+Infectious disease models that integrate multiple data sources provide better
+evidence for outbreak response than chains of separate models, but building
+them is slow and requires expertise across domains.
+Composable modelling, where validated components combine into joint models
+that properly propagate uncertainty, addresses this but requires an ecosystem
+of reusable infectious disease model components.
+We believe Julia is the best language for this ecosystem due to its type
+system, multiple dispatch, automatic differentiation support, and existing
+scientific computing infrastructure (SciML, Turing.jl, Distributions.jl),
+which provide the foundations composable modelling needs.
+In this talk, we present the EpiAware roadmap for creating and sustaining that
+ecosystem, our current progress, and our questions for the Julia community.
+
+In R, we have built the epinowcast ecosystem (packages, community forum,
+seminar series) and developed several other widely used packages including
+EpiNow2 and scoringutils.
+We want to create something equivalent in Julia: a domain-focused ecosystem in
+the mould of SciML or Turing.jl, with the community infrastructure of rOpenSci
+and the domain specificity of SpeedyWeather.jl.
+
+So far, we have CensoredDistributions.jl, which handles common biases in
+epidemiological delay distributions, and an R interface prototype (EpiAwareR).
+We initially plan to implement packages covering distribution extensions for
+epidemiological use, delay and generation time estimation, disease dynamics
+components, and forecast evaluation, alongside a centralised documentation
+site.
+
+At the package level, we need to answer questions about what makes a good
+Julia package in our ecosystem: consistent documentation via
+DocStringExtensions and DocumenterCitations, robust testing with Aqua.jl and
+JET.jl, automatic differentiation backend testing via
+DifferentiationInterfaceTest, and where we need package extensions (e.g. for
+Turing.jl integration).
+
+At the ecosystem level, we need to understand how to manage releases so that
+package versions work together, how to run reverse dependency checks before
+publishing, how to set up shared CI and centralised documentation across many
+packages, and how to help users understand which automatic differentiation
+backends are compatible when they combine multiple packages.
+:::
+
+## Resources
+
+<!-- RESOURCES: filled in during the build workflow -->
+
+::: {.talk-qr}
+![](../figures/qr-roadmap.png)
+:::

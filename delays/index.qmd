@@ -1,0 +1,64 @@
+---
+title: "Estimating epidemiological delay distributions"
+subtitle: "From R/Stan to Julia"
+---
+
+::: {.session-meta}
+JuliaCon 2026 · Thursday 14 August 2026, 14:45–15:00 (Europe/Berlin) ·
+Muschel — N3 · Sam Abbott
+:::
+
+[Slides](slides.qmd){.btn .btn-primary}
+[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl){.btn .btn-outline-primary}
+[Documentation](https://censoreddistributions.epiaware.org/stable/){.btn .btn-outline-primary}
+
+## Abstract
+
+::: {.abstract}
+Delay distributions describe the time between epidemiological events, such as
+infection to symptom onset or symptom onset to hospitalisation.
+Estimating these distributions from outbreak data is difficult because both
+the primary event (e.g. infection) and the secondary event (e.g. symptom
+onset) are usually only known to have occurred within a time window, such as a
+day.
+Real-time outbreak data is also often right-truncated as longer delays have
+not yet been observed.
+Ignoring double interval censoring and truncation biases parameter estimates
+which are then used for forecasting and transmission modelling.
+
+Adjusting distributions for primary event censoring addresses this by
+integrating the delay CDF over the primary event window, weighted by the
+density of when, within the window, the event occurred.
+This can then be combined with truncation and secondary interval-censoring
+adjustments to produce a double-interval-censored and right-truncation-adjusted
+distribution.
+
+In this talk, we present CensoredDistributions.jl, which implements these
+adjustments as `primary_censored`, `interval_censored`, and
+`double_interval_censored`, composable Distributions.jl wrappers.
+Multiple dispatch selects closed-form CDFs for delay and primary event
+distribution pairs where these are available, and falls back to numerical
+integration otherwise.
+We demo the package standalone and with Turing.jl for parameter estimation.
+
+We then compare to primarycensored, our equivalent R package, which also ships
+a duplicate set of Stan functions so users can fit models in either language.
+Maintaining two parallel implementations required reimplementing distribution
+functions in Stan, building tooling to vendor Stan code into downstream
+projects, and replacing types with integer distribution identifiers.
+Stan's integral solver was also unstable for this problem, so we had to recast
+it as an ODE.
+Julia's multiple dispatch and ecosystem composability eliminates all of this.
+
+We then summarise our plans to build a composed Julia version of our epidist R
+package, using CensoredDistributions.jl as a foundation with Turing.jl
+submodels for partially pooled and flexible delay estimation.
+:::
+
+## Resources
+
+<!-- RESOURCES: filled in during the build workflow -->
+
+::: {.talk-qr}
+![](../figures/qr-delays.png)
+:::

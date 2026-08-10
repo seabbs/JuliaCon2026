@@ -1,0 +1,27 @@
+version: "3"
+
+tasks:
+  default:
+    desc: Render the site and all slide decks
+    cmds:
+      - quarto render
+
+  preview:
+    desc: Preview the site with live reload
+    cmds:
+      - quarto preview
+
+  qr:
+    desc: Regenerate the QR codes for each talk page
+    cmds:
+      - python3 figures/make_qr.py
+
+  check:
+    desc: Validate the Quarto project
+    cmds:
+      - quarto check
+
+  lint:
+    desc: Check line lengths and trailing whitespace in source files
+    cmds:
+      - ./scripts/lint.sh

@@ -1,0 +1,28 @@
+---
+title: "Building a composable Julia ecosystem for infectious disease modelling"
+subtitle: "A roadmap, challenges, and questions"
+author: "Sam Abbott"
+institute: "London School of Hygiene & Tropical Medicine"
+date: 2026-08-14
+date-format: "D MMMM YYYY"
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    embed-resources: true
+    width: 1920
+    height: 1080
+    center: true
+    css: ../style.css
+    link-external-newwindow: true
+---
+
+## Placeholder
+
+- Scaffold only; content is filled in by the build workflow.
+
+## Thank you
+
+![](../figures/qr-roadmap.png){width="20%"}
+
+[samabbott.co.uk/Juliacon2026/roadmap](https://samabbott.co.uk/Juliacon2026/roadmap/)

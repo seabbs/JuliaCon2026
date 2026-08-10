@@ -1,0 +1,45 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "roadmap/*.qmd"
+    - "delays/*.qmd"
+    - "composable/*.qmd"
+
+website:
+  title: "JuliaCon 2026"
+  description: |
+    Three talks on composable infectious disease modelling in Julia,
+    JuliaCon 2026, Sam Abbott.
+  site-url: "https://samabbott.co.uk/Juliacon2026"
+  repo-url: "https://github.com/seabbs/Juliacon2026"
+  favicon: figures/epiaware-logo.svg
+  navbar:
+    title: "JuliaCon 2026"
+    left:
+      - text: "About"
+        href: index.qmd
+      - text: "Roadmap"
+        href: roadmap/index.qmd
+      - text: "Delays"
+        href: delays/index.qmd
+      - text: "Composable models"
+        href: composable/index.qmd
+      - text: "Prompts"
+        href: prompts.qmd
+    right:
+      - text: "samabbott.co.uk"
+        href: https://samabbott.co.uk
+      - icon: github
+        href: https://github.com/seabbs/Juliacon2026
+  page-footer:
+    left: "Sam Abbott, London School of Hygiene & Tropical Medicine"
+    right: "[Source](https://github.com/seabbs/Juliacon2026)"
+
+format:
+  html:
+    theme: cosmo
+    css: site.css
+    toc: false
+    link-external-newwindow: true

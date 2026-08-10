@@ -1,0 +1,68 @@
+/* Site styling for the JuliaCon 2026 talk pages. */
+
+.headshot {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 6px;
+}
+
+/* Talk cards on the home page */
+.talk-card {
+  border: 1px solid #dee2e6;
+  border-left: 4px solid #389826; /* Julia green */
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.talk-card h3 {
+  margin-top: 0;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.talk-card .btn {
+  margin-right: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+/* Abstract block on talk pages */
+.abstract {
+  border-left: 3px solid #9558b2; /* Julia purple */
+  padding-left: 1rem;
+  margin: 1.25rem 0 1.75rem 0;
+}
+
+.abstract p {
+  margin-bottom: 0.75rem;
+}
+
+/* Session metadata line under the talk title */
+.session-meta {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1.25rem;
+}
+
+.session-meta code {
+  background: none;
+  color: inherit;
+}
+
+/* QR block on talk pages */
+.talk-qr img {
+  max-width: 180px;
+}
+
+/* Prompt quotes on the prompts page */
+.prompt {
+  border-left: 3px solid #cb3c33; /* Julia red */
+  background: #fbfbfb;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.prompt p:last-child {
+  margin-bottom: 0;
+}
