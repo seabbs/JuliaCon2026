@@ -16,3 +16,12 @@ as the steering section.
 > https://pretalx.com/juliacon-2026/talk/AMFLYU/
 
 > where are the wsearching context ages and the workflow?
+
+> Puit this in italics: [the bio] (from @seabbs-bot with robot emjoi or
+> similar) bit of fun brekas it up for being a bit pompous
+
+> Other recent work might want to link to i.e epinowcast?
+
+> no the point was an llm wrote the outline of me and I wanted that to be clear
+
+> We need anotehr review stager after the fix t oconfirm and potentially loop

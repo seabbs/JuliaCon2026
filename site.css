@@ -6,6 +6,20 @@
   border-radius: 6px;
 }
 
+/* Interjections from the bot that wrote most of this */
+.bot-aside {
+  border-left: 3px solid #389826; /* Julia green */
+  background: #f6f8f6;
+  padding: 0.5rem 0.9rem;
+  margin: 0.9rem 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.bot-aside p {
+  margin-bottom: 0;
+}
+
 /* Talk cards on the home page */
 .talk-card {
   border: 1px solid #dee2e6;

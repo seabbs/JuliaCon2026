@@ -6,25 +6,38 @@ subtitle: "Three talks on composable infectious disease modelling in Julia"
 ::: {.grid}
 ::: {.g-col-12 .g-col-md-8}
 
-I am an Assistant Professor at the London School of Hygiene & Tropical
-Medicine.
-I did my PhD in the optimal usage of the BCG vaccine, transitioning to work on
-real-time modelling of infectious disease outbreaks on the 3rd of January 2020.
-Four days later, I switched to work on what was then known as 2019-NCoV.
-I did early work on the size and scale of the initial outbreak, tracking
+::: {.bot-aside}
+🤖 The following was drafted by **@seabbs-bot**, not by me.
+It is the bio I submitted to JuliaCon, so I did read it first.
+:::
+
+*I am an Assistant Professor at the London School of Hygiene & Tropical
+Medicine.*
+*I did my PhD in the optimal usage of the BCG vaccine, transitioning to work on
+real-time modelling of infectious disease outbreaks on the 3rd of January
+2020.*
+*Four days later, I switched to work on what was then known as 2019-NCoV.*
+*I did early work on the size and scale of the initial outbreak, tracking
 transmissions in different countries, and exploring the potential role of
-different interventions.
-Throughout the pandemic, I ran a dashboard that was used by over a million
-people.
-I also provided estimates, forecasts, and analyses weekly to the UK government
-advisory bodies.
-I developed the tools and methods we used into open source software and these
-were used by upwards of 30 public health agencies around the world.
-I have continued to work in this area with a focus on improving tools and
-methods used both in research and in public health practice.
-I have recently transitioned to Julia for my work and am exploring how to
+different interventions.*
+*Throughout the pandemic, I ran a dashboard that was used by over a million
+people.*
+*I also provided estimates, forecasts, and analyses weekly to the UK government
+advisory bodies.*
+*I developed the tools and methods we used into open source software and these
+were used by upwards of 30 public health agencies around the world.*
+*I have continued to work in this area with a focus on improving tools and
+methods used both in research and in public health practice.*
+*I have recently transitioned to Julia for my work and am exploring how to
 propagate Julia based tools to the users of our current tooling and to the
-wider infectious disease modelling community.
+wider infectious disease modelling community.*
+
+::: {.bot-aside}
+🤖 An agent wrote that, and most of the rest of this site, and a good share of
+the code it points at.
+Which is part of what these talks are about.
+See [how it was done](prompts.qmd).
+:::
 
 [samabbott.co.uk](https://samabbott.co.uk) ·
 [github.com/seabbs](https://github.com/seabbs) ·
@@ -97,10 +110,16 @@ timely, rigorous, and collaborative at the same time.
   agents do and do not do in a research workflow
 - [How to serial interval?](https://samabbott.co.uk/how-to-serial-interval) —
   a talk on delays, censoring, and why the serial interval is a composition
-- [primarycensored](https://primarycensored.epinowcast.org/),
-  [epidist](https://epidist.epinowcast.org/),
-  [EpiNow2](https://epiforecasts.io/EpiNow2/), and
-  [epinowcast](https://package.epinowcast.org/) — the R side of all of this
+- [epinowcast](https://www.epinowcast.org/) — the R ecosystem this is all
+  trying to become in Julia, including the
+  [community forum](https://community.epinowcast.org/) and the seminar series,
+  plus the packages themselves:
+  [epinowcast](https://package.epinowcast.org/),
+  [primarycensored](https://primarycensored.epinowcast.org/) and
+  [epidist](https://epidist.epinowcast.org/)
+- [EpiNow2](https://epiforecasts.io/EpiNow2/) and
+  [scoringutils](https://epiforecasts.io/scoringutils/) — the widely used R
+  packages I am trying to find a better foundation for
 
 ## How these were made
 
