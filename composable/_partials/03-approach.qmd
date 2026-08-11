@@ -1,0 +1,78 @@
+## The proof of concept is `ComposableTuringIDModels.jl`
+
+:::: {.columns}
+::: {.column width="45%"}
+- A thin language for epidemiology over Turing.jl, which does the
+  fitting
+- Three component families. Infection processes, latent processes, and
+  observation models
+- Components carry their own priors, so domain expertise travels with
+  the component
+- Model definitions do not know about the data, so one definition
+  simulates and fits
+
+::: {.attribution}
+Registered in General at v0.1.1, so `] add ComposableTuringIDModels`
+works ·
+[github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
+Abbott et al., *Composable probabilistic models can lower barriers to
+rigorous infectious disease modelling*,
+[epiaware.org/approaches](https://epiaware.org/approaches/)
+:::
+:::
+::: {.column width="55%"}
+![](../figures/composable-structure.png){height="700px"
+fig-align="center"
+fig-alt="Four applications drawn as graphs over a band of shared parts"}
+
+::: {.attribution}
+Four illustrative applications, not implementations. The incubation
+period model appears in all four and the latent infection model in
+three
+:::
+:::
+::::
+
+## What composition looks like
+
+:::: {.columns}
+::: {.column width="58%"}
+```julia
+using ComposableTuringIDModels, Distributions, Turing, Accessors
+
+ar2 = AR(;
+  damp = [truncated(Normal(0.2, 0.2), 0, 1),
+          truncated(Normal(0.1, 0.05), 0, 1)],
+  ϵ_t = HierarchicalNormal(std = HalfNormal(0.1)))
+ma1 = MA(;
+  θ = [truncated(Normal(0.0, 0.2), -1, 1)],
+  ϵ_t = HierarchicalNormal(std = HalfNormal(0.1)))
+
+arma21 = @set ar2.ϵ_t = ma1
+arima211 = DiffLatentModel(arma21, Normal(0, 0.2); d = 1)
+
+mdl = IDModel(
+  DirectInfections(; Z = arima211, initialisation = Normal()),
+  PoissonError())
+chain = sample(as_turing_model(mdl, cases, n), NUTS(), 1_000)
+```
+
+::: {.attribution}
+`@set` is Accessors.jl, not ours, and works because the components are
+plain immutable structs · Keywords track `main`. The paper's artefact
+pins an earlier release, where these were `damp_priors`, `θ_priors` and
+`std_prior` ·
+[epiaware.org/approaches](https://epiaware.org/approaches/)
+:::
+:::
+::: {.column width="42%"}
+![](../figures/composable-arima.png){height="500px" fig-align="center"
+fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
+
+::: {.callout-note}
+`AR` was never told that `MA` exists.
+:::
+:::
+::::
+
+[ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl

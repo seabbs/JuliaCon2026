@@ -98,3 +98,27 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > we just don't need to note those. I meant a few people in the room might be
 > working on something like this
+
+> in the pages related talks under abstract to make better use of the space
+
+> This from the delays project page is a classic LLMism I would not use in
+> my own writing i.e. my seabbs.github.io: "The switch to a fixed rule, and
+> what it cost."
+
+> Don't like to link this: https://zenodo.org/records/18274166. Remove from
+> project page and slides.
+
+> paper in CDC clearance is the bullet
+
+> composabeturing and epiaware.org have what we mostly need, the latter has an
+> approaches page we can link to with i.e. requirements
+
+> reminder to update the prompts page but i.e. don't offend anyone. I think my
+> prompts are okay but note.
+
+> don't report that part of it of course
+> (NOT FOR THE PUBLIC PAGE: the steer about a named third party package is
+> withheld from prompts.qmd.)
+
+> The website should make sure to have a nice social media card etc for
+> sharing

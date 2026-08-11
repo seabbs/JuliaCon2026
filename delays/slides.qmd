@@ -18,15 +18,6 @@ format:
     include-in-header:
       text: |
         <style>
-        .reveal .slides svg.mermaid-js {
-          width: 100% !important;
-          max-width: 100% !important;
-          height: auto !important;
-        }
-        .reveal .slides .diagram-narrow svg.mermaid-js {
-          width: 640px !important;
-          max-width: 100% !important;
-        }
         .reveal .slides .bignum {
           font-size: 1.55em;
           font-weight: 700;
@@ -47,15 +38,13 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Two events, each seen through a window, and the bias from ignoring
-  that
-- Eighteen Stan branches against three closed forms and one fallback,
-  picked by the type
-- What Stan cost us, an integral solver that would not hold and two
-  integer tables that disagreed
-- The honest part, R has about a hundred times the downloads
-- The numerical problem moved into autodiff, it did not go away
-- What I would use today, and why the composition outlasts the package
+- What an epidemiological delay is, and where the estimate ends up
+- Both events arrive as windows, and the pairs that have not finished
+  are missing
+- `primarycensored`, and what shipping the same likelihood in Stan cost
+- Delays vary, so partial pooling, `brms` and `epidist`
+- No line list, so `epinowcast`
+- The same three adjustments in Julia, as composable wrappers
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-delays.png){width="58%"}
@@ -70,13 +59,17 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 14:45.
 
 {{< include _partials/00-problem.qmd >}}
 
-{{< include _partials/01-two-implementations.qmd >}}
+{{< include _partials/01-primarycensored.qmd >}}
 
-{{< include _partials/02-what-stan-cost.qmd >}}
+{{< include _partials/02-pooling.qmd >}}
 
-{{< include _partials/03-honest.qmd >}}
+{{< include _partials/03-population.qmd >}}
 
-{{< include _partials/04-where-this-goes.qmd >}}
+{{< include _partials/04-julia.qmd >}}
+
+{{< include _partials/05-adoption.qmd >}}
+
+{{< include _partials/06-close.qmd >}}
 
 ## Thank you
 
@@ -106,6 +99,8 @@ Sam Abbott, LSHTM ·
 :::
 :::
 ::::
+
+{{< include _partials/80-backup.qmd >}}
 
 {{< include _partials/90-summary.qmd >}}
 

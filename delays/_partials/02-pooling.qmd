@@ -1,0 +1,34 @@
+## Delays vary by district, by age and by wave
+
+:::: {.columns}
+::: {.column width="42%"}
+- Fitting each stratum on its own runs out of data. Partial pooling
+  shares what the small strata cannot support
+- `brms` already has the regression machinery, so `epidist` puts the
+  censored likelihood behind a `brms` formula
+
+::: {.attribution}
+Sierra Leone Ebola line list, `epidist/vignettes/ebola.Rmd:246-253`,
+sampler arguments cut ·
+[epidist](https://epidist.epinowcast.org/) ·
+[brms](https://paulbuerkner.com/brms/)
+:::
+:::
+::: {.column width="58%"}
+```r
+fit <- epidist(
+  data = obs_prep,
+  formula = bf(
+    mu ~ 1 + sex + (1 | district),
+    sigma ~ 1 + sex + (1 | district)
+  ),
+  family = lognormal()
+)
+```
+:::
+::::
+
+::: {.callout-note}
+The delay family has to be one `brms` knows, and the Stan code is
+assembled by string substitution before it compiles.
+:::

@@ -15,28 +15,84 @@ format:
     width: 1920
     height: 1080
     center: true
-    css:
-      - ../style.css
-      - mermaid.css
+    css: ../style.css
     link-external-newwindow: true
-    mermaid:
-      theme: neutral
 ---
 
-{{< include _partials/00-tldr.qmd >}}
+## Talk plan
 
-{{< include _partials/01-problem.qmd >}}
+:::: {.columns}
+::: {.column width="68%"}
+- What modelling evidence has to be, and why we rarely manage all of it
+- Chaining models loses information, joint models cannot be taken apart
+- Parts validated on their own, then fitted together
+- One replication, a common `EpiNow2` configuration in three hours
+- Why the backend is the part I am least sure about
+- Whether JAX is the way forward, and whether Julia is the place
+:::
+::: {.column width="32%"}
+![](../figures/qr-composable.png){width="58%"}
+
+::: {.attribution}
+[samabbott.co.uk/JuliaCon2026/composable][composable-talk]
+
+JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 16:45.
+:::
+:::
+::::
+
+{{< include _partials/00-gap.qmd >}}
+
+{{< include _partials/01-options.qmd >}}
 
 {{< include _partials/02-composable.qmd >}}
 
-{{< include _partials/03-case-study.qmd >}}
+{{< include _partials/03-approach.qmd >}}
 
-{{< include _partials/04-backend.qmd >}}
+{{< include _partials/04-case-study.qmd >}}
 
-{{< include _partials/05-distributions.qmd >}}
+{{< include _partials/05-backend.qmd >}}
 
-{{< include _partials/06-close.qmd >}}
+{{< include _partials/06-direction.qmd >}}
+
+## Thank you
+
+:::: {.columns}
+::: {.column width="62%"}
+::: {.callout-important}
+Tell me what you would build this on, if not a probabilistic programming
+language.
+:::
+
+- **Counter-examples.** Where is practice already timely, rigorous, and
+  collaborative? I would like to be shown the problem is smaller than I
+  think
+- **Other ways to compose.** Category theory, symbolic approaches, or
+  something I have not thought of
+- **Build it in Julia.** The infectious disease ecosystem here is small.
+  If you are about to write a tool, come and find me first
+- [The prompts that wrote these decks][prompts]
+:::
+::: {.column width="38%"}
+![](../figures/qr-composable.png){width="62%" fig-align="center"
+fig-alt="QR code to the talk page"}
+
+::: {.attribution}
+[samabbott.co.uk/JuliaCon2026/composable][composable-talk]
+
+The prototype is `ComposableTuringIDModels.jl`,
+[github.com/EpiAware/ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)
+
+Sam Abbott, LSHTM ·
+[epiaware.org](https://epiaware.org) ·
+[github.com/seabbs](https://github.com/seabbs)
+:::
+:::
+::::
 
 {{< include _partials/80-backup.qmd >}}
 
 {{< include _partials/90-summary.qmd >}}
+
+[composable-talk]: https://samabbott.co.uk/JuliaCon2026/composable/
+[prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html

@@ -19,13 +19,21 @@ website:
   # reader into the middle of a deck. seabbs.github.io does the same.
   search: false
   open-graph:
-    image: "https://samabbott.co.uk/JuliaCon2026/figures/sam.jpg"
-    image-alt: "Sam Abbott"
+    image: "https://samabbott.co.uk/JuliaCon2026/figures/og-card.png"
+    image-width: 1200
+    image-height: 630
+    image-alt: >-
+      JuliaCon 2026, three talks on composable infectious disease modelling
+      in Julia, by Sam Abbott, Friday 14 August, Muschel N3.
   twitter-card:
     creator: "@seabbs"
-    card-style: summary
-    image: "https://samabbott.co.uk/JuliaCon2026/figures/sam.jpg"
-    image-alt: "Sam Abbott"
+    card-style: summary_large_image
+    image: "https://samabbott.co.uk/JuliaCon2026/figures/og-card.png"
+    image-width: 1200
+    image-height: 630
+    image-alt: >-
+      JuliaCon 2026, three talks on composable infectious disease modelling
+      in Julia, by Sam Abbott, Friday 14 August, Muschel N3.
   navbar:
     title: "JuliaCon 2026"
     logo: figures/epiaware-logo.svg

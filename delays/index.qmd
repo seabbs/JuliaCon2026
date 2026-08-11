@@ -76,6 +76,21 @@ Stan swapped the integral for an ODE solver.
 Julia's default is now a fixed 64-node rule, with the adaptive solver still
 there for callers who ask for it.
 
+
+## Related talks
+
+The other two JuliaCon talks are in the same room on the same day.
+
+- [Building a composable Julia ecosystem](../roadmap/index.qmd).
+  Where CensoredDistributions.jl sits in the wider ecosystem.
+  14:30–14:45, straight before this one.
+- [Composable probabilistic models](../composable/index.qmd).
+  The case for building models out of parts like these.
+  16:45–17:00.
+- [How to serial interval?][hsi].
+  More on censoring, delays, and why the serial interval is itself a
+  composition.
+
 :::
 
 ::: {.talk-side}
@@ -105,20 +120,6 @@ there for callers who ask for it.
   layer up.
 - [CensoredDistributions.jl PR #250][cd-pr250].
   The switch to a fixed rule, and what it cost.
-
-### Related talks
-
-The other two JuliaCon talks are in the same room on the same day.
-
-- [Building a composable Julia ecosystem](../roadmap/index.qmd).
-  Where CensoredDistributions.jl sits in the wider ecosystem.
-  14:30–14:45, straight before this one.
-- [Composable probabilistic models](../composable/index.qmd).
-  The case for building models out of parts like these.
-  16:45–17:00.
-- [How to serial interval?][hsi].
-  More on censoring, delays, and why the serial interval is itself a
-  composition.
 
 :::
 ::::

@@ -1,66 +1,46 @@
-# What we built
+## Can composable modelling help?
 
-## What composable modelling would need
+::: {.callout-note}
+## What is composable modelling?
 
-+-------------------------+------------------------------------------+
-| Theme                   | What it would need                       |
-+=========================+==========================================+
-| Uncertainty and         | Propagate it properly, and swap the      |
-| inference               | inference method                         |
-+-------------------------+------------------------------------------+
-| Model structure         | Separate infection, latent and           |
-|                         | observation processes, and nest models   |
-|                         | inside models                            |
-+-------------------------+------------------------------------------+
-| Population              | Stratify any component without hand      |
-| heterogeneity           | managing the bookkeeping                 |
-+-------------------------+------------------------------------------+
-| Accessibility and       | Components carry their priors, work      |
-| interoperability        | standalone, and talk to the rest of      |
-|                         | Julia                                    |
-+-------------------------+------------------------------------------+
-| Workflow                | One specification for simulation and for |
-|                         | inference                                |
-+-------------------------+------------------------------------------+
-
-::: {.attribution}
-Table 1 of the paper sets out six themes, condensed to five rows here,
-with accessibility and interoperability merged. In the paper each
-design consideration is paired with the problem that motivates it.
-These came from the authors and have had no community input
+Components can be reused across contexts and combined in different
+configurations whilst maintaining statistical rigour.
 :::
 
-## The proof of concept
+- Components can be validated on their own, then combined into joint
+  models that propagate uncertainty properly
+- Domain experts contribute specialised parts without understanding the
+  whole system
+- Adding a data source means a new submodel rather than a rebuild
+- Domain-specific languages have done this in other fields,
+  [SpeedyWeather.jl](https://doi.org/10.21105/joss.06323) for weather
+  and [HydroModels.jl](https://doi.org/10.5281/zenodo.15549719) for
+  hydrology
+
+## Design considerations
 
 :::: {.columns}
-::: {.column width="52%"}
-- A thin language for epidemiology over a probabilistic backend that
-  does the sampling
-- Three component families. Infection, latent, and observation
-  processes, composing across families and within them
-- Components carry their own priors, so domain knowledge travels with
-  the component rather than with the person
-- Model definitions do not know about the data, so one definition
-  simulates and fits
+::: {.column width="40%"}
+- **Uncertainty and inference.** Joint and staged inference that avoids
+  the cascading biases, and automatic differentiation for fitting
+- **Model structure.** Components separated by process type, and models
+  nested inside models
+- **Workflow.** One specification that is useful for simulation and for
+  inference
 
-::: {.attribution}
-Bullets three and four are design considerations from the previous
-slide · Abbott et
-al., *Composable probabilistic models can lower barriers to rigorous
-infectious disease modelling*,
-[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
+::: {.callout-warning}
+These were developed by the authors and have not yet received broader
+community input.
 :::
 :::
-::: {.column width="48%"}
-![](../figures/composable-structure.png){height="740px"
-fig-align="center"
-fig-alt="Four applications drawn as graphs over a band of shared parts"}
+::: {.column width="60%"}
+![](../figures/composable-requirements.png){width="100%"
+fig-alt="Table 1 of the paper, requirements against motivating problems"}
 
 ::: {.attribution}
-Four illustrative applications, not implementations. The incubation
-period model appears in all four, the latent infection model in three,
-and the band beneath is what those shared components are themselves
-made of. What was built is the three replications that follow.
+Table 1 of the paper pairs each requirement with the problem that
+motivates it, under six themes. Three are on the left,
+[epiaware.org/approaches](https://epiaware.org/approaches/)
 :::
 :::
 ::::

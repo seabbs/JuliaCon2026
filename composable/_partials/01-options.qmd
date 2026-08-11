@@ -1,0 +1,71 @@
+## Analysing data and processes separately
+
+:::: {.columns}
+::: {.column width="42%"}
+- The ONS COVID-19 Infection Survey tested over four million swabs from
+  more than 150,000 households at a cost above £500 million
+- Modellers outside saw the published prevalence, not the swabs
+- Prevalence fed incidence, incidence fed $R_t$, and those fed variant
+  transmissibility and severity
+- Uncertainty was approximated at each step and assumptions were
+  inherited unchecked
+:::
+::: {.column width="58%"}
+![](../figures/composable-ons-cascade.jpg){width="94%"
+fig-align="center"
+fig-alt="Four panels of the survey chain fitted as one model"}
+
+::: {.attribution}
+Prevalence (A), incidence (B), antibody prevalence (C) and $R_t$ (D)
+fitted together as one model instead. Abbott and Funk (2022),
+[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101).
+Survey figures from the paper's introduction
+:::
+:::
+::::
+
+## Analysing all data and processes together
+
+:::: {.columns}
+::: {.column width="45%"}
+- Lison et al. found biases at each step of a chain, in date imputation
+  and in the nowcasting count model
+- Those biases carried into $R_t$. Fitting the steps together avoided
+  them
+- Joint models are difficult to develop within policy timelines, and
+  need expertise across several domains
+
+::: {.attribution}
+Lison et al. (2024),
+[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
+:::
+:::
+::: {.column width="55%"}
+![](../figures/composable-lison.png){width="100%"
+fig-alt="Title of the Lison et al. 2024 paper"}
+:::
+::::
+
+## The $R_t$ estimation ecosystem
+
+:::: {.columns}
+::: {.column width="45%"}
+- At least seven packages estimate $R_t$ by renewal in Stan. Two of them
+  share any component, and I wrote both
+- The wastewater $R_t$ tools make different choices about how much of
+  the sampling to represent, and share nothing
+- Shared parts do exist. `primarycensored` is one, and uptake outside my
+  own packages is thin
+- The unit of reuse is the whole model, not the epidemiology underneath
+
+::: {.attribution}
+The two sharing a component are `EpiNow2` and `epinowcast`, both
+vendoring `primarycensored.stan` ·
+[epiforecasts.io/EpiNow2](https://epiforecasts.io/EpiNow2)
+:::
+:::
+::: {.column width="55%"}
+![](../figures/composable-epinow2-pkg.png){width="100%"
+fig-alt="The EpiNow2 package README, one of the seven"}
+:::
+::::

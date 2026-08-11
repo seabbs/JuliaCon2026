@@ -1,0 +1,120 @@
+# Automatic differentiation as a first class citizen
+
+## What does it mean to say a package supports AD?
+
+:::: {.columns}
+::: {.column width="52%"}
+- A real model needs a PPL, and a PPL needs gradients through every
+  component. AD is a requirement, not a feature
+- Nobody has written down what supporting AD means, so we picked a
+  definition and made CI defend it
+- `DifferentiationInterfaceTest` does the correctness testing. On top,
+  a package declares which scenarios are broken on which backend, and
+  CI re-runs them
+
+::: {.callout-note}
+Is there a guide for any of this anywhere in the Julia ecosystem? I
+went looking and did not find one.
+:::
+:::
+::: {.column width="48%"}
+```julia
+const _AD_BACKENDS = [
+  (header = "ForwardDiff", ...),
+  (header = "ReverseDiff (tape)", ...),
+  (header = "Enzyme forward", ...),
+  (header = "Enzyme reverse", ...),
+  (header = "Mooncake reverse", ...),
+  (header = "Mooncake forward", ...),
+]
+```
+
+::: {.attribution}
+Abridged from `_AD_BACKENDS`, `src/scaffold.jl:1464` in
+`EpiAwarePackageTools.jl`, read 2026-08-11. Each entry also carries a
+Codecov flag, a test item tag and the package it loads, and the list
+generates the CI matrix, the flags, the README badges and the support
+table in the docs · `check_broken` and the registry contract are in
+`src/ad_harness.jl` ·
+[DifferentiationInterfaceTest.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl).
+:::
+:::
+::::
+
+## A wrong number, not an error
+
+:::: {.columns}
+::: {.column width="48%"}
+```julia
+f(x) = xlogy(x[1], 0.8)   # d/dx = log(0.8)
+
+DI.gradient(f, DI.AutoForwardDiff(), [0.0])
+DI.gradient(f, DI.AutoMooncake(), [0.0])
+```
+
+| Backend | Gradient at `x = 0` |
+|---|---|
+| Finite differences | -0.22314 |
+| ForwardDiff | -0.22314 |
+| ReverseDiff | -0.22314 |
+| Enzyme | -0.22314 |
+| Mooncake | **0.0** |
+:::
+::: {.column width="52%"}
+- `logpdf(Gamma(k, θ), x)` computes `xlogy(k - 1, x / θ)`. Mooncake has
+  no rule for `xlogy`, so it differentiates the implementation. At shape
+  1.0 the first argument is zero, the `iszero` branch returns a
+  constant, and the gradient comes back as zero
+- Nothing throws. The sampler runs. The number is wrong
+- `EpiAwareADTools.jl` carries the rule, and deletes it the day
+  Mooncake ships one
+
+::: {.attribution}
+The three lines and the backend comparison are from
+[ComposedDistributions.jl#99][cd99], 2026-07-07. `xlogy` comes from
+`LogExpFunctions`, `DI` is `DifferentiationInterface`. Mooncake 0.5.37,
+Julia 1.12 · the withdrawn upstream report is
+[chalk-lab/Mooncake.jl#1241][mc1241], closed the day it was opened, and
+nothing has replaced it as of 2026-08-11 · the local rule is
+`ext/EpiAwareADToolsLogExpFunctionsMooncakeExt.jl`.
+:::
+:::
+::::
+
+## Nobody can tell you which backend a model needs
+
+:::: {.columns}
+::: {.column width="52%"}
+| Backend | `Censored` | `Composed` |
+|---|---|---|
+| ForwardDiff | green | red |
+| ReverseDiff, tape | green | red |
+| Mooncake forward | green | red |
+| Mooncake reverse | green | red |
+| Enzyme forward | green, 1 broken | red |
+| Enzyme reverse | green, 1 broken | red |
+
+::: {.attribution}
+`Censored` is `CensoredDistributions.jl`, `Composed` is
+`ComposedDistributions.jl` · declared broken scenarios in
+[CensoredDistributions.jl#889][cd889], read from `test/ADFixtures` on
+`main` · last `AD` run on `main` green 2026-06-21 there and red on all
+six 2026-08-07 in `ComposedDistributions.jl` ·
+[TuringLang/ADTests][adtests], archived 2026-06-15.
+:::
+:::
+::: {.column width="48%"}
+- DifferentiationInterface tells you about a function. Turing tells you
+  what Turing tests. Nothing tells you about a model assembled from
+  five packages that each tested on their own
+- The one public per-backend table for a probabilistic programming
+  stack, `TuringLang/ADTests`, was archived in June
+- In my view none of the six is reliably best, and each is kept going
+  by a small team
+:::
+::::
+
+[cd889]: https://github.com/EpiAware/CensoredDistributions.jl/issues/889
+[adtests]: https://github.com/TuringLang/ADTests
+[cd99]: https://github.com/EpiAware/ComposedDistributions.jl/issues/99
+[mc1241]: https://github.com/chalk-lab/Mooncake.jl/issues/1241

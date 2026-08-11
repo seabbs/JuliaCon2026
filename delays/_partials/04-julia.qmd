@@ -1,0 +1,36 @@
+## What about in Julia
+
+:::: {.columns}
+::: {.column width="54%"}
+```julia
+using CensoredDistributions, Distributions, Turing
+
+@model function double_censored_model(values, weights)
+    α ~ truncated(Normal(1, 2), 0, Inf)
+    θ ~ truncated(Normal(1, 2), 0, Inf)
+    d = double_interval_censored(
+        Gamma(α, θ); upper = 15, interval = 1
+    )
+    values ~ weight(d, weights)
+end
+
+model = double_censored_model(values, weights)
+chain = sample(model, NUTS(), MCMCThreads(), 1000, 2)
+```
+
+::: {.attribution}
+Model code from `README.md:71-85`, run for this talk against v0.2.22 ·
+[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+:::
+:::
+::: {.column width="46%"}
+- Each adjustment is a wrapper. `primary_censored` is the $w_P$
+  integral, `interval_censored` is $w_S$, `upper` truncates at $C$
+- Multiple dispatch picks the closed form for the pair you passed, and
+  the numerical path for anything else
+- The delay is built from the parameters being sampled, so nothing is
+  fixed before sampling starts
+- `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
+  `0.847`. Nobody wrote that method
+:::
+::::

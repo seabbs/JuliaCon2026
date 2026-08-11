@@ -16,8 +16,7 @@ Muschel — N3 · Sam Abbott
 
 [Slides](slides.qmd){.btn .btn-primary}
 [ComposableTuringIDModels.jl][ctim]{.btn .btn-outline-primary}
-[Code and data][paper]{.btn .btn-outline-primary}
-[epiaware.org](https://epiaware.org){.btn .btn-outline-primary}
+[Approaches and requirements][approaches]{.btn .btn-outline-primary}
 [Session on pretalx][pretalx]{.btn .btn-outline-primary}
 
 :::: {.talk-body}
@@ -74,6 +73,21 @@ The workarounds we host in [EpiAwareADTools.jl][adtools] are mostly there for
 that.
 I am exploring composable distributions as a route to the same thing that does
 not put a single probabilistic programming language underneath everything.
+The talk ends on the question behind that, which is whether JAX is the way
+forward and whether Julia is the place to build serious tools.
+I have argued myself into both answers.
+
+
+## Related talks
+
+The other two are in the same room earlier the same day.
+
+- [Building a composable Julia ecosystem](../roadmap/index.qmd).
+  The roadmap this proof of concept feeds into.
+  14:30–14:45.
+- [Estimating epidemiological delay distributions](../delays/index.qmd).
+  CensoredDistributions.jl, one of the composable parts.
+  14:45–15:00.
 
 :::
 
@@ -84,11 +98,10 @@ not put a single probabilistic programming language underneath everything.
 
 ### Papers and writing
 
-- [Composable probabilistic models, code and data][paper].
-  The archive behind the paper this talk summarises, with the three
-  replicated analyses and the code that produced them.
-  It is the citable record.
-  The manuscript site is not public yet.
+- [What we want from an approach][approaches].
+  The twelve design considerations this work is built to meet, and the two
+  approaches we are taking.
+  The paper is in CDC clearance.
 - [A workflow for infectious disease modelling][workflow].
   Related work on how these models get built and checked.
   It is the subject of the roadmap talk, not this one.
@@ -109,21 +122,10 @@ not put a single probabilistic programming language underneath everything.
 - [EpiAwareR][epiawarer].
   Sebastian Funk's prototype R interface to the Julia ecosystem.
 
-### Related talks
-
-The other two are in the same room earlier the same day.
-
-- [Building a composable Julia ecosystem](../roadmap/index.qmd).
-  The roadmap this proof of concept feeds into.
-  14:30–14:45.
-- [Estimating epidemiological delay distributions](../delays/index.qmd).
-  CensoredDistributions.jl, one of the composable parts.
-  14:45–15:00.
-
 :::
 ::::
 
-[paper]: https://doi.org/10.5281/zenodo.17884675
+[approaches]: https://epiaware.org/approaches/
 [workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
 [turing]: https://github.com/TuringLang/Turing.jl

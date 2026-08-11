@@ -1,0 +1,29 @@
+## R wins this, by about a hundred to one
+
+:::: {.columns}
+::: {.column width="42%"}
+|  | R | Julia |
+|---|---:|---:|
+| Downloads, all time | **11,244** | **116** |
+| Downloads, last month | 528 | 49 |
+
+::: {.attribution}
+CRAN and JuliaPkgStats, 10 August 2026. CRAN counts requests to one
+mirror, JuliaPkgStats counts unique IP addresses, so the ratio is an
+upper bound. Both include continuous integration, so neither is a count
+of people.
+:::
+:::
+::: {.column width="58%"}
+- **Nine** repositories on GitHub depend on `primarycensored`. Seven
+  are from my own orgs, two are CDC's
+- Everything that depends on `CensoredDistributions.jl` is mine, Sam
+  Brand's or Sebastian Funk's. I looked for one from outside and did
+  not find it
+:::
+::::
+
+::: {.callout-note}
+Twenty-one months on CRAN against twelve in General. I do not know how
+much of the gap is R having the users and how much is the package.
+:::

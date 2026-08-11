@@ -21,11 +21,11 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Why chains of models lose uncertainty, and why my R packages did not fix it
-- Why Julia, and which parts of it we are betting on
-- Eleven packages, three ways to compose them, and three dates
-- Automatic differentiation, where composing breaks first
-- Built by agents on no funding, and what that costs
+- What we are trying to build, and why it needs an ecosystem
+- What we wanted, and why the R route was hard
+- Automatic differentiation as the requirement, not a feature
+- What a good Julia package looks like, and what enforces it
+- No contributors yet, and building for whatever writes the next one
 - Four questions I cannot answer
 :::
 ::: {.column width="32%"}
@@ -54,18 +54,6 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 14:30.
   display: block;
   margin: 0 auto;
 }
-.reveal .slides .cascade svg.mermaid-js {
-  max-height: 470px !important;
-  width: auto !important;
-  max-width: 100% !important;
-  display: block;
-  margin: 0 auto 0.6em auto;
-}
-.reveal .slides .fanout svg.mermaid-js {
-  max-height: 520px !important;
-  display: block;
-  margin: 0 auto;
-}
 /* Short table cells in a narrow column wrap onto three lines otherwise. */
 .reveal .slides .nowrap table th,
 .reveal .slides .nowrap table td {
@@ -74,15 +62,15 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 14:30.
 </style>
 ```
 
-{{< include _partials/00-where-from.qmd >}}
+{{< include _partials/00-what-we-build.qmd >}}
 
-{{< include _partials/01-why-julia.qmd >}}
+{{< include _partials/01-what-we-wanted.qmd >}}
 
-{{< include _partials/02-what-we-have.qmd >}}
+{{< include _partials/02-ad.qmd >}}
 
-{{< include _partials/03-ad.qmd >}}
+{{< include _partials/03-packages.qmd >}}
 
-{{< include _partials/04-agents.qmd >}}
+{{< include _partials/04-contributors.qmd >}}
 
 {{< include _partials/05-questions.qmd >}}
 
@@ -114,6 +102,8 @@ Sam Abbott, LSHTM ·
 :::
 :::
 ::::
+
+{{< include _partials/80-backup.qmd >}}
 
 {{< include _partials/90-summary.qmd >}}
 

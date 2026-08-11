@@ -1,0 +1,64 @@
+## The gap: timely, rigorous, and collaborative evidence
+
+:::: {.columns}
+::: {.column width="45%"}
+- Chris Whitty, then Chief Scientific Adviser and later Chief Medical
+  Officer for England, set out what modelling evidence has to be to
+  inform policy effectively
+- It has to be timely, rigorous, and collaborative
+- Most of what we build manages two of the three
+
+::: {.attribution}
+Whitty (2015),
+[doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8)
+:::
+:::
+::: {.column width="55%"}
+![](../figures/composable-whitty.png){width="100%"
+fig-alt="Whitty 2015 editorial on academic papers and health policy"}
+:::
+::::
+
+## The gap: COVID-19 showed what is possible
+
+:::: {.columns}
+::: {.column width="42%"}
+- COVID-19 models integrated cases, prevalence, severity, and hospital
+  occupancy for policy
+- Fitting all the data and processes together provided evidence that
+  supported policy decisions
+- They required expertise across multiple domains and long development
+  timelines
+
+::: {.attribution}
+Birrell et al. (2025),
+[doi:10.1093/jrsssa/qnaf030](https://doi.org/10.1093/jrsssa/qnaf030)
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-birrell.png){width="100%"
+fig-alt="Results from the England COVID-19 joint model"}
+:::
+::::
+
+## The gap: flexibility for new contexts
+
+:::: {.columns}
+::: {.column width="42%"}
+- In 2022 mpox spread internationally through sexual contact networks,
+  and the response needed modelling quickly
+- The COVID-19 models were not adapted to it. New single-source models
+  were built instead
+- A different contact structure and different behaviour needed explicit
+  representation
+
+::: {.attribution}
+Endo et al. (2022),
+[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507)
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-endo.png){width="100%"
+fig-alt="Results from the 2022 mpox sexual contact network model"}
+:::
+::::

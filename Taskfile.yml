@@ -31,3 +31,8 @@ tasks:
     cmds:
       - ./scripts/shot.py _shots 1440 index.html prompts.html
       - ./scripts/shot.py _shots 390 index.html
+
+  card:
+    desc: Regenerate the social sharing card
+    cmds:
+      - ./scripts/make-og-card.py

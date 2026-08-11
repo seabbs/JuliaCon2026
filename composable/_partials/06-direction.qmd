@@ -1,0 +1,81 @@
+## So what is the composable unit?
+
+:::: {.columns}
+::: {.column width="50%"}
+- A `Distributions.jl` distribution is already an interface the whole of
+  Julia understands, so write the epidemiology as distributions and the
+  probabilistic programming language becomes optional
+- `CensoredDistributions.jl` does not depend on Turing. Nothing in
+  `src/` mentions it
+- It does not depend on `ConvolvedDistributions.jl` either. They compose
+  through `Distributions.jl`
+
+::: {.callout-important}
+The delay half of this has a story, the time series half and the
+fitting layer do not.
+:::
+:::
+::: {.column width="50%"}
+```julia
+# a serial interval, censored and truncated
+si = double_interval_censored(
+  convolve_distributions(generation_time, incubation);
+  upper = 15, interval = 1)
+
+typeof(si)
+# IntervalCensored{Truncated{PrimaryCensored{Convolved{…}}}}
+
+cdf(si, 5.0)   # 0.094
+```
+
+::: {.attribution}
+`CensoredDistributions.jl` v0.2.22, run for this talk,
+`scripts/composable-composed-type.jl`. The type is that script's output
+with the parameter types dropped, and `cdf` needed no telling about it ·
+Neither package appears in the other's `[deps]`, checked in each
+`Project.toml` · Open issue `CensoredDistributions.jl#749` says the
+joint fit is too slow, because reverse mode autodiff through
+`cdf(Convolved(...))` costs too much per step ·
+[samabbott.co.uk/JuliaCon2026/delays][delays-talk]
+:::
+:::
+::::
+
+## Is JAX the way forward, and is Julia the place?
+
+:::: {.columns}
+::: {.column width="50%"}
+**JAX**
+
+- In the paper I wrote that NumPyro and JAX are promising, with barriers
+  for epidemiological modellers, and that I find them ugly. Taste is not
+  an argument
+- One autodiff system, and everything is written against it
+- We test six configurations and still cannot tell a user which one is
+  safe for a model built from five packages
+:::
+::: {.column width="50%"}
+**Julia**
+
+- Multiple dispatch is why a composed delay is still a distribution. I
+  do not know how to write that as cleanly anywhere else
+- The teams under Turing, under the autodiff backends, and under our own
+  packages are all small
+- The infectious disease ecosystem here is smaller again
+:::
+::::
+
+::: {.callout-important}
+I have argued myself into both answers, and I would like a reason to
+prefer one.
+:::
+
+::: {.attribution}
+The alternative approaches, including NumPyro and JAX, are in the
+paper's discussion,
+[epiaware.org/approaches](https://epiaware.org/approaches/)
+· The six autodiff configurations were the 14:30 talk in this room,
+[samabbott.co.uk/JuliaCon2026/roadmap](https://samabbott.co.uk/JuliaCon2026/roadmap/)
+:::
+
+[delays-talk]: https://samabbott.co.uk/JuliaCon2026/delays/

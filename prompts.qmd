@@ -169,11 +169,12 @@ composable org.
 ## The steers
 
 Follow-up instructions during the build, verbatim apart from spelling.
-There are eighteen so far and the build is not finished.
-That is a thinner list than the two dozen steers behind the how I LLM deck.
+There are thirty-one so far and the build is not finished.
 It is appended to as they arrive, and the running version is
 [in the repo](https://github.com/seabbs/JuliaCon2026/blob/main/notes/steers.md).
-Six are about the workflow, ten about the content, and two about the layout.
+Seven are about the workflow, twenty about the content, and four about the
+layout.
+A few about specific third party packages are left out.
 
 ### Workflow
 
@@ -204,6 +205,10 @@ That is kind of what we want I think.
 ::: {.prompt}
 Make sure workflow members are reviewing and improving the site as well as
 just the slides.
+:::
+
+::: {.prompt}
+Reminder to update the prompts page, but do not offend anyone.
 :::
 
 ::::
@@ -276,6 +281,76 @@ It is not linked from the project page or otherwise mentioned clearly but
 should be.
 :::
 
+::: {.prompt}
+Yes, everything in the 40 minute talk is canonical.
+:::
+
+::: {.prompt}
+The slides honestly kind of suck.
+In general the content is not my style.
+How I LLM is not a good reference as it was all bots; the other talks are a
+better reference.
+The new diagrams are high level and not very good, and there is lots of text
+all over the place.
+Slides have become very cluttered.
+:::
+
+::: {.prompt}
+For the delays talk we need what an epidemiological delay is, biases, double
+censoring, truncation, with a diagram as we had in the recent serial interval
+talk.
+Then the software for this.
+primarycensored, what is it.
+Then we need partial pooling, so how do we extend it, brms, okay, epidist,
+but.
+Then what about the population level, nowcasting, epinowcast.
+Then what about in Julia, CensoredDistributions.
+:::
+
+::: {.prompt}
+For the ecosystem talk it is over indexed on the R stuff.
+It should instead be that we want to build this composable thing, then what we
+wanted: something like epinowcast, something like SciML, something like the
+Turing community.
+But that approach was hard, and multiple approaches are possible so I want to
+leave space for that.
+Something like rOpenSci for epi, ideally.
+:::
+
+::: {.prompt}
+We can still have what we needed to make it work for fitting.
+Stan is what is used in epidist and epinowcast.
+:::
+
+::: {.prompt}
+"Stan is the through line" is the kind of classic LLM language that I do not
+use and edit out.
+:::
+
+::: {.prompt}
+brms is a nice way to metaprogram Stan but is limited in terms of being
+extensible.
+In epidist we try hard to extend it but it took a lot of effort.
+If Julia had something like brms, which a few people, maybe here, have been
+talking about, it would very likely be a lot more extensible and flexible.
+:::
+
+::: {.prompt}
+We might not need one for a lot of use cases.
+People can more easily reuse CensoredDistributions in any model.
+:::
+
+::: {.prompt}
+This from the delays project page is a classic LLMism I would not use in my
+own writing: "The switch to a fixed rule, and what it cost".
+:::
+
+::: {.prompt}
+The paper being in CDC clearance is the bullet.
+ComposableTuringIDModels and epiaware.org have most of what we need, and the
+latter has an approaches page we can link to with the requirements.
+:::
+
 ::::
 
 ### Layout
@@ -293,9 +368,18 @@ projects into a line with less length or similar compression to make it more
 interesting?
 :::
 
+::: {.prompt}
+It can be a little busier, let us not be so binary.
+:::
+
+::: {.prompt}
+On the pages, put related talks under the abstract to make better use of the
+space.
+:::
+
 ::::
 
-Six of the eighteen are corrections to the workflow rather than to the
+Seven of the thirty-one are corrections to the workflow rather than to the
 content.
 The brief said what the talks should say.
 It did not say how hard to look before saying it.

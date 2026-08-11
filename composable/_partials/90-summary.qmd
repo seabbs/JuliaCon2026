@@ -1,65 +1,28 @@
 <!-- poster -->
 
-## Three ways to combine models {visibility="uncounted"}
+## Composable probabilistic models {visibility="uncounted"}
 
 :::: {.columns}
-::: {.column width="33%"}
-**Chained**
+::: {.column width="45%"}
+::: {.callout-note}
+## What is composable modelling?
 
-```{mermaid}
-%%{init: {'flowchart': {'rankSpacing': 32}}}%%
-flowchart TB
-  d["Swab data"] --> m1["Model 1"]
-  m1 --> e["Prevalence"]
-  e --> m2["Model 2"]
-  m2 --> a["Rt, severity"]
-```
-
-Uncertainty is approximated at each step and assumptions are inherited
-unchecked, which biases the result.
+Components can be reused across contexts and combined in different
+configurations whilst maintaining statistical rigour.
 :::
-::: {.column width="33%"}
-**Joint**
 
-```{mermaid}
-%%{init: {'flowchart': {'rankSpacing': 32}}}%%
-flowchart TB
-  a["Cases"] --> m
-  b["Prevalence"] --> m
-  c["Bed occupancy"] --> m["One model"]
-  m --> o["All estimates"]
-```
-
-England's COVID-19 models fitted these together, and that evidence
-reached policy. Rigorous, and nobody can take it apart. Not adapted to
-mpox in 2022.
-:::
-::: {.column width="33%"}
-**Composable**
-
-```{mermaid}
-%%{init: {'flowchart': {'rankSpacing': 32}}}%%
-flowchart TB
-  lib[("Existing parts")] --> p1["Infection"]
-  lib --> p2["Latent"]
-  lib --> p3["Observation"]
-  p1 --> f["Fit together"]
-  p2 --> f
-  p3 --> f
-  f --> o["All estimates"]
-```
-
-Components carry their own priors, so domain knowledge travels with the
-component rather than with the person.
-:::
-::::
-
-::: {.callout-important}
-The trade-off is between rigour and being able to move.
-:::
+- Chaining models keeps you flexible and loses information. Uncertainty
+  is approximated at each hand-off and assumptions are inherited
+  unchecked
+- Joint models avoid that and produce something nobody can take apart.
+  England's COVID-19 models were not adapted to mpox in 2022
+- Composable components are validated on their own, then fitted
+  together, and carry their own priors, so domain expertise travels
+  with the component
 
 ::: {.attribution}
-The three diagrams are schematics, not measured results ·
+Whitty (2015),
+[doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8) ·
 Birrell et al. (2025),
 [doi:10.1093/jrsssa/qnaf030](https://doi.org/10.1093/jrsssa/qnaf030) ·
 Endo et al. (2022),
@@ -67,6 +30,21 @@ Endo et al. (2022),
 Lison et al. (2024),
 [doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
 :::
+:::
+::: {.column width="55%"}
+![](../figures/composable-structure.png){height="800px"
+fig-align="center"
+fig-alt="Four applications drawn as graphs over a band of shared parts"}
+
+::: {.attribution}
+Four illustrative applications, not implementations. The incubation
+period model appears in all four, the latent infection model in three,
+and the band beneath is what those shared components are themselves
+made of. Figure 1 of the paper,
+[epiaware.org/approaches](https://epiaware.org/approaches/)
+:::
+:::
+::::
 
 <!-- poster -->
 
@@ -83,7 +61,8 @@ Lison et al. (2024),
   joint fit, recovering cases through the delays and $R_t$ with them
 
 ::: {.callout-important}
-Nothing here required editing a component that already existed.
+Nothing here required editing a component that already existed. The
+replication took three hours.
 :::
 
 ::: {.attribution}
@@ -91,7 +70,7 @@ One of three replications in the paper, alongside a renewal model of
 South Korea and an ODE model of influenza. Replicating
 [EpiNow2](https://doi.org/10.12688/wellcomeopenres.16006.2)
 (Abbott et al., 2020). Figures from the paper,
-[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
+[epiaware.org/approaches](https://epiaware.org/approaches/)
 :::
 :::
 ::: {.column width="58%"}

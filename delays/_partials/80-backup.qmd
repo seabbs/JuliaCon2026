@@ -1,0 +1,156 @@
+# Backup {visibility="uncounted"}
+
+## What the truncation costs, in days {visibility="uncounted"}
+
+![](../figures/delays-right-truncation.png){width="72%"
+fig-align="center"
+fig-alt="Two panels. On the left, the delay distribution seen by day 7
+and by day 14 sits well to the left of the true distribution. On the
+right, the mean estimated delay rises from under 2 days towards the
+true mean of 5.9 days as the cutoff moves away from now, passing 3.9
+days at a cutoff of 7 and 5.3 days at a cutoff of 14."}
+
+- The shortfall grows the nearer the cutoff is to now
+- A mean of **3.9 days rather than 5.9** is what the forecast and the
+  transmission model are handed
+
+::: {.attribution}
+`LogNormal(1.6, 0.6)` with daily windows, computed for this talk with
+`CensoredDistributions.jl` v0.2.22,
+`scripts/delays-right-truncation.jl`
+:::
+
+## Eighteen branches, or the type you passed {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="50%"}
+```stan
+real dist_lcdf(real delay, array[] real params,
+               int dist_id) {
+  if (dist_id == 1)
+    return lognormal_lcdf(delay | params[1], params[2]);
+  else if (dist_id == 2)
+    return gamma_lcdf(delay | params[1], params[2]);
+  // ... 15 more branches ...
+  else if (dist_id == 25)
+    return von_mises_lcdf(delay | params[1], params[2]);
+  else reject("Invalid distribution identifier: ",
+              dist_id);
+}
+```
+
+- And a second table of 10, saying which of those 18 have positive
+  support
+:::
+::: {.column width="50%"}
+```julia
+primarycensored_cdf(dist::Gamma, primary_event::Uniform,
+    x::Real, ::AnalyticalSolver)
+
+primarycensored_cdf(dist::LogNormal, primary_event::Uniform,
+    x::Real, ::AnalyticalSolver)
+
+primarycensored_cdf(dist::Weibull, primary_event::Uniform,
+    x::Real, ::AnalyticalSolver)
+
+primarycensored_cdf(dist::D1, primary_event::D2,
+    x::Real, method::NumericSolver
+) where {D1 <: UnivariateDistribution,
+         D2 <: UnivariateDistribution}
+```
+
+- **Three closed forms** picked by the type you passed, and one
+  fallback for any `UnivariateDistribution`
+- In Stan `Frechet` needs a new branch, a new integer and a rebuild
+:::
+::::
+
+::: {.attribution}
+`primarycensored_ode.stan:52-77` ·
+`primarycensored_cdf.jl:184-201`, `:323`, `:373`, `:415`, v0.2.22
+:::
+
+## Everything I tried in between {visibility="uncounted"}
+
+![](../figures/delays-stan-failures.png){width="80%"
+fig-align="center"
+fig-alt="Horizontal bar chart of ten runs reported in
+epinowcast/primarycensored issue 34. The first, integrate_1d at
+tolerance 1e-6, lost 243 of 256 chains. Eight tuning attempts sit
+between 12 and 27 per cent, one of them a model with the truncation
+adjustment removed. The last, recast as ode_rk45, lost 0 of 600."}
+
+::: {.attribution}
+Every run is one Sam Abbott reported in
+[epinowcast/primarycensored#34](https://github.com/epinowcast/primarycensored/issues/34)
+between 5 and 12 September 2024, read back from the issue,
+`scripts/delays-stan-failures.py`. The runs are not one dataset. The
+scenario was made harder in the same PR that landed the ODE, so the
+last two rows on 600 chains are the pair closest to like for like.
+:::
+
+## The observation process is the type {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="55%"}
+```julia
+julia> typeof(double_interval_censored(
+           Gamma(2.0, 3.0); upper = 15, interval = 1))
+
+IntervalCensored{
+  Truncated{
+    PrimaryCensored{
+      Gamma{Float64},
+      Uniform{Float64},
+      AnalyticalSolver{GaussLegendre{…}}}}}
+```
+:::
+::: {.column width="45%"}
+- The tree is the type. Nothing dispatches on a name or an integer, so
+  there is nothing to keep in step
+- Swap `Gamma` for any `UnivariateDistribution` and the rest of the
+  tree is unchanged
+:::
+::::
+
+::: {.attribution}
+Real output, `CensoredDistributions.jl` v0.2.22. Reflowed onto several
+lines, and the type parameters of the solver and of `Truncated` are
+elided at `…`
+:::
+
+## The numerical problem moved, it did not go away {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="44%"}
+| Autodiff backend | Broken |
+|---|---:|
+| ForwardDiff | 0 |
+| ReverseDiff, tape | 0 |
+| Mooncake forward | 3 |
+| Mooncake reverse | 3 |
+| Enzyme forward | 4 |
+| Enzyme reverse | 8 |
+
+::: {.attribution}
+Scenarios registered broken out of 63, in
+`test/ADFixtures/src/ADFixtures.jl`
+:::
+:::
+::: {.column width="56%"}
+- **Six autodiff backends**, each with its own CI workflow. Two of them
+  pass every scenario, four carry scenarios registered broken
+- The default solver is **`GaussLegendre(; n = 64)`** because fixed
+  nodes trace through all six backends and adaptive ones do not
+- Stan gave up adaptive quadrature for an ODE. Julia gave it up for a
+  dot product
+:::
+::::
+
+::: {.attribution}
+Six per-backend workflows in `.github/workflows/`, over a shared
+`ad-backend.yaml` · why an ecosystem needs that CI was the 14:30 talk
+in this room, [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
+:::
+
+[roadmap-talk]: https://samabbott.co.uk/JuliaCon2026/roadmap/

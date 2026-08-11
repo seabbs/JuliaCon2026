@@ -60,6 +60,39 @@ it belongs near the end.
 `ComposableTuringIDModels.jl` is the prototype the talk demonstrates and must
 be named clearly, on a slide and in the talk page button row.
 
+## Do not link the Zenodo archive
+
+The author:
+
+> Don't like to link this: https://zenodo.org/records/18274166. Remove from
+> project page and slides.
+>
+> paper in CDC clearance is the bullet
+>
+> composabeturing and epiaware.org have what we mostly need, the latter has an
+> approaches page we can link to with i.e. requirements
+
+`https://doi.org/10.5281/zenodo.17884675` resolves to that record. Every
+reference to it comes out of the talk page and the deck, and nothing should
+put it back.
+
+What replaces it:
+
+- **The paper's status is a bullet, not a link.** It is in CDC clearance. Say
+  that plainly and do not link anything.
+- **[ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)**
+  for the prototype itself.
+- **[epiaware.org/approaches](https://epiaware.org/approaches/)** for the
+  argument. That page carries "Why we need this", "What we want from any
+  approach" as twelve design considerations, and the two current approaches,
+  [composed distributions](https://epiaware.org/approaches/composed-distributions.html)
+  and
+  [composable Turing models](https://epiaware.org/approaches/composable-turing-models.html).
+
+The design considerations section of the deck should point at the approaches
+page rather than the paper. It is public, it is maintained, and it is the
+same content.
+
 ## Constraints
 
 - 15 minute slot, and the counted slide budget has oscillated badly across

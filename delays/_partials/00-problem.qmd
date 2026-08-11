@@ -1,69 +1,148 @@
-# Delays are not observed exactly
+# Delays are not observed directly
 
-## Two events, two windows
+## A delay is the time between two events
 
 :::: {.columns}
-::: {.column width="54%"}
-![](../figures/delays-double-censoring.png){fig-alt="A timeline. A blue
-box marks the primary event window of width w_P, a red box marks the
-secondary event window of width w_S, an arrow between them is the
-delay T, and a dashed line further right marks the observation cutoff
-C, beyond which longer delays have not been seen."}
+::: {.column width="40%"}
+- Infection to symptom onset, onset to hospitalisation, onset to death
+- Nowcasts, forecasts and transmission models take a delay
+  distribution as given
+- Neither event is seen at a point. Both arrive as a day, sometimes a
+  week
+- In real time the longer delays have not happened yet
 
 ::: {.attribution}
-Diagram drawn for this talk, `scripts/delays-double-censoring.py`
+Diagram from [How to serial interval?][hsi], Lorentz Center, June 2026
 :::
-
-$$
-F_{\mathrm{pc}}(t) \;=\; \int_{0}^{w_P} F_{d}(t - u)\, f_{p}(u)\,
-\mathrm{d}u
-$$
-
-$F_d$ is the delay CDF and $f_p$ the density of when, inside a primary
-window of width $w_P$, the primary event happened.
 :::
-::: {.column width="46%"}
-- A delay is the time between two events. Infection to symptom onset,
-  onset to hospitalisation, onset to death
-- Neither event is seen at a point in time. Both arrive as a day,
-  sometimes a week
-- Ignore any of that and the estimate is **biased**
+::: {.column width="60%"}
+![](../figures/fig-double-censoring.png){width="100%"
+fig-alt="A timeline. A blue box marks the primary event window of
+width w_P, a red box marks the secondary event window of width w_S, an
+arrow between them is the delay T = S - P, and a dashed line further
+right marks the observation cutoff C, beyond which longer delays have
+not yet been seen."}
 :::
 ::::
 
-## The pairs that have not finished yet are missing
+[hsi]: https://samabbott.co.uk/how-to-serial-interval
 
-![](../figures/delays-right-truncation.png){width="72%"
+## Which adjustment a dataset needs
+
+:::: {.columns}
+::: {.column width="40%"}
+- Interval censoring of both events applies to almost any line list
+- Right truncation is the correction when the observation cutoff sits
+  near the primary events
+- How cases were ascertained matters. On the primary event the delay
+  is right censored instead
+
+::: {.attribution}
+Fig 3 of
+[Charniga et al. (2024)](https://doi.org/10.1371/journal.pcbi.1012520),
+PLOS Comput Biol, CC-BY 4.0
+:::
+:::
+::: {.column width="60%"}
+![](../figures/fig-charniga-flowchart.png){height="800px"
 fig-align="center"
-fig-alt="Two panels. On the left, the delay distribution seen by day 7
-and by day 14 sits well to the left of the true distribution. On the
-right, the mean estimated delay rises from under 2 days towards the
-true mean of 5.9 days as the cutoff moves away from now, passing 3.9
-days at a cutoff of 7 and 5.3 days at a cutoff of 14."}
-
-:::: {.columns}
-::: {.column width="50%"}
-- In real time you only see the pairs whose secondary event has already
-  happened, and the shortfall grows the nearer the cutoff is to now
-- **This is not censoring.** Censoring is not knowing *when* an event
-  happened inside a window. Truncation is not seeing the pair *at all*
-:::
-::: {.column width="50%"}
-```julia
-d = primary_censored(LogNormal(μ, σ), Uniform(0, 1))
-seen = interval_censored(truncated(d; upper = C), 1)
-```
-
-- Divide by the CDF at the cutoff. `truncated` is
-  `Distributions.truncated`, which does not know what it is wrapping
-- The delay estimate is an input elsewhere, so a mean of **3.9 days
-  rather than 5.9** is what the forecast and the transmission model are
-  handed
+fig-alt="A decision tree. Questions about time variation, whether the
+analysis is retrospective or real time, whether the cutoff was near
+the primary events, and which event cases were ascertained through,
+lead to actions: adjust for interval censoring and right censoring,
+adjust for interval censoring and right truncation, or interval
+censoring alone."}
 :::
 ::::
 
-::: {.attribution}
-`LogNormal(1.6, 0.6)` with daily windows, computed for this talk with
-`CensoredDistributions.jl` v0.2.22,
-`scripts/delays-right-truncation.jl`
+## 1. The primary event sits in a window
+
+:::: {.columns}
+::: {.column width="40%"}
+- The primary event falls somewhere in a window $[0, w_P]$
+- It need not be uniform, but a uniform primary is fair when the
+  window is short
+- Mix the delay over where in the window the event sat, a convolution
+  on the CDF
 :::
+::: {.column width="60%"}
+![](../figures/fig-primary-censoring.png){width="100%"
+fig-alt="A timeline. The primary event sits at an unknown point tau
+inside a blue window of width w_P, the secondary event is a single red
+line, and the delay is f(t - tau) averaged over tau."}
+
+$$
+F_{\mathrm{PEC}}(t) = \int_{0}^{w_P} g(\tau)\, F(t - \tau)\, d\tau
+$$
+
+::: {.attribution}
+Diagram from [How to serial interval?][hsi] · maths after
+[primarycensored](https://primarycensored.epinowcast.org/)
+:::
+:::
+::::
+
+::: {.callout-note}
+Gamma, lognormal and Weibull against a uniform primary have closed
+forms.
+:::
+
+## 2. So does the secondary event
+
+:::: {.columns}
+::: {.column width="40%"}
+- The secondary event is recorded to the day as well
+- The probability of a daily bin is a difference of the
+  primary-censored CDF
+- It doubles as the probability mass function for daily discrete-time
+  models
+:::
+::: {.column width="60%"}
+![](../figures/fig-secondary-censoring.png){width="100%"
+fig-alt="The primary-censored delay density, with the daily bin from n
+to n + w_S shaded red and labelled as the difference of the CDF at its
+two edges."}
+
+$$
+\Pr\!\big(T \in [n, n + w_S]\big)
+  = F_{\mathrm{PEC}}(n + w_S) - F_{\mathrm{PEC}}(n)
+$$
+
+::: {.attribution}
+Diagram from [How to serial interval?][hsi]
+:::
+:::
+::::
+
+::: {.callout-note}
+In the past this was often written as a double integral, which is
+typically more complicated to evaluate.
+:::
+
+## 3. In real time you only see the pairs that finished
+
+:::: {.columns}
+::: {.column width="40%"}
+- A pair enters the data only if the secondary event happened before
+  the cutoff $C$
+- Condition on being observed, so divide by the CDF at the horizon
+- Short delays are over-represented early in an epidemic
+:::
+::: {.column width="60%"}
+![](../figures/fig-truncation.png){width="100%"
+fig-alt="Five delays from one primary event. The three that end before
+the cutoff C are drawn in red and observed, the two that end after it
+are dashed and never seen, and the likelihood is divided by the CDF at
+C minus P."}
+
+$$
+L^{\mathrm{RT}}
+  = \frac{F_{\mathrm{PEC}}(n + w_S) - F_{\mathrm{PEC}}(n)}
+         {F_{\mathrm{PEC}}(C - P)}
+$$
+
+::: {.attribution}
+Diagram from [How to serial interval?][hsi]
+:::
+:::
+::::

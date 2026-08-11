@@ -1,0 +1,41 @@
+## Where this goes
+
+:::: {.columns}
+::: {.column width="44%"}
+- `ConvolvedDistributions.jl` adds sums and differences of delays
+- The generation time is the same shape of problem, a convolution and
+  a difference
+- A composed Julia `epidist`, with Turing submodels doing what the
+  `brms` formula does now
+:::
+::: {.column width="54%"}
+```julia
+using CensoredDistributions
+using ConvolvedDistributions, Distributions
+
+incubation = Gamma(2.0, 1.0)
+reporting = LogNormal(1.0, 0.5)
+
+d = convolved(incubation, reporting)
+observed = double_interval_censored(
+    d; upper = 15, interval = 1
+)
+
+cdf(observed, 5.0)   # 0.4561
+```
+
+::: {.attribution}
+Plain `Distributions.jl` dispatch, composed for this talk rather than
+lifted from a README. Run against `CensoredDistributions.jl` v0.2.22
+and
+[ConvolvedDistributions.jl](https://github.com/EpiAware/ConvolvedDistributions.jl).
+Neither package appears in the other's `[deps]`, and both list
+`Distributions`
+:::
+:::
+::::
+
+::: {.callout-important}
+The `epidist` layer on top is not written yet. Open issue
+`CensoredDistributions.jl#749` says the joint fit is too slow.
+:::

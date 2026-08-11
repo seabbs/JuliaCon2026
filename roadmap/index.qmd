@@ -64,6 +64,18 @@ packages, and how to help users understand which automatic differentiation
 backends are compatible when they combine multiple packages.
 :::
 
+
+## Related talks
+
+The other two are in the same room on the same day.
+
+- [Estimating epidemiological delay distributions](../delays/index.qmd).
+  CensoredDistributions.jl, the most mature package in the ecosystem.
+  14:45–15:00, straight after this one.
+- [Composable probabilistic models](../composable/index.qmd).
+  The proof of concept this roadmap is trying to build an ecosystem around.
+  16:45–17:00.
+
 :::
 
 ::: {.talk-side}
@@ -130,17 +142,6 @@ backends are compatible when they combine multiple packages.
 - [DifferentiationInterface.jl][di].
   The automatic differentiation abstraction layer every package's AD test
   suite runs through, alongside DifferentiationInterfaceTest.jl.
-
-### Related talks
-
-The other two are in the same room on the same day.
-
-- [Estimating epidemiological delay distributions](../delays/index.qmd).
-  CensoredDistributions.jl, the most mature package in the ecosystem.
-  14:45–15:00, straight after this one.
-- [Composable probabilistic models](../composable/index.qmd).
-  The proof of concept this roadmap is trying to build an ecosystem around.
-  16:45–17:00.
 
 :::
 ::::

@@ -1,0 +1,70 @@
+# Software for the three adjustments
+
+## I have a line list and I want a delay out of it
+
+:::: {.columns}
+::: {.column width="42%"}
+- `primarycensored` wraps any delay family in the three adjustments
+- It picks the closed form where the pair has one and integrates
+  numerically otherwise
+- It ships the same likelihood twice, in R and as Stan functions
+:::
+::: {.column width="58%"}
+```r
+delay_data <- data.frame(
+  left = samples, right = samples + swindow,
+  pwindow = rep(pwindow, n), D = rep(D, n)
+)
+
+fit_norm <- fitdistdoublecens(
+  delay_data, distr = "norm",
+  start = list(mean = 0, sd = 1)
+)
+```
+
+::: {.attribution}
+`R/fitdistdoublecens.R:93-103`, the roxygen example, reflowed ·
+[primarycensored](https://primarycensored.epinowcast.org/)
+:::
+:::
+::::
+
+::: {.callout-note}
+Stan has no import statement, so the 1,081 line function bundle is
+spliced into the downstream model as text.
+:::
+
+## What shipping it twice cost
+
+:::: {.columns}
+::: {.column width="50%"}
+```stan
+// before
+result = integrate_1d(
+  primary_censored_integrand, lower_bound, d,
+  theta, {d, pwindow}, ids, 1e-2
+);
+
+// after
+result = ode_rk45(
+  primary_censored_ode, y0, lower_bound, {d},
+  theta, {d, pwindow}, ids
+)[1, 1];
+```
+
+- Stan's quadrature errored inside sampling rather than rejecting, and
+  **243 of 256** chains died. Recast as an ODE, **0 of 600**
+:::
+::: {.column width="50%"}
+- Stan has no user types, so a distribution became an integer.
+  `dist_id = 3` meant Normal in Stan and Weibull in R
+- Ask for a Weibull on the numerical path and you fitted a normal. No
+  error, no warning, numbers came back
+:::
+::::
+
+::: {.attribution}
+[epinowcast/primarycensored#34](https://github.com/epinowcast/primarycensored/issues/34)
+and PR #64, commit `1c4e6f1`, September 2024 · PR #277, commit
+`4aaf249`, February 2026
+:::

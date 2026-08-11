@@ -1,0 +1,66 @@
+## The backend is the part I am least sure about
+
+:::: {.columns}
+::: {.column width="48%"}
+- Turing.jl gave us submodels, a choice of samplers, and the rest of
+  Julia. The proof of concept exists because of it
+- Eleven breaking releases in nineteen months, v0.35.5 to v0.46.0. Our
+  migration was one rename. The cost is the tracking
+- Large simulated counts error, and vectors mixing missing and observed
+  values have to be handled by hand
+- Automatic differentiation is the part that decided it. A silently
+  wrong gradient in a model somebody acts on during an outbreak is not
+  a footnote
+:::
+::: {.column width="4%"}
+:::
+::: {.column width="48%"}
+::: {.callout-important}
+## From the Turing.jl documentation
+"not all AD libraries in there are thoroughly tested on Turing models.
+Thus, it is possible that some of them will either error ... or maybe
+even silently give incorrect results"
+:::
+
+::: {.attribution}
+Release dates from the GitHub API, 2026-08-10 · v0.35.5 is the release
+the paper's artefact pins ·
+[turinglang.org/docs/usage/automatic-differentiation][turing-ad] ·
+The two practical limits are in the paper's discussion · We run six
+autodiff configurations in CI instead, which was the 14:30 talk in this
+room, [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
+:::
+:::
+::::
+
+## The teams under this are small
+
+:::: {.columns}
+::: {.column width="55%"}
+- A lot of the stack rests on very few people. The work itself is good
+- `TuringLang/ADTests`, the one public per-backend support table for a
+  probabilistic programming stack, was archived in June
+- `EpiAwareADTools.jl` is where we keep our autodiff workarounds. Each
+  one is deleted the day upstream ships a fix
+- Our own packages are the same shape, one or two people each
+:::
+::: {.column width="45%"}
+| Commits, last six months | Turing.jl | DynamicPPL.jl |
+|---|---:|---:|
+| Human authors | 29 | 72 |
+| One person | **17** | **47** |
+
+: {tbl-colwidths="[46,27,27]"}
+
+::: {.attribution}
+Commit counts from the GitHub API, 2026-08-10, `main`, human authors
+only, so 17 of 29 and 47 of 72 are per repository ·
+`DynamicPPL.jl` is where most of the composition machinery lives ·
+[TuringLang/ADTests][adtests], archived 2026-06-15
+:::
+:::
+::::
+
+[turing-ad]: https://turinglang.org/docs/usage/automatic-differentiation/
+[roadmap-talk]: https://samabbott.co.uk/JuliaCon2026/roadmap/
+[adtests]: https://github.com/TuringLang/ADTests
