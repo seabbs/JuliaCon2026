@@ -90,3 +90,11 @@ and the 40 minute deck is a primary source for the composable talk.)
 > extensible. In epidist we try hard to extend it but it took a lot of effort.
 > If Julia had something like brms (which a few people, maybe here, have been
 > talking about) it would very likely be a lot more extensible and flexible.
+
+> we might not need one for a lot of use cases, people can more easily reuse
+> i.e. censoreddistributions in any model
+
+> TuringGLM is not the solution, very narrow, not extensible and dead
+
+> we just don't need to note those. I meant a few people in the room might be
+> working on something like this

@@ -100,29 +100,47 @@ backend, not just the language, and the deck should say so directly.
    - A Julia equivalent would very likely be more extensible, because the
      metaprogramming is not fighting a separate language with no user types.
      This connects back to the Stan constraints from rung 5.
+   - **But for many use cases you would not need one.** His follow-up:
 
-   **This is the moment to ask the room.** Some of the people who would build
-   that are at this conference. Put the invitation on the slide rather than
-   leaving it as a remark.
+     > we might not need one for a lot of use cases, people can more easily
+     > reuse i.e. censoreddistributions in any model
 
-   What actually exists in Julia today, verified 11 August 2026, to be named
-   accurately and not oversold:
-   - `TuringGLM.jl` (TuringLang), Bayesian GLMs with `@formula` syntax, 80
-     stars, last pushed 2 August 2026. The nearest thing to `brms`, and much
-     narrower in scope.
-   - `MixedModels.jl` (JuliaStats), 448 stars, actively maintained. Frequentist
-     mixed effects, not Bayesian, but it is where the formula and
-     random-effects machinery lives.
-   - `StatsModels.jl`, the shared `@formula` layer underneath.
+     This is the point the rung should end on, and it is the more interesting
+     claim. `brms` exists partly because in R you cannot easily drop the
+     delay machinery into a model you wrote yourself, so you need something to
+     generate the model for you. In Julia the censored distribution is an
+     ordinary `Distributions.jl` object, so it goes into any Turing model
+     somebody writes, without a formula interface, without code generation,
+     and without asking permission from a package author.
 
-   I checked the JuliaCon 2026 schedule and there is **no** talk on a `brms`
-   equivalent. The two adjacent talks, if he wants to point at people in the
-   building, are Phillip Alday's "Gradients aren't always great, a case study
-   with MixedModels" (Wednesday 12 August, 11:15, Muschel N2) and
-   "StructuralEquationModels.jl: An Efficient and Extensible Framework"
-   (Thursday 13 August, 12:00, Muschel N2). Both are before his talk, so he
-   can refer back to them. Confirm with him before naming anyone from the
-   stage.
+     So the honest position is not "Julia needs a brms". It is that a Julia
+     brms would be more extensible if someone built it, and that a good deal
+     of what brms is *for* stops being necessary once components compose.
+     Say both.
+
+   **The invitation to the room, framed accordingly.** A few people here may
+   well be working on something like this. Say that, and ask the real
+   question rather than making a request: where is a formula interface
+   actually needed, once the components compose on their own? No call to
+   action, and no names.
+
+   This beat is also where the delays talk touches the composability argument
+   from the 16:45 talk. One clause pointing at it is enough.
+
+   **Do not name any candidate Julia package on this slide.** The author was
+   asked whether he meant specific projects and said:
+
+   > we just don't need to note those. I meant a few people in the room might
+   > be working on something like this
+
+   So the gesture is to the room, warmly and vaguely. No package list, no
+   named individuals, no pointers to other talks in the programme.
+
+   For the record, so nobody helpfully adds it back: `TuringGLM.jl` is not the
+   answer. The author's view is that it is very narrow, not extensible, and
+   dead, and the repository supports that. Its last release was v2.14.2 on 31
+   August 2025, nearly a year before this talk, and commits since are
+   dependency bumps, CI configuration and dependabot. It is not a `brms`.
 7. **But what about the population level.** Individual line list data is not
    always what you have, and nowcasting is a different problem. That leads to
    **`epinowcast`**. Again, say what it does and where it stops.
