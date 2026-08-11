@@ -18,9 +18,9 @@ implementations, what Stan cost us, the honest scorecard, where this goes.
 That is a talk about porting a package. The author wants a talk about a
 problem and the software that grew up around it, ending in Julia.
 
-Much of the current material survives, but it moves and it shrinks. The Stan
-pain is no longer the spine of the talk. It is one honest aside inside the
-`primarycensored` section.
+Much of the current material survives, but it moves. The Stan work is no
+longer what the talk is mainly about. It sits inside the `primarycensored`
+section, where it explains what the packages after it are built on.
 
 ## The structure
 
@@ -51,12 +51,10 @@ are short and they are the actual content.
 Each rung is a need, and the package that answers it. The rhetorical shape is
 "that works, but now I want X", which is how the ecosystem actually grew.
 
-**Stan is the through-line.** `primarycensored` ships Stan functions,
-`epidist` fits through `brms` to Stan, and `epinowcast` is Stan. So rungs 5 to
-7 are all one backend, and the constraints of that backend accumulate down the
-ladder. The Julia rung is therefore not a change of language, it is a change
-of backend, and that is what makes it worth the audience's attention. Make
-that visible rather than leaving it implied.
+Rungs 5 to 7 all fit with Stan. `primarycensored` ships Stan functions,
+`epidist` fits through `brms` to Stan, and `epinowcast` is Stan. Each package
+inherits the constraints of the one backend. So moving to Julia changes the
+backend, not just the language, and the deck should say so directly.
 
 5. **`primarycensored`.** What it is. The adjustment, the analytic solutions
    where they exist, numerical fallback otherwise.

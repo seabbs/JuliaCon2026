@@ -787,6 +787,56 @@ Let the audience draw the benefit.
 
 ---
 
+## 16. The structural metaphor
+
+**Definition.** Labelling a thing with a borrowed noun that dresses up a plain
+relationship. "X is the through-line", "the spine of the talk", "the backbone
+of the ecosystem", "the thread running through", "at the heart of", "the glue
+between", "the north star". The metaphor adds no information and announces
+significance instead of showing it.
+
+Caught live, in this project. The author, on a spec sentence written for these
+very decks:
+
+> stan is the through line is the kind of classic LLM language that i don't
+> use and edit out
+
+**Grep.**
+
+```
+rg -ni --glob '*.qmd' \
+  'through.?line|the spine|backbone|the thread|at the heart|north star|the glue|the linchpin|the engine (of|behind)|the connective'
+```
+
+**Example A.** Written in `notes/spec-delays.md`, flagged by the author,
+removed:
+
+> **Stan is the through-line.** `primarycensored` ships Stan functions,
+> `epidist` fits through `brms` to Stan, and `epinowcast` is Stan. So rungs 5
+> to 7 are all one backend.
+
+Rewrite chosen:
+
+> Rungs 5 to 7 all fit with Stan. `primarycensored` ships Stan functions,
+> `epidist` fits through `brms` to Stan, and `epinowcast` is Stan. Each
+> package inherits the constraints of the one backend.
+
+The facts are identical. The metaphor and the announcement of importance are
+gone, and the sentence now states the relationship directly.
+
+**Example B.** Same file, same pass:
+
+> The Stan pain is no longer the spine of the talk.
+
+Rewrite chosen:
+
+> The Stan work is no longer what the talk is mainly about.
+
+**How to fix.** Say the relationship plainly. "A runs through B" becomes "B
+uses A". "At the heart of" becomes "central to", or more often just delete the
+phrase and let the sentence assert the thing. If the metaphor is load bearing,
+the sentence was not doing its job.
+
 ## What he does not cut
 
 Do not over-correct.

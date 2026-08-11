@@ -82,3 +82,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > we can still have what we needed to make it work for fitting. Stan is what
 > is used in i.e. epidist and i.e. epinowcast
+
+> "stan is the through line" is the kind of classic LLM language that I don't
+> use and edit out
