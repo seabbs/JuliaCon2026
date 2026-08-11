@@ -7,7 +7,9 @@ The author's verdict on the decks as they stood:
 > high level not very good, lots of text all over the place. Slides have become
 > very cluttered.
 
-Read this before touching any slide. It overrides earlier guidance.
+Read this before touching any slide. It overrides earlier guidance, and the
+"Density" section at the end overrides any numeric limit you have been given
+anywhere else in your instructions.
 
 ## The reference decks changed
 
@@ -59,7 +61,42 @@ table plus bullets plus a callout plus an attribution, are the problem.
 4. **Voice.** Match the serial interval deck. Plain, specific, unhurried. No
    slogans, no summarising the point, no telling the audience what to think.
 
-## The test
+## Density: a judgement, not a rule
 
-Put a slide from our deck next to a slide from `02-censoring.qmd`. If ours
-looks busier, it is wrong.
+This section takes precedence over any numeric limit you have been given
+elsewhere in this task, including counts of elements, bullets or words. The
+author's correction:
+
+> it can be a little busier, let's not be so binary
+
+So `02-censoring.qmd` is the register to aim for, not a ceiling. Some slides
+carry more and should. A comparison table, a code slide, the autodiff backend
+table in the delays deck, a figure with the equation beside it. Density is
+fine when the density is the content.
+
+The fault being fixed is clutter without purpose. Ask of each element on a
+slide: is it doing work nothing else on this slide is already doing? Cut what
+fails that.
+
+Concretely, still wrong:
+- Bullets that narrate the figure sitting next to them.
+- A bullet that runs to three or four lines. That is a paragraph, and it
+  should be two short bullets or one shorter one.
+- Sub-bullets, nearly always.
+- A callout carrying an argument rather than a single line.
+- A diagram whose boxes are the bullet list redrawn.
+- Two slides making the same point.
+
+Fine, and do not strip these out:
+- A dense table where the comparison is the argument.
+- Code, when the code is the point.
+- A figure plus the one equation it illustrates plus three bullets, which is
+  what `02-censoring.qmd` itself does.
+- A slide that is fuller than its neighbours because it is carrying the
+  section's main idea.
+
+If you are unsure whether a slide is too busy, leave it and say so in your
+return value. Over-cutting is now the bigger risk. Earlier rounds already cut
+one deck from 21 slides to 13 and then back to 20, and the author has said
+these decks read as thin and cluttered at once, which is what happens when
+words are trimmed everywhere instead of ideas being removed somewhere.

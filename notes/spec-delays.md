@@ -51,11 +51,36 @@ are short and they are the actual content.
 Each rung is a need, and the package that answers it. The rhetorical shape is
 "that works, but now I want X", which is how the ecosystem actually grew.
 
+**Stan is the through-line.** `primarycensored` ships Stan functions,
+`epidist` fits through `brms` to Stan, and `epinowcast` is Stan. So rungs 5 to
+7 are all one backend, and the constraints of that backend accumulate down the
+ladder. The Julia rung is therefore not a change of language, it is a change
+of backend, and that is what makes it worth the audience's attention. Make
+that visible rather than leaving it implied.
+
 5. **`primarycensored`.** What it is. The adjustment, the analytic solutions
-   where they exist, numerical fallback otherwise. This is where the Stan
-   material lives now, compressed hard: the ODE recast and the integer
-   distribution identifiers, as an honest note on what shipping the same
-   thing in two languages costs. Not three slides. One, maybe two.
+   where they exist, numerical fallback otherwise.
+
+   **Then what it took to make it work for fitting.** The author's
+   correction:
+
+   > we can still have what we needed to make it work for fitting. Stan is
+   > what is used in i.e. epidist and i.e. epinowcast
+
+   So the Stan work is not an aside about porting. Stan is the backend of the
+   next two rungs, so the work to make these adjustments usable inside a Stan
+   model is what makes `epidist` and `epinowcast` possible at all. That is
+   why it belongs here, before them, rather than being cut.
+
+   Keep it concrete: reimplementing distribution functions Stan does not
+   have, the integral solver that would not hold and the recast as an ODE,
+   the tooling to vendor the Stan code into downstream packages, and integer
+   distribution identifiers standing in for types. Two slides, and it is
+   earning them, because each one is a constraint the downstream packages
+   inherit.
+
+   The evidence is in `notes/delays-stan-pain.md`, with commit and PR
+   references, and it was verified in an earlier round.
 6. **But I want partial pooling.** Delays vary by setting, by age, by wave.
    How do you extend the model? `brms` gets you the regression machinery.
    That leads to **`epidist`**, which is that idea done properly. Then the

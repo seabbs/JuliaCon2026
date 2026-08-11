@@ -77,3 +77,8 @@ and the 40 minute deck is a primary source for the composable talk.)
 > style reference as it was all bots; other talks are a better reference. New
 > diagrams are high level and not very good. Lots of text all over the place.
 > Slides have become very cluttered.]
+
+> it can be a little busier lets not be so binary
+
+> we can still have what we needed to make it work for fitting. Stan is what
+> is used in i.e. epidist and i.e. epinowcast
