@@ -7,8 +7,19 @@
   a difference
 - A composed Julia `epidist`, with Turing submodels doing what the
   `brms` formula does now
+
+::: {.callout-important}
+The `epidist` layer on top is not written yet. Open issue
+`CensoredDistributions.jl#749` says the joint fit is too slow.
+:::
 :::
 ::: {.column width="54%"}
+![](../figures/fig-si-compose.png){width="100%"
+fig-alt="A graph of a composed delay. A latent period and a
+transmission delay combine into a generation time, the generation time
+and a difference of incubation periods combine into a serial interval,
+and double interval censoring turns that into the observed delay."}
+
 ```julia
 using CensoredDistributions
 using ConvolvedDistributions, Distributions
@@ -25,6 +36,9 @@ cdf(observed, 5.0)   # 0.4561
 ```
 
 ::: {.attribution}
+Diagram from
+[How to serial interval?](https://samabbott.co.uk/how-to-serial-interval),
+labelled there for a serial interval ·
 Plain `Distributions.jl` dispatch, composed for this talk rather than
 lifted from a README. Run against `CensoredDistributions.jl` v0.2.22
 and
@@ -34,8 +48,3 @@ Neither package appears in the other's `[deps]`, and both list
 :::
 :::
 ::::
-
-::: {.callout-important}
-The `epidist` layer on top is not written yet. Open issue
-`CensoredDistributions.jl#749` says the joint fit is too slow.
-:::
