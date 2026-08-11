@@ -59,3 +59,9 @@ as the steering section.
 > point" are both common patterns. Make sure slides are visually interesting.
 > The primarycensored talk needs a second slide on right truncation after
 > double interval censoring.
+
+> Also the composability paper has weird EpiNow2 justification vibes in the
+> slides we have here that weren't in the original. Also we now have
+> ComposableTuringIDModels which is the prototype we talk about in those
+> slides. It isn't linked from the project page or otherwise mentioned clearly
+> but should be.
