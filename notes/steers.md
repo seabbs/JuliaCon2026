@@ -70,3 +70,10 @@ as the steering section.
 
 (In answer to whether "took 3 hours to replicate" was a real number. It is,
 and the 40 minute deck is a primary source for the composable talk.)
+
+> the slides honestly kind of suck. [Full restructuring brief for all three
+> decks recorded in notes/spec-delays.md, notes/spec-roadmap.md,
+> notes/spec-composable.md and notes/style.md. Key points: how-I-llm is not a
+> style reference as it was all bots; other talks are a better reference. New
+> diagrams are high level and not very good. Lots of text all over the place.
+> Slides have become very cluttered.]
