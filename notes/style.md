@@ -61,7 +61,27 @@ table plus bullets plus a callout plus an attribution, are the problem.
 4. **Voice.** Match the serial interval deck. Plain, specific, unhurried. No
    slogans, no summarising the point, no telling the audience what to think.
 
-## Density: a judgement, not a rule
+## Talk pages carry the abstract, and nothing arguing with it
+
+The author, on a note that had been added under the delays abstract:
+
+> This: "One correction since submission. Multiple dispatch removes the
+> integer distribution tables and ecosystem composability removes the
+> vendoring tool, but neither removes the numerical problem underneath..."
+> should not be on the project page or similar
+
+Two such notes existed, one on the delays page and one on the composable page
+("One change of view since submission..."). Both are gone. Do not write
+another.
+
+The rule. A talk page carries the submitted abstract, the links, and the
+resources. It does not carry errata, corrections, changes of view, or an
+argument with what was submitted. If the position has moved, that belongs in
+the talk, where he can say it himself and be asked about it. A written
+correction on a web page reads as apologising to a reader who has not
+complained.
+
+This applies to all three pages and to anything that behaves like one.
 
 This section takes precedence over any numeric limit you have been given
 elsewhere in this task, including counts of elements, bullets or words. The

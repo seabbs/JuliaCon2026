@@ -7,6 +7,8 @@
 - `epinowcast` writes the delay as discrete-time reporting hazards, so
   effects and random walks can modify it by delay and by date
 - It estimates the reporting process and the epidemic curve together
+- It is Stan, as are `primarycensored` and `epidist`. One backend the
+  whole way up
 
 ::: {.attribution}
 [epinowcast](https://package.epinowcast.org/)
@@ -23,6 +25,6 @@ $$
 ::::
 
 ::: {.callout-note}
-The default lognormal reporting delay fails on multimodal delays, and
-the package README says so.
+The README says the default lognormal reporting delay can fail on
+multimodal delays.
 :::

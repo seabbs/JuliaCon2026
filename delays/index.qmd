@@ -14,7 +14,7 @@ Muschel — N3 · Sam Abbott
 
 [Slides](slides.qmd){.btn .btn-primary}
 [CensoredDistributions.jl][cd-repo]{.btn .btn-outline-primary}
-[Documentation][cd-docs]{.btn .btn-outline-primary}
+[primarycensored][pc]{.btn .btn-outline-primary}
 [Session on pretalx][pretalx]{.btn .btn-outline-primary}
 
 :::: {.talk-body}
@@ -66,17 +66,6 @@ R package, using CensoredDistributions.jl as a foundation with Turing.jl
 submodels for partially pooled and flexible delay estimation.
 :::
 
-One correction since submission.
-Multiple dispatch removes the integer distribution tables and ecosystem
-composability removes the vendoring tool, but neither removes the numerical
-problem underneath.
-CensoredDistributions.jl dropped adaptive quadrature from the default path
-too, for the same reason Stan did.
-Stan swapped the integral for an ODE solver.
-Julia's default is now a fixed 64-node rule, with the adaptive solver still
-there for callers who ask for it.
-
-
 ## Related talks
 
 The other two JuliaCon talks are in the same room on the same day.
@@ -126,7 +115,6 @@ The other two JuliaCon talks are in the same room on the same day.
 ::::
 
 [cd-repo]: https://github.com/EpiAware/CensoredDistributions.jl
-[cd-docs]: https://censoreddistributions.epiaware.org/stable/
 [pretalx]: https://pretalx.com/juliacon-2026/talk/ZUMSFD/
 [pc]: https://primarycensored.epinowcast.org/
 [epidist]: https://epidist.epinowcast.org/

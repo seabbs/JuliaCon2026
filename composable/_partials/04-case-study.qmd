@@ -1,59 +1,36 @@
-## Real-time nowcasting (`EpiNow2`): the model
-
-:::: {.columns}
-::: {.column width="42%"}
-- Reuses the ARIMA(2,1,1) and the negative binomial from the worked
-  example
-- `broadcast_weekly` wraps the ARIMA to give piecewise constant weekly
-  $R_t$
-- `ascertainment_dayofweek` adds day-of-week reporting effects through a
-  softmax
-- Two `LatentDelay` wrappers add the incubation period and the reporting
-  delay
-
-::: {.attribution}
-Replicating a common configuration of `EpiNow2`, real-time estimation
-accounting for reporting delays, right truncation and day-of-week
-effects. Abbott et al. (2020),
-[doi:10.12688/wellcomeopenres.16006.2](https://doi.org/10.12688/wellcomeopenres.16006.2)
-:::
-:::
-::: {.column width="58%"}
-![](../figures/composable-epinow2-model.png){width="100%"
-fig-align="center"
-fig-alt="The EpiNow2 configuration drawn as a graph of components"}
-
-::: {.attribution}
-The `EpiNow2` panel of Figure 2 of the paper. Each box is a component
-and the nesting is the composition
-:::
-:::
-::::
-
-## Real-time nowcasting (`EpiNow2`): results
+## Real-time nowcasting, one `EpiNow2` configuration
 
 :::: {.columns}
 ::: {.column width="40%"}
-- A widely used real-time tool replicated by composing components. It
-  took three hours
+- Reuses the ARIMA(2,1,1) and the negative binomial from the worked
+  example
+- `broadcast_weekly` wraps the ARIMA for piecewise constant weekly
+  $R_t$, and `ascertainment_dayofweek` adds day-of-week reporting
+- Two `LatentDelay` wrappers add the incubation period and the
+  reporting delay
 - **A** to **D** validate each part on its own. **E** and **F** are the
   joint fit, recovering cases through the delays and $R_t$ with them
-- Also replicated through `EpiAwareR`, Sebastian Funk's R interface over
-  JuliaCall
 
 ::: {.callout-important}
-No component was edited and no new component code was written.
+No component was edited. The replication took three hours.
 :::
 
 ::: {.attribution}
-Figure 4 of the paper. Daily COVID-19 cases from Italy, February to
-June 2020, shipped with `EpiNow2`. One configuration replicated, not a
-benchmark against the package,
-[epiaware.org/approaches](https://epiaware.org/approaches/)
+Figures 2 and 4 of the paper. Replicating a common configuration of
+`EpiNow2`, real-time estimation accounting for reporting delays, right
+truncation and day-of-week effects. Abbott et al. (2020),
+[doi:10.12688/wellcomeopenres.16006.2](https://doi.org/10.12688/wellcomeopenres.16006.2).
+Daily COVID-19 cases from Italy, February to June 2020, shipped with
+`EpiNow2`. One configuration replicated, not a benchmark against the
+package
 :::
 :::
 ::: {.column width="60%"}
-![](../figures/composable-epinow2-results.png){height="760px"
+![](../figures/composable-epinow2-model.png){height="260px"
+fig-align="center"
+fig-alt="The EpiNow2 configuration drawn as a graph of components"}
+
+![](../figures/composable-epinow2-results.png){height="600px"
 fig-align="center"
 fig-alt="Six panels: prior checks on each part, then the joint fit"}
 :::

@@ -8,10 +8,10 @@
   `R CMD check`, CRAN policy, and rOpenSci review if you want it
 - In Julia you get `Aqua`, and after that you decide. We decided on
   nine checks that run in every package
-- The additions are the opinionated ones. JET, benchmarking, and the
-  per-backend AD tests
+- JET is one of the nine. Benchmarking and the per-backend AD tests run
+  alongside them
 - All of it is CI, and the CI is now the thing to maintain. 8,600 lines
-  of Julia hold ten packages rigid
+  of Julia hold ten of the eleven packages rigid
 :::
 ::: {.column width="48%"}
 ```julia
@@ -32,7 +32,9 @@
 2026-08-11. JET and the formatter each run in their own environment, so
 the checked version cannot drift with whatever the test environment
 resolves · 8,600 lines is `src/` in `EpiAwarePackageTools.jl`, of which
-`scaffold.jl` is 3,367.
+`scaffold.jl` is 3,367 · ten of the eleven Julia packages carry
+`template-sync.yaml` on `main`, `CensoredDistributions.jl` is the one
+still migrating, checked 2026-08-10.
 :::
 :::
 ::::

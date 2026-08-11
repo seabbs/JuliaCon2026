@@ -34,10 +34,10 @@ Stan has no import statement, so the 1,081 line function bundle is
 spliced into the downstream model as text.
 :::
 
-## What shipping it twice cost
+## The integral solver would not hold
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="54%"}
 ```stan
 // before
 result = integrate_1d(
@@ -51,20 +51,54 @@ result = ode_rk45(
   theta, {d, pwindow}, ids
 )[1, 1];
 ```
-
-- Stan's quadrature errored inside sampling rather than rejecting, and
-  **243 of 256** chains died. Recast as an ODE, **0 of 600**
 :::
-::: {.column width="50%"}
-- Stan has no user types, so a distribution became an integer.
-  `dist_id = 3` meant Normal in Stan and Weibull in R
-- Ask for a Weibull on the numerical path and you fitted a normal. No
-  error, no warning, numbers came back
+::: {.column width="46%"}
+- Stan's quadrature errored inside sampling rather than rejecting, so
+  the chain died instead of the proposal
+- **243 of 256** chains gone. Nine days of tuning got it to 12 per
+  cent. Recast as an ODE, **0 of 600**
+- The integral was fine. Stan's autodiff and the missing reject were
+  what made it unusable
 :::
 ::::
 
 ::: {.attribution}
 [epinowcast/primarycensored#34](https://github.com/epinowcast/primarycensored/issues/34)
-and PR #64, commit `1c4e6f1`, September 2024 · PR #277, commit
-`4aaf249`, February 2026
+and PR #64, commit `1c4e6f1`, September 2024. The scenario was made
+harder in the same PR, so the 600 chain runs are the like for like pair
+:::
+
+## What Stan has no vocabulary for
+
+:::: {.columns}
+::: {.column width="54%"}
+```stan
+real dist_lcdf(real delay, array[] real params,
+               int dist_id) {
+  if (dist_id == 1)
+    return lognormal_lcdf(delay | params[1], params[2]);
+  else if (dist_id == 2)
+    return gamma_lcdf(delay | params[1], params[2]);
+  // ... 15 more branches ...
+  else if (dist_id == 25)
+    return von_mises_lcdf(delay | params[1], params[2]);
+  else reject("Invalid distribution identifier: ",
+              dist_id);
+}
+```
+:::
+::: {.column width="46%"}
+- No user types, so a distribution is an integer. **18 branches** for
+  the 25 families R knows, and the other seven have no Stan CDF to call
+- A second table of ten says which have positive support, kept in step
+  by hand
+- `dist_id = 3` meant Normal in Stan and Weibull in R. Ask for a
+  Weibull on the numerical path and you fitted a normal
+:::
+::::
+
+::: {.attribution}
+`primarycensored_ode.stan:38-51` and `:52-77` ·
+[epinowcast/primarycensored#277](https://github.com/epinowcast/primarycensored/pull/277),
+commit `4aaf249`, February 2026
 :::

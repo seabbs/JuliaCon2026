@@ -125,3 +125,9 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > some of that might be things I have okayed in past slide decks so check on
 > that
+
+> This ["One correction since submission..."] should not be on the project
+> page or similar
+
+> This page needs to link to primarycensored. Remove the documentation link
+> and link to it there: https://samabbott.co.uk/JuliaCon2026/delays/

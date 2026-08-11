@@ -4,12 +4,13 @@
 ::: {.column width="42%"}
 - Fitting each stratum on its own runs out of data. Partial pooling
   shares what the small strata cannot support
-- `brms` already has the regression machinery, so `epidist` puts the
-  censored likelihood behind a `brms` formula
+- `brms` metaprograms Stan and hands you the whole regression
+  apparatus, so `epidist` puts the censored likelihood behind a `brms`
+  formula
 
 ::: {.attribution}
-Sierra Leone Ebola line list, `epidist/vignettes/ebola.Rmd:246-253`,
-sampler arguments cut ·
+Sierra Leone Ebola line list, `epidist/vignettes/ebola.Rmd:244-250`,
+renamed and sampler arguments cut ·
 [epidist](https://epidist.epinowcast.org/) ·
 [brms](https://paulbuerkner.com/brms/)
 :::
@@ -29,6 +30,61 @@ fit <- epidist(
 ::::
 
 ::: {.callout-note}
-The delay family has to be one `brms` knows, and the Stan code is
-assembled by string substitution before it compiles.
+The delay family has to be one `brms` already knows.
 :::
+
+## Extending `brms` took more than a formula
+
+:::: {.columns}
+::: {.column width="44%"}
+- `family.R`, `formula.R`, `stancode.R` and `prior.R` exist only to
+  bend `brms` around a censored likelihood. 774 lines with
+  `marginal_model.R`
+- Five S3 generics were defined to hang the extensions on, from
+  `epidist_family_model` to `epidist_family_prior`
+- The Stan source is rewritten by string substitution before it
+  compiles, five `gsub()` passes over a template
+
+::: {.attribution}
+`epidist/R/marginal_model.R:339-348`, one of five passes at `:332-368`
+· [epidist](https://epidist.epinowcast.org/)
+:::
+:::
+::: {.column width="56%"}
+```r
+dist_id <- primarycensored::pcd_stan_dist_id(family_name)
+
+# Replace the dist_id passed to primarycensored
+stanvars_functions[[1]]$scode <- gsub(
+  "dist_id",
+  dist_id,
+  stanvars_functions[[1]]$scode,
+  fixed = TRUE
+)
+```
+:::
+::::
+
+## Does Julia need a `brms`
+
+- A Julia one would very likely be more extensible. The
+  metaprogramming would not be fighting a second language with no user
+  types
+- `brms` exists partly because in R you cannot drop the delay
+  machinery into a model you wrote yourself
+- In Julia a censored distribution is an ordinary `Distributions.jl`
+  object. It goes into any model somebody writes, with no formula
+  interface and no code generation
+- A few people here are probably working on one
+
+::: {.callout-note}
+Where is a formula interface still needed, once the components compose
+on their own?
+:::
+
+::: {.attribution}
+Composing components rather than generating models is the 16:45 talk in
+this room, [samabbott.co.uk/JuliaCon2026/composable][composable-talk]
+:::
+
+[composable-talk]: https://samabbott.co.uk/JuliaCon2026/composable/

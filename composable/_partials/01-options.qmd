@@ -50,8 +50,8 @@ fig-alt="Title of the Lison et al. 2024 paper"}
 
 :::: {.columns}
 ::: {.column width="45%"}
-- At least seven packages estimate $R_t$ by renewal in Stan. Two of them
-  share any component, and I wrote both
+- At least seven packages estimate $R_t$ by renewal in Stan. Only two of
+  them share any component, and I wrote both
 - The wastewater $R_t$ tools make different choices about how much of
   the sampling to represent, and share nothing
 - Shared parts do exist. `primarycensored` is one, and uptake outside my

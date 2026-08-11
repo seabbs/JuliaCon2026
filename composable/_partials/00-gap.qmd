@@ -62,3 +62,44 @@ Endo et al. (2022),
 fig-alt="Results from the 2022 mpox sexual contact network model"}
 :::
 ::::
+
+## The gap: integrating diverse data
+
+:::: {.columns}
+::: {.column width="42%"}
+- Cross-sectional viral loads carry information about epidemic dynamics
+- They are not in most policy models, even where they are already
+  collected
+- Adding a data source to an existing model means rebuilding it
+
+::: {.attribution}
+Hay et al. (2021),
+[doi:10.1126/science.abh0635](https://doi.org/10.1126/science.abh0635)
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-hay.png){width="100%"
+fig-alt="Title of the Hay et al. 2021 viral load paper"}
+:::
+::::
+
+## The gap: multi-model efforts
+
+:::: {.columns}
+::: {.column width="42%"}
+- Multi-model efforts combine forecasts from several teams, and can
+  improve predictive accuracy
+- The teams rarely collaborate on model components
+- Common components would let a difference in results be attributed to
+  an assumption rather than an implementation
+
+::: {.attribution}
+The US COVID-19 Forecast Hub dataset. Cramer et al. (2022),
+[doi:10.1038/s41597-022-01517-w](https://doi.org/10.1038/s41597-022-01517-w)
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-cramer.png){width="100%"
+fig-alt="Title of the Cramer et al. 2022 Forecast Hub dataset paper"}
+:::
+::::

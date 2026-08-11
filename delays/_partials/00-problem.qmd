@@ -12,11 +12,11 @@
 - In real time the longer delays have not happened yet
 
 ::: {.attribution}
-Diagram from [How to serial interval?][hsi], Lorentz Center, June 2026
+Diagram for this talk, `scripts/delays-double-censoring.py`
 :::
 :::
 ::: {.column width="60%"}
-![](../figures/fig-double-censoring.png){width="100%"
+![](../figures/delays-double-censoring.png){width="100%"
 fig-alt="A timeline. A blue box marks the primary event window of
 width w_P, a red box marks the secondary event window of width w_S, an
 arrow between them is the delay T = S - P, and a dashed line further
@@ -27,10 +27,12 @@ not yet been seen."}
 
 [hsi]: https://samabbott.co.uk/how-to-serial-interval
 
-## Which adjustment a dataset needs
+## Estimate one naively and it is biased
 
 :::: {.columns}
 ::: {.column width="40%"}
+- In a growing epidemic short delays are oversampled, so the delay
+  comes out too short
 - Interval censoring of both events applies to almost any line list
 - Right truncation is the correction when the observation cutoff sits
   near the primary events
@@ -76,7 +78,8 @@ F_{\mathrm{PEC}}(t) = \int_{0}^{w_P} g(\tau)\, F(t - \tau)\, d\tau
 $$
 
 ::: {.attribution}
-Diagram from [How to serial interval?][hsi] · maths after
+Diagram from [How to serial interval?][hsi], labelled there for a
+serial interval · maths after
 [primarycensored](https://primarycensored.epinowcast.org/)
 :::
 :::
@@ -144,5 +147,29 @@ $$
 ::: {.attribution}
 Diagram from [How to serial interval?][hsi]
 :::
+:::
+::::
+
+## What the truncation costs, in days
+
+:::: {.columns}
+::: {.column width="34%"}
+- The shortfall grows the nearer the cutoff is to now
+- A mean of **3.9 days rather than 5.9** is what the forecast and the
+  transmission model are handed
+
+::: {.attribution}
+`LogNormal(1.6, 0.6)` with daily windows, computed for this talk with
+`CensoredDistributions.jl` v0.2.22,
+`scripts/delays-right-truncation.jl`
+:::
+:::
+::: {.column width="66%"}
+![](../figures/delays-right-truncation.png){width="100%"
+fig-alt="Two panels. On the left, the delay distribution seen by day 7
+and by day 14 sits well to the left of the true distribution. On the
+right, the mean estimated delay rises from under 2 days towards the
+true mean of 5.9 days as the cutoff moves away from now, passing 3.9
+days at a cutoff of 7 and 5.3 days at a cutoff of 14."}
 :::
 ::::

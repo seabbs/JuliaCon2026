@@ -27,28 +27,45 @@ more in "How I use coding agents".
 
 ## Why we rolled our own template
 
+:::: {.columns}
+::: {.column width="52%"}
 - `PkgTemplates.jl` composes the plugins you pick. `BestieTemplate.jl`
-  is a Copier template that applies to an existing package and can be
-  taken a feature at a time
+  is a Copier template, applied to an existing package a feature at a
+  time
 - Both are built to be chosen from. We wanted every package identical,
-  because a model follows a shape it can see
-- The opinionated part, per-backend AD testing and benchmarking, is
-  left to you
-- What runs now is a central `.github` holding 23 reusable workflows,
-  as SciML does, with dependabot keeping them current. A weekly sync
-  opens a pull request where a package has drifted
+  so that whatever writes the next one has one shape to copy
+- Neither covers the opinionated part, per-backend AD testing and
+  benchmarking
+- CI comes from one central `.github`, as SciML does, and
+  `EpiAwarePackageTools.jl` overwrites the callers weekly. Its
+  standards page is written for a model to read
 
 ::: {.callout-important}
 We should probably have built this on their Copier template rather than
 writing our own scaffolder.
 :::
+:::
+::: {.column width="48%"}
+```yaml
+# MANAGED by EpiAwarePackageTools.scaffold
+# — do not edit by hand.
+name: Test
+
+jobs:
+  test:
+    uses: EpiAware/.github/.github/workflows/tests.yml@6fcdcde
+```
 
 ::: {.attribution}
+`.github/workflows/test.yaml`, written into every adopting package and
+overwritten on every sync, SHA abridged · 23 reusable workflows in
+[EpiAware/.github](https://github.com/EpiAware/.github), counted
+2026-08-11, `template-sync.yaml` runs Monday 04:00 UTC and a sync keeps
+whatever SHA dependabot has pinned · the standards page is in the
+`EpiAwarePackageTools.jl` documentation, read 2026-08-11 ·
 [BestieTemplate.jl](https://github.com/JuliaBesties/BestieTemplate.jl)
 and [PkgTemplates.jl](https://github.com/JuliaCI/PkgTemplates.jl) read
-2026-08-11 · 23 reusable workflows in
-[EpiAware/.github](https://github.com/EpiAware/.github), counted
-2026-08-11, and `template-sync.yaml` runs Monday 04:00 UTC ·
-`EpiAwarePackageTools.update` re-applies the managed files and reports
-drift.
+2026-08-11.
 :::
+:::
+::::

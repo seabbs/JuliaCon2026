@@ -16,8 +16,7 @@ Registered in General at v0.1.1, so `] add ComposableTuringIDModels`
 works ·
 [github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
 Abbott et al., *Composable probabilistic models can lower barriers to
-rigorous infectious disease modelling*,
-[epiaware.org/approaches](https://epiaware.org/approaches/)
+rigorous infectious disease modelling*, in CDC clearance
 :::
 :::
 ::: {.column width="55%"}
@@ -61,8 +60,7 @@ chain = sample(as_turing_model(mdl, cases, n), NUTS(), 1_000)
 `@set` is Accessors.jl, not ours, and works because the components are
 plain immutable structs · Keywords track `main`. The paper's artefact
 pins an earlier release, where these were `damp_priors`, `θ_priors` and
-`std_prior` ·
-[epiaware.org/approaches](https://epiaware.org/approaches/)
+`std_prior`
 :::
 :::
 ::: {.column width="42%"}

@@ -11,6 +11,8 @@
 - `DifferentiationInterfaceTest` does the correctness testing. On top,
   a package declares which scenarios are broken on which backend, and
   CI re-runs them
+- In my view none of the six is reliably best, and each is kept going
+  by a small team
 
 ::: {.callout-note}
 Is there a guide for any of this anywhere in the Julia ecosystem? I
@@ -81,40 +83,5 @@ nothing has replaced it as of 2026-08-11 · the local rule is
 :::
 ::::
 
-## Nobody can tell you which backend a model needs
-
-:::: {.columns}
-::: {.column width="52%"}
-| Backend | `Censored` | `Composed` |
-|---|---|---|
-| ForwardDiff | green | red |
-| ReverseDiff, tape | green | red |
-| Mooncake forward | green | red |
-| Mooncake reverse | green | red |
-| Enzyme forward | green, 1 broken | red |
-| Enzyme reverse | green, 1 broken | red |
-
-::: {.attribution}
-`Censored` is `CensoredDistributions.jl`, `Composed` is
-`ComposedDistributions.jl` · declared broken scenarios in
-[CensoredDistributions.jl#889][cd889], read from `test/ADFixtures` on
-`main` · last `AD` run on `main` green 2026-06-21 there and red on all
-six 2026-08-07 in `ComposedDistributions.jl` ·
-[TuringLang/ADTests][adtests], archived 2026-06-15.
-:::
-:::
-::: {.column width="48%"}
-- DifferentiationInterface tells you about a function. Turing tells you
-  what Turing tests. Nothing tells you about a model assembled from
-  five packages that each tested on their own
-- The one public per-backend table for a probabilistic programming
-  stack, `TuringLang/ADTests`, was archived in June
-- In my view none of the six is reliably best, and each is kept going
-  by a small team
-:::
-::::
-
-[cd889]: https://github.com/EpiAware/CensoredDistributions.jl/issues/889
-[adtests]: https://github.com/TuringLang/ADTests
 [cd99]: https://github.com/EpiAware/ComposedDistributions.jl/issues/99
 [mc1241]: https://github.com/chalk-lab/Mooncake.jl/issues/1241

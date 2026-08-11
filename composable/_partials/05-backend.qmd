@@ -8,9 +8,7 @@
   migration was one rename. The cost is the tracking
 - Large simulated counts error, and vectors mixing missing and observed
   values have to be handled by hand
-- Automatic differentiation is the part that decided it. A silently
-  wrong gradient in a model somebody acts on during an outbreak is not
-  a footnote
+- Automatic differentiation is the part that decided it
 :::
 ::: {.column width="4%"}
 :::
@@ -40,8 +38,8 @@ room, [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
 - A lot of the stack rests on very few people. The work itself is good
 - `TuringLang/ADTests`, the one public per-backend support table for a
   probabilistic programming stack, was archived in June
-- `EpiAwareADTools.jl` is where we keep our autodiff workarounds. Each
-  one is deleted the day upstream ships a fix
+- `EpiAwareADTools.jl` is where we keep our autodiff workarounds. We
+  delete them when upstream ships a fix
 - Our own packages are the same shape, one or two people each
 :::
 ::: {.column width="45%"}

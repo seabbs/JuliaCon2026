@@ -40,7 +40,8 @@ fig-alt="Four applications drawn as graphs over a band of shared parts"}
 Four illustrative applications, not implementations. The incubation
 period model appears in all four, the latent infection model in three,
 and the band beneath is what those shared components are themselves
-made of. Figure 1 of the paper,
+made of. Figure 1 of the paper, which is in CDC clearance. The design
+considerations behind it are at
 [epiaware.org/approaches](https://epiaware.org/approaches/)
 :::
 :::
@@ -69,8 +70,9 @@ replication took three hours.
 One of three replications in the paper, alongside a renewal model of
 South Korea and an ODE model of influenza. Replicating
 [EpiNow2](https://doi.org/10.12688/wellcomeopenres.16006.2)
-(Abbott et al., 2020). Figures from the paper,
-[epiaware.org/approaches](https://epiaware.org/approaches/)
+(Abbott et al., 2020). Figures from the paper, which is in CDC
+clearance. The prototype is
+[ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)
 :::
 :::
 ::: {.column width="58%"}

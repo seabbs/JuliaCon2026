@@ -7,13 +7,8 @@
   probabilistic programming language becomes optional
 - `CensoredDistributions.jl` does not depend on Turing. Nothing in
   `src/` mentions it
-- It does not depend on `ConvolvedDistributions.jl` either. They compose
-  through `Distributions.jl`
-
-::: {.callout-important}
-The delay half of this has a story, the time series half and the
-fitting layer do not.
-:::
+- It reaches `ConvolvedDistributions.jl` through a package extension,
+  and neither is a hard dependency of the other
 :::
 ::: {.column width="50%"}
 ```julia
@@ -29,13 +24,42 @@ cdf(si, 5.0)   # 0.094
 ```
 
 ::: {.attribution}
-`CensoredDistributions.jl` v0.2.22, run for this talk,
-`scripts/composable-composed-type.jl`. The type is that script's output
-with the parameter types dropped, and `cdf` needed no telling about it ·
-Neither package appears in the other's `[deps]`, checked in each
-`Project.toml` · Open issue `CensoredDistributions.jl#749` says the
-joint fit is too slow, because reverse mode autodiff through
-`cdf(Convolved(...))` costs too much per step ·
+`CensoredDistributions.jl` v0.2.22, `main`, checked 2026-08-11.
+`ConvolvedDistributions` is a `[weakdeps]` entry carrying the extension
+`CensoredDistributionsConvolvedDistributionsExt`, and neither package is
+in the other's `[deps]` · The type is the output of
+`scripts/composable-composed-type.jl`, run for this talk, with the
+parameter types dropped, and `cdf` needed no telling about it
+:::
+:::
+::::
+
+## How far does that go?
+
+:::: {.columns}
+::: {.column width="48%"}
+| Piece of a model | Is it a distribution? |
+|---|---|
+| Delay, censored and truncated | Yes, today |
+| Renewal process | No |
+| ARIMA latent process | No |
+| ODE | No |
+| The fitting layer | No |
+
+: {tbl-colwidths="[55,45]"}
+:::
+::: {.column width="4%"}
+:::
+::: {.column width="48%"}
+- So this is a direction, not a plan. It needs a way to write a time
+  series as a distribution, and a way to fit one without a model macro
+- The fitting layer is what the probabilistic programming language was
+  doing
+
+::: {.attribution}
+Open issue `CensoredDistributions.jl#749` says the joint fit is too
+slow, because reverse mode autodiff through `cdf(Convolved(...))` costs
+too much per step · The delay side is written up in full at
 [samabbott.co.uk/JuliaCon2026/delays][delays-talk]
 :::
 :::
@@ -43,38 +67,25 @@ joint fit is too slow, because reverse mode autodiff through
 
 ## Is JAX the way forward, and is Julia the place?
 
-:::: {.columns}
-::: {.column width="50%"}
-**JAX**
-
 - In the paper I wrote that NumPyro and JAX are promising, with barriers
   for epidemiological modellers, and that I find them ugly. Taste is not
   an argument
-- One autodiff system, and everything is written against it
-- We test six configurations and still cannot tell a user which one is
-  safe for a model built from five packages
-:::
-::: {.column width="50%"}
-**Julia**
-
+- JAX has one autodiff system, and everything is written against it
+- We test six configurations and cannot tell a user which one is safe
+  for a model built from five packages
 - Multiple dispatch is why a composed delay is still a distribution. I
   do not know how to write that as cleanly anywhere else
 - The teams under Turing, under the autodiff backends, and under our own
   packages are all small
-- The infectious disease ecosystem here is smaller again
-:::
-::::
 
 ::: {.callout-important}
-I have argued myself into both answers, and I would like a reason to
-prefer one.
+I have argued myself into both answers.
 :::
 
 ::: {.attribution}
 The alternative approaches, including NumPyro and JAX, are in the
-paper's discussion,
-[epiaware.org/approaches](https://epiaware.org/approaches/)
-· The six autodiff configurations were the 14:30 talk in this room,
+paper's discussion. The paper is in CDC clearance · The six autodiff
+configurations were the 14:30 talk in this room,
 [samabbott.co.uk/JuliaCon2026/roadmap](https://samabbott.co.uk/JuliaCon2026/roadmap/)
 :::
 

@@ -84,10 +84,11 @@ A Workflow for Infectious Disease Modelling, Abbott et al.
   sensitivities. Inference supplied separately
 - **D.** A model written by hand. What everyone does now, and the
   baseline the other three have to beat
+- We run all of them because I cannot tell you which is right
 
 ::: {.callout-note}
-All four take the same `Distributions.jl` objects and the same
-gradients.
+A bet. Routes A, B and C take the same `Distributions.jl` objects and
+the same gradients.
 :::
 :::
 ::: {.column width="48%"}

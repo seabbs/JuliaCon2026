@@ -105,6 +105,37 @@ Come and find me at JuliaCon 2027 if none of them happened.
 `src/beta_ad.jl` in `EpiAwareADTools.jl`, read 2026-08-11.
 :::
 
+## Nobody can tell you which backend a model needs {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="52%"}
+| Backend | `Censored` | `Composed` |
+|---|---|---|
+| ForwardDiff | green | red |
+| ReverseDiff, tape | green | red |
+| Enzyme forward | green, 1 broken | red |
+| Enzyme reverse | green, 1 broken | red |
+| Mooncake reverse | green | red |
+| Mooncake forward | green | red |
+
+::: {.attribution}
+`Censored` is `CensoredDistributions.jl`, `Composed` is
+`ComposedDistributions.jl` · declared broken scenarios in
+[CensoredDistributions.jl#889][cd889], read from `test/ADFixtures` on
+`main` · last `AD` run on `main` green 2026-06-21 there and red on all
+six 2026-08-07 in `ComposedDistributions.jl` ·
+[TuringLang/ADTests][adtests], archived 2026-06-15.
+:::
+:::
+::: {.column width="48%"}
+- DifferentiationInterface tells you about a function. Turing tells you
+  what Turing tests. Nothing tells you about a model assembled from
+  five packages that each tested on their own
+- The one public per-backend table for a probabilistic programming
+  stack, `TuringLang/ADTests`, was archived in June
+:::
+::::
+
 ## Agents on the outbreak model {visibility="uncounted"}
 
 - On the live DRC outbreak model the tests were written by the same
@@ -120,3 +151,6 @@ Come and find me at JuliaCon 2027 if none of them happened.
 EpiAware counts from `gh api search/issues`, read 2026-08-10 ·
 [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize).
 :::
+
+[cd889]: https://github.com/EpiAware/CensoredDistributions.jl/issues/889
+[adtests]: https://github.com/TuringLang/ADTests

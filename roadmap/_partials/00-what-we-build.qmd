@@ -4,7 +4,7 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Every arrow between models is a handover, and uncertainty is
+- In a chain of models every arrow is a handover, and uncertainty is
   approximated at each one
 - The UK Community Infection Survey ran this way. Outside modellers saw
   summarised prevalence estimates

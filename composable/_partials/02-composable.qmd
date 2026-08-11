@@ -39,7 +39,8 @@ fig-alt="Table 1 of the paper, requirements against motivating problems"}
 
 ::: {.attribution}
 Table 1 of the paper pairs each requirement with the problem that
-motivates it, under six themes. Three are on the left,
+motivates it, under six themes. Three of the twelve are on the left. All
+twelve are at
 [epiaware.org/approaches](https://epiaware.org/approaches/)
 :::
 :::

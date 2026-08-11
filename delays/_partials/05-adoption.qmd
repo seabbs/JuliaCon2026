@@ -15,8 +15,9 @@ of people.
 :::
 :::
 ::: {.column width="58%"}
-- **Nine** repositories on GitHub depend on `primarycensored`. Seven
-  are from my own orgs, two are CDC's
+- **Nine** repositories on GitHub depend on `primarycensored`, two of
+  them on CRAN. Seven are from my own orgs. Two are CDC's, both as
+  suggests
 - Everything that depends on `CensoredDistributions.jl` is mine, Sam
   Brand's or Sebastian Funk's. I looked for one from outside and did
   not find it
