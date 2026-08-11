@@ -65,12 +65,39 @@ sentences before it already make the claim.
 - Reduce the attribution to one caveat, plainly: a configuration was
   replicated, not benchmarked.
 - Delete "That is the whole claim."
-- "Took 3 hours to replicate" appears in the 40 minute deck and is concrete
-  and favourable, but grepping the paper (`index.qmd`, `case-studies.qmd`)
-  finds no source for it. Do NOT restore it without the author confirming the
-  number. Ask him rather than guessing.
+- **Restore "took 3 hours to replicate".** It is concrete, favourable, and was
+  dropped. It appears in the 40 minute deck at
+  `presentations/40min/index.qmd:897`, as "Widely used real-time tool
+  replicated through composition of DSL components (took 3 hours to
+  replicate)". It is not in the paper, and it does not need to be. See the
+  ruling below.
 - Leave the "seven packages share nothing" slide alone. That framing is in the
   original and is the argument, not drift.
+
+## Ruling: the 40 minute deck is canonical
+
+The author, asked whether the three hours figure was real, said:
+
+> yes everything in 40 minute talk is canonical
+
+So `/Users/lshsa2/code/EpiAware/ComposableProbabilisticIDModels/presentations/40min/index.qmd` is a primary source for this talk.
+Anything stated there can be used without further verification, and does not
+need a second source in the paper.
+
+Two consequences:
+
+1. Facts that live only in the 40 minute deck are usable. The three hours
+   figure is the immediate one. Go and look for others that were dropped on
+   the way down to 15 minutes, since the same reasoning will have discarded
+   them, and they are the concrete favourable details this deck is short of.
+2. Where our deck and the 40 minute deck disagree about anything other than
+   length or the author's changed view of Turing, the 40 minute deck wins and
+   ours is the thing to correct.
+
+This does NOT extend to the 20 minute deck, which is a cut of the same
+material, nor to any claim about a third party's project that has aged since.
+Turing's maintenance state in particular has moved, and the author's
+scepticism about Turing is deliberate and post-dates both decks.
 
 ## Separately: the prototype is not named clearly
 

@@ -65,3 +65,8 @@ as the steering section.
 > ComposableTuringIDModels which is the prototype we talk about in those
 > slides. It isn't linked from the project page or otherwise mentioned clearly
 > but should be.
+
+> yes everything in 40 minute talk is canonical
+
+(In answer to whether "took 3 hours to replicate" was a real number. It is,
+and the 40 minute deck is a primary source for the composable talk.)
