@@ -837,6 +837,57 @@ uses A". "At the heart of" becomes "central to", or more often just delete the
 phrase and let the sentence assert the thing. If the metaphor is load bearing,
 the sentence was not doing its job.
 
+## 17. The promise tail
+
+**Definition.** A title or bullet that finishes with ", and what/why/where it
+<verb>", promising significance instead of stating content. "The switch to a
+fixed rule, and what it cost". "What we said we would build, and where it got
+to". The tail says "there is a lesson here" without saying what it is.
+
+Caught by the author on the delays talk page:
+
+> This from the delays project page is a classic LLMism I would not use in my
+> own writing i.e. my seabbs.github.io: "The switch to a fixed rule, and what
+> it cost."
+
+**Precedent check, which is what settles it.** Searched every delivered deck
+for titles matching `^#{1,2} .*, and `:
+
+- `how-to-serial-interval`: **zero**.
+- 40 minute composability deck: one, "The gap: timely, rigorous, and
+  collaborative evidence". A rule-of-three list, not a promise tail.
+- `how-I-llm`: one, "Why the terminal, and not an IDE". A plain contrast.
+
+So he has never used the promise tail, and the construction is an invention of
+this project.
+
+**Grep.**
+
+```
+rg -n --glob '*.qmd' ', and (what|why|where|how) (it|that|they|we|this|the)'
+```
+
+**Not the same thing, and fine.** A contrast between two named things, where
+both halves carry content: "Why the terminal, and not an IDE", or
+"What the move fixed, and what it did not" in
+`delays/_partials/90-summary.qmd`, where the slide really does cover both
+sides. The test is whether the second half names something. "and what it did
+not" names the other half of a comparison. "and what it cost" names nothing.
+
+**Examples and rewrites, all from this project.**
+
+`delays/index.qmd`: "The switch to a fixed rule, and what it cost." became
+"The switch to a fixed quadrature rule, so gradients trace through every
+backend." The cost is now stated rather than advertised.
+
+`roadmap/_partials/01-what-we-wanted.qmd`: the section divider "What we
+wanted, and why the obvious route was hard" became "What we wanted". The
+following slides make the case.
+
+`roadmap/_partials/90-summary.qmd`: "What we said we would build, and where it
+got to" became "What we said we would build". The diagram beneath already
+shows where it got to.
+
 ## What he does not cut
 
 Do not over-correct.

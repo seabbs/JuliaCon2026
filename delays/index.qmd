@@ -119,7 +119,8 @@ The other two JuliaCon talks are in the same room on the same day.
   Sums, differences, products, and ratios of delay distributions, the next
   layer up.
 - [CensoredDistributions.jl PR #250][cd-pr250].
-  The switch to a fixed rule, and what it cost.
+  The switch to a fixed quadrature rule, so gradients trace through
+  every backend.
 
 :::
 ::::

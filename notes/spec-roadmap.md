@@ -50,7 +50,7 @@ Composable modelling in one or two slides. What it is, why it needs an
 ecosystem of reusable components rather than one package. Point at the 16:45
 talk for the argument rather than making it here.
 
-### 2. What we wanted, and why the obvious route was hard
+### 2. What we wanted, and why epinowcast was hard
 
 We wanted something with the community of **epinowcast**, the technical
 coherence of **SciML**, and the ecosystem shape of **Turing**. We had
