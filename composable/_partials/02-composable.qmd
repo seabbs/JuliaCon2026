@@ -1,5 +1,35 @@
 # What we built
 
+## What composable modelling would need
+
++-------------------------+------------------------------------------+
+| Theme                   | What it would need                       |
++=========================+==========================================+
+| Uncertainty and         | Propagate it properly, and swap the      |
+| inference               | inference method                         |
++-------------------------+------------------------------------------+
+| Model structure         | Separate infection, latent and           |
+|                         | observation processes, and nest models   |
+|                         | inside models                            |
++-------------------------+------------------------------------------+
+| Population              | Stratify any component without hand      |
+| heterogeneity           | managing the bookkeeping                 |
++-------------------------+------------------------------------------+
+| Accessibility and       | Components carry their priors, work      |
+| interoperability        | standalone, and talk to the rest of      |
+|                         | Julia                                    |
++-------------------------+------------------------------------------+
+| Workflow                | One specification for simulation and for |
+|                         | inference                                |
++-------------------------+------------------------------------------+
+
+::: {.attribution}
+Table 1 of the paper sets out six themes, condensed to five rows here,
+with accessibility and interoperability merged. In the paper each
+design consideration is paired with the problem that motivates it.
+These came from the authors and have had no community input
+:::
+
 ## The proof of concept
 
 :::: {.columns}
@@ -14,9 +44,8 @@
   simulates and fits
 
 ::: {.attribution}
-Bullets three and four are design considerations from Table 1 of the
-paper, which sets out what a composable approach would need. That
-table came from the authors and has had no community input · Abbott et
+Bullets three and four are design considerations from the previous
+slide · Abbott et
 al., *Composable probabilistic models can lower barriers to rigorous
 infectious disease modelling*,
 [doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
@@ -24,14 +53,14 @@ infectious disease modelling*,
 :::
 ::: {.column width="48%"}
 ![](../figures/composable-structure.png){height="740px"
-fig-align="center"}
+fig-align="center"
+fig-alt="Four applications drawn as graphs over a band of shared parts"}
 
 ::: {.attribution}
-Four illustrative applications, not implementations. This is the
-conceptual demonstration. The incubation period model appears in all
-four, the latent infection model in three, and the band beneath is
-what those shared components are themselves made of. What was built is
-the three replications that follow.
+Four illustrative applications, not implementations. The incubation
+period model appears in all four, the latent infection model in three,
+and the band beneath is what those shared components are themselves
+made of. What was built is the three replications that follow.
 :::
 :::
 ::::

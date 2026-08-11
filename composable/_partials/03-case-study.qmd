@@ -21,9 +21,17 @@ mdl = IDModel(
   PoissonError())
 chain = sample(as_turing_model(mdl, cases, n), NUTS(), 1_000)
 ```
+
+::: {.callout-note}
+## The prototype is `ComposableTuringIDModels.jl`
+A proof of concept rather than a finished package. Registered in
+General at v0.1.1, so `] add ComposableTuringIDModels` works ·
+[github.com/EpiAware/ComposableTuringIDModels.jl][ctim]
+:::
 :::
 ::: {.column width="42%"}
-![](../figures/composable-arima.png){height="440px" fig-align="center"}
+![](../figures/composable-arima.png){height="500px" fig-align="center"
+fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
 
 ::: {.callout-note}
 `@set` is Accessors.jl, not ours. It works because the components are
@@ -33,9 +41,31 @@ plain immutable structs. `AR` was never told that `MA` exists.
 ::: {.attribution}
 Keywords track `main`. The paper's artefact pins an earlier release,
 where these were `damp_priors`, `θ_priors` and `std_prior` ·
-[github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
 [doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
 :::
+:::
+::::
+
+## Reusing that AR(2) for South Korea
+
+:::: {.columns}
+::: {.column width="40%"}
+- The first replication takes the AR(2) from the worked example, a
+  renewal process with a discretised serial interval, and a negative
+  binomial observation model
+- **A** to **C** are prior predictive checks on each part, **D**
+  compares the continuous serial interval with its discretised form
+- **E** and **F** recover the paper's finding. $R_t$ in South Korea
+  peaked near 10 and dropped below 1 in early March 2020
+
+::: {.attribution}
+Replicating [Mishra et al. (2020)](https://arxiv.org/abs/2006.16487).
+Figure from the paper
+:::
+:::
+::: {.column width="60%"}
+![](../figures/composable-mishra.png){width="88%" fig-align="center"
+fig-alt="Six panels: prior checks on each part, then the joint fit"}
 :::
 ::::
 
@@ -51,34 +81,61 @@ where these were `damp_priors`, `θ_priors` and `std_prior` ·
   incubation period and the reporting delay
 - **A** to **D** validate each part on its own. **E** and **F** are the
   joint fit, recovering cases through the delays and $R_t$ with them
-- The same parts rebuild a renewal model of South Korea and an ODE
-  model of influenza, neither of them edited to fit
 
 ::: {.callout-important}
-No component was edited and no new component code was written. Parts
-validated separately, composition fitted together.
+No component was edited and no new component code was written.
 :::
 
 ::: {.attribution}
-Structure is the `EpiNow2` panel of Figure 2 of the paper, results are
-Figure 4. Daily COVID-19 cases from Italy, February to June 2020, the
-example data shipped with `EpiNow2`. We put an ARIMA(2,1,1) on weekly
-$R_t$ rather than `EpiNow2`'s default differenced Matern Gaussian
-process, and there is no side-by-side against `EpiNow2` itself.
-Replicating
+Structure is the `EpiNow2` panel of Figure 2, results Figure 4. Daily
+COVID-19 cases from Italy, February to June 2020, shipped with
+`EpiNow2`. Replicating
 [EpiNow2](https://doi.org/10.12688/wellcomeopenres.16006.2)
 (Abbott et al., 2020),
 [Mishra et al. (2020)](https://arxiv.org/abs/2006.16487) and
-[Chatzilena et al. (2019)][chatzilena]. The other two are backup
-slides
+[Chatzilena et al. (2019)][chatzilena].
+One configuration replicated, not a benchmark against the package
 :::
 :::
 ::: {.column width="58%"}
 ![](../figures/composable-epinow2-model.png){height="270px"
-fig-align="center"}
+fig-align="center"
+fig-alt="The EpiNow2 configuration drawn as a graph of components"}
 
-![](../figures/composable-epinow2-results.png){height="500px"
-fig-align="center"}
+![](../figures/composable-epinow2-results.png){height="560px"
+fig-align="center"
+fig-alt="Six panels: prior checks on each part, then the joint fit"}
+:::
+::::
+
+## Swap the infection process, keep everything downstream
+
+:::: {.columns}
+::: {.column width="40%"}
+- The third replication drops the renewal process and uses an SIR model
+  built with `ODEProcess` over the SciML solvers instead
+- Everything downstream is unchanged. A Poisson observation model, and
+  a second version wrapping it in `Ascertainment` driven by an AR(1)
+- **C** shows both landing on the same posterior $R_0$, tight and well
+  away from the prior. **E** and **F** show the deterministic fit is
+  the worse calibrated of the two
+
+::: {.callout-important}
+The infection process changed and nothing downstream had to.
+:::
+
+::: {.attribution}
+Replicating Chatzilena et al. (2019),
+[doi:10.1016/j.epidem.2019.100367][chatzilena]. An influenza outbreak
+in an English boarding school, 1978. Figure 5 of the paper,
+[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675).
+The paper's text reads $R_0 \approx 2$ off this panel. Panel C looks
+closer to 4 to me, and I have not resolved which is right
+:::
+:::
+::: {.column width="60%"}
+![](../figures/composable-sir.png){width="88%" fig-align="center"
+fig-alt="Six panels comparing a deterministic and a stochastic SIR fit"}
 :::
 ::::
 

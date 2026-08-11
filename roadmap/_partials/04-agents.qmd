@@ -23,7 +23,6 @@ more in "How I use coding agents".
   was told, not that what it was told was right
 - Its chart digitiser undercounted one situation report by **54%** after
   a change in image compression. A self-check caught it, not a person
-- I read fewer of these than I should. That is the cost, and I do not
-  have a defence for it
+- I read fewer of these than I should. I do not have a defence for it
 :::
 ::::

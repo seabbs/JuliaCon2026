@@ -18,7 +18,7 @@ packages?**
 DifferentiationInterface answers for a function. Nothing composes.
 
 **4. How do you release eleven packages that have to work together?**
-SciML runs downstream CI outside its own org, but that is workflow files
+SciML runs downstream CI outside its own org. That is workflow files
 rather than guidance, and nothing publishes a tested version set.
 Twenty when we get there.
 :::

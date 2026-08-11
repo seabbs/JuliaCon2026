@@ -2,34 +2,74 @@
 
 :::: {.columns}
 ::: {.column width="52%"}
-- Turn the question around. A `Distributions.jl` distribution is
-  already an interface the whole of Julia understands, so write the
-  epidemiology as distributions and the probabilistic programming
-  language becomes optional rather than load bearing
+- A `Distributions.jl` distribution is already an interface the whole
+  of Julia understands, so write the epidemiology as distributions and
+  the probabilistic programming language becomes optional
 - `CensoredDistributions.jl` does not depend on Turing. Nothing in
-  `src/` mentions it, so nobody has to install a probabilistic
-  programming language to get the distributions
-- A composed delay comes back as a plain distribution type, and every
-  generic function you already use still works on it
-:::
-::: {.column width="48%"}
+  `src/` mentions it
+- A composed delay comes back as a plain distribution type, and the
+  generic functions still work on it
+
 ```julia
 # a serial interval, censored and truncated
 si = double_interval_censored(
-  sequential(generation_time, incubation);
+  convolve_distributions(generation_time, incubation);
   upper = 15, interval = 1)
-
-# and what comes back
-IntervalCensored{Truncated{
-  PrimaryCensored{Convolved{...}}}}
 ```
 
-::: {.callout-important}
-This works for delays today. A renewal process, an ARIMA latent
-process and an ODE are not distributions, so there is no story yet for
-the time series half of this deck, and none for the fitting layer,
-which is what the probabilistic programming language was doing.
+::: {.attribution}
+`CensoredDistributions.jl` v0.2.22, run for this talk,
+`scripts/composable-composed-type.jl`. `cdf(si, 5.0)` returns `0.094`
+on that type, so the generic functions did not need telling about it
 :::
+:::
+::: {.column width="48%"}
+**And what comes back**
+
+```{mermaid}
+%%{init: {'flowchart': {'rankSpacing': 32}}}%%
+flowchart TB
+  ic["IntervalCensored"] --> tr["Truncated"]
+  tr --> pc["PrimaryCensored"]
+  pc --> cv["Convolved"]
+  cv --> gt["Gamma"]
+  cv --> inc["LogNormal"]
+```
+
+::: {.attribution}
+The nesting is the type printed by that script, with the parameter
+types dropped. Reading down, daily reporting wraps the cutoff at 15,
+which wraps the primary window, which wraps the two delays
+:::
+:::
+::::
+
+## How far does that go?
+
+:::: {.columns}
+::: {.column width="52%"}
+| Piece of a model | Is it a distribution? |
+|---|---|
+| Delay, censored and truncated | Yes, today |
+| Renewal process | No |
+| ARIMA latent process | No |
+| ODE | No |
+| The fitting layer | No |
+
+: {tbl-colwidths="[55,45]"}
+:::
+::: {.column width="4%"}
+:::
+::: {.column width="44%"}
+::: {.callout-important}
+The delay half of this deck has a story. The time series half does not,
+and neither does the fitting layer, which is what the probabilistic
+programming language was doing.
+:::
+
+- So this is a direction, not a plan. It would need a way to write a
+  time series as a distribution, and a way to fit one without a model
+  macro
 
 ::: {.attribution}
 `CensoredDistributions.jl` v0.2.22, `main` checked 2026-08-10. A
@@ -41,5 +81,27 @@ costs too much per step. The delay side of this is written up in full at
 :::
 :::
 ::::
+
+## Other ways to compose models
+
++------------------------------+-------------------------------------+
+| Approach                     | How it composes                     |
++==============================+=====================================+
+| AlgebraicJulia               | Formal compositional guarantees,    |
+|                              | and little support for              |
+|                              | probabilistic models                |
++------------------------------+-------------------------------------+
+| `JuliaBUGS.jl`, `RxInfer.jl` | Models specified as graphs          |
++------------------------------+-------------------------------------+
+| `ModelingToolkit.jl`         | Acausal components, symbolically    |
++------------------------------+-------------------------------------+
+| `Gen.jl`                     | Nested generative functions, at a   |
+|                              | lower level than Turing.jl          |
++------------------------------+-------------------------------------+
+
+::: {.attribution}
+The paper's discussion of alternative designs,
+[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
+:::
 
 [delays-talk]: https://samabbott.co.uk/JuliaCon2026/delays/

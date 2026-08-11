@@ -75,7 +75,6 @@ too, for the same reason Stan did.
 Stan swapped the integral for an ODE solver.
 Julia's default is now a fixed 64-node rule, with the adaptive solver still
 there for callers who ask for it.
-Both changes were forced by the differentiator, not by the mathematics.
 
 :::
 

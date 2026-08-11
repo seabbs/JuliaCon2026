@@ -18,10 +18,14 @@ or does `Distributions.jl` get you further with fewer dependencies?
 - [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
-![](../figures/qr-composable.png){width="62%" fig-align="center"}
+![](../figures/qr-composable.png){width="62%" fig-align="center"
+fig-alt="QR code to the talk page"}
 
 ::: {.attribution}
 [samabbott.co.uk/JuliaCon2026/composable][composable-talk]
+
+The prototype is `ComposableTuringIDModels.jl`,
+[github.com/EpiAware/ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)
 
 Sam Abbott, LSHTM ·
 [epiaware.org](https://epiaware.org) ·

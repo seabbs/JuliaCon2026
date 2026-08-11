@@ -15,8 +15,12 @@ format:
     width: 1920
     height: 1080
     center: true
-    css: ../style.css
+    css:
+      - ../style.css
+      - mermaid.css
     link-external-newwindow: true
+    mermaid:
+      theme: neutral
 ---
 
 {{< include _partials/00-tldr.qmd >}}

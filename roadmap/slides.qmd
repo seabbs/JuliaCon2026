@@ -39,6 +39,41 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 14:30.
 :::
 ::::
 
+```{=html}
+<style>
+/* Mermaid renders at its natural size, which is too small on a 1920 wide
+   slide. Stretch it, then cap the tall diagrams by height so a vertical
+   flow does not run off the bottom. */
+.reveal .slides svg.mermaid-js {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+.reveal .slides .timeline svg.mermaid-js {
+  max-width: 72% !important;
+  display: block;
+  margin: 0 auto;
+}
+.reveal .slides .cascade svg.mermaid-js {
+  max-height: 470px !important;
+  width: auto !important;
+  max-width: 100% !important;
+  display: block;
+  margin: 0 auto 0.6em auto;
+}
+.reveal .slides .fanout svg.mermaid-js {
+  max-height: 520px !important;
+  display: block;
+  margin: 0 auto;
+}
+/* Short table cells in a narrow column wrap onto three lines otherwise. */
+.reveal .slides .nowrap table th,
+.reveal .slides .nowrap table td {
+  white-space: nowrap;
+}
+</style>
+```
+
 {{< include _partials/00-where-from.qmd >}}
 
 {{< include _partials/01-why-julia.qmd >}}

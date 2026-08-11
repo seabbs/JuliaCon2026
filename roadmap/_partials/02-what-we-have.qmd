@@ -1,20 +1,5 @@
 # What we have, and what comes next
 
-```{=html}
-<style>
-.reveal .slides svg.mermaid-js {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-}
-.reveal .slides .timeline svg.mermaid-js {
-  max-width: 72% !important;
-  display: block;
-  margin: 0 auto;
-}
-</style>
-```
-
 ## Eleven packages, three ways to compose them
 
 :::: {.columns}
@@ -47,8 +32,8 @@ flowchart LR
 - **A.** Composed distributions plus a fitting layer,
   `DistributionsInference.jl`. `rand` simulates a case, `logpdf` scores
   one
-- **B.** Turing submodels. Joint inference and the whole toolchain, and
-  one PPL's decisions with it
+- **B.** Turing submodels. Joint inference and the whole toolchain. One
+  PPL's decisions with it
 - **C.** SciML. A delay becomes a generator, with solvers and
   sensitivities. Inference supplied separately
 - We run all three and keep them interoperable because I cannot tell
@@ -88,25 +73,30 @@ const BANNED_README_WORDS = [
 :::
 ::: {.column width="60%"}
 - Nine quality checks run in every package. `EpiAwarePackageTools.jl`
-  writes up to 69 files into one, most force-managed, so a package
-  cannot drift. Ten of the eleven are on it
-- The bill is 8,600 lines of Julia to hold ten packages rigid, and a
+  writes up to 69 files into one, most force-managed. Ten of the eleven
+  are on it
+- The bill is 8,600 lines of Julia to hold ten packages rigid. A
   contributor cannot change one repository's tooling on their own
-- The people half is not started. In R the community came with the
-  packages. The epinowcast forum has 144 members and 1,273 posts, and we
-  have run 34 seminars since May 2023, roughly monthly
-- On the Julia side there is no seminar, no category on that forum, and
-  the team page lists one maintainer. Nothing names a first task, and no
-  open issue in the org is labelled a good first issue
+:::
+::::
+
+**The people half is not started.** In R the community came with the
+packages.
+
+| | The R side | The Julia side |
+|---|---|---|
+| Forum | 144 members, 1,273 posts | No category on it |
+| Seminars | 34 since May 2023, roughly monthly | None |
+| Team page | Not counted | One maintainer |
+| Good first issues | Not counted | None open |
 
 ::: {.attribution}
 [community.epinowcast.org](https://community.epinowcast.org) and
 [epinowcast.org/seminars](https://www.epinowcast.org/seminars.html),
-read 2026-08-10 · every package carries the label, none of the open
-issues use it, searched 2026-08-10.
+read 2026-08-11 · every package carries the good first issue label, none
+of the open issues use it, searched 2026-08-11 ·
+[epiaware.org/team](https://epiaware.org/team.html).
 :::
-:::
-::::
 
 ## What ships next
 
@@ -137,8 +127,8 @@ flowchart LR
 Come and find me at JuliaCon 2027 if none of them happened.
 :::
 
-- Order matters. Fix what is red before adding packages, and write the
-  governance down before asking anyone else to depend on this
+- Fix what is red before adding packages, and write the governance down
+  before asking anyone else to depend on this
 - `SpeedyWeather.jl` is the size and shape we are aiming at. One domain,
   a handful of packages, and users who are modellers rather than
   developers

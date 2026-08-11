@@ -4,27 +4,50 @@
 ::: {.column width="33%"}
 **Chained**
 
-Run one model on the output of the last.
+```{mermaid}
+%%{init: {'flowchart': {'rankSpacing': 32}}}%%
+flowchart TB
+  d["Data A"] --> m1["Model 1"]
+  m1 --> e["Summary"]
+  e --> m2["Model 2"]
+  m2 --> a["Answer"]
+```
 
-Flexible and quick. Uncertainty is approximated at each step, which
-biases what comes out.
+Uncertainty is approximated at each hand-off, and that biases the
+result.
 :::
 ::: {.column width="33%"}
 **Joint**
 
-Fit every data source in one model.
+```{mermaid}
+%%{init: {'flowchart': {'rankSpacing': 32}}}%%
+flowchart TB
+  a["Data A"] --> m
+  b["Data B"] --> m
+  c["Data C"] --> m["One model"]
+  m --> o["Answer"]
+```
 
 Rigorous, and nobody can take it apart. England's COVID-19 models were
-not adapted to mpox in 2022, and new single-source ones were built at
-speed.
+not adapted to mpox in 2022.
 :::
 ::: {.column width="33%"}
 **Composable**
 
-Assemble a model from parts, each validated on its own, and fit them
-together.
+```{mermaid}
+%%{init: {'flowchart': {'rankSpacing': 32}}}%%
+flowchart TB
+  lib[("Existing parts")] --> p1["Infection"]
+  lib --> p2["Latent"]
+  lib --> p3["Observation"]
+  p1 --> f["Fit together"]
+  p2 --> f
+  p3 --> f
+  f --> o["Answer"]
+```
 
-The cost is that the parts have to exist. Mostly they do not.
+Each part checked on its own. The parts have to exist. Mostly they do
+not.
 :::
 ::::
 
@@ -34,7 +57,7 @@ approaches manage two of the three.
 :::
 
 ::: {.attribution}
-Policy criteria from Whitty (2015),
+Schematics, not measured results · Criteria, Whitty (2015),
 [doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8) ·
 Joint model, Birrell et al. (2025),
 [doi:10.1093/jrsssa/qnaf030](https://doi.org/10.1093/jrsssa/qnaf030) ·
@@ -44,10 +67,51 @@ Chaining bias, Lison et al. (2024),
 [doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
 :::
 
-## So everyone rebuilds the whole model
+## Chaining models loses information
 
 :::: {.columns}
-::: {.column width="52%"}
+::: {.column width="46%"}
+- The ONS COVID-19 Infection Survey tested over four million swabs from
+  more than 150,000 households at a cost above £500 million. Modellers
+  outside saw the published prevalence, not the swabs
+- Prevalence fed incidence and $R_t$, and those fed variant
+  transmissibility and severity
+- Uncertainty was approximated at each step and assumptions were
+  inherited unchecked
+- Chaining steps like these can bias the result and understate the
+  uncertainty
+
+::: {.callout-important}
+Joint fitting is the fix, and it hands you a model nobody can take
+apart.
+:::
+:::
+::: {.column width="54%"}
+![](../figures/composable-ons-cascade.jpg){width="94%"
+fig-align="center"
+fig-alt="Four panels of the survey chain fitted as one model"}
+
+::: {.attribution}
+The chain fitted as one model instead. Prevalence (A), incidence (B),
+antibody prevalence (C) and $R_t$ (D) estimated together from the
+survey data. Abbott and Funk (2022),
+[doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101).
+Survey figures from the paper's introduction
+:::
+
+![](../figures/composable-lison.png){width="46%"
+fig-alt="Title of the Lison et al. 2024 paper"}
+
+::: {.attribution}
+The bias claim is Lison et al. (2024), nowcasting $R_t$ from line list
+data.
+[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
+:::
+:::
+::::
+
+## So everyone rebuilds the whole model
+
 - At least seven packages estimate $R_t$ by renewal in Stan. Only two
   of them share any component, and I wrote both
 - The wastewater $R_t$ tools make different choices about how much of
@@ -56,20 +120,19 @@ Chaining bias, Lison et al. (2024),
 - Shared parts do exist. `primarycensored` is one, and uptake outside
   my own packages is thin
 
-::: {.callout-important}
-The unit of reuse is the whole model, not the epidemiology inside it.
-:::
-:::
-::: {.column width="48%"}
-![](../figures/composable-epinow2-pkg.png){width="100%"
-fig-alt="The EpiNow2 package documentation site"}
+```{mermaid}
+%%{init: {'flowchart': {'rankSpacing': 32}}}%%
+flowchart TB
+  epidemia["epidemia"]
+  epimap["epimap"]
+  epiline["epiline"]
+  EpiSewer["EpiSewer"]
+  wwinference["wwinference"]
+  EpiNow2["EpiNow2"] --> pc(["primarycensored.stan"])
+  epinowcast["epinowcast"] --> pc
+```
 
 ::: {.attribution}
-The packages behind the count are epidemia, EpiNow2, epinowcast,
-epimap, epiline, EpiSewer and wwinference. The two that share anything
-are EpiNow2 and epinowcast, which both vendor `primarycensored.stan`.
-The screenshot is one of them,
-[epiforecasts.io/EpiNow2](https://epiforecasts.io/EpiNow2)
+Seven packages, and every component any of them share. The arrows are
+`primarycensored.stan`, vendored by `EpiNow2` and `epinowcast`
 :::
-:::
-::::

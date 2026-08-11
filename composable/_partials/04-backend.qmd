@@ -7,15 +7,22 @@
 - Turing.jl gave us submodels, a choice of samplers, and the rest of
   Julia. The proof of concept exists because of it, and choosing it was
   right at the time
-- It is still 0.x. Eleven breaking releases from v0.35.5, which the
-  paper's artefact pins, to v0.46.0 in nineteen months. Our migration
-  was one rename. The cost is the tracking, not any single change
-- Over the last six months one person has written 17 of 29 human
-  commits on Turing.jl and 47 of 72 on DynamicPPL.jl, where most of the
-  composition machinery lives
 - Automatic differentiation is the part that decided it. For a model
   somebody acts on during an outbreak, a silently wrong gradient is not
   a footnote
+
+::: {.callout-note}
+## Eleven breaking releases in nineteen months
+v0.35.5, which the paper's artefact pins, to v0.46.0. Our migration was
+one rename. The cost is the tracking.
+:::
+
+| Commits, last six months | Turing.jl | DynamicPPL.jl |
+|---|---:|---:|
+| Human authors | 29 | 72 |
+| One person | **17** | **47** |
+
+: {tbl-colwidths="[46,27,27]"}
 :::
 ::: {.column width="4%"}
 :::
@@ -35,13 +42,14 @@ even silently give incorrect results"
   the model before it runs
 
 ::: {.callout-note}
-The work is good. The concern is how few people the stack rests on.
+The work is good.
 :::
 
 ::: {.attribution}
 Release dates and commit counts from the GitHub API, 2026-08-10,
 `main`, human authors only, so 17 of 29 and 47 of 72 are per repository
-· [turinglang.org/docs/usage/automatic-differentiation][turing-ad] ·
+· `DynamicPPL.jl` is where most of the composition machinery lives ·
+[turinglang.org/docs/usage/automatic-differentiation][turing-ad] ·
 The two practical limits are in the paper's discussion · We run six
 autodiff configurations in CI instead, written up at
 [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
@@ -50,6 +58,12 @@ autodiff configurations in CI instead, written up at
 ::::
 
 ## What this does not do yet
+
+::: {.callout-important}
+## Nobody outside the author team has built a model with this
+The title says composable models can lower barriers. Until somebody
+outside tries, that is an argument rather than a result.
+:::
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -67,9 +81,6 @@ autodiff configurations in CI instead, written up at
 ::: {.column width="46%"}
 **In the claim**
 
-- The title says composable models can lower barriers. Nobody outside
-  the author team has built a model with this yet, so that is an
-  argument rather than a result
 - The design considerations came from the authors and have had no
   community input
 

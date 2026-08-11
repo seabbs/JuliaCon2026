@@ -96,10 +96,11 @@ backends are compatible when they combine multiple packages.
 - [The epinowcast community forum][forum].
   The community half of it, alongside the seminar series.
 - [EpiNow2][epinow2].
-  Widely used, and the package whose lack of modularity started this.
+  Widely used.
+  The package whose lack of modularity started this.
 - [scoringutils][scoringutils].
-  Forecast evaluation in R, and one of the packages the plan above has a
-  Julia equivalent for.
+  Forecast evaluation in R.
+  The plan above has a Julia equivalent.
 
 ### Papers and writing
 

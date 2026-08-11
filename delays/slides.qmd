@@ -15,6 +15,32 @@ format:
     center: true
     css: ../style.css
     link-external-newwindow: true
+    include-in-header:
+      text: |
+        <style>
+        .reveal .slides svg.mermaid-js {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .reveal .slides .diagram-narrow svg.mermaid-js {
+          width: 640px !important;
+          max-width: 100% !important;
+        }
+        .reveal .slides .bignum {
+          font-size: 1.55em;
+          font-weight: 700;
+          line-height: 1;
+          color: #1f6fd0;
+          margin-bottom: 0.05em;
+        }
+        .reveal .slides .bignum-label {
+          font-size: 0.7em;
+          line-height: 1.2;
+          opacity: 0.8;
+          margin-bottom: 0.45em;
+        }
+        </style>
 ---
 
 ## Talk plan

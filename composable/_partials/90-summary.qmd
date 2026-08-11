@@ -6,41 +6,60 @@
 ::: {.column width="33%"}
 **Chained**
 
-Run one model on the output of the last. Prevalence feeds incidence and
-$R_t$, and those feed transmissibility and severity.
+```{mermaid}
+%%{init: {'flowchart': {'rankSpacing': 32}}}%%
+flowchart TB
+  d["Swab data"] --> m1["Model 1"]
+  m1 --> e["Prevalence"]
+  e --> m2["Model 2"]
+  m2 --> a["Rt, severity"]
+```
 
-Flexible, quick, and the uncertainty is approximated at each step while
-assumptions are inherited unchecked, which biases what comes out.
+Uncertainty is approximated at each step and assumptions are inherited
+unchecked, which biases the result.
 :::
 ::: {.column width="33%"}
 **Joint**
 
-Fit every data source in one model. England's COVID-19 models fitted
-cases, prevalence, severity and bed occupancy together, and that
-evidence reached policy.
+```{mermaid}
+%%{init: {'flowchart': {'rankSpacing': 32}}}%%
+flowchart TB
+  a["Cases"] --> m
+  b["Prevalence"] --> m
+  c["Bed occupancy"] --> m["One model"]
+  m --> o["All estimates"]
+```
 
-Rigorous, and it hands you a model nobody can take apart. When mpox
-spread through sexual contact networks in 2022, those models were not
-adapted to it, and new single-source ones were built at speed.
+England's COVID-19 models fitted these together, and that evidence
+reached policy. Rigorous, and nobody can take it apart. Not adapted to
+mpox in 2022.
 :::
 ::: {.column width="33%"}
 **Composable**
 
-Validate each part on its own, then compose the parts and fit
-everything together.
+```{mermaid}
+%%{init: {'flowchart': {'rankSpacing': 32}}}%%
+flowchart TB
+  lib[("Existing parts")] --> p1["Infection"]
+  lib --> p2["Latent"]
+  lib --> p3["Observation"]
+  p1 --> f["Fit together"]
+  p2 --> f
+  p3 --> f
+  f --> o["All estimates"]
+```
 
 Components carry their own priors, so domain knowledge travels with the
-component rather than with the person. Model definitions do not know
-about the data, so one definition simulates and fits.
+component rather than with the person.
 :::
 ::::
 
 ::: {.callout-important}
-The trade-off is not between good and bad models. It is between rigour
-and being able to move.
+The trade-off is between rigour and being able to move.
 :::
 
 ::: {.attribution}
+The three diagrams are schematics, not measured results ·
 Birrell et al. (2025),
 [doi:10.1093/jrsssa/qnaf030](https://doi.org/10.1093/jrsssa/qnaf030) ·
 Endo et al. (2022),
@@ -51,7 +70,7 @@ Lison et al. (2024),
 
 <!-- poster -->
 
-## EpiNow2, rebuilt out of parts {visibility="uncounted"}
+## One `EpiNow2` configuration, rebuilt out of parts {visibility="uncounted"}
 
 :::: {.columns}
 ::: {.column width="42%"}
@@ -64,9 +83,7 @@ Lison et al. (2024),
   joint fit, recovering cases through the delays and $R_t$ with them
 
 ::: {.callout-important}
-Nothing here required editing a component that already existed. The
-parts were validated separately and the composition was fitted
-together.
+Nothing here required editing a component that already existed.
 :::
 
 ::: {.attribution}
@@ -78,10 +95,12 @@ South Korea and an ODE model of influenza. Replicating
 :::
 :::
 ::: {.column width="58%"}
-![](../figures/composable-epinow2-model.png){height="270px"
-fig-align="center"}
+![](../figures/composable-epinow2-model.png){height="300px"
+fig-align="center"
+fig-alt="The EpiNow2 configuration drawn as a graph of components"}
 
-![](../figures/composable-epinow2-results.png){height="430px"
-fig-align="center"}
+![](../figures/composable-epinow2-results.png){height="620px"
+fig-align="center"
+fig-alt="Six panels: prior checks on each part, then the joint fit"}
 :::
 ::::

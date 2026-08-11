@@ -32,6 +32,14 @@ Julia file does not have to know any of them.
 ::: {.column width="33%"}
 **Removed**
 
+::: {.bignum}
+0
+:::
+
+::: {.bignum-label}
+tables left to keep in step
+:::
+
 A class of bug. `dist_id = 3` meant Normal in Stan and Weibull in R, so
 asking for a Weibull fitted a normal and returned numbers. The two
 integer tables agreed on lognormal, gamma and exponential, and on
@@ -42,6 +50,14 @@ is no second table for it to disagree with.
 :::
 ::: {.column width="33%"}
 **Moved**
+
+::: {.bignum}
+4 of 6
+:::
+
+::: {.bignum-label}
+autodiff backends carry a broken scenario
+:::
 
 The numerical problem, from the language to the autodiff backends. Six
 backends run in CI, each with its own workflow. Two pass every
@@ -54,15 +70,23 @@ ODE, Julia for a dot product.
 ::: {.column width="33%"}
 **Unchanged**
 
+::: {.bignum}
+100×
+:::
+
+::: {.bignum-label}
+more downloads in R, all time
+:::
+
 Who uses it. 11,244 downloads all time against 116, and 528 last month
 against 49.
 
-Nine repositories on GitHub depend on `primarycensored`, two of them on
-CRAN, seven from my own orgs and two from CDC. Everything that depends
-on `CensoredDistributions.jl` is mine, Sam Brand's or Sebastian Funk's.
+Nine GitHub repositories depend on `primarycensored`, two of them on
+CRAN. Seven are mine, two are CDC's. Everything depending on
+`CensoredDistributions.jl` is mine, Sam Brand's or Sebastian Funk's.
 
-Twenty-one months on CRAN against twelve in General, so some of that
-gap is R having the users and some is the package.
+Twenty-one months on CRAN against twelve in General, so the gap is not
+all the package.
 :::
 ::::
 

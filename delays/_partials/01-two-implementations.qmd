@@ -84,10 +84,53 @@ this talk against v0.2.22
 :::
 ::: {.column width="46%"}
 - In Stan `dist_id` is data, so the distribution is fixed before
-  sampling starts. Here `Gamma(α, θ)` is **built out of the parameters
-  being sampled**
+  sampling starts
 - `primary_censored` is the $w_P$ integral, `upper` truncates at $C$,
   `interval_censored` is $w_S$, and `double_interval_censored` stacks
   all three **in that order**
 :::
 ::::
+
+## The observation process is a tree, and you can read it back
+
+:::: {.columns}
+::: {.column width="55%"}
+```{mermaid}
+flowchart TD
+  A["IntervalCensored<br/>the daily secondary window"]
+  B["Truncated<br/>only pairs finished by C"]
+  C["PrimaryCensored<br/>the primary window integral"]
+  D["Gamma(α, θ)<br/>the delay"]
+  E["Uniform(0, 1)<br/>when in the primary window"]
+  F["AnalyticalSolver<br/>GaussLegendre(n = 64)"]
+  A --> B --> C
+  C --> D
+  C --> E
+  C --> F
+```
+:::
+::: {.column width="45%"}
+```julia
+julia> typeof(double_interval_censored(
+           Gamma(2.0, 3.0); upper = 15, interval = 1))
+
+IntervalCensored{
+  Truncated{
+    PrimaryCensored{
+      Gamma{Float64},
+      Uniform{Float64},
+      AnalyticalSolver{GaussLegendre{…}}}}}
+```
+
+- The tree is the type. Nothing dispatches on a name or an integer, so
+  there is nothing to keep in step
+- Swap `Gamma` for any `UnivariateDistribution` and the rest of the
+  tree is unchanged
+:::
+::::
+
+::: {.attribution}
+Real output, `CensoredDistributions.jl` v0.2.22. Reflowed onto several
+lines, and the type parameters of the solver and of `Truncated` are
+elided at `…`. The diagram is that type, drawn out.
+:::

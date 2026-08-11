@@ -7,9 +7,6 @@
 - `epidist` is our R package for fitting delay distributions. It sits
   on `primarycensored` and `brms`, and it holds **partial pooling** and
   flexible delay shapes
-- `ConvolvedDistributions.jl` does sums of independent delays, plus
-  differences, products and ratios. It and `CensoredDistributions.jl`
-  do not depend on each other
 - The Julia `epidist` is a **composed** one. Censoring for the
   observation process, Turing submodels for partial pooling and for
   shapes not forced to be a gamma
@@ -37,6 +34,22 @@ Plain `Distributions.jl` dispatch, composed for this talk rather than
 lifted from a README. Run against `CensoredDistributions.jl` v0.2.22
 and `ConvolvedDistributions.jl`
 :::
+
+::: {.diagram-narrow}
+```{mermaid}
+flowchart TD
+  CV["ConvolvedDistributions.jl<br/>sums, differences, ratios"]
+  CD["CensoredDistributions.jl<br/>windows and truncation"]
+  D["Distributions.jl<br/>cdf, pdf, rand, quantile"]
+  CV --> D
+  CD --> D
+```
+:::
+
+::: {.attribution}
+Neither package appears in the other's `[deps]`. Both list
+`Distributions`, checked in each `Project.toml`.
+:::
 :::
 ::::
 
@@ -49,14 +62,24 @@ step.
 
 ## What I would use today
 
-- If you estimate delays in R, use `primarycensored`. It works, it is on
-  CRAN, and there are packages built on top of it
-- If you are writing a model in Julia, **the composition is worth more
-  than the package**. Any distribution, any sampler, no integer tables
+:::: {.columns}
+::: {.column width="48%"}
+### Estimating a delay in R
+
+Use `primarycensored`. It works, it is on CRAN, and there are packages
+built on top of it.
+:::
+::: {.column width="48%"}
+### Writing a model in Julia
+
+**The composition is worth more than the package.** Any distribution,
+any sampler, no integer tables.
+:::
+::::
+
 - Multiple dispatch removed a class of bug that R and Stan could only
   write a test for
-- Budget for the autodiff work. It is where the numerical problem went,
-  and it is not a one off cost
+- Budget for the autodiff work. It is not a one off cost
 
 ::: {.callout-important}
 `ConvolvedDistributions.jl` and `CensoredDistributions.jl` have no

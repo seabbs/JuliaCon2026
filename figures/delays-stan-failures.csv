@@ -1,0 +1,11 @@
+label,chains,failed,rate_percent,kind,source
+"integrate_1d, tolerance 1e-6",256,243,94.9219,quad,2024-09-05T21:19:15Z
+"tolerance dropped to 1e-2",256,47,18.3594,quad,2024-09-05T21:25:23Z
+"same code, 600 chains",600,151,25.1667,quad,2024-09-05T21:57:14Z
+"guard on tiny delays",600,146,24.3333,quad,2024-09-05T21:57:14Z
+"xc boundary at 0.3 pwindow",600,135,22.5000,quad,2024-09-05T22:11:30Z
+"xc boundary at 0.1 pwindow",600,160,26.6667,quad,2024-09-05T22:21:58Z
+"truncation dropped, wrong model",600,33,5.5000,invalid,2024-09-05T22:33:21Z
+"main at e800dfd",600,88,14.6667,quad,2024-09-06T21:04:12Z
+"redundant xc removed, 8fb2c03",600,70,11.6667,quad,2024-09-06T21:28:39Z
+"recast as ode_rk45",600,0,0.0000,ode,2024-09-12T20:32:38Z

@@ -2,9 +2,8 @@
 
 :::: {.columns}
 ::: {.column width="62%"}
-- We rebuilt a common `EpiNow2` configuration, from a package I wrote
-  and help maintain, in Julia, out of components that already existed
-  and without editing any of them
+- We rebuilt a common `EpiNow2` configuration in Julia out of
+  components that already existed, without editing any of them
 - **Chaining** models keeps you flexible and loses information.
   **Joint** models are rigorous and produce something nobody can take
   apart
@@ -19,7 +18,8 @@
 [doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
 :::
 
-![](../figures/qr-composable.png){width="52%" fig-align="center"}
+![](../figures/qr-composable.png){width="52%" fig-align="center"
+fig-alt="QR code to the talk page"}
 
 ::: {.attribution}
 [samabbott.co.uk/JuliaCon2026/composable](https://samabbott.co.uk/JuliaCon2026/composable/)

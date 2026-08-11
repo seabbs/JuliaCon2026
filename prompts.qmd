@@ -3,7 +3,7 @@ title: "Prompts"
 subtitle: "The brief that made this site, and the steers that followed"
 description-meta: >-
   The opening brief given to the coding agents that drafted these three
-  JuliaCon 2026 decks, and every steer given during the build.
+  JuliaCon 2026 decks, and the steers given during the build.
 toc: true
 toc-location: right
 toc-depth: 3
@@ -12,8 +12,8 @@ toc-title: "On this page"
 page-layout: full
 ---
 
-This site was built with coding agents, working from a brief and a long run of
-corrections.
+Coding agents built the site and drafted the slides, working from a brief and
+a long run of corrections.
 This page is what I asked for and what I said back.
 The [how I LLM](https://samabbott.co.uk/how-I-llm) deck put its prompt on a
 slide at the end.
@@ -169,8 +169,8 @@ composable org.
 ## The steers
 
 Follow-up instructions during the build, verbatim apart from spelling.
-There are eighteen so far and the build is not finished, so this is still a
-thinner list than the two dozen steers behind the how I LLM deck.
+There are eighteen so far and the build is not finished.
+That is a thinner list than the two dozen steers behind the how I LLM deck.
 It is appended to as they arrive, and the running version is
 [in the repo](https://github.com/seabbs/JuliaCon2026/blob/main/notes/steers.md).
 Six are about the workflow, ten about the content, and two about the layout.
@@ -298,8 +298,7 @@ interesting?
 Six of the eighteen are corrections to the workflow rather than to the
 content.
 The brief said what the talks should say.
-It did not say how hard to look before saying it, and that is what those
-steers were for.
+It did not say how hard to look before saying it.
 The content steers were mostly about what to cut.
 
 ## How it was built
@@ -307,8 +306,7 @@ The content steers were mostly about what to cut.
 Nine research agents ran first, one per question, before any slide was
 written.
 They wrote about 3,500 lines of notes into
-[`notes/`](https://github.com/seabbs/JuliaCon2026/tree/main/notes) and none of
-them wrote slides.
+[`notes/`](https://github.com/seabbs/JuliaCon2026/tree/main/notes).
 
 - the git history and issue trail of primarycensored and
   CensoredDistributions.jl, for what actually went wrong in Stan and in Julia
@@ -328,8 +326,8 @@ them wrote slides.
 They were told never to state a number they had not checked against a repo,
 the GitHub API, or a package registry, and to list separately anything they
 could not verify.
-Several notes have an unverified section, and those claims are not on the
-slides.
+Several notes have an unverified section.
+Those claims are not on the slides.
 
 Some of what came back contradicted the brief.
 The brief says the Stan side needed an ODE but otherwise AD just worked.
@@ -337,17 +335,15 @@ The Julia history says both languages moved off adaptive quadrature by default
 because the differentiator could not follow it, and that 48 of the 396 issues
 in CensoredDistributions.jl have AD, autodiff, gradient, numerical,
 quadrature, precision or performance in the title.
-So the deck says that, not the easier version.
+So the deck says that.
 One agent was asked for a lines of code comparison between the two packages.
 It counted the lines in both, then said the number should not go on a slide
-because the scopes are not the same, and gave a claim about where the lines go
-instead.
+because the scopes are not the same.
 Another declined to claim public health agency use of primarycensored, because
 the only evidence was the epinowcast team describing its own tools to a public
 health audience.
 
-Writing agents then drafted the three decks from the notes, and review agents
-read them back against this brief for length, for voice, and for claims that
-were not in the notes.
-This page was written while that was still going on, so it records the
-workflow rather than a final tally of what the reviews caught.
+Writing agents then drafted the slide text from the notes.
+Review agents read the drafts back against this brief for length, for voice,
+and for claims that were not in the notes.
+This page was written while that was still going on.

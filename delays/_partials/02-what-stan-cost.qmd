@@ -16,9 +16,8 @@ endpoint. ...
 Warning: 243 chain(s) finished unexpectedly!
 ```
 
-- **243 of 256** chains, dying after warmup, in the middle of sampling
-- A day of tolerances, boundary fractions and midpoint approximations
-  got that to **70 of 600**
+- **243 of 256** chains, dying after warmup rather than at
+  initialisation
 - `integrate_1d` errors rather than rejecting, and there is no
   `try`/`catch` to wrap it in
 :::
@@ -48,10 +47,49 @@ reported four to five times faster, from one run rather than a
 benchmark.
 :::
 
+## Everything I tried in between
+
+![](../figures/delays-stan-failures.png){width="80%"
+fig-align="center"
+fig-alt="Horizontal bar chart of ten runs reported in
+epinowcast/primarycensored issue 34. The first, integrate_1d at
+tolerance 1e-6, lost 243 of 256 chains. Eight tuning attempts sit
+between 12 and 27 per cent, one of them a model with the truncation
+adjustment removed. The last, recast as ode_rk45, lost 0 of 600."}
+
+::: {.attribution}
+Every run is one Sam Abbott reported in
+[epinowcast/primarycensored#34][pc-issue34] between 5 and 12 September
+2024, read back from the issue, `scripts/delays-stan-failures.py`. The
+runs are not one dataset. The scenario was made harder in the same PR
+that landed the ODE, so the last two rows on 600 chains are the pair
+closest to like for like.
+:::
+
+[pc-issue34]: https://github.com/epinowcast/primarycensored/issues/34
+
 ## No user types, so distributions became integers
 
 :::: {.columns}
-::: {.column width="48%"}
+::: {.column width="44%"}
+| id | R, `pcd_distributions` | Stan, `dist_lcdf` | |
+|---:|---|---|---|
+| 1 | `lnorm` | `lognormal` | ✓ |
+| 2 | `gamma` | `gamma` | ✓ |
+| 3 | **`weibull`** | **`normal`** | ✗ |
+| 4 | `exp` | `exponential` | ✓ |
+| 5 | `gengamma` | `weibull` | ✗ |
+| 6 | `nbinom` | `beta` | ✗ |
+| ... | | | |
+| 17 | `logis` | `von_mises` | ✗ |
+
+::: {.attribution}
+Both tables as they stood at `4aaf249^`,
+`data-raw/distributions.R:1-19` and
+`inst/stan/functions/primarycensored_ode.stan:28-44`
+:::
+:::
+::: {.column width="56%"}
 ```r
 dist_id <- pcd_stan_dist_id(family_name)
 
@@ -62,21 +100,17 @@ stanvars_functions[[1]]$scode <- gsub(
 )
 ```
 
-::: {.attribution}
-`epidist/R/marginal_model.R:339-347`
-:::
-:::
-::: {.column width="52%"}
 - The type parameter is an integer, pushed into Stan source as text,
-  from another language
-- **`dist_id = 3` meant Normal in Stan and Weibull in R.** On the
-  numerical path, which is anything outside gamma, lognormal and
-  Weibull with a uniform primary, asking for a Weibull fitted a normal
-  and returned numbers
-- The two integer tables agreed on lognormal, gamma and exponential,
-  and on nothing else
+  from another language, before the model compiles
+- Ask for a Weibull on the numerical path and you fitted a normal. No
+  error, no warning, numbers came back
 - The fix came with a **228 line test** whose only job is checking that
   two integer tables agree
+
+::: {.attribution}
+`epidist/R/marginal_model.R:339-347` · fix in
+epinowcast/primarycensored#277, commit `4aaf249`, February 2026
+:::
 :::
 ::::
 

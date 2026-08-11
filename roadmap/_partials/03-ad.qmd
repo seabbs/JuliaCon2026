@@ -38,26 +38,81 @@ six 2026-08-07 in `ComposedDistributions.jl` ·
 ## What we added on top of DifferentiationInterfaceTest
 
 :::: {.columns}
-::: {.column width="55%"}
+::: {.column width="50%"}
 - DifferentiationInterfaceTest works per function and per package. We
   added a registry where a package declares which scenarios are broken
-  on which backend, and `check_broken` re-runs them, so a stale
-  declaration gets flagged
-- One list generates the CI matrix, the Codecov flags, the README badges
-  and the published support table, so the docs cannot drift from CI
+  on which backend, and `check_broken` re-runs them
 - `gamma_inc` and `beta_inc` carry no AD rules, so we hand-wrote those
   derivatives. `ScoringRules.jl` hit the same two from scratch
 :::
-::: {.column width="45%"}
-- Mooncake returns a wrong gradient when a Gamma shape lands on exactly
-  1.0, through a missing rule for `xlogy`. Not an error. A wrong number
-- We found it and reduced it to three lines. Our bot then filed it
-  upstream by mistake and we withdrew it. It is still not reported.
-  `EpiAwareADTools.jl` holds the workaround
+::: {.column width="50%"}
+::: {.fanout}
+```{mermaid}
+flowchart LR
+  L["One declared list<br>of backends and<br>broken scenarios"]
+  M["Six CI jobs"]
+  F["Six Codecov flags"]
+  B["Six README badges"]
+  T["One published<br>support table"]
+  L --> M
+  L --> F
+  L --> B
+  L --> T
+```
+:::
 
 ::: {.attribution}
-Reduced example and the unfiled report in
-[ComposedDistributions.jl#99][cd99].
+Schematic of what the list feeds, drawn for this talk. The list is
+`_AD_BACKENDS` in `EpiAwarePackageTools.jl`, `src/scaffold.jl:1464`.
+Its six entries are what the managed `.github/workflows/ad.yaml` passes
+as its matrix and what the six per backend Codecov badges in each README
+point at, read 2026-08-11.
+:::
+:::
+::::
+
+## A wrong number, not an error
+
+:::: {.columns}
+::: {.column width="50%"}
+```julia
+f(x) = xlogy(x[1], 0.8)   # d/dx = log(0.8)
+
+DI.gradient(f, DI.AutoForwardDiff(), [0.0])
+DI.gradient(f, DI.AutoMooncake(), [0.0])
+```
+
+| Backend | Gradient at `x = 0` |
+|---|---|
+| Finite differences | -0.22314 |
+| ForwardDiff | -0.22314 |
+| ReverseDiff | -0.22314 |
+| Enzyme | -0.22314 |
+| Mooncake | **0.0** |
+:::
+::: {.column width="50%"}
+- `logpdf(Gamma(k, θ), x)` computes `xlogy(k - 1, x / θ)`. Mooncake has
+  no rule for `xlogy`, so it differentiates the implementation. At shape
+  exactly 1.0 the first argument is zero, the `iszero` branch returns a
+  constant, and the shape gradient comes back as zero
+- Nothing throws. The sampler runs. The number is wrong
+- We found it in a pooled model and reduced it to three lines. Our bot
+  filed it upstream by mistake and we withdrew it. It is still not
+  reported
+
+::: {.callout-important}
+`EpiAwareADTools.jl` carries the rule, and deletes it the day Mooncake
+ships one.
+:::
+
+::: {.attribution}
+The three lines and the backend comparison are from
+[ComposedDistributions.jl#99][cd99], 2026-07-07. `xlogy` comes from
+`LogExpFunctions`, `DI` is `DifferentiationInterface`. Mooncake 0.5.37,
+Julia 1.12 · the withdrawn upstream report is
+[chalk-lab/Mooncake.jl#1241][mc1241], closed the day it was opened, and
+nothing has replaced it as of 2026-08-11 · the local rule is
+`ext/EpiAwareADToolsLogExpFunctionsMooncakeExt.jl`.
 :::
 :::
 ::::
@@ -65,3 +120,4 @@ Reduced example and the unfiled report in
 [cd889]: https://github.com/EpiAware/CensoredDistributions.jl/issues/889
 [adtests]: https://github.com/TuringLang/ADTests
 [cd99]: https://github.com/EpiAware/ComposedDistributions.jl/issues/99
+[mc1241]: https://github.com/chalk-lab/Mooncake.jl/issues/1241
