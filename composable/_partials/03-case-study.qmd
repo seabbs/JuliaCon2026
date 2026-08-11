@@ -84,6 +84,7 @@ fig-alt="Six panels: prior checks on each part, then the joint fit"}
 
 ::: {.callout-important}
 No component was edited and no new component code was written.
+The replication took three hours.
 :::
 
 ::: {.attribution}
