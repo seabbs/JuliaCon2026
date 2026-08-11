@@ -12,8 +12,8 @@ toc-title: "On this page"
 page-layout: full
 ---
 
-These three decks, the pages around them, and most of the words on them were
-drafted by coding agents.
+This site was built with coding agents, working from a brief and a long run of
+corrections.
 This page is what I asked for and what I said back.
 The [how I LLM](https://samabbott.co.uk/how-I-llm) deck put its prompt on a
 slide at the end.

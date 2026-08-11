@@ -399,23 +399,6 @@ main:has(.abstract) section > h3 {
   color: inherit;
 }
 
-/* QR block on talk pages. It sits at the top of the resources column, which
-   is where someone in the room would want it, not at the end of the page. */
-.talk-qr {
-  margin-bottom: 1.5rem;
-}
-
-.talk-qr img {
-  max-width: 150px;
-}
-
-.talk-qr p {
-  font-size: 0.85rem;
-  color: #666;
-  max-width: 20rem;
-  margin-bottom: 0;
-}
-
 /* Prompt quotes on the prompts page */
 .prompt {
   border-left: 3px solid #cb3c33; /* Julia red */

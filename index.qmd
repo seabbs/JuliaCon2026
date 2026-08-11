@@ -183,6 +183,6 @@ wider infectious disease modelling community.*
 [hsi]: https://samabbott.co.uk/how-to-serial-interval
 
 ::: {.made-note}
-These pages and slides were drafted by coding agents and then steered.
-The [prompts page](prompts.qmd) has the brief and the steers.
+The [prompts page](prompts.qmd) has the brief I wrote for this site and the
+steers that followed.
 :::

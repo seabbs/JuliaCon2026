@@ -81,11 +81,6 @@ Both changes were forced by the differentiator, not by the mathematics.
 
 ::: {.talk-side}
 
-::: {.talk-qr}
-![](../figures/qr-delays.png){fig-alt="QR code linking to this page"}
-
-The QR code on the poster and on the closing slide points here.
-:::
 
 ## Resources
 

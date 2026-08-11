@@ -68,11 +68,6 @@ backends are compatible when they combine multiple packages.
 
 ::: {.talk-side}
 
-::: {.talk-qr}
-![](../figures/qr-roadmap.png){fig-alt="QR code linking to this page"}
-
-The QR code on the poster and on the closing slide points here.
-:::
 
 ## Resources
 

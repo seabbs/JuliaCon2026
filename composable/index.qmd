@@ -79,11 +79,6 @@ The talk says this rather than the settled version.
 
 ::: {.talk-side}
 
-::: {.talk-qr}
-![](../figures/qr-composable.png){fig-alt="QR code linking to this page"}
-
-The QR code on the poster and on the closing slide points here.
-:::
 
 ## Resources
 
