@@ -29,7 +29,34 @@ window of width $w_P$, the primary event happened.
 :::
 ::::
 
-::: {.callout-important}
-The whole engineering story is that integral, and the fact that a
-sampler has to differentiate through it.
+## The pairs that have not finished yet are missing
+
+![](../figures/delays-right-truncation.png){width="72%" fig-align="center"}
+
+:::: {.columns}
+::: {.column width="50%"}
+- In real time you only see the pairs whose secondary event has already
+  happened, so the long delays are missing and the shortfall grows the
+  nearer the cutoff is to now
+- **This is not censoring.** Censoring is not knowing *when* an event
+  happened inside a window. Truncation is not seeing the pair *at all*
+:::
+::: {.column width="50%"}
+```julia
+d = primary_censored(LogNormal(μ, σ), Uniform(0, 1))
+seen = interval_censored(truncated(d; upper = C), 1)
+```
+
+- Divide by the CDF at the cutoff. `truncated` is
+  `Distributions.truncated`, which does not know what it is wrapping
+- The delay estimate is an input elsewhere, so a mean of **3.9 days
+  rather than 5.9** is what the forecast and the transmission model are
+  handed
+:::
+::::
+
+::: {.attribution}
+`LogNormal(1.6, 0.6)` with daily windows, computed for this talk with
+`CensoredDistributions.jl` v0.2.22,
+`scripts/delays-right-truncation.jl`
 :::

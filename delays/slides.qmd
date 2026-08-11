@@ -17,6 +17,31 @@ format:
     link-external-newwindow: true
 ---
 
+## Talk plan
+
+:::: {.columns}
+::: {.column width="68%"}
+- Two events, each seen through a window, and the bias from ignoring
+  that
+- Eighteen Stan branches against three closed forms and one fallback,
+  picked by the type
+- What Stan cost us, an integral solver that would not hold and two
+  integer tables that disagreed
+- The honest part, R has about a hundred times the downloads
+- The numerical problem moved into autodiff, it did not go away
+- What I would use today, and why the composition outlasts the package
+:::
+::: {.column width="32%"}
+![](../figures/qr-delays.png){width="58%"}
+
+::: {.attribution}
+[samabbott.co.uk/JuliaCon2026/delays][delays-talk]
+
+JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 14:45.
+:::
+:::
+::::
+
 {{< include _partials/00-problem.qmd >}}
 
 {{< include _partials/01-two-implementations.qmd >}}

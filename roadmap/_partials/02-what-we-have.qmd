@@ -7,6 +7,11 @@
   max-width: 100% !important;
   height: auto !important;
 }
+.reveal .slides .timeline svg.mermaid-js {
+  max-width: 72% !important;
+  display: block;
+  margin: 0 auto;
+}
 </style>
 ```
 
@@ -67,7 +72,7 @@ packages are empty repositories. The other two hold the rest rigid.
 ## What holds it together, and what does not
 
 :::: {.columns}
-::: {.column width="46%"}
+::: {.column width="40%"}
 ```julia
 const BANNED_README_WORDS = [
     "comprehensive", "cornerstone",
@@ -80,12 +85,8 @@ const BANNED_README_WORDS = [
     # ... 20 in total
 ]
 ```
-
-::: {.callout-note}
-A guideline gets ignored. A failing test does not.
 :::
-:::
-::: {.column width="54%"}
+::: {.column width="60%"}
 - Nine quality checks run in every package. `EpiAwarePackageTools.jl`
   writes up to 69 files into one, most force-managed, so a package
   cannot drift. Ten of the eleven are on it
@@ -109,24 +110,31 @@ issues use it, searched 2026-08-10.
 
 ## What ships next
 
+::: {.timeline}
+```{mermaid}
+flowchart LR
+  S["<b>Sep 2026</b><br>Nothing red"]
+  D["<b>Dec 2026</b><br>The dynamics components"]
+  M["<b>Mar 2027</b><br>A written way in"]
+
+  S --> D --> M
+```
+:::
+
 :::: {.columns}
 ::: {.column width="56%"}
-**September 2026. Nothing red.**
-`ComposedDistributions.jl` green on all six backends,
-`ScoringRules.jl` registered, and the documentation site level with
-`main` rather than trailing it.
-
-**December 2026. The dynamics components.**
-`GenerationTime.jl` and `ReproductionNumber.jl`, the two empty
-repositories, are the disease dynamics pieces the abstract promised.
-
-**March 2027. A written way in.**
-A governance document saying how a package joins and who decides, and a
-contributing guide that names a first task.
+- **Sep.** `ComposedDistributions.jl` green on all six backends,
+  `ScoringRules.jl` registered, and the documentation site level with
+  `main` rather than trailing it
+- **Dec.** `GenerationTime.jl` and `ReproductionNumber.jl`, the two
+  empty repositories, are the disease dynamics pieces the abstract
+  promised
+- **Mar.** A governance document saying how a package joins and who
+  decides, and a contributing guide that names a first task
 :::
 ::: {.column width="44%"}
 ::: {.callout-important}
-Three dates. Come and find me at JuliaCon 2027 if none of them happened.
+Come and find me at JuliaCon 2027 if none of them happened.
 :::
 
 - Order matters. Fix what is red before adding packages, and write the

@@ -56,8 +56,7 @@ where these were `damp_priors`, `θ_priors` and `std_prior` ·
 
 ::: {.callout-important}
 No component was edited and no new component code was written. Parts
-validated separately, composition fitted together. That is the whole
-claim.
+validated separately, composition fitted together.
 :::
 
 ::: {.attribution}

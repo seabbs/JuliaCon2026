@@ -34,8 +34,8 @@ cdf(observed, 5.0)   # 0.4561
 
 ::: {.attribution}
 Plain `Distributions.jl` dispatch, composed for this talk rather than
-lifted from a README, which is the point of the slide. Run against
-`CensoredDistributions.jl` v0.2.22 and `ConvolvedDistributions.jl`
+lifted from a README. Run against `CensoredDistributions.jl` v0.2.22
+and `ConvolvedDistributions.jl`
 :::
 :::
 ::::
@@ -59,8 +59,8 @@ step.
   and it is not a one off cost
 
 ::: {.callout-important}
-The composition is the reusable part. The package is only where the
-censoring happens to live.
+`ConvolvedDistributions.jl` and `CensoredDistributions.jl` have no
+dependency on each other. They compose through `Distributions.jl`.
 :::
 
 ::: {.attribution}

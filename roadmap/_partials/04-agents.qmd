@@ -17,15 +17,13 @@ more in "How I use coding agents".
   success. So we started anyway, with coding agents
 - **1,144 pull requests** in the EpiAware org from the bot account, all
   time. 966 merged, 119 closed unmerged, the same ratio as my other
-  organisations, so it is not one easy repository
+  organisations
 - On the live DRC outbreak model the tests were written by the same
   agents that wrote the code. A green suite says the code does what it
   was told, not that what it was told was right
 - Its chart digitiser undercounted one situation report by **54%** after
   a change in image compression. A self-check caught it, not a person
-
-::: {.callout-important}
-Ten times the throughput at ten times the review load is not a win.
-:::
+- I read fewer of these than I should. That is the cost, and I do not
+  have a defence for it
 :::
 ::::

@@ -31,11 +31,6 @@ the time series half of this deck, and none for the fitting layer,
 which is what the probabilistic programming language was doing.
 :::
 
-::: {.callout-note}
-The language was always meant to be backend agnostic. This is what
-taking that seriously looks like.
-:::
-
 ::: {.attribution}
 `CensoredDistributions.jl` v0.2.22, `main` checked 2026-08-10. A
 `DynamicPPL` package extension exists on an unmerged branch, not on

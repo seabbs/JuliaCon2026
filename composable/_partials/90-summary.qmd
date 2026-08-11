@@ -66,7 +66,7 @@ Lison et al. (2024),
 ::: {.callout-important}
 Nothing here required editing a component that already existed. The
 parts were validated separately and the composition was fitted
-together. That is the whole claim.
+together.
 :::
 
 ::: {.attribution}

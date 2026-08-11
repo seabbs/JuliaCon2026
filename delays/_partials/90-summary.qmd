@@ -66,11 +66,6 @@ gap is R having the users and some is the package.
 :::
 ::::
 
-::: {.callout-important}
-The composition is the reusable part. The package is only where the
-censoring happens to live.
-:::
-
 ::: {.attribution}
 CRAN and JuliaPkgStats, 10 August 2026. CRAN counts requests to one
 mirror, JuliaPkgStats counts unique IP addresses, so the ratio is an

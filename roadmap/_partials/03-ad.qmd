@@ -4,14 +4,18 @@
 
 :::: {.columns}
 ::: {.column width="55%"}
-- Six configurations in CI. ForwardDiff, ReverseDiff on tape, Enzyme
-  forward and reverse, Mooncake forward and reverse. Each gets its own
-  job, its own badge and its own Codecov flag
-- `CensoredDistributions.jl` is green on all six, with one declared
-  broken scenario on each Enzyme direction. Both are the same
-  `convolve_series` case on a stacked
-  `IntervalCensored{Truncated{PrimaryCensored}}`
-- `ComposedDistributions.jl` fails all six on `main`, as of 10 August
+| Backend | `Censored` | `Composed` |
+|---|---|---|
+| ForwardDiff | green | red |
+| ReverseDiff, tape | green | red |
+| Mooncake forward | green | red |
+| Mooncake reverse | green | red |
+| Enzyme forward | green, 1 broken | red |
+| Enzyme reverse | green, 1 broken | red |
+
+- Each configuration gets its own job, its own badge and its own Codecov
+  flag. Both declared broken scenarios are the same `convolve_series`
+  case on a stacked `IntervalCensored{Truncated{PrimaryCensored}}`
 :::
 ::: {.column width="45%"}
 - DifferentiationInterface tells you about a function. Turing tells you
@@ -21,10 +25,11 @@
   stack, `TuringLang/ADTests`, was archived in June
 
 ::: {.attribution}
-Declared broken scenarios in
+`Censored` is `CensoredDistributions.jl`, `Composed` is
+`ComposedDistributions.jl` · declared broken scenarios in
 [CensoredDistributions.jl#889][cd889], read from `test/ADFixtures` on
-`main` · last `AD` run on `main` green 2026-08-05 there and red
-2026-08-07 in `ComposedDistributions.jl` ·
+`main` · last `AD` run on `main` green 2026-06-21 there and red on all
+six 2026-08-07 in `ComposedDistributions.jl` ·
 [TuringLang/ADTests][adtests], archived 2026-06-15.
 :::
 :::
@@ -44,16 +49,11 @@ Declared broken scenarios in
   derivatives. `ScoringRules.jl` hit the same two from scratch
 :::
 ::: {.column width="45%"}
-::: {.callout-important}
-Without this, building a model is a custom job with a lot of iteration.
-That is not realistic in an outbreak.
-:::
-
 - Mooncake returns a wrong gradient when a Gamma shape lands on exactly
   1.0, through a missing rule for `xlogy`. Not an error. A wrong number
 - We found it and reduced it to three lines. Our bot then filed it
-  upstream by mistake and we withdrew it, so it is still not reported.
-  `EpiAwareADTools.jl` holds the workaround in the meantime
+  upstream by mistake and we withdrew it. It is still not reported.
+  `EpiAwareADTools.jl` holds the workaround
 
 ::: {.attribution}
 Reduced example and the unfiled report in

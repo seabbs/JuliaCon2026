@@ -10,18 +10,10 @@
 | Aug 2024 | `primarycensored` | Censoring bias | Stan source, copied in |
 | Sep 2024 | `CensoredDistributions.jl` | Censoring bias | The distribution |
 
-:::: {.columns}
-::: {.column width="52%"}
-::: {.callout-important}
-Each one found a real problem, fixed it, and left behind another package
-that cannot be taken apart. The fix is always a new package.
-:::
-:::
-::: {.column width="48%"}
 - The same structural request has been written down in `EpiNow2` four
-  times across five and a half years. **#122** (2020) and **#313**
-  (2022) were closed as done and left the package no easier to take
-  apart. **#1268** and **#1345** are still open
+  times across five and a half years. **#122** (2020) and **#313** (2022)
+  were closed as done and left the package no easier to take apart.
+  **#1268** and **#1345** are still open
 - Sharing a component between two Stan packages means copying its source
   in. **#1268** asks us to do exactly that
 
@@ -32,8 +24,6 @@ Repository creation dates from the GitHub API, 2026-08-10 ·
 [#1268](https://github.com/epiforecasts/EpiNow2/issues/1268),
 [#1345](https://github.com/epiforecasts/EpiNow2/issues/1345)
 :::
-:::
-::::
 
 <!-- poster -->
 

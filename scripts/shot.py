@@ -6,9 +6,16 @@ Usage:
 
 Defaults to the home page at desktop width. Pages are paths relative to
 _site/. Requires "uvx --from playwright playwright install chromium" once.
+
+Pages are served over http rather than opened as file:// URLs. Chromium
+refuses cross origin module requests from file://, which kills quarto.js and
+leaves the table of contents collapsed in every shot.
 """
 
+import functools
 import sys
+import threading
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -22,18 +29,34 @@ pages = sys.argv[3:] or ["index.html"]
 
 outdir.mkdir(parents=True, exist_ok=True)
 
-with sync_playwright() as p:
-    browser = p.chromium.launch()
-    page = browser.new_page(viewport={"width": width, "height": 1000})
-    for rel in pages:
-        target = site / rel
-        if not target.exists():
-            print(f"missing {target}")
-            continue
-        page.goto(target.as_uri())
-        page.wait_for_timeout(400)
-        name = rel.replace("/", "-").replace(".html", "")
-        out = outdir / f"{name}-{width}.png"
-        page.screenshot(path=str(out), full_page=True)
-        print(out)
-    browser.close()
+
+class QuietHandler(SimpleHTTPRequestHandler):
+    def log_message(self, fmt, *args):
+        pass
+
+
+handler = functools.partial(QuietHandler, directory=str(site))
+server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
+port = server.server_address[1]
+thread = threading.Thread(target=server.serve_forever, daemon=True)
+thread.start()
+
+try:
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page(viewport={"width": width, "height": 1000})
+        for rel in pages:
+            if not (site / rel).exists():
+                print(f"missing {site / rel}")
+                continue
+            page.goto(f"http://127.0.0.1:{port}/{rel}")
+            page.wait_for_load_state("networkidle")
+            page.wait_for_timeout(400)
+            name = rel.replace("/", "-").replace(".html", "")
+            out = outdir / f"{name}-{width}.png"
+            page.screenshot(path=str(out), full_page=True)
+            print(out)
+        browser.close()
+finally:
+    server.shutdown()
+    server.server_close()

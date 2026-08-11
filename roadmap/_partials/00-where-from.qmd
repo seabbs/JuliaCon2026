@@ -1,7 +1,7 @@
 # Where this comes from
 
 We are building an ecosystem of composable Julia packages for infectious
-disease modelling. I will end with four questions for this room.
+disease modelling. I will end with four questions I cannot answer.
 
 ## Chains of models lose the uncertainty
 
@@ -14,10 +14,6 @@ disease modelling. I will end with four questions for this room.
   incidence fed $R_t$, and $R_t$ fed the variant severity analyses
 - Fitting everything together avoids that, and is slower to build,
   because each model gets written from scratch
-
-::: {.callout-important}
-We know what to build. We do not have the parts to build it with.
-:::
 :::
 ::: {.column width="56%"}
 ![](../figures/fig-bvd-model.png){width="100%"}
@@ -32,62 +28,45 @@ one renewal process and many observation streams.
 :::
 ::::
 
-## We built the modular one already
+## Six years of packages that do not come apart
 
 :::: {.columns}
-::: {.column width="56%"}
-- I started `epinowcast` in 2021 to be the modular one. Every
-  component had a regression interface and could be switched out. It
-  still cannot be taken apart into pieces anyone else can use
+::: {.column width="42%"}
+| Package | What can be reused |
+|---|---|
+| `EpiNow2`, 2020 | The whole package |
+| `epinowcast`, 2021 | The whole package |
+| `epidist`, 2023 | The whole package |
+| `primarycensored`, 2024 | Stan source, copied in |
+| `CensoredDistributions.jl`, 2024 | The distribution |
+
+::: {.attribution}
+Repository creation dates from the GitHub API, 2026-08-10 ·
+the copy is `inst/stan/functions/LICENSE.primarycensored` in
+`epinowcast`, licence file and all, and both packages are mine.
+:::
+:::
+::: {.column width="58%"}
+- I started `epinowcast` in 2021 to be the modular one. Every component
+  could be switched out. It still cannot be taken apart into pieces
+  anyone else can use
 - The same structural request has been written down in `EpiNow2` four
-  times since 2020. The two closed as done left the package no easier
-  to take apart. The two still open ask for structure it cannot give
-- Before it `EpiNow2`, after it `primarycensored` and `epidist`. Each
-  found a real problem, fixed it, and left another package that could
-  not be pulled apart
-:::
-::: {.column width="44%"}
-::: {.callout-important}
-You can reuse the package. You cannot reuse anything inside it.
-:::
+  times since 2020. Two closed as done, and left the package no easier
+  to take apart. Two are still open
+- At least seven packages fit renewal models in Stan and share no
+  component. `EpiSewer` and `wwinference` share none either
+- We wrote down a workflow for building these models, then could not
+  follow it with the tools we had built. The paper gives a schematic
+  case study rather than code
 
 ::: {.attribution}
 Four `EpiNow2` issues read 2026-08-10 ·
 [#122](https://github.com/epiforecasts/EpiNow2/issues/122),
 [#313](https://github.com/epiforecasts/EpiNow2/issues/313),
 [#1268](https://github.com/epiforecasts/EpiNow2/issues/1268),
-[#1345](https://github.com/epiforecasts/EpiNow2/issues/1345).
-:::
-:::
-::::
-
-## It is not only us
-
-:::: {.columns}
-::: {.column width="52%"}
-- At least seven packages fit renewal models in Stan. None of them
-  share a component
-- The only sharing I know of anywhere is `epinowcast` copying
-  `primarycensored`'s Stan source in, licence file and all. Both of
-  those are mine
-- The two wastewater packages, `EpiSewer` and `wwinference`, share no
-  components either, and it is not clear which of their modelling
-  choices matter
-:::
-::: {.column width="48%"}
-- We wrote down a workflow for building these models, then could not
-  follow it with the tools we had built. The paper gives a schematic
-  case study rather than code, because the software did not exist
-
-::: {.callout-important}
-The unit of reuse is the whole package. It should be the
-epidemiological concept.
-:::
-
-::: {.attribution}
-Renewal and wastewater counts from the composable modelling paper,
+[#1345](https://github.com/epiforecasts/EpiNow2/issues/1345) ·
+renewal and wastewater counts from the composable modelling paper,
 Abbott et al., in preparation ·
-`inst/stan/functions/LICENSE.primarycensored` in `epinowcast` ·
 A Workflow for Infectious Disease Modelling, Abbott et al.
 [doi:10.5281/zenodo.19097427](https://doi.org/10.5281/zenodo.19097427).
 :::

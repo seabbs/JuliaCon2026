@@ -1,6 +1,6 @@
 # What I would change
 
-## The backend, honestly
+## The backend
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -35,8 +35,7 @@ even silently give incorrect results"
   the model before it runs
 
 ::: {.callout-note}
-Not a criticism of the people doing the work, which is good work. A
-statement about how much of the stack rests on very few of them.
+The work is good. The concern is how few people the stack rests on.
 :::
 
 ::: {.attribution}

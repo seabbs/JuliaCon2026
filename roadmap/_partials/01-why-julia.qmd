@@ -3,7 +3,7 @@
 ## What the language buys us
 
 :::: {.columns}
-::: {.column width="55%"}
+::: {.column width="52%"}
 - `Distributions.jl` is a shared vocabulary that already exists. A
   censored delay can be a distribution, not a function in my package
 - Multiple dispatch means someone else's distribution works in my model
@@ -13,11 +13,21 @@
 - Package extensions let two packages work together without either
   taking a dependency on the other
 :::
-::: {.column width="45%"}
+::: {.column width="48%"}
+```julia
+using Distributions, CensoredDistributions
+
+d = double_interval_censored(
+    Gamma(2, 3); upper = 15, interval = 1
+)
+
+rand(d)         # simulate
+logpdf(d, 4.0)  # score
+```
+
 ::: {.callout-note}
-A bet, not a result. Julia is the only place I found where every way of
-composing we are trying can share the same objects and the same
-gradients.
+A bet. The three routes we are trying share the same objects and the
+same gradients here. I have not found another language where they do.
 :::
 :::
 ::::

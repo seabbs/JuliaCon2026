@@ -1,10 +1,7 @@
 ## TL;DR
 
-::: {.callout-note}
-## The paper
-[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
-:::
-
+:::: {.columns}
+::: {.column width="62%"}
 - We rebuilt a common `EpiNow2` configuration, from a package I wrote
   and help maintain, in Julia, out of components that already existed
   and without editing any of them
@@ -14,4 +11,20 @@
 - **Composable** parts can be both. Validate each part on its own, then
   compose them and fit everything together
 - I am now less sure the backend should be a probabilistic programming
-  language at all. The last third of this talk is why
+  language at all
+:::
+::: {.column width="38%"}
+::: {.callout-note}
+## The paper
+[doi.org/10.5281/zenodo.17884675](https://doi.org/10.5281/zenodo.17884675)
+:::
+
+![](../figures/qr-composable.png){width="52%" fig-align="center"}
+
+::: {.attribution}
+[samabbott.co.uk/JuliaCon2026/composable](https://samabbott.co.uk/JuliaCon2026/composable/)
+
+JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 16:45.
+:::
+:::
+::::
