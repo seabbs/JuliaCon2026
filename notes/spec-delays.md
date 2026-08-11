@@ -80,9 +80,49 @@ backend, not just the language, and the deck should say so directly.
    The evidence is in `notes/delays-stan-pain.md`, with commit and PR
    references, and it was verified in an earlier round.
 6. **But I want partial pooling.** Delays vary by setting, by age, by wave.
-   How do you extend the model? `brms` gets you the regression machinery.
-   That leads to **`epidist`**, which is that idea done properly. Then the
-   "but": say plainly what is still awkward about it.
+   How do you extend the model? `brms` gets you the regression machinery, and
+   that leads to **`epidist`**.
+
+   The author's framing, which is the substance of this rung:
+
+   > brms is a nice way to metaprogram Stan but is limited in terms of being
+   > extensible. In epidist we try hard to extend it but it took a lot of
+   > effort. If Julia had something like brms (which a few people, maybe here,
+   > have been talking about) it would very likely be a lot more extensible
+   > and flexible.
+
+   So the rung has three beats:
+   - `brms` is genuinely good. It metaprograms Stan and gives you the whole
+     regression apparatus for free. Say so without hedging.
+   - Extending it is hard. `epidist` does extend it, and that took a lot of
+     effort. Get a concrete example of what was hard from the `epidist`
+     repository and its git history rather than asserting it in general.
+   - A Julia equivalent would very likely be more extensible, because the
+     metaprogramming is not fighting a separate language with no user types.
+     This connects back to the Stan constraints from rung 5.
+
+   **This is the moment to ask the room.** Some of the people who would build
+   that are at this conference. Put the invitation on the slide rather than
+   leaving it as a remark.
+
+   What actually exists in Julia today, verified 11 August 2026, to be named
+   accurately and not oversold:
+   - `TuringGLM.jl` (TuringLang), Bayesian GLMs with `@formula` syntax, 80
+     stars, last pushed 2 August 2026. The nearest thing to `brms`, and much
+     narrower in scope.
+   - `MixedModels.jl` (JuliaStats), 448 stars, actively maintained. Frequentist
+     mixed effects, not Bayesian, but it is where the formula and
+     random-effects machinery lives.
+   - `StatsModels.jl`, the shared `@formula` layer underneath.
+
+   I checked the JuliaCon 2026 schedule and there is **no** talk on a `brms`
+   equivalent. The two adjacent talks, if he wants to point at people in the
+   building, are Phillip Alday's "Gradients aren't always great, a case study
+   with MixedModels" (Wednesday 12 August, 11:15, Muschel N2) and
+   "StructuralEquationModels.jl: An Efficient and Extensible Framework"
+   (Thursday 13 August, 12:00, Muschel N2). Both are before his talk, so he
+   can refer back to them. Confirm with him before naming anyone from the
+   stage.
 7. **But what about the population level.** Individual line list data is not
    always what you have, and nowcasting is a different problem. That leads to
    **`epinowcast`**. Again, say what it does and where it stops.

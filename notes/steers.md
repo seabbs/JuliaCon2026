@@ -85,3 +85,8 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > "stan is the through line" is the kind of classic LLM language that I don't
 > use and edit out
+
+> brms is a nice way to metaprogram Stan but is limited in terms of being
+> extensible. In epidist we try hard to extend it but it took a lot of effort.
+> If Julia had something like brms (which a few people, maybe here, have been
+> talking about) it would very likely be a lot more extensible and flexible.
