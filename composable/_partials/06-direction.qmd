@@ -30,7 +30,7 @@ cdf(si, 5.0)   # 0.094
 `CensoredDistributionsConvolvedDistributionsExt`, and neither package is
 in the other's `[deps]` · The type is the output of
 `scripts/composable-composed-type.jl`, run for this talk, with the
-parameter types dropped, and `cdf` needed no telling about it
+parameter types dropped
 :::
 :::
 ::::
@@ -80,7 +80,7 @@ I have argued myself into both answers.
 
 ::: {.attribution}
 The alternative approaches, including NumPyro and JAX, are in the
-paper's discussion. The paper is in CDC clearance
+paper's discussion
 :::
 
 [delays-talk]: https://samabbott.co.uk/JuliaCon2026/delays/

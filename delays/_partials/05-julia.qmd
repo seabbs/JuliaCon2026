@@ -26,14 +26,16 @@ chain = sample(delay_model(values, weights),
   `interval_censored` is $w_S$
 - The stack is still a distribution, so Turing takes it as it is and
   the delay is built from the sampled parameters
+- Multiple dispatch picks the closed form when the pair has one, and
+  the numerical integral otherwise
 - `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
   `0.847`. Nobody wrote that method. In Stan `Frechet` needs a branch,
   an integer and a rebuild
 
 ::: {.attribution}
-Model from `CensoredDistributions.jl/README.md:71-85`, run for this
+Model from `CensoredDistributions.jl/README.md:67-81`, run for this
 talk against v0.2.22 · fallback at
-`src/censoring/primarycensored_cdf.jl:207-211` ·
+`src/censoring/primarycensored_cdf.jl:184-188` ·
 [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
 :::
 :::

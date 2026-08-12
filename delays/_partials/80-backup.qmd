@@ -172,7 +172,7 @@ primarycensored_cdf(dist::D1, primary_event::D2,
 ::::
 
 ::: {.attribution}
-`primarycensored_cdf.jl:184-201`, `:323`, `:373`, `:415`, v0.2.22 ·
+`primarycensored_cdf.jl:323`, `:373`, `:415` and `:184-188`, v0.2.22 ·
 `primarycensored_analytical_cdf.stan`
 :::
 

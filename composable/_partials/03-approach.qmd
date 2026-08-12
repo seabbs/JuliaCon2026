@@ -2,7 +2,7 @@
 
 :::: {.columns}
 ::: {.column width="45%"}
-- A library of parts over Turing.jl, which does the fitting
+- A library of parts over Turing.jl
 - Three kinds of part. A prior model for a parameter, an infection
   model that turns that parameter into infections, and an observation
   model that turns infections into data
@@ -90,8 +90,7 @@ arima211 = DiffLatentModel(arma21, Normal(0, 0.2); d = 1)
 
 ::: {.attribution}
 Run against `main` at `011169f` for this talk · `@set` is Accessors.jl,
-not ours, and works because the parts are plain immutable structs ·
-Keywords track `main`. The paper's artefact pins an earlier release,
+not ours · Keywords track `main`. The paper's artefact pins an earlier release,
 where these were `damp_priors`, `θ_priors` and `std_prior`
 :::
 :::

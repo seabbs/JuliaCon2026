@@ -62,8 +62,8 @@ fnobjcens <- function(par, fix.arg, rcens, lcens, icens,
 - One infinite term and the whole objective returns
   `.Machine$integer.max`, so the optimiser gets a large finite number
   where it wanted a rejection
-- Six near-copies of this objective in `mledist.R`, and six more in
-  `mgedist.R`
+- Three copies of this censored objective in `mledist.R`, branching on
+  `log` support and on weights
 - To reach it, `primarycensored` invents a distribution called
   `pcens_dist` and hides two closures in an empty environment for the
   name lookup to find

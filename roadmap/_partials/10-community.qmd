@@ -1,0 +1,16 @@
+## Community, in the age of robots
+
+- We have no outside contributors, so the other party on an issue is
+  usually one of my robots, and answering a robot is dispiriting
+- It is not clear which repositories want robot-filed issues at all, and
+  nobody has written the rule down
+- `EpiAwareAgents` is one possible answer, a community bot any maintainer
+  could point at their own repository
+- It does not work. It is a design document, and its README says
+  "Status: design phase. Nothing here runs yet"
+
+::: {.attribution}
+[EpiAwareAgents](https://github.com/EpiAware/EpiAwareAgents) README and
+`DESIGN.md`, read 2026-08-12 · no open good first issue on any EpiAware
+package and no outside contributor, checked 2026-08-10.
+:::

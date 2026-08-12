@@ -38,7 +38,7 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- What an epidemiological delay is, and where the estimate ends up
+- What an epidemiological delay is, and which models take one as an input
 - Both events arrive as windows, and the pairs that have not finished
   are missing
 - `primarycensored` in R, then the same likelihood again in Stan

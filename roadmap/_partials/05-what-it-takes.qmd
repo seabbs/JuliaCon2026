@@ -1,0 +1,40 @@
+# What do we need to implement this?
+
+## Money, a team, and other people
+
+- **Funding.** Several goes at grants of a few million, and a lot of
+  scepticism about Julia. None of them funded so far
+- **A team.** A few people, rather than one person and a pile of agents
+- **Buy-in.** Other groups have to want to build on it. Otherwise it is one
+  more package that only we use
+
+::: {.attribution}
+"We have been applying for funding to do it. So far without success", the
+EpiAware announcement post, `news/posts/hello-epiaware.qmd` on
+[epiaware.org](https://epiaware.org), published 2026-07-10, read
+2026-08-12.
+:::
+
+## No contributors, and most of the writing is not mine
+
+:::: {.columns}
+::: {.column width="52%"}
+![](../figures/bot-prs-by-month.png){width="100%"
+fig-alt="Monthly counts of pull requests opened by the bot account across
+all of my organisations, January to July 2026."}
+
+::: {.attribution}
+All of my organisations, `seabbs-bot` only, January to July 2026 ·
+EpiAware counts from `gh api search/issues`, read 2026-08-10.
+:::
+:::
+::: {.column width="48%"}
+- We started anyway, with coding agents. **966 merged pull requests** in the
+  EpiAware org from the bot account, and 119 closed unmerged
+- What pays for that is a Claude Max subscription
+- No outside contributors so far, and no open good first issue on any
+  package. Whoever writes the next one is likely to be a model
+- We still need funding to do this properly. If you have ideas, come and
+  find me
+:::
+::::

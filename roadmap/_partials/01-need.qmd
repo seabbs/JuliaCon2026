@@ -1,0 +1,30 @@
+## What that model needs from its parts
+
+:::: {.columns}
+::: {.column width="40%"}
+- Carry the uncertainty the whole way, from the unobserved process to every
+  observed stream
+- Keep transmission, priors and observation separate, and let a model nest
+  inside another model
+- Let a component carry its own priors, and stay useful on its own
+- Specify once, then simulate and fit the same object
+
+::: {.callout-note}
+The argument for joint models is the 16:45 talk in this room.
+:::
+:::
+::: {.column width="60%"}
+![](../figures/fig-bvd-model.png){width="94%"
+fig-alt="Directed graph of the Bundibugyo outbreak model. One reproduction
+number drives infections, infections feed onsets through an incubation
+period, and onsets feed suspected cases, exports, deaths and isolation
+occupancy, all inside a single joint model."}
+
+::: {.attribution}
+The requirements are the ecosystem needs listed at
+[epiaware.org/approaches](https://epiaware.org/approaches/), read
+2026-08-12 · figure: the 2026 Bundibugyo model,
+[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize).
+:::
+:::
+::::

@@ -1,0 +1,33 @@
+## Documentation has to be a failing test
+
+:::: {.columns}
+::: {.column width="52%"}
+- Julia's default is a docstring if you feel like it. Asking for them
+  did not work, so the template tests for them
+- Public symbols need a docstring in the standard format. The README's
+  Julia blocks run at docs build, so a broken example fails it
+- Sixteen standards are written down, each naming the check that
+  catches a breach or saying plainly that a human has to
+- The banned word list is one of those checks. A README that calls
+  itself comprehensive does not ship
+:::
+::: {.column width="48%"}
+```julia
+const BANNED_README_WORDS = [
+    "comprehensive", "cornerstone",
+    "facilitate", "foster",
+    "framework", "harness",
+    "landscape", "leverage",
+    "novel", "pivotal",
+    "practitioner", "robust",
+    "streamline", "synergy",
+    # ... 20 in total
+]
+```
+
+::: {.attribution}
+`BANNED_README_WORDS` in `src/quality.jl`, and the standards page in
+the `EpiAwarePackageTools.jl` documentation, both read 2026-08-12.
+:::
+:::
+::::

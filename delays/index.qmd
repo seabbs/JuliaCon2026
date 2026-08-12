@@ -2,7 +2,7 @@
 title: "Estimating epidemiological delay distributions"
 subtitle: "From R/Stan to Julia"
 description: >-
-  CensoredDistributions.jl, and an honest comparison with the R and Stan
+  CensoredDistributions.jl, and a comparison with the R and Stan
   implementation it grew out of.
 page-layout: full
 ---

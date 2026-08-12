@@ -21,11 +21,11 @@ on their own?
 ::: {.column width="42%"}
 |  | R | Julia |
 |---|---:|---:|
-| Downloads, all time | **11,244** | **116** |
-| Downloads, last month | 528 | 49 |
+| Downloads, all time | **11,294** | **122** |
+| Downloads, last month | 538 | 6 |
 
 ::: {.attribution}
-CRAN and JuliaPkgStats, 10 August 2026. CRAN counts requests to one
+CRAN and JuliaPkgStats, 12 August 2026. CRAN counts requests to one
 mirror, JuliaPkgStats counts unique IP addresses, so the ratio is an
 upper bound. Both include continuous integration, so neither is a count
 of people.

@@ -1,0 +1,16 @@
+# Some inspiration
+
+- **Turing.** Small packages that other people build on, rather than one
+  library
+- **SciML.** Shared interfaces, and downstream CI run against packages it
+  does not own
+- **rOpenSci.** Software peer review and a written package guide. Julia has
+  nothing like it
+
+::: {.attribution}
+[SciML governance](https://sciml.ai/governance/), whose downstream CI runs
+`ProbNumDiffEq.jl` and `PositiveIntegrators.jl`, and
+[rOpenSci software review](https://ropensci.org/software-review/), both read
+2026-08-11 · [TuringLang](https://github.com/TuringLang), 26 repositories,
+counted 2026-08-10.
+:::

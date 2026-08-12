@@ -7,7 +7,7 @@
 - Eleven breaking releases in nineteen months, v0.35.5 to v0.46.0
 - Large simulated counts error, and vectors mixing missing and observed
   values have to be handled by hand
-- It is more that future automatic differentiation support is uncertain
+- Future automatic differentiation support is uncertain
 :::
 ::: {.column width="4%"}
 :::
@@ -23,9 +23,7 @@ even silently give incorrect results"
 Release dates from the GitHub API, 2026-08-10 · v0.35.5 is the release
 the paper's artefact pins ·
 [turinglang.org/docs/usage/automatic-differentiation][turing-ad] ·
-The two practical limits are in the paper's discussion · We run six
-autodiff configurations in CI instead, which was the 14:30 talk in this
-room, [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
+The two practical limits are in the paper's discussion
 :::
 :::
 ::::
@@ -35,8 +33,9 @@ room, [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
 :::: {.columns}
 ::: {.column width="55%"}
 - A lot of the stack rests on very few people. The work itself is good
-- `Enzyme.jl` had 11 human authors in the last six months, 71 of the
-  commits from one of them. `Mooncake.jl` had 5, with 58 from one
+- `Enzyme.jl` had 18 human authors in the last six months, 210 of its
+  276 commits from one of them. `Mooncake.jl` had 12, with 155 of 221
+  from one
 - `TuringLang/ADTests`, the one public per-backend support table for a
   probabilistic programming stack, was archived in June
 - Our own packages are the same shape, one or two people each
@@ -44,20 +43,18 @@ room, [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
 ::: {.column width="45%"}
 | Commits, last six months | Turing.jl | DynamicPPL.jl |
 |---|---:|---:|
-| Human authors | 29 | 72 |
-| One person | **17** | **47** |
+| By humans | 29 | 72 |
+| By one person | **17** | **47** |
 
 : {tbl-colwidths="[46,27,27]"}
 
 ::: {.attribution}
 Commit counts from the GitHub API, 2026-08-10, `main`, human authors
 only, so 17 of 29 and 47 of 72 are per repository ·
-`DynamicPPL.jl` is where most of the composition machinery lives ·
 [TuringLang/ADTests][adtests], archived 2026-06-15
 :::
 :::
 ::::
 
 [turing-ad]: https://turinglang.org/docs/usage/automatic-differentiation/
-[roadmap-talk]: https://samabbott.co.uk/JuliaCon2026/roadmap/
 [adtests]: https://github.com/TuringLang/ADTests

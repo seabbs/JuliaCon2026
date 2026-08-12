@@ -1,0 +1,51 @@
+## We are already using Julia on a live outbreak
+
+:::: {.columns}
+::: {.column width="31%"}
+![](../figures/bvd-insp-sitreps.png){height="330px"
+fig-alt="A situation report page from the DRC national public health
+institute, in French, with cumulative confirmed cases, deaths, isolation
+occupancy, recoveries and suspected cases in boxes."}
+:::
+::: {.column width="35%"}
+![](../figures/bvd-outbreak-streams.png){height="330px"
+fig-alt="Posterior densities for cumulative infections, one curve per data
+stream and one for the joint fit, which sits inside the spread of the
+single-stream fits."}
+:::
+::: {.column width="34%"}
+![](../figures/bvd-rt-over-time.png){height="330px"
+fig-alt="Posterior reproduction number trajectories over the established
+outbreak, with most of the mass between 1.5 and 2."}
+:::
+::::
+
+:::: {.columns}
+::: {.column width="55%"}
+- The 2026 **Bundibugyo virus disease** outbreak in the **Democratic
+  Republic of the Congo**. One renewal model over the suspected,
+  confirmed, death, export and bed-occupancy counts, fitted together
+- The situation reports are French PDFs. Agents read them, and digitise an
+  epidemic curve that has no data table behind it
+- It refits on every push and tags a release with the draws, 121 of them by
+  10 August
+:::
+::: {.column width="45%"}
+- Mooncake differentiates all of it. Enzyme matches Mooncake to 4e-15 on a
+  single stream and cannot compile the joint
+- Over 30,000 lines of Julia for one outbreak, most of it written by agents.
+  I read fewer of the tests than I should
+:::
+::::
+
+::: {.attribution}
+[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize), the
+`bvd_joint` arguments, the tag list and the Julia line count read
+2026-08-12 from the clone at commit `90df658d` · figures from the WHO
+collaboratory talk of 10 June 2026, fitted to data as of 7 June ·
+situation reports from
+[insp.cd](https://insp.cd/ebola-17eme-epidemie/) · the Enzyme comparison is
+[BVDOutbreakSize#445][bvd445], open at 2026-08-12.
+:::
+
+[bvd445]: https://github.com/epiforecasts/BVDOutbreakSize/issues/445

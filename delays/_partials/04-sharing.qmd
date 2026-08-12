@@ -28,15 +28,17 @@ pcd_load_stan_functions(
   builds a call graph and sorts it topologically. It counts braces by
   hand
 - `epinowcast` carries a 521 line copy with its own licence file
-  beside it. `epidist` splices the whole 1,081 line bundle in at build
+  beside it. `epidist` splices the whole 1,103 line bundle in at build
   time
 
 ::: {.attribution}
-`primarycensored/R/pcd-stan-tools.R:135-148` and `:339-345` ·
+Call from `primarycensored/vignettes/using-stan-tools.Rmd:82` and
+`:106-111`, the two examples combined · `R/pcd-stan-tools.R:339-345` ·
 [epinowcast/primarycensored#171](https://github.com/epinowcast/primarycensored/issues/171),
 shipped in PR #262, commit `d7d710f` ·
 `epinowcast/inst/stan/functions/primarycensored.stan:1-8` ·
-`epidist/R/marginal_model.R:377`
+`epidist/R/marginal_model.R:377`, and 1,103 lines is what
+`pcd_load_stan_functions()` returns at `2ec4f40`
 :::
 :::
 ::::

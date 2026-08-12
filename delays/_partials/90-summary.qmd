@@ -7,7 +7,7 @@
 | Adding a distribution | New branch, new integer, rebuild | Pass the type |
 | Distributions covered | 18, listed in a switch | Any univariate one |
 | Choosing one | An integer, set before sampling | The object itself |
-| Sharing the code | Splice 1,081 Stan lines in at build | `Project.toml` |
+| Sharing the code | Splice 1,103 Stan lines in at build | `Project.toml` |
 | The integral | `integrate_1d`, then an ODE recast | 64 fixed nodes |
 | Worst failure | 243 of 256 chains died | 8 scenarios broken on one backend |
 
@@ -17,8 +17,8 @@ Julia file does not have to know any of them.
 :::
 
 ::: {.attribution}
-`primarycensored_ode.stan:52-77` and `pcd_functions.stan` ·
-`primarycensored_cdf.jl:184-201`, v0.2.22 ·
+`primarycensored_ode.stan:52-77` and `pcd_load_stan_functions()` at
+`2ec4f40` · `primarycensored_cdf.jl:184-188`, v0.2.22 ·
 [epinowcast/primarycensored#34][pc-issue34] and PR #64, September 2024
 :::
 
@@ -78,8 +78,8 @@ ODE, Julia for a dot product.
 more downloads in R, all time
 :::
 
-Who uses it. 11,244 downloads all time against 116, and 528 last month
-against 49.
+Who uses it. 11,294 downloads all time against 122, and 538 last month
+against 6.
 
 Nine GitHub repositories depend on `primarycensored`, two of them on
 CRAN. Seven are mine, two are CDC's. Everything depending on
@@ -91,7 +91,7 @@ all the package.
 ::::
 
 ::: {.attribution}
-CRAN and JuliaPkgStats, 10 August 2026. CRAN counts requests to one
+CRAN and JuliaPkgStats, 12 August 2026. CRAN counts requests to one
 mirror, JuliaPkgStats counts unique IP addresses, so the ratio is an
 upper bound · `epidist/R/marginal_model.R:339-347`
 :::

@@ -1,22 +1,20 @@
-# Automatic differentiation as a first class citizen
-
 ## What does it mean to say a package supports AD?
 
 :::: {.columns}
 ::: {.column width="52%"}
 - A real model needs a PPL, and a PPL needs gradients through every
-  component. AD is a requirement, not a feature
+  component
 - Nobody has written down what supporting AD means, so we picked a
   definition and made CI defend it
-- `DifferentiationInterfaceTest` does the correctness testing. On top,
-  a package declares which scenarios are broken on which backend, and
-  CI re-runs them
-- In my view none of the six is reliably best, and each is kept going
-  by a small team
+- `DifferentiationInterfaceTest` does the correctness testing and the
+  benchmarks. One list of seven configurations drives the CI matrix, the
+  Codecov flags and the README badges
+- In my view none of them is reliably best, and each is kept going by a
+  small team
 
 ::: {.callout-note}
-Is there a guide for any of this anywhere in the Julia ecosystem? I
-went looking and did not find one.
+Is there a guide for any of this anywhere in the Julia ecosystem? I went
+looking and did not find one.
 :::
 :::
 ::: {.column width="48%"}
@@ -24,6 +22,7 @@ went looking and did not find one.
 const _AD_BACKENDS = [
   (header = "ForwardDiff", ...),
   (header = "ReverseDiff (tape)", ...),
+  (header = "ReverseDiff (compiled)", ...),
   (header = "Enzyme forward", ...),
   (header = "Enzyme reverse", ...),
   (header = "Mooncake reverse", ...),
@@ -32,11 +31,10 @@ const _AD_BACKENDS = [
 ```
 
 ::: {.attribution}
-Abridged from `_AD_BACKENDS`, `src/scaffold.jl:1464` in
-`EpiAwarePackageTools.jl`, read 2026-08-11. Each entry also carries a
-Codecov flag, a test item tag and the package it loads, and the list
-generates the CI matrix, the flags, the README badges and the support
-table in the docs · `check_broken` and the registry contract are in
+Abridged from `_AD_BACKENDS`, `src/scaffold.jl` in
+`EpiAwarePackageTools.jl`, read through the contents API 2026-08-12. Each
+entry also carries a Codecov flag, a test item tag and the package it
+loads · `check_broken` and the registry contract are in
 `src/ad_harness.jl` ·
 [DifferentiationInterfaceTest.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl).
 :::

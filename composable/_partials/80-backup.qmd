@@ -3,9 +3,7 @@
 ## What this does not do yet {visibility="uncounted"}
 
 ::: {.callout-important}
-## Nobody outside the author team has built a model with this
-Until somebody outside tries, the title is an argument rather than a
-result.
+Nobody outside the author team has built a model with this.
 :::
 
 :::: {.columns}

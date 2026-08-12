@@ -1,0 +1,42 @@
+## I tried in R {.smaller}
+
+:::: {.columns}
+::: {.column width="52%"}
+| Package | Since | Stars | Downloads |
+|---|---|---|---|
+| `EpiNow2` | 2020 | 141 | 58,073 |
+| `epinowcast` | 2021 | 67 | — |
+| `epidist` | 2023 | 16 | — |
+| `primarycensored` | 2024 | 9 | 11,294 |
+| `CensoredDistributions.jl` | 2024 | 15 | 122 |
+
+::: {.attribution}
+Stars and repository creation dates from the GitHub API, retrieved
+2026-08-12 · downloads are CRAN totals from first publication to
+2026-08-11, [cranlogs](https://cranlogs.r-pkg.org/), retrieved 2026-08-12 ·
+`epinowcast` and `epidist` are not on CRAN ·
+`CensoredDistributions.jl` is Julia, and its 122 counts download-server
+requests from [juliapkgstats.com](https://juliapkgstats.com/), which is not
+the same thing as a CRAN install.
+:::
+:::
+::: {.column width="48%"}
+- I started `epinowcast` in 2021 to be the modular one. It still cannot be
+  taken apart into pieces anyone else can use
+- The same structural request has been written down in `EpiNow2` four times
+  since 2020. Two were closed as done and left the package no easier to take
+  apart. Two are still open
+- We wrote down a workflow for building these models, then could not follow
+  it with the tools we had built
+
+::: {.attribution}
+Four `EpiNow2` issues read 2026-08-10 ·
+[#122](https://github.com/epiforecasts/EpiNow2/issues/122),
+[#313](https://github.com/epiforecasts/EpiNow2/issues/313),
+[#1268](https://github.com/epiforecasts/EpiNow2/issues/1268),
+[#1345](https://github.com/epiforecasts/EpiNow2/issues/1345) ·
+A Workflow for Infectious Disease Modelling, Abbott et al.
+[doi:10.5281/zenodo.19097427](https://doi.org/10.5281/zenodo.19097427).
+:::
+:::
+::::

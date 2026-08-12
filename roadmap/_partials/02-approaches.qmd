@@ -1,0 +1,103 @@
+# The ways we are trying to build it
+
+## Approach one, composable Turing models
+
+:::: {.columns}
+::: {.column width="42%"}
+- Three kinds of part. A prior model, an infection model, an observation
+  model
+- Each part is a plain struct with one method of `as_turing_model`
+- Joint inference and the rest of the Turing toolchain come with it
+- So do one PPL's design decisions. Nested submodel dispatch is slow, and
+  `condition` assumes fixed-length data
+
+::: {.attribution}
+Code from
+[epiaware.org/approaches/composable-turing-models.html][cturing], read
+2026-08-12, blank lines and comments removed to fit ·
+[ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl).
+:::
+:::
+::: {.column width="58%"}
+```julia
+using ComposableTuringIDModels, Distributions, Turing
+data = IDData(gen_distribution = Gamma(1.4, 1 / 0.38))
+model = IDModel(
+    Renewal(data;
+        rt = AR(; ϵ_t = HierarchicalNormal(
+            std_prior = HalfNormal(0.1))),
+        initialisation_prior = Normal(log(1.0), 1.0)),
+    LatentDelay(
+        Ascertainment(NegativeBinomialError(),
+            Intercept(Normal(log(0.4), 0.1))),
+        truncated(Normal(5.0, 2.0), 0.0, Inf)))
+chain = sample(as_turing_model(model, cases, length(cases)),
+               NUTS(), MCMCThreads(), 1_000, 2)
+```
+:::
+::::
+
+## Approach two, composed distributions
+
+:::: {.columns}
+::: {.column width="42%"}
+- Every leaf is an ordinary `Distributions.jl` distribution, and so is the
+  tree they compose into
+- `rand` simulates a case and `logpdf` scores one, with no PPL involved
+- The tree is data you can read and edit, a parameter table and a nested
+  prior
+- It has no account of a time series or a latent trajectory, and it needs
+  its own fitting layer
+
+::: {.attribution}
+Code from [epiaware.org/approaches/composed-distributions.html][cdists],
+read 2026-08-12, blank lines, comments and the three inspection calls
+removed to fit ·
+[ComposedDistributions.jl](https://github.com/EpiAware/ComposedDistributions.jl)
+and `DistributionsInference.jl`.
+:::
+:::
+::: {.column width="58%"}
+```julia
+using ComposedDistributions, Distributions
+tree = @uncertain compose((
+    clinical = sequential(
+        :onset_admit => Gamma(Normal(1.2, 0.2), 3.0),
+        :admit_resolve => resolve(
+            :death => (Gamma(2.0, 3.5), 0.3),
+            :discharge => (Gamma(1.0, 8.0), 0.7))),
+    surveillance = sequential(
+        :onset_notif => Gamma(0.7, 20.0),
+        :notif_compete => compete(
+            :confirmed => Gamma(2.0, 1.0),
+            :lost => Gamma(5.0, 0.5))),))
+case = rand(tree); logpdf(tree, case)
+```
+:::
+::::
+
+## Lowering into SciML, and writing the model by hand
+
+- `lower` turns a delay distribution into a compartmental generator, and
+  four backends share the same lowering. Catalyst, SciMLBase, JumpProcesses
+  and AlgebraicPetri
+- Composing dynamical systems is not the same problem as composing
+  probability models, so inference has to be supplied separately
+- A model written by hand is what everyone does now, and the baseline the
+  other three have to beat
+- We are running all of them because I cannot tell you which is right
+
+::: {.callout-note}
+A bet. The three we are building take the same `Distributions.jl` objects
+and the same gradients.
+:::
+
+::: {.attribution}
+[LoweredDistributions.jl](https://github.com/EpiAware/LoweredDistributions.jl)
+README, read 2026-08-10 · alternatives we are not running, including
+AlgebraicJulia, Gen.jl, NumPyro and ModelingToolkit.jl, are in the
+composable modelling paper, in preparation.
+:::
+
+[cturing]: https://epiaware.org/approaches/composable-turing-models.html
+[cdists]: https://epiaware.org/approaches/composed-distributions.html

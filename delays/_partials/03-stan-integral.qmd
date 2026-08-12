@@ -51,8 +51,7 @@ Every run is one Sam Abbott reported in
 between 5 and 12 September 2024, read back from the issue,
 `scripts/delays-stan-failures.py` · the recast is PR #64, commit
 `1c4e6f1`. The runs are not one dataset, and the scenario was made
-harder in the same PR that landed the ODE, so the last two rows on 600
-chains are the pair closest to like for like
+harder in the same PR that landed the ODE
 :::
 :::
 ::: {.column width="60%"}
@@ -60,7 +59,8 @@ chains are the pair closest to like for like
 fig-alt="Horizontal bar chart of ten runs reported in
 epinowcast/primarycensored issue 34. The first, integrate_1d at
 tolerance 1e-6, lost 243 of 256 chains. Eight tuning attempts sit
-between 12 and 27 per cent, one of them a model with the truncation
-adjustment removed. The last, recast as ode_rk45, lost 0 of 600."}
+between 6 and 27 per cent, the lowest of them a model with the
+truncation adjustment removed, which is not a valid fit. The last,
+recast as ode_rk45, lost 0 of 600."}
 :::
 ::::
