@@ -2,10 +2,10 @@
 title: >-
   Composable probabilistic models can lower barriers to rigorous
   infectious disease modelling
-subtitle: "The case for composition, and what is still missing"
+subtitle: "And a change of mind about the backend"
 description: >-
-  Why composition might be how modelling evidence gets to be timely, rigorous
-  and collaborative at once, and what is still missing.
+  Composition as a route to modelling evidence that is timely, rigorous and
+  collaborative at once, and a change of mind about the Turing.jl backend.
 page-layout: full
 ---
 
@@ -92,11 +92,8 @@ The other two are in the same room earlier the same day.
 - The paper this talk is drawn from, *Composable probabilistic models can
   lower barriers to rigorous infectious disease modelling*, is in CDC
   clearance.
-  There is nothing to link to yet, and the slides cite its figures by
-  number.
 - [A workflow for infectious disease modelling][workflow].
   Related work on how these models get built and checked.
-  It is the subject of the roadmap talk, not this one.
 
 ### Code
 

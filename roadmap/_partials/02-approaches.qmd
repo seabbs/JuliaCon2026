@@ -1,21 +1,25 @@
-# The ways we are trying to build it
-
 ## Approach one, composable Turing models
 
 :::: {.columns}
 ::: {.column width="42%"}
-- Three kinds of part. A prior model, an infection model, an observation
-  model
-- Each part is a plain struct with one method of `as_turing_model`
-- Joint inference and the rest of the Turing toolchain come with it
-- So do one PPL's design decisions. Nested submodel dispatch is slow, and
-  `condition` assumes fixed-length data
+- A library of parts over Turing. Joint inference and the rest of the
+  toolchain come with it
+- So do one PPL's design decisions. Nested submodels evaluated and
+  differentiated about 15 times slower until DynamicPPL 0.42.1, and a
+  capped dependency held us off the fix
+- Forecasting past the fitting window splices the chain by hand, because
+  `predict` errors on the length mismatch
 
 ::: {.attribution}
 Code from
 [epiaware.org/approaches/composable-turing-models.html][cturing], read
 2026-08-12, blank lines and comments removed to fit ·
-[ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl).
+[ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl) ·
+the 15x slowdown and the Pathfinder cap are
+[ComposableTuringIDModels.jl#124][ctim124], opened 2026-07-14 and closed
+2026-07-16, citing [Turing.jl#2844][turing2844] · the splice is the
+comment above `_extend_latent_draws`, `src/inference/forecast.jl` at
+`011169f`.
 :::
 :::
 ::: {.column width="58%"}
@@ -83,9 +87,10 @@ case = rand(tree); logpdf(tree, case)
   and AlgebraicPetri
 - Composing dynamical systems is not the same problem as composing
   probability models, so inference has to be supplied separately
-- A model written by hand is what everyone does now, and the baseline the
-  other three have to beat
-- We are running all of them because I cannot tell you which is right
+- A model written by hand is what everyone does now. The DRC model is one,
+  built on `Turing` and `CensoredDistributions` and nothing above them
+- We are running all three because I cannot tell you which is right. The
+  approaches page carries two of them so far
 
 ::: {.callout-note}
 A bet. The three we are building take the same `Distributions.jl` objects
@@ -94,10 +99,14 @@ and the same gradients.
 
 ::: {.attribution}
 [LoweredDistributions.jl](https://github.com/EpiAware/LoweredDistributions.jl)
-README, read 2026-08-10 · alternatives we are not running, including
-AlgebraicJulia, Gen.jl, NumPyro and ModelingToolkit.jl, are in the
-composable modelling paper, in preparation.
+README, read 2026-08-10 ·
+[epiaware.org/approaches](https://epiaware.org/approaches/), read
+2026-08-12 · the DRC model's dependencies are `Project.toml` in
+[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize) at
+commit `90df658d`.
 :::
 
 [cturing]: https://epiaware.org/approaches/composable-turing-models.html
 [cdists]: https://epiaware.org/approaches/composed-distributions.html
+[ctim124]: https://github.com/EpiAware/ComposableTuringIDModels.jl/issues/124
+[turing2844]: https://github.com/TuringLang/Turing.jl/issues/2844

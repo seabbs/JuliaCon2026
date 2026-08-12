@@ -7,10 +7,15 @@
   inform policy effectively
 - It has to be timely, rigorous, and collaborative
 - Most of what we build manages two of the three
+- Multi-model efforts combine forecasts from several teams and rarely
+  share components. A difference in results cannot be attributed to an
+  assumption
 
 ::: {.attribution}
 Whitty (2015),
-[doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8)
+[doi:10.1186/s12916-015-0544-8](https://doi.org/10.1186/s12916-015-0544-8) ·
+Cramer et al. (2022),
+[doi:10.1038/s41597-022-01517-w](https://doi.org/10.1038/s41597-022-01517-w)
 :::
 :::
 ::: {.column width="55%"}

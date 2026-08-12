@@ -28,7 +28,8 @@ on their own?
 CRAN and JuliaPkgStats, 12 August 2026. CRAN counts requests to one
 mirror, JuliaPkgStats counts unique IP addresses, so the ratio is an
 upper bound. Both include continuous integration, so neither is a count
-of people.
+of people. First CRAN release 28 October 2024, registered in General
+2 August 2025.
 :::
 :::
 ::: {.column width="58%"}
@@ -38,6 +39,14 @@ of people.
 - Everything that depends on `CensoredDistributions.jl` is mine, Sam
   Brand's or Sebastian Funk's. I looked for one from outside and did
   not find it
+
+::: {.attribution}
+GitHub code search, `primarycensored` in `DESCRIPTION` and
+`CensoredDistributions` in `Project.toml`, each file then read, 12
+August 2026.
+[primarycensored](https://primarycensored.epinowcast.org/) ·
+[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+:::
 :::
 ::::
 

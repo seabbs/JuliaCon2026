@@ -1,7 +1,8 @@
 ## Community, in the age of robots
 
-- We have no outside contributors, so the other party on an issue is
-  usually one of my robots, and answering a robot is dispiriting
+- Nobody from outside the team has committed since February, so the other
+  party on an issue is usually one of my robots. Answering a robot is
+  dispiriting
 - It is not clear which repositories want robot-filed issues at all, and
   nobody has written the rule down
 - `EpiAwareAgents` is one possible answer, a community bot any maintainer
@@ -11,6 +12,7 @@
 
 ::: {.attribution}
 [EpiAwareAgents](https://github.com/EpiAware/EpiAwareAgents) README and
-`DESIGN.md`, read 2026-08-12 · no open good first issue on any EpiAware
-package and no outside contributor, checked 2026-08-10.
+`DESIGN.md`, read 2026-08-12 · no open good first issue in the org from
+`gh search issues`, and the most recent outside commit is 2026-02-03 from
+`git log` on `main`, both 2026-08-12.
 :::

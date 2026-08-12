@@ -15,7 +15,7 @@ EpiAware announcement post, `news/posts/hello-epiaware.qmd` on
 2026-08-12.
 :::
 
-## No contributors, and most of the writing is not mine
+## Four contributors, and most of the writing is not mine
 
 :::: {.columns}
 ::: {.column width="52%"}
@@ -25,15 +25,20 @@ all of my organisations, January to July 2026."}
 
 ::: {.attribution}
 All of my organisations, `seabbs-bot` only, January to July 2026 ·
-EpiAware counts from `gh api search/issues`, read 2026-08-10.
+EpiAware counts from `gh api search/issues`, read 2026-08-10 · the four
+outside authors are Damon Bayer, Joseph Lemaitre, Michael DeWitt and
+Vyshnavi0702, from `git log` on `main` across the EpiAware Julia
+packages, the most recent commit 2026-02-03, read 2026-08-12 · no open
+good first issue in the org from `gh search issues`, 2026-08-12.
 :::
 :::
 ::: {.column width="48%"}
 - We started anyway, with coding agents. **966 merged pull requests** in the
   EpiAware org from the bot account, and 119 closed unmerged
 - What pays for that is a Claude Max subscription
-- No outside contributors so far, and no open good first issue on any
-  package. Whoever writes the next one is likely to be a model
+- Four contributors from outside the team, none since February 2026, and
+  no open good first issue on any package. Whoever writes the next one is
+  likely to be a model
 - We still need funding to do this properly. If you have ideas, come and
   find me
 :::

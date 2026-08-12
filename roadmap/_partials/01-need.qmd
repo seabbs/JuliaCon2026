@@ -6,7 +6,6 @@
   observed stream
 - Keep transmission, priors and observation separate, and let a model nest
   inside another model
-- Let a component carry its own priors, and stay useful on its own
 - Specify once, then simulate and fit the same object
 
 ::: {.callout-note}

@@ -36,7 +36,9 @@ chain = sample(delay_model(values, weights),
 Model from `CensoredDistributions.jl/README.md:67-81`, run for this
 talk against v0.2.22 · fallback at
 `src/censoring/primarycensored_cdf.jl:184-188` ·
-[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl)
+[CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl) ·
+[Distributions.jl](https://juliastats.org/Distributions.jl/stable/) ·
+[Turing](https://turinglang.org/)
 :::
 :::
 ::::
@@ -62,6 +64,7 @@ ForwardDiff    -> [-0.23692, -0.21296, 0.19054]
   integrand, so the trace is a different shape each call
 - Lifting a correct `ChainRulesCore` rule into Enzyme returned a wrong
   shape partial and two right ones, with no error
+- The org-wide version of this problem was the 14:30 talk in this room
 
 ::: {.attribution}
 [EpiAware/CensoredDistributions.jl#217](https://github.com/EpiAware/CensoredDistributions.jl/issues/217)
@@ -87,7 +90,9 @@ April and May 2026 · `src/integration/integration.jl:14-20`
 
 ::: {.attribution}
 Scenarios registered broken out of 63, in
-`test/ADFixtures/src/ADFixtures.jl:177`
+`test/ADFixtures/src/ADFixtures.jl:177` at `acb9e39b`, a working
+branch, read 12 August 2026. The released v0.2.22 carries 32
+scenarios and registers none broken
 :::
 :::
 ::: {.column width="60%"}

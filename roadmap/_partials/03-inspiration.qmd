@@ -1,7 +1,7 @@
 # Some inspiration
 
 - **Turing.** Small packages that other people build on, rather than one
-  library
+  library. We copied the org shape, not the release cadence
 - **SciML.** Shared interfaces, and downstream CI run against packages it
   does not own
 - **rOpenSci.** Software peer review and a written package guide. Julia has

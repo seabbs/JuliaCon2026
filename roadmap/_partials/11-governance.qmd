@@ -1,28 +1,24 @@
 ## Governance, and the whales
 
-- JuMP, SciML and Turing all wrote their governance down after they were
-  already large. None of them says how an org starts, or how a package joins
-  one
+- JuMP and SciML wrote their governance down after they were already large,
+  and Turing has contributing guidance instead. None of them says how an org
+  starts, or how a package joins one
 - 🐋 Every project I have worked on has ended up with one person doing most
-  of it. I started `epinowcast` in 2021 partly to avoid what had happened in
-  `EpiNow2`, and it happened again
+  of it
 - 🐳 Julia's composability does not fix that. The median Julia package has
   two contributors, and this ecosystem has its own whales
 - Here the whale is me and a subscription
+- The people I build for work in R in the middle of an outbreak response.
+  Multiple dispatch is not a feature to them, it is why the install is
+  unfamiliar
 
 ::: {.attribution}
 [JuMP governance](https://jump.dev/pages/governance/),
-[SciML governance](https://sciml.ai/governance/) and TuringLang's
-contributing guidance, read 2026-08-10 · the median Julia package
-contributor count is from Eric Hanson,
+[SciML governance](https://sciml.ai/governance/) and
+[TuringLang's contributing guidance][turing-contrib], read 2026-08-10, with
+no governance document in any TuringLang repository, searched 2026-08-12 ·
+the median Julia package contributor count is from Eric Hanson,
 ["Bus factor 0"](https://ericphanson.com/blog/2025/bus-factor-0/), 2025.
 :::
 
-## How do you reach users who do not care about dispatch?
-
-- They want things that work, with little time and less money, mostly in R
-  and in the middle of an outbreak response
-- Multiple dispatch and the type system are not features to them. They are
-  the reason the install is unfamiliar
-- Most of them will never install Julia, so whatever we build has to be
-  callable from R
+[turing-contrib]: https://github.com/TuringLang/.github/blob/main/CONTRIBUTING.md

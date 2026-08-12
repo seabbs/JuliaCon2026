@@ -30,13 +30,6 @@ motivates it, under six themes. All twelve are at
 
 :::: {.columns}
 ::: {.column width="55%"}
-::: {.callout-note}
-## What is composable modelling?
-
-Components can be reused across contexts and combined in different
-configurations whilst maintaining statistical rigour.
-:::
-
 - **Composed distributions.** The delays between a case's events join
   into one distribution, which can simulate a case or be fitted to
   observed ones

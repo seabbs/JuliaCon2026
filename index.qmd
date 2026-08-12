@@ -47,7 +47,7 @@ would like the Julia community to answer.
 
 [From R/Stan to Julia]{.talk-sub}
 
-CensoredDistributions.jl, and an honest comparison with the R and Stan
+CensoredDistributions.jl, and a comparison with the R and Stan
 implementation it grew out of.
 
 [Page](delays/index.qmd){.btn .btn-sm .btn-outline-primary}
@@ -64,8 +64,8 @@ implementation it grew out of.
 
 [Lowering barriers to rigorous infectious disease modelling]{.talk-sub}
 
-Why composition might be how modelling evidence gets to be timely, rigorous
-and collaborative at once, and what is still missing.
+Composition as a route to modelling evidence that is timely, rigorous and
+collaborative at once, and a change of mind about the Turing.jl backend.
 
 [Page](composable/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](composable/slides.qmd){.btn .btn-sm .btn-outline-primary}
@@ -124,7 +124,7 @@ wider infectious disease modelling community.*
 - [EpiAwarePackageTools.jl][pkgtools].
   One rigid package template.
 - [EpiAwareADTools.jl][adtools].
-  AD workarounds we host until the upstream fix lands.
+  Automatic differentiation safety machinery for the ecosystem's packages.
 :::
 
 ::: {.g-col-12 .g-col-md-4}

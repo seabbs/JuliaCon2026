@@ -12,8 +12,8 @@ toc-title: "On this page"
 page-layout: full
 ---
 
-Coding agents built the site and drafted the slides, working from a brief and
-a long run of corrections.
+This site was built with coding agents, working from a brief and a long run
+of corrections.
 This page is what I asked for and what I said back.
 The [how I LLM](https://samabbott.co.uk/how-I-llm) deck put its prompt on a
 slide at the end.
@@ -169,12 +169,12 @@ composable org.
 ## The steers
 
 Follow-up instructions during the build, verbatim apart from spelling.
-There are thirty-one so far and the build is not finished.
+There are fifty-three so far and the build is not finished.
 It is appended to as they arrive, and the running version is
 [in the repo](https://github.com/seabbs/JuliaCon2026/blob/main/notes/steers.md).
-Seven are about the workflow, twenty about the content, and four about the
-layout.
-A few about specific third party packages are left out.
+Nine are about the workflow, thirty-five about the content, and five about
+the layout.
+Four about specific third party packages and links are left out.
 
 ### Workflow
 
@@ -209,6 +209,16 @@ just the slides.
 
 ::: {.prompt}
 Reminder to update the prompts page, but do not offend anyone.
+:::
+
+::: {.prompt}
+Some of that might be things I have okayed in past slide decks, so check on
+that.
+:::
+
+::: {.prompt}
+Feel free to use subagents, but make sure to review the work done against my
+recent spec here, from today.
 :::
 
 ::::
@@ -341,6 +351,11 @@ People can more easily reuse CensoredDistributions in any model.
 :::
 
 ::: {.prompt}
+We just do not need to note those.
+I meant a few people in the room might be working on something like this.
+:::
+
+::: {.prompt}
 This from the delays project page is a classic LLMism I would not use in my
 own writing: "The switch to a fixed rule, and what it cost".
 :::
@@ -349,6 +364,93 @@ own writing: "The switch to a fixed rule, and what it cost".
 The paper being in CDC clearance is the bullet.
 ComposableTuringIDModels and epiaware.org have most of what we need, and the
 latter has an approaches page we can link to with the requirements.
+:::
+
+::: {.prompt}
+This ["One correction since submission..."] should not be on the project
+page or similar.
+:::
+
+::: {.prompt}
+This page [the delays page] needs to link to primarycensored.
+Remove the documentation link and link to it there.
+:::
+
+::: {.prompt}
+Cut "Taste is not an argument".
+"Cost" is very LLM.
+:::
+
+::: {.prompt}
+In all the decks I also see lots of little tiny aside comments in the same
+style the references are.
+I do not think we want any of those.
+:::
+
+::: {.prompt}
+From the case for composable, I think overly why and not enough on
+ComposableTuringIDModels?
+:::
+
+::: {.prompt}
+Can we cut the Rt estimation ecosystem?
+Need to add Comrade.jl as an example alongside SpeedyWeather.
+:::
+
+::: {.prompt}
+Remove ", which does the fitting".
+Remove "The proof of concept exists because of it".
+Remove "Our migration was one rename. The cost is the tracking".
+Here, "Automatic differentiation is the part that decided it" is more that
+future support is uncertain.
+:::
+
+::: {.prompt}
+Cut "EpiAwareADTools.jl is where we keep our autodiff workarounds. We delete
+them when upstream ships a fix".
+:::
+
+::: {.prompt}
+So what is a composable unit, and how far does it go, are terrible?
+What about other approaches, and pulling in the distributions based approach
+from epiaware.org?
+Can also note that also has only one or a few maintainers.
+:::
+
+::: {.prompt}
+Last but one slide should be "Is Julia the place for this work?" with what
+about JAX as a bullet.
+:::
+
+::: {.prompt}
+Cut "Multiple dispatch is why a composed delay is still a distribution. I do
+not know how to write that as cleanly anywhere else", and "The teams under
+Turing, under the autodiff backends, and under our own packages are all
+small".
+:::
+
+::: {.prompt}
+If we could work in a few more code examples from ComposableTuringIDModels
+that would be great, nothing that the audience will not know about epi
+modelling.
+:::
+
+::: {.prompt}
+Remove "our migration was one rename".
+:::
+
+::: {.prompt}
+Rebuild the roadmap deck.
+Start from what epiaware.org needs, then approach one and approach two with
+code from epiaware.org, then inspiration as three bullets.
+Then "I tried in R" with stars and downloads, and "what do we need to
+implement this" as the transition.
+Funding, a small team, and buy-in before the agents slide, then Claude Max
+and "we still need funding" after it.
+Then a five point current approach slide, with a slide each for
+infrastructure, AD, docs, community in the age of robots, and governance
+including whale contributors with emojis.
+Open on the DRC Bundibugyo outbreak, with the wow and the jank.
 :::
 
 ::::
@@ -377,12 +479,14 @@ On the pages, put related talks under the abstract to make better use of the
 space.
 :::
 
+::: {.prompt}
+The website should make sure to have a nice social media card for sharing.
+:::
+
 ::::
 
-Seven of the thirty-one are corrections to the workflow rather than to the
+Nine of the fifty-three are corrections to the workflow rather than to the
 content.
-The brief said what the talks should say.
-It did not say how hard to look before saying it.
 The content steers were mostly about what to cut.
 
 ## How it was built
@@ -430,4 +534,3 @@ health audience.
 Writing agents then drafted the slide text from the notes.
 Review agents read the drafts back against this brief for length, for voice,
 and for claims that were not in the notes.
-This page was written while that was still going on.

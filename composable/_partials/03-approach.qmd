@@ -3,9 +3,9 @@
 :::: {.columns}
 ::: {.column width="45%"}
 - A library of parts over Turing.jl
-- Three kinds of part. A prior model for a parameter, an infection
-  model that turns that parameter into infections, and an observation
-  model that turns infections into data
+- Three kinds of part. An infection model that turns parameters into
+  infections, an observation model that turns infections into data, and
+  prior models nested in the slots of both
 - Parts carry their own priors, so domain expertise travels with the
   part
 - A model definition does not know about the data, so one definition
@@ -110,7 +110,7 @@ fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
 ::: {.column width="56%"}
 ```julia
 # a component writes its parameter slot once
-damp ~ as_turing_submodel(model.damp, n; prefix = true)
+damp ~ as_turing_submodel(model.damp, p; prefix = true)
 
 # what is in the slot picks the method
 as_turing_submodel(m, args...; prefix = false) =
@@ -123,8 +123,9 @@ as_turing_submodel(d::Distribution, ::ModelShape;
 ::: {.attribution}
 Two of the three `as_turing_submodel` methods,
 `src/base/priors.jl:65-82`, reformatted to fit and with the `::Bool`
-annotations dropped. The third takes a vector of priors · The `AR`
-example is `src/latent_models/models/AR.jl:40-43`
+annotations dropped. The third takes a vector of priors · The slot line
+is `src/base/priors.jl:25` · The `AR` example is
+`src/latent_models/models/AR.jl:40-43`
 :::
 :::
 ::: {.column width="44%"}

@@ -19,7 +19,9 @@ Julia file does not have to know any of them.
 ::: {.attribution}
 `primarycensored_ode.stan:52-77` and `pcd_load_stan_functions()` at
 `2ec4f40` · `primarycensored_cdf.jl:184-188`, v0.2.22 ·
-[epinowcast/primarycensored#34][pc-issue34] and PR #64, September 2024
+[epinowcast/primarycensored#34][pc-issue34] and PR #64, September 2024 ·
+the eight broken scenarios are `ADFixtures.jl:177` at `acb9e39b`, a
+working branch, read 12 August 2026
 :::
 
 [pc-issue34]: https://github.com/epinowcast/primarycensored/issues/34
@@ -93,5 +95,9 @@ all the package.
 ::: {.attribution}
 CRAN and JuliaPkgStats, 12 August 2026. CRAN counts requests to one
 mirror, JuliaPkgStats counts unique IP addresses, so the ratio is an
-upper bound · `epidist/R/marginal_model.R:339-347`
+upper bound. First CRAN release 28 October 2024, registered in General
+2 August 2025 · `epidist/R/marginal_model.R:339-347` · the 63 scenarios
+and the counts registered broken are
+`CensoredDistributions.jl/test/ADFixtures/src/ADFixtures.jl:177` at
+`acb9e39b`, a working branch, read 12 August 2026
 :::

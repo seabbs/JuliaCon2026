@@ -59,8 +59,9 @@ the single-stream fits."}
 
 - `EpiAwarePackageTools.jl` writes 78 template files into each package,
   including nine quality checks that run as tests
-- Seven autodiff configurations in CI, from one list
-- 23 reusable workflows in one `.github` repository, each caller pinned
+- Seven autodiff configurations in one list, six of them running in every
+  package
+- 22 reusable workflows in one `.github` repository, each caller pinned
   to a commit SHA
 
 ::: {.attribution}
@@ -71,8 +72,9 @@ Enzyme comparison is
 open at 2026-08-12 · `templates/`, `src/scaffold.jl` and
 `templates/test/package/quality.jl` in
 [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl)
-at commit `427d4f5`, and the workflow count in
-[EpiAware/.github](https://github.com/EpiAware/.github), read 2026-08-12
+at commit `427d4f5`, read 2026-08-12 · 22 of the 23 workflows in
+[EpiAware/.github](https://github.com/EpiAware/.github) declare
+`workflow_call`, from the contents API 2026-08-13
 :::
 :::
 ::: {.column width="48%"}

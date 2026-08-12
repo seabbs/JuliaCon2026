@@ -27,7 +27,7 @@ outbreak, with most of the mass between 1.5 and 2."}
   confirmed, death, export and bed-occupancy counts, fitted together
 - The situation reports are French PDFs. Agents read them, and digitise an
   epidemic curve that has no data table behind it
-- It refits on every push and tags a release with the draws, 121 of them by
+- It refits on every push and tags a release with the draws, 105 of them by
   10 August
 :::
 ::: {.column width="45%"}
@@ -40,8 +40,9 @@ outbreak, with most of the mass between 1.5 and 2."}
 
 ::: {.attribution}
 [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize), the
-`bvd_joint` arguments, the tag list and the Julia line count read
-2026-08-12 from the clone at commit `90df658d` · figures from the WHO
+`bvd_joint` arguments and the Julia line count read 2026-08-12 from the
+clone at commit `90df658d`, whose 121 tags include 105 `results-*` draws
+releases · figures from the WHO
 collaboratory talk of 10 June 2026, fitted to data as of 7 June ·
 situation reports from
 [insp.cd](https://insp.cd/ebola-17eme-epidemie/) · the Enzyme comparison is

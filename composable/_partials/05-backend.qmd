@@ -36,8 +36,8 @@ The two practical limits are in the paper's discussion
 - `Enzyme.jl` had 18 human authors in the last six months, 210 of its
   276 commits from one of them. `Mooncake.jl` had 12, with 155 of 221
   from one
-- `TuringLang/ADTests`, the one public per-backend support table for a
-  probabilistic programming stack, was archived in June
+- `TuringLang/ADTests` published a per-backend support table for Turing
+  models. It is archived, with no commits since May
 - Our own packages are the same shape, one or two people each
 :::
 ::: {.column width="45%"}
@@ -51,7 +51,8 @@ The two practical limits are in the paper's discussion
 ::: {.attribution}
 Commit counts from the GitHub API, 2026-08-10, `main`, human authors
 only, so 17 of 29 and 47 of 72 are per repository ·
-[TuringLang/ADTests][adtests], archived 2026-06-15
+[TuringLang/ADTests][adtests], archived, last commit 2026-05-01, GitHub
+API 2026-08-12
 :::
 :::
 ::::

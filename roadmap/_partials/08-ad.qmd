@@ -7,10 +7,8 @@
 - Nobody has written down what supporting AD means, so we picked a
   definition and made CI defend it
 - `DifferentiationInterfaceTest` does the correctness testing and the
-  benchmarks. One list of seven configurations drives the CI matrix, the
-  Codecov flags and the README badges
-- In my view none of them is reliably best, and each is kept going by a
-  small team
+  benchmarks. One list drives the CI matrix, the Codecov flags and the
+  README badges. Seven configurations in the list, six in every package
 
 ::: {.callout-note}
 Is there a guide for any of this anywhere in the Julia ecosystem? I went
@@ -32,10 +30,12 @@ const _AD_BACKENDS = [
 
 ::: {.attribution}
 Abridged from `_AD_BACKENDS`, `src/scaffold.jl` in
-`EpiAwarePackageTools.jl`, read through the contents API 2026-08-12. Each
-entry also carries a Codecov flag, a test item tag and the package it
-loads · `check_broken` and the registry contract are in
-`src/ad_harness.jl` ·
+`EpiAwarePackageTools.jl` at commit `427d4f5`, read 2026-08-12. Each entry
+also carries a Codecov flag, a test item tag and the package it loads ·
+ReverseDiff (compiled) was added by commit `4e83318` on 2026-08-10 and is
+in the `ad.yaml` caller and README of `EpiAwareADTools.jl` only, checked
+across the package clones 2026-08-12 · `check_broken` and the registry
+contract are in `src/ad_harness.jl` ·
 [DifferentiationInterfaceTest.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl).
 :::
 :::

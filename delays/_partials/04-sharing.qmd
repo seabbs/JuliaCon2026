@@ -38,7 +38,10 @@ Call from `primarycensored/vignettes/using-stan-tools.Rmd:82` and
 shipped in PR #262, commit `d7d710f` ·
 `epinowcast/inst/stan/functions/primarycensored.stan:1-8` ·
 `epidist/R/marginal_model.R:377`, and 1,103 lines is what
-`pcd_load_stan_functions()` returns at `2ec4f40`
+`pcd_load_stan_functions()` returns at `2ec4f40` ·
+[primarycensored](https://primarycensored.epinowcast.org/) ·
+[epinowcast](https://package.epinowcast.org/) ·
+[epidist](https://epidist.epinowcast.org/)
 :::
 :::
 ::::

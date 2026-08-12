@@ -28,7 +28,7 @@ Error text and chain counts quoted from
 :::
 ::::
 
-## Nine days of things that did not work
+## Eight days of things that did not work
 
 :::: {.columns}
 ::: {.column width="40%"}

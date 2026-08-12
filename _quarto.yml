@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: _site
+  # The social card is only referenced by absolute URL below, so Quarto does
+  # not see it as a resource and would not copy it into the site.
+  resources:
+    - "figures/og-card.png"
   render:
     - "*.qmd"
     - "roadmap/*.qmd"

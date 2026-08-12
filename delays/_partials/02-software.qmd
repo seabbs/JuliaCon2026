@@ -1,5 +1,8 @@
 # We can solve this
 
+The integral solves numerically for any pair of delay and primary
+distribution, and in closed form for a few of them.
+
 ## `primarycensored`, shaped like base R
 
 :::: {.columns}

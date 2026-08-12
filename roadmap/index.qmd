@@ -94,8 +94,9 @@ The other two are in the same room on the same day.
   One template that keeps ten of the eleven packages' tests, docs, and README
   format in sync.
 - [EpiAwareADTools.jl][adtools].
-  A library of automatic differentiation workarounds, each one deleted once
-  the upstream fix lands.
+  Automatic differentiation safety machinery for the ecosystem's packages.
+  AD-safe CDF evaluation hooks, tape-stripping helpers, and correct
+  upstream rules lifted into backends that lack them.
 - [CensoredDistributions.jl][cd].
   The most mature package so far, 25 registered releases.
 - [EpiAwareR][epiawarer].
@@ -112,15 +113,14 @@ The other two are in the same room on the same day.
   The package whose lack of modularity started this.
 - [scoringutils][scoringutils].
   Forecast evaluation in R.
-  The plan above has a Julia equivalent.
 
 ### Papers and writing
 
 - [A workflow for infectious disease modelling][workflow].
-  The paper this roadmap is trying to give a proper home to.
+  The paper behind this talk.
 - [BVDOutbreakSize][bvd].
   A live joint model of the 2026 DRC outbreak of Ebola disease caused by
-  Bundibugyo virus, built the way we want ecosystem packages to compose.
+  Bundibugyo virus.
   It builds on the Imperial (McCabe et al.) report.
   [Source][bvd-repo].
 
@@ -132,11 +132,13 @@ The other two are in the same room on the same day.
 - [SciML governance][sciml].
   A steering council, an advisory committee, and a written governance
   document, for an ecosystem well past the size we are planning for.
-- [SpeedyWeather.jl][speedy].
-  The closest thing Julia has to a domain-specific ecosystem at the size we
-  are aiming for.
+- [TuringLang][turinglang].
+  Small packages that other people build on, rather than one library.
+- [SpeedyWeather.jl][speedy] and [Comrade.jl][comrade].
+  Two domain-specific Julia ecosystems, one an atmospheric general
+  circulation model, the other radio astronomy imaging.
 - [JuMP's governance][jump].
-  A named BDFL and a steering committee, worth reading before we write ours.
+  A named BDFL and a steering committee.
 - [MultiDocumenter.jl][multidoc].
   How SciML stitches many packages' docs into one site.
 - [DifferentiationInterface.jl][di].
@@ -162,7 +164,9 @@ The other two are in the same room on the same day.
 [bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
 [bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
 [sciml]: https://sciml.ai/governance/
+[turinglang]: https://github.com/TuringLang
 [speedy]: https://github.com/SpeedyWeather/SpeedyWeather.jl
+[comrade]: https://github.com/ptiede/Comrade.jl
 [jump]: https://jump.dev/pages/governance/
 [multidoc]: https://github.com/JuliaComputing/MultiDocumenter.jl
 [di]: https://github.com/JuliaDiff/DifferentiationInterface.jl

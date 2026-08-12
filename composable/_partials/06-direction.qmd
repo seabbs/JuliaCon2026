@@ -52,16 +52,18 @@ parameter types dropped
 ::: {.column width="4%"}
 :::
 ::: {.column width="48%"}
-- So this is a direction, not a plan. It needs a way to write a time
-  series as a distribution, and a way to fit one without a model macro
+- So this is a direction, not a plan. It still needs a way to write a
+  time series as a distribution
 - The fitting layer is what the probabilistic programming language was
-  doing
+  doing. `DistributionsInference.jl` does it without a model macro
+- Each distribution family needs `parameter_rows` and `reconstruct`
+  written for it first
 
 ::: {.attribution}
 Open issue `CensoredDistributions.jl#749` says the joint fit is too
 slow, because reverse mode autodiff through `cdf(Convolved(...))` costs
-too much per step · The delay side is written up in full at
-[samabbott.co.uk/JuliaCon2026/delays][delays-talk]
+too much per step · `DistributionsInference.jl` README, `main` at
+`ac84bdf`, read 2026-08-12
 :::
 :::
 ::::
@@ -71,8 +73,8 @@ too much per step · The delay side is written up in full at
 - In the paper I wrote that NumPyro and JAX are promising, with barriers
   for epidemiological modellers
 - JAX has one autodiff system, and everything is written against it
-- We test six configurations and cannot tell a user which one is safe
-  for a model built from five packages
+- We test seven autodiff configurations in CI and cannot tell a user
+  which one is safe for a composed model
 
 ::: {.callout-important}
 I have argued myself into both answers.
@@ -80,7 +82,6 @@ I have argued myself into both answers.
 
 ::: {.attribution}
 The alternative approaches, including NumPyro and JAX, are in the
-paper's discussion
+paper's discussion · Seven backends from `EpiAwareADTools.jl`,
+`test/ADFixtures/src/ADFixtures.jl`, `main` at `c164a87`, 2026-08-12
 :::
-
-[delays-talk]: https://samabbott.co.uk/JuliaCon2026/delays/
