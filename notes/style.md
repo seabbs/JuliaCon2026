@@ -61,6 +61,32 @@ table plus bullets plus a callout plus an attribution, are the problem.
 4. **Voice.** Match the serial interval deck. Plain, specific, unhurried. No
    slogans, no summarising the point, no telling the audience what to think.
 
+## No editorial asides dressed as references
+
+> In all the decks I also see lots of little tiny aside comments in the same
+> style the refs are. I don't think we want any of those.
+
+An `::: {.attribution}` block is for **sources**. A citation, a repository, an
+issue or PR number, a data provenance line, a figure credit, a retrieval date.
+
+It is not for editorial remarks, second thoughts, caveats the slide did not
+have room for, or cross-references to his other talks. Those have crept in
+across all three decks because the attribution block is a convenient place to
+put a sentence you could not fit. It reads as footnoting yourself.
+
+Example of the fault, from `composable/_partials/06-direction.qmd`:
+
+> The alternative approaches, including NumPyro and JAX, are in the paper's
+> discussion. The paper is in CDC clearance · The six autodiff configurations
+> were the 14:30 talk in this room, samabbott.co.uk/JuliaCon2026/roadmap
+
+Only the first clause is a source. The rest is commentary and a signpost.
+
+Go through every attribution block in all three decks. Keep the source. Delete
+the commentary, or promote it to a bullet if it is worth saying. Cross-talk
+pointers stay only where an earlier steer explicitly asked for one, and there
+is at most one per deck.
+
 ## Talk pages carry the abstract, and nothing arguing with it
 
 The author, on a note that had been added under the delays abstract:

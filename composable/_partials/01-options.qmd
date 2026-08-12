@@ -46,26 +46,3 @@ fig-alt="Title of the Lison et al. 2024 paper"}
 :::
 ::::
 
-## The $R_t$ estimation ecosystem
-
-:::: {.columns}
-::: {.column width="45%"}
-- At least seven packages estimate $R_t$ by renewal in Stan. Only two of
-  them share any component, and I wrote both
-- The wastewater $R_t$ tools make different choices about how much of
-  the sampling to represent, and share nothing
-- Shared parts do exist. `primarycensored` is one, and uptake outside my
-  own packages is thin
-- The unit of reuse is the whole model, not the epidemiology underneath
-
-::: {.attribution}
-The two sharing a component are `EpiNow2` and `epinowcast`, both
-vendoring `primarycensored.stan` ·
-[epiforecasts.io/EpiNow2](https://epiforecasts.io/EpiNow2)
-:::
-:::
-::: {.column width="55%"}
-![](../figures/composable-epinow2-pkg.png){width="100%"
-fig-alt="The EpiNow2 package README, one of the seven"}
-:::
-::::

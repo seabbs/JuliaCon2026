@@ -13,8 +13,10 @@ configurations whilst maintaining statistical rigour.
   whole system
 - Adding a data source means a new submodel rather than a rebuild
 - Domain-specific languages have done this in other fields,
-  [SpeedyWeather.jl](https://doi.org/10.21105/joss.06323) for weather
-  and [HydroModels.jl](https://doi.org/10.5281/zenodo.15549719) for
+  [SpeedyWeather.jl](https://doi.org/10.21105/joss.06323) for weather,
+  [Comrade.jl](https://doi.org/10.3847/1538-4357/ac6584) for black hole
+  imaging, and
+  [HydroModels.jl](https://doi.org/10.5281/zenodo.15549719) for
   hydrology
 
 ## Design considerations

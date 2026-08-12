@@ -3,12 +3,11 @@
 :::: {.columns}
 ::: {.column width="48%"}
 - Turing.jl gave us submodels, a choice of samplers, and the rest of
-  Julia. The proof of concept exists because of it
-- Eleven breaking releases in nineteen months, v0.35.5 to v0.46.0. Our
-  migration was one rename. The cost is the tracking
+  Julia
+- Eleven breaking releases in nineteen months, v0.35.5 to v0.46.0
 - Large simulated counts error, and vectors mixing missing and observed
   values have to be handled by hand
-- Automatic differentiation is the part that decided it
+- It is more that future automatic differentiation support is uncertain
 :::
 ::: {.column width="4%"}
 :::
@@ -36,10 +35,10 @@ room, [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
 :::: {.columns}
 ::: {.column width="55%"}
 - A lot of the stack rests on very few people. The work itself is good
+- `Enzyme.jl` had 11 human authors in the last six months, 71 of the
+  commits from one of them. `Mooncake.jl` had 5, with 58 from one
 - `TuringLang/ADTests`, the one public per-backend support table for a
   probabilistic programming stack, was archived in June
-- `EpiAwareADTools.jl` is where we keep our autodiff workarounds. We
-  delete them when upstream ships a fix
 - Our own packages are the same shape, one or two people each
 :::
 ::: {.column width="45%"}

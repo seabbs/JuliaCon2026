@@ -65,18 +65,13 @@ too much per step · The delay side is written up in full at
 :::
 ::::
 
-## Is JAX the way forward, and is Julia the place?
+## Is Julia the place for this work?
 
 - In the paper I wrote that NumPyro and JAX are promising, with barriers
-  for epidemiological modellers, and that I find them ugly. Taste is not
-  an argument
+  for epidemiological modellers
 - JAX has one autodiff system, and everything is written against it
 - We test six configurations and cannot tell a user which one is safe
   for a model built from five packages
-- Multiple dispatch is why a composed delay is still a distribution. I
-  do not know how to write that as cleanly anywhere else
-- The teams under Turing, under the autodiff backends, and under our own
-  packages are all small
 
 ::: {.callout-important}
 I have argued myself into both answers.

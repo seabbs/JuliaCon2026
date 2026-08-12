@@ -888,6 +888,44 @@ following slides make the case.
 got to" became "What we said we would build". The diagram beneath already
 shows where it got to.
 
+## 18. The maxim, and the nominalised cost
+
+Two related flourishes, both cut by the author on sight.
+
+**18a. The maxim.** A short general truth appended to a specific point, as
+though the slide had earned an aphorism. He cut:
+
+> In the paper I wrote that NumPyro and JAX are promising, with barriers for
+> epidemiological modellers, and that I find them ugly. **Taste is not an
+> argument**
+
+His instruction was simply "cut: Taste is not an argument". The specific claim
+stays; the maxim goes. Related shapes: "the tool is not the problem", "that is
+a choice, not a constraint", "the map is not the territory".
+
+**18b. The nominalised cost.** Turning a plain consequence into an abstract
+noun with a dramatic copula. He cut:
+
+> Eleven breaking releases in nineteen months, v0.35.5 to v0.46.0. Our
+> migration was one rename. **The cost is the tracking**
+
+Rewritten to just the fact:
+
+> Eleven breaking releases in nineteen months, v0.35.5 to v0.46.0
+
+The family: "the cost is X", "the price is X", "the real work is X", "the
+problem is not X, it is Y". Each announces an insight instead of stating one.
+
+**Grep.**
+
+```
+rg -n --glob '*.qmd' \
+  '\b(the (cost|price|real work|hard part|difficulty) is)\b|is not (an argument|the problem|the point)'
+```
+
+**How to fix.** Delete the sentence. Almost always the sentence before it
+already carried the content, which is why the flourish felt available.
+
 ## What he does not cut
 
 Do not over-correct.

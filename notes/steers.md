@@ -131,3 +131,42 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > This page needs to link to primarycensored. Remove the documentation link
 > and link to it there: https://samabbott.co.uk/JuliaCon2026/delays/
+
+> cut: "Taste is not an argument". "cost" is very LLM.
+
+> In the delays talk we need a slide introducing what an epidemiological delay
+> is, then "unfortunately biases" as a title slide, then censoring and right
+> truncation as we have. [Full running order in notes/spec-delays.md.]
+
+> In all the decks I also see lots of little tiny aside comments in the same
+> style the refs are. I don't think we want any of those.
+
+> From case for composable, I think overly why and not enough on
+> ComposableTuringIDModels?
+
+> Can we cut: The Rt estimation ecosystem. Need to add Comrade.jl as an
+> example alongside SpeedyWeather.
+
+> remove: ", which does the fitting". Remove: "The proof of concept exists
+> because of it". Remove: "Our migration was one rename. The cost is the
+> tracking". Here: "Automatic differentiation is the part that decided it" is
+> more that future support is uncertain.
+
+> The teams under this are small needs to talk about i.e. Enzyme and Mooncake
+> as well
+
+> cut: "EpiAwareADTools.jl is where we keep our autodiff workarounds. We
+> delete them when upstream ships a fix"
+
+> so what is a composable unit and how far does it go are terrible? What about
+> other approaches and pull in stuff from i.e. epiaware.org i.e. the
+> distributions based approach? Can also note that also has only a few/one
+> maintainer
+
+> Last but one slide: should be "Is Julia the place for this work?" with what
+> about JAX as a bullet
+
+> cut: "Multiple dispatch is why a composed delay is still a distribution. I
+> do not know how to write that as cleanly anywhere else" and "The teams under
+> Turing, under the autodiff backends, and under our own packages are all
+> small"

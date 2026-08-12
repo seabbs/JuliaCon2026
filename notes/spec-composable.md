@@ -60,6 +60,60 @@ it belongs near the end.
 `ComposableTuringIDModels.jl` is the prototype the talk demonstrates and must
 be named clearly, on a slide and in the talk page button row.
 
+## Rebalance: less why, more prototype
+
+His verdict on the current deck:
+
+> From case for composable, I think overly why and not enough on
+> ComposableTuringIDModels?
+
+He is right, and the counts show it. The deck has **five** slides titled "The
+gap: ..." plus "Analysing data and processes separately", "Analysing all data
+and processes together" and "Can composable modelling help?", against **one**
+slide on `ComposableTuringIDModels.jl`.
+
+Cut the why hard. The audience does not need five gap slides to accept that
+building these models is difficult. Two, at most three, and then get to the
+thing. Spend what you save on the prototype: what it is, what a component
+looks like, how composition actually works, what it replicates.
+
+Also fix these, found while counting:
+
+- **`## What is composable modelling?` appears twice**, in two different
+  partials. One of them goes.
+- **`## So what is the composable unit?` and `## How far does that go?` are
+  both bad.** His word was "terrible". They are vague, they announce a
+  question rather than making a claim, and the second is a promise tail
+  (`llmisms.md` pattern 17). Rewrite both as statements of what the slide
+  shows, or cut them and fold the content into the prototype section.
+- **The last-but-one slide.** Currently "Is JAX the way forward, and is Julia
+  the place?". He wants it to be **"Is Julia the place for this work?"**, with
+  JAX as one bullet underneath rather than sharing the title.
+
+## Other approaches, including the distributions one
+
+> What about other approaches, and pull in stuff from epiaware.org, the
+> distributions based approach? Can also note that also has only a few, one
+> maintainer.
+
+The deck presents composable Turing models as the approach. It should present
+it as **one of the approaches we are running**, which is what
+[epiaware.org/approaches](https://epiaware.org/approaches/) says. That page
+carries both:
+
+- [composed distributions](https://epiaware.org/approaches/composed-distributions.html),
+  joining event delays into a single distribution for simulation and fitting
+- [composable Turing models](https://epiaware.org/approaches/composable-turing-models.html),
+  the three-piece transmission, infection and observation architecture
+
+Pull the framing and the design considerations from that page rather than
+re-deriving them. It is public, maintained, and the same content as the paper.
+
+And be even-handed about maturity. The distributions-based approach has one or
+two maintainers, same as everything else here. Say so on the same slide that
+presents it, rather than presenting the alternative as the safe option. Verify
+the maintainer counts from the repositories before stating a number.
+
 ## Do not link the Zenodo archive
 
 The author:
