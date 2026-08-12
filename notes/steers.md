@@ -170,3 +170,9 @@ and the 40 minute deck is a primary source for the composable talk.)
 > do not know how to write that as cleanly anywhere else" and "The teams under
 > Turing, under the autodiff backends, and under our own packages are all
 > small"
+
+> if we could work in a few more code examples from ComposableTuringIDModels
+> that would be great, nothing that the audience won't know about epi
+> modelling
+
+> remove "our migration was one rename"
