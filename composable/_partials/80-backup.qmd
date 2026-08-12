@@ -116,4 +116,89 @@ The paper's discussion of alternative designs
 This claim is in the paper's discussion. It has not been tested.
 :::
 
+## The gap: COVID-19 showed what is possible {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="42%"}
+- COVID-19 models integrated cases, prevalence, severity, and hospital
+  occupancy for policy
+- Fitting all the data and processes together provided evidence that
+  supported policy decisions
+- They required expertise across multiple domains and long development
+  timelines
+
+::: {.attribution}
+Birrell et al. (2025),
+[doi:10.1093/jrsssa/qnaf030](https://doi.org/10.1093/jrsssa/qnaf030)
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-birrell.png){width="100%"
+fig-alt="Results from the England COVID-19 joint model"}
+:::
+::::
+
+## The gap: flexibility for new contexts {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="42%"}
+- In 2022 mpox spread internationally through sexual contact networks,
+  and the response needed modelling quickly
+- The COVID-19 models were not adapted to it. New single-source models
+  were built instead
+- A different contact structure and different behaviour needed explicit
+  representation
+
+::: {.attribution}
+Endo et al. (2022),
+[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507)
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-endo.png){width="100%"
+fig-alt="Results from the 2022 mpox sexual contact network model"}
+:::
+::::
+
+## The gap: integrating diverse data {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="42%"}
+- Cross-sectional viral loads carry information about epidemic dynamics
+- They are not in most policy models, even where they are already
+  collected
+- Adding a data source to an existing model means rebuilding it
+
+::: {.attribution}
+Hay et al. (2021),
+[doi:10.1126/science.abh0635](https://doi.org/10.1126/science.abh0635)
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-hay.png){width="100%"
+fig-alt="Title of the Hay et al. 2021 viral load paper"}
+:::
+::::
+
+## The gap: multi-model efforts {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="42%"}
+- Multi-model efforts combine forecasts from several teams, and can
+  improve predictive accuracy
+- The teams rarely collaborate on model components
+- Common components would let a difference in results be attributed to
+  an assumption rather than an implementation
+
+::: {.attribution}
+The US COVID-19 Forecast Hub dataset. Cramer et al. (2022),
+[doi:10.1038/s41597-022-01517-w](https://doi.org/10.1038/s41597-022-01517-w)
+:::
+:::
+::: {.column width="58%"}
+![](../figures/composable-cramer.png){width="100%"
+fig-alt="Title of the Cramer et al. 2022 Forecast Hub dataset paper"}
+:::
+::::
+
 [chatzilena]: https://doi.org/10.1016/j.epidem.2019.100367

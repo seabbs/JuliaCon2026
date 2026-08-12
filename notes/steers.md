@@ -176,3 +176,16 @@ and the 40 minute deck is a primary source for the composable talk.)
 > modelling
 
 > remove "our migration was one rename"
+
+> [Full roadmap deck rebuild: start from epiaware.org needs, approach one and
+> two with code from epiaware.org, inspiration as three bullets, "I tried in
+> R" with stars and downloads, "what do we need to implement this" transition,
+> funding / small team / buy-in before the agents slide, Claude Max and "we
+> still need funding" after it, then a five-point current approach slide with
+> a slide each for infrastructure, AD, docs, community in the age of robots,
+> and governance including whale contributors with emojis. Opener on the DRC
+> Bundibugyo outbreak with wow and jank. Recorded in full in
+> notes/spec-roadmap.md.]
+
+> feel free to use subagents but make sure to review work done vs my recent
+> spec here i.e. from today

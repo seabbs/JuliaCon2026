@@ -41,10 +41,10 @@ format:
 - What an epidemiological delay is, and where the estimate ends up
 - Both events arrive as windows, and the pairs that have not finished
   are missing
-- `primarycensored`, and what shipping the same likelihood in Stan cost
-- Delays vary, so partial pooling, `brms` and `epidist`
-- No line list, so `epinowcast`
-- The same three adjustments in Julia, as composable wrappers
+- `primarycensored` in R, then the same likelihood again in Stan
+- `fitdistrplus` for fitting, `brms` for partial pooling
+- The same three adjustments in Julia, as `Distributions.jl` wrappers
+- Automatic differentiation, and who uses which version
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-delays.png){width="58%"}
@@ -57,26 +57,29 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 14:45.
 :::
 ::::
 
-{{< include _partials/00-problem.qmd >}}
+{{< include _partials/00-delay.qmd >}}
 
-{{< include _partials/01-primarycensored.qmd >}}
+{{< include _partials/01-biases.qmd >}}
 
-{{< include _partials/02-pooling.qmd >}}
+{{< include _partials/02-software.qmd >}}
 
-{{< include _partials/03-population.qmd >}}
+{{< include _partials/03-stan-integral.qmd >}}
 
-{{< include _partials/04-julia.qmd >}}
+{{< include _partials/04-sharing.qmd >}}
 
-{{< include _partials/05-adoption.qmd >}}
+{{< include _partials/05-julia.qmd >}}
 
-{{< include _partials/06-close.qmd >}}
+{{< include _partials/06-adoption.qmd >}}
+
+{{< include _partials/07-close.qmd >}}
 
 ## Thank you
 
 :::: {.columns}
 ::: {.column width="62%"}
 ::: {.callout-important}
-Tell me about a delay you cannot write down as a composition.
+If you have moved a user base from one language to another, tell me
+how it went.
 :::
 
 - [CensoredDistributions](https://github.com/EpiAware/CensoredDistributions.jl),

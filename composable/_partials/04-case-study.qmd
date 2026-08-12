@@ -2,8 +2,8 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Reuses the ARIMA(2,1,1) and the negative binomial from the worked
-  example
+- Reuses the ARIMA(2,1,1) built earlier, with a negative binomial
+  observation model
 - `broadcast_weekly` wraps the ARIMA for piecewise constant weekly
   $R_t$, and `ascertainment_dayofweek` adds day-of-week reporting
 - Two `LatentDelay` wrappers add the incubation period and the

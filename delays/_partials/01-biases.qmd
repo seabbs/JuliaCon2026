@@ -1,61 +1,4 @@
-# Delays are not observed directly
-
-## A delay is the time between two events
-
-:::: {.columns}
-::: {.column width="40%"}
-- Infection to symptom onset, onset to hospitalisation, onset to death
-- Nowcasts, forecasts and transmission models take a delay
-  distribution as given
-- Neither event is seen at a point. Both arrive as a day, sometimes a
-  week
-- In real time the longer delays have not happened yet
-
-::: {.attribution}
-Diagram for this talk, `scripts/delays-double-censoring.py`
-:::
-:::
-::: {.column width="60%"}
-![](../figures/delays-double-censoring.png){width="100%"
-fig-alt="A timeline. A blue box marks the primary event window of
-width w_P, a red box marks the secondary event window of width w_S, an
-arrow between them is the delay T = S - P, and a dashed line further
-right marks the observation cutoff C, beyond which longer delays have
-not yet been seen."}
-:::
-::::
-
-[hsi]: https://samabbott.co.uk/how-to-serial-interval
-
-## Estimate one naively and it is biased
-
-:::: {.columns}
-::: {.column width="40%"}
-- In a growing epidemic short delays are oversampled, so the delay
-  comes out too short
-- Interval censoring of both events applies to almost any line list
-- Right truncation is the correction when the observation cutoff sits
-  near the primary events
-- How cases were ascertained matters. On the primary event the delay
-  is right censored instead
-
-::: {.attribution}
-Fig 3 of
-[Charniga et al. (2024)](https://doi.org/10.1371/journal.pcbi.1012520),
-PLOS Comput Biol, CC-BY 4.0
-:::
-:::
-::: {.column width="60%"}
-![](../figures/fig-charniga-flowchart.png){height="800px"
-fig-align="center"
-fig-alt="A decision tree. Questions about time variation, whether the
-analysis is retrospective or real time, whether the cutoff was near
-the primary events, and which event cases were ascertained through,
-lead to actions: adjust for interval censoring and right censoring,
-adjust for interval censoring and right truncation, or interval
-censoring alone."}
-:::
-::::
+# Unfortunately, biases
 
 ## 1. The primary event sits in a window
 
@@ -89,6 +32,8 @@ serial interval · maths after
 Gamma, lognormal and Weibull against a uniform primary have closed
 forms.
 :::
+
+[hsi]: https://samabbott.co.uk/how-to-serial-interval
 
 ## 2. So does the secondary event
 

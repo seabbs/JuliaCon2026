@@ -34,10 +34,14 @@ Survey figures from the paper's introduction
   them
 - Joint models are difficult to develop within policy timelines, and
   need expertise across several domains
+- England's COVID-19 models were not adapted to mpox in 2022. New
+  single-source models were built instead
 
 ::: {.attribution}
 Lison et al. (2024),
-[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021)
+[doi:10.1371/journal.pcbi.1012021](https://doi.org/10.1371/journal.pcbi.1012021) ·
+Endo et al. (2022),
+[doi:10.1126/science.add4507](https://doi.org/10.1126/science.add4507)
 :::
 :::
 ::: {.column width="55%"}

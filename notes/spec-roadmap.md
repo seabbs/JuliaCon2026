@@ -1,120 +1,165 @@
-# Roadmap deck: the structure the author asked for
+# Roadmap deck: full rebuild
 
-His verdict:
+This replaces the earlier spec entirely. Read `notes/style.md` first.
 
-> For the ecosystem talk it's over indexed on the R stuff.
+The author has given a slide-by-slide running order. Follow it. Where he names
+a slide, that is a slide.
 
-And the structure he wants, in his words, lightly punctuated:
+## 0. Opener: we are already doing this
 
-> it should instead be we want to build this compose thing (brief bit on what
-> that is and why, ref to the other talk) then what we wanted, something like
-> epinowcast, something like SciML, something like Turing community, i.e.
-> epinowcast, but that approach was hard. Multiple approaches possible so want
-> to leave space for that. Something like rOpenSci for epi ideally.
->
-> Need AD as a first class citizen for fitting. Need PPL support for any real
-> world ID modelling. What does that look like, what did we need to do for AD
-> testing, what does it mean to support AD? Guides for this in Julia
-> ecosystem? All have small teams.
->
-> Apart from AD, R has a lot of package quality checks. What does a good
-> package look like in Julia? Aqua but need more? So add? Lots of CI needed.
-> Maintainability with all the required infra. Need good docs and docstrings,
-> Julia not good at that so need to enforce via the template.
->
-> We don't have many/any contributors so far and realistically we need to make
-> this work with AI going forward, how do we do that well? Package templates,
-> but why not i.e. BestieTemplate etc? We need to make it more structured to
-> force the shape on the AI I think. We also have our opinionated needs i.e. AD
-> testing and benchmarking, we want to look at JET etc, stuff outside template
-> support. Probably should have built it with their templating stuff but... We
-> get all our CI from a central .github like i.e. SciML, use dependabot to
-> update, use EpiAwarePackageTools to enforce structure, has docs for agents to
-> look at. ... shape of org.
+> Somewhere I want "we are already using Julia for outbreak modelling in the
+> DRC" (full name of the virus and country), supported by LLMs pulling data
+> directly from PDF sitreps, fitting to multiple data sources with Mooncake
+> AD (despite best efforts and many tokens Enzyme continues to be a failure).
+> BVDOutbreakSize repo has some slides with plots. I think as an exciting wow
+> we might want that as an opener slide? We want it to have "wow why cool
+> Julia helps us" elements but also "wow so much code and jank" elements. Only
+> 5 bullets max and ideally several figures.
 
-Read `notes/style.md` first.
+Open on the real outbreak, not on an agenda. Use the full names: **Bundibugyo
+virus disease**, **Democratic Republic of the Congo**.
 
-## The main fault
+Both halves must land. The wow: real time, multiple data streams fitted
+jointly, sitrep PDFs read automatically, Mooncake gradients through the whole
+thing. The jank: a great deal of generated code, hard to review, and Enzyme
+still failing after a lot of effort and tokens.
 
-The deck spends too long on the R ecosystem: what epinowcast was, what EpiNow2
-could not do, the R packages we built. That is context, not the talk. It
-should be compressed to the minimum needed to explain why we are here, and the
-weight moved to the Julia questions, which are what this audience can actually
-answer.
+Five bullets maximum. Several figures. Candidates already on disk in
+`/Users/lshsa2/code/seabbs/BVDOutbreakSize/slides/figures/`:
+`outbreak_streams.png`, `rt-over-time.png`, `size-trajectory.png`,
+`insp_sitreps.png` (the sitrep ingestion), `generative-process.svg`,
+`validation-mccabe.png`. Copy what you use into `figures/`.
 
-## The structure
+This may need a two or three panel layout rather than the usual 40/60 split.
+That is allowed here.
 
-### 1. What we are trying to build, briefly
+## 1. What we need, one slide
 
-Composable modelling in one or two slides. What it is, why it needs an
-ecosystem of reusable components rather than one package. Point at the 16:45
-talk for the argument rather than making it here.
+Start from `epiaware.org` needs. One slide only, linking to the 16:45 talk for
+the argument. Do not re-run the case for composability here.
 
-### 2. What we wanted, and why epinowcast was hard
+## 2. Approach one, with code
 
-We wanted something with the community of **epinowcast**, the technical
-coherence of **SciML**, and the ecosystem shape of **Turing**. We had
-epinowcast in R, and that approach was hard. Say concretely why, briefly.
+`ComposableTuringIDModels.jl`. Include the code example from
+<https://epiaware.org/approaches/composable-turing-models.html>.
 
-Then the two points that open the talk up:
+## 3. Approach two, with code
 
-- **Multiple approaches are possible** and we want to leave space for them.
-  Composable Distributions, Turing submodels, SciML, hand-written models.
-- **Ideally something like rOpenSci, for epidemiology.** That is the shape of
-  the thing that does not exist in Julia.
+The distributions extension approach. Code example from
+<https://epiaware.org/approaches/composed-distributions.html>.
 
-### 3. AD as a first class citizen
+## 4. Maybe other approaches
 
-- Any real-world infectious disease model needs a PPL, and a PPL needs AD that
-  works. So AD support is not a nice-to-have, it is the requirement.
-- What does it even mean to say a package "supports AD"? There is no settled
-  answer, which is a genuine question for the room.
-- What we had to build: per-backend CI, a fixture set, registered broken
-  scenarios. `DifferentiationInterfaceTest` is very good and we still needed
-  more on top.
-- Are there guides for this anywhere in the Julia ecosystem? Every AD backend
-  is run by a small team.
+Briefly. SciML lowering, and a model written by hand as the baseline.
 
-### 4. What a good Julia package looks like
+## 5. Some inspiration
 
-- R has a deep stack of package quality checks. `R CMD check`, rOpenSci
-  review, CRAN policy. Julia has `Aqua`, and then what?
-- So we add: `JET`, benchmarking, docstring coverage, per-backend AD tests.
-- All of that is CI, and the CI is itself infrastructure to maintain.
-- Julia documentation and docstring culture is weak by default, so the
-  template has to enforce it rather than suggest it.
+Replace the current four-way comparison and its table. Three bullets, nothing
+else:
 
-### 5. Contributors, and building for AI
+- Turing, one bullet
+- SciML, one bullet
+- rOpenSci, one bullet
 
-This is the honest bit and it should not be a victory lap. See
-`notes/style.md`: this is not a talk about coding agents.
+> no additional test needed
 
-- We have few or no outside contributors so far. Realistically this ecosystem
-  has to work with AI doing much of the writing.
-- So the template has to be **rigid**, to force a shape on the model. That is
-  the argument against a flexible template.
-- Why not `BestieTemplate` or the existing community templates? Because they
-  are deliberately modular, and we want uniformity. Concede plainly that we
-  probably should have built on their templating rather than rolling our own.
-- We have opinionated needs the templates do not cover: AD testing,
-  benchmarking, JET.
-- How it works now: a central `.github` repository supplying CI, as SciML
-  does, dependabot to keep it current, and `EpiAwarePackageTools.jl` to
-  enforce structure, including documentation written for agents to read.
+means do not add the R versus Julia forum and seminar counts table. Cut it.
 
-### 6. The shape of an org, and the questions
+## 6. I tried in R
 
-Close on the open questions. Keep the existing closing slide, which is good:
-smallest viable governance, no rOpenSci for Julia, who tells a user which
-backend works for a model built from five packages, releasing eleven packages
-that must work together, and whether any Julia ecosystem has users who are
-mostly not developers.
+Replace "We had that in R, and it does not come apart".
+
+> I tried in R, then list the packages (with GitHub stars and downloads).
+> "Reused as" is weird, not sure we need it.
+
+So: a table of the R packages with **GitHub stars and download counts**, and
+**drop the "Reused as" column**. Verify every number from the GitHub API and
+CRAN, with a retrieval date.
+
+Keep the point that epinowcast was started in 2021 to be the modular one and
+still cannot be taken apart, and the four EpiNow2 issues.
+
+## 7. What do we need to implement this?
+
+A transition slide. Then, before the agents slide:
+
+- **Funding.** We have tried several times for grants of a few million, and
+  met a lot of Julia scepticism.
+- **A small team.** At least a few people.
+- **Buy-in from others.**
+
+## 8. The agents slide
+
+The existing one. Keep the pull request plot over time. Add a **Claude Max
+subscription** as the honest answer to how it is being done now, and end on a
+bullet saying we still need funding, any ideas.
+
+## 9. Transition: our current approach
+
+A bullet slide listing five things, then **at least one slide for each**:
+
+1. As much infrastructure as possible
+2. Automatic differentiation as a first class citizen
+3. Good to great docs, and making sure they work
+4. A community of contributors
+5. Good governance
+
+### 9.1 Infrastructure
+
+- A central `.github` supplying CI.
+- `EpiAwarePackageTools.jl` as its own package slide.
+- Trying to replace R's `CRAN check` in Julia. Aqua and the rest, with a
+  subtitle about going beyond it.
+- No reverse dependency checks in Julia. SciML does some internally. How we
+  avoid endless breaking.
+
+### 9.2 Automatic differentiation
+
+- Standardised AD testing and benchmarking via `DifferentiationInterfaceTest`.
+- `EpiAwareADTools.jl` for AD fixes, for example the `SpecialFunctions`
+  problems. Keep the `xlogy` wrong-gradient example, it is the best evidence
+  in the deck.
+
+### 9.3 Docs
+
+Keep the existing documentation-as-a-failing-test slide.
+
+### 9.4 Community, in the age of robots
+
+- How does a community work now? Talking to robots is dispiriting.
+- It is unclear which repositories want robot-filed issues at all.
+- `EpiAwareAgents` as one possible answer: a community bot available to any
+  maintainer. **Say plainly that it does not work and is still a sketch.**
+
+### 9.5 Governance
+
+- What does good governance look like?
+- How do we manage whale contributors? Every previous project he has worked on
+  has had this problem. He started epinowcast in 2021 partly to avoid what
+  happened with EpiNow2, and it did not work.
+- Is Julia's composability magic enough on its own? Julia still has whales.
+  **Use emojis here.** His instruction.
+- How do you attract users who do not care about multiple dispatch, or any
+  other Julia magic? They want things to work, and they usually have little
+  time and less resource, especially in R and in outbreak settings.
+
+## 10. Close
+
+Keep the four questions slide.
+
+## Explicit removals
+
+Cut these, by his instruction:
+
+- "Eleven packages, three ways to compose them" (backup slide)
+- "Eleven packages, and four questions"
+- "What ships next"
+- "What the language buys us"
+- "Nobody can tell you which backend a model needs"
 
 ## Constraints
 
-- 15 minute slot.
-- The R material earns at most two slides, as setup.
-- BVDOutbreakSize stays as evidence about the workflow, briefly. It is not a
-  story about how clever the agents were.
-- Cut the mermaid diagrams added last round unless they show a mechanism.
-  Several are box-and-arrow restatements of their own bullets.
+- 15 minute slot. The deck currently runs 8 to 10 minutes, so this rebuild has
+  room, but it is adding a lot of slides. Count at the end and report.
+- No editorial asides in attribution blocks. See `notes/style.md`.
+- Every number verified, with a retrieval date.

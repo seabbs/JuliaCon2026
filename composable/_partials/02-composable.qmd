@@ -1,25 +1,4 @@
-## Can composable modelling help?
-
-::: {.callout-note}
-## What is composable modelling?
-
-Components can be reused across contexts and combined in different
-configurations whilst maintaining statistical rigour.
-:::
-
-- Components can be validated on their own, then combined into joint
-  models that propagate uncertainty properly
-- Domain experts contribute specialised parts without understanding the
-  whole system
-- Adding a data source means a new submodel rather than a rebuild
-- Domain-specific languages have done this in other fields,
-  [SpeedyWeather.jl](https://doi.org/10.21105/joss.06323) for weather,
-  [Comrade.jl](https://doi.org/10.3847/1538-4357/ac6584) for black hole
-  imaging, and
-  [HydroModels.jl](https://doi.org/10.5281/zenodo.15549719) for
-  hydrology
-
-## Design considerations
+## What we want from any approach
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -44,6 +23,44 @@ Table 1 of the paper pairs each requirement with the problem that
 motivates it, under six themes. Three of the twelve are on the left. All
 twelve are at
 [epiaware.org/approaches](https://epiaware.org/approaches/)
+:::
+:::
+::::
+
+## Composed distributions, and composable Turing models
+
+:::: {.columns}
+::: {.column width="55%"}
+- **Composed distributions.** The delays between a case's events join
+  into one distribution, which can simulate a case or be fitted to
+  observed ones
+- **Composable Turing models.** One part for what drives transmission
+  over time, one for how that produces infections, and one for how
+  infections become the data you actually see
+- Both build a model out of parts that are checked on their own and
+  then fitted together
+- The rest of this talk is the Turing one
+
+::: {.attribution}
+Wording and design considerations from
+[epiaware.org/approaches](https://epiaware.org/approaches/) ·
+`ComposedDistributions.jl` is the first, `ComposableTuringIDModels.jl`
+the second
+:::
+:::
+::: {.column width="45%"}
+| Repository | Contributors |
+|---|---:|
+| `ComposableTuringIDModels.jl` | 1 |
+| `ConvolvedDistributions.jl` | 1 |
+| `CensoredDistributions.jl` | 7 |
+
+: {tbl-colwidths="[70,30]"}
+
+::: {.attribution}
+Contributor lists from the GitHub API, 2026-08-12, all time, with bot
+and agent accounts removed. The six people other than me on
+`CensoredDistributions.jl` have not committed since February 2026
 :::
 :::
 ::::

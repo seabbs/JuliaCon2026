@@ -1,0 +1,66 @@
+## The quadrature died mid-sampling
+
+:::: {.columns}
+::: {.column width="54%"}
+```
+Error in function tanh_sinh<double>::integrate: The
+tanh_sinh quadrature evaluated your function at a
+singular point and got -inf. Please narrow the bounds
+of integration or check your function for
+singularities.
+
+Warning: 243 chain(s) finished unexpectedly!
+```
+:::
+::: {.column width="46%"}
+- Post-warmup, in sampling. **243 of 256** chains gone, and the ones
+  that lived returned the right answer
+- `integrate_1d` errors rather than rejecting, so the chain dies
+  instead of the proposal
+- The integral was fine. It was the interaction with Stan's autodiff,
+  and the missing reject, that made it unusable
+
+::: {.attribution}
+Error text and chain counts quoted from
+[epinowcast/primarycensored#34](https://github.com/epinowcast/primarycensored/issues/34),
+5 September 2024
+:::
+:::
+::::
+
+## Nine days of things that did not work
+
+:::: {.columns}
+::: {.column width="40%"}
+- `xc`, Stan's high-precision distance argument, turned singularities
+  into an integral that would not solve at all
+- Then `d` from parameter to data, integrating over the delay instead
+  of the window, a guard on tiny delays, and the tolerance from 1e-6
+  to 1e-2. Twelve per cent at best
+
+```stan
+// before
+integrate_1d(primary_censored_integrand, ...)
+// after
+ode_rk45(primary_censored_ode, y0, ...)[1, 1]
+```
+
+::: {.attribution}
+Every run is one Sam Abbott reported in
+[epinowcast/primarycensored#34](https://github.com/epinowcast/primarycensored/issues/34)
+between 5 and 12 September 2024, read back from the issue,
+`scripts/delays-stan-failures.py` · the recast is PR #64, commit
+`1c4e6f1`. The runs are not one dataset, and the scenario was made
+harder in the same PR that landed the ODE, so the last two rows on 600
+chains are the pair closest to like for like
+:::
+:::
+::: {.column width="60%"}
+![](../figures/delays-stan-failures.png){width="100%"
+fig-alt="Horizontal bar chart of ten runs reported in
+epinowcast/primarycensored issue 34. The first, integrate_1d at
+tolerance 1e-6, lost 243 of 256 chains. Eight tuning attempts sit
+between 12 and 27 per cent, one of them a model with the truncation
+adjustment removed. The last, recast as ode_rk45, lost 0 of 600."}
+:::
+::::

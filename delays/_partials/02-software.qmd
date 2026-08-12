@@ -1,0 +1,99 @@
+# We can solve this
+
+## `primarycensored`, shaped like base R
+
+:::: {.columns}
+::: {.column width="54%"}
+```r
+# Weibull delay, uniform primary, truncated to [1, 10]
+dprimarycensored(1:9, pweibull, L = 1, D = 10,
+                 shape = 1.5, scale = 2.0)
+```
+
+```r
+pcens_cdf.pcens_pgamma_dunif      # closed form
+pcens_cdf.pcens_plnorm_dunif      # closed form
+pcens_cdf.pcens_pweibull_dunif    # closed form
+pcens_cdf.default                 # stats::integrate
+```
+:::
+::: {.column width="46%"}
+- `d`, `p`, `q` and `r` prefixes, so it reads like `dgamma`. The delay
+  family is whichever `p*` function you hand it
+- Gamma, lognormal and Weibull against a uniform primary dispatch to a
+  closed form. Every other pair goes to `stats::integrate`
+- The primary event distribution defaults to `dunif`, and an
+  exponentially growing one ships alongside it
+
+::: {.attribution}
+`R/dprimarycensored.R:70`, the roxygen example, reflowed · S3 methods
+at `R/pcens_cdf.R:70`, `:106`, `:185`, `:267` ·
+[primarycensored](https://primarycensored.epinowcast.org/)
+:::
+:::
+::::
+
+## Fitting meant `fitdistrplus`
+
+:::: {.columns}
+::: {.column width="56%"}
+```r
+fnobjcens <- function(par, fix.arg, rcens, lcens, icens,
+                      ncens, ddistnam, pdistnam)
+{
+  T1 <- -sum(do.call(ddistnam, c(list(ncens), as.list(par),
+    as.list(fix.arg), list(log=TRUE))))
+  # ... T2 and T3 the same shape ...
+  p4 <- do.call(pdistnam, c(list(icens$right), as.list(par),
+    as.list(fix.arg))) # without log=TRUE here
+  p5 <- do.call(pdistnam, c(list(icens$left), as.list(par),
+    as.list(fix.arg))) # without log=TRUE here
+  T4 <- -sum(log(p4 - p5))
+  idx <- is.infinite(T1) | is.infinite(T2) |
+    is.infinite(T3) | is.infinite(T4)
+  ifelse(sum(idx) > 0, .Machine$integer.max,
+    (T1+T2+T3+T4)/data.size)
+}
+```
+:::
+::: {.column width="44%"}
+- A distribution is the string `"norm"`, with `d` and `p` pasted on
+  the front and looked up by name
+- One infinite term and the whole objective returns
+  `.Machine$integer.max`, so the optimiser gets a large finite number
+  where it wanted a rejection
+- Six near-copies of this objective in `mledist.R`, and six more in
+  `mgedist.R`
+- To reach it, `primarycensored` invents a distribution called
+  `pcens_dist` and hides two closures in an empty environment for the
+  name lookup to find
+
+::: {.attribution}
+[fitdistrplus](https://lbbe-software.github.io/fitdistrplus/) 1.2-6,
+`R/mledist.R:188-198`, CRAN source, reflowed with two terms cut · the
+wrapper is `primarycensored/R/fitdistdoublecens.R:202-236`
+:::
+:::
+::::
+
+## Stan is the same code base again
+
+|  | R | Stan |
+|---|---|---|
+| Daily probability | `dprimarycensored` | `primarycensored_lpmf` |
+| Three closed forms | `pcens_cdf.R` | `primarycensored_analytical_cdf.stan` |
+| Numerical fallback | `stats::integrate` | `ode_rk45` |
+| Growth-rate primary | `expgrowth.R` | `expgrowth.stan` |
+
+- 1,215 lines of Stan next to 2,703 lines of R, and the two have to
+  agree with each other
+- The R lookup table names 25 delay families. `dist_lcdf` in Stan has
+  18 branches, because Stan has no CDF for the other seven
+- Every fix lands twice. `test-stan-dist_lcdf.R` is 246 lines whose
+  job is checking that the two halves still agree
+
+::: {.attribution}
+`wc -l` over `inst/stan/` and `R/*.R` at `2ec4f40`, 25 June 2026 ·
+`data-raw/distributions.R:1-30` ·
+`inst/stan/functions/primarycensored_ode.stan:52-77`
+:::

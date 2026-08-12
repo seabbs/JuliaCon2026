@@ -1,5 +1,148 @@
 # Backup {visibility="uncounted"}
 
+## A delay is not observed directly {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="40%"}
+- Neither event is seen at a point. Both arrive as a day, sometimes a
+  week
+- In real time the longer delays have not happened yet
+- Three adjustments follow from that, and they compose in this order
+
+::: {.attribution}
+Diagram for this talk, `scripts/delays-double-censoring.py`
+:::
+:::
+::: {.column width="60%"}
+![](../figures/delays-double-censoring.png){width="100%"
+fig-alt="A timeline. A blue box marks the primary event window of
+width w_P, a red box marks the secondary event window of width w_S, an
+arrow between them is the delay T = S - P, and a dashed line further
+right marks the observation cutoff C, beyond which longer delays have
+not yet been seen."}
+:::
+::::
+
+## Which adjustment applies to which study {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="40%"}
+- Interval censoring of both events applies to almost any line list
+- Right truncation is the correction when the observation cutoff sits
+  near the primary events
+- How cases were ascertained matters. On the primary event the delay
+  is right censored instead
+
+::: {.attribution}
+Fig 3 of
+[Charniga et al. (2024)](https://doi.org/10.1371/journal.pcbi.1012520),
+PLOS Comput Biol, CC-BY 4.0
+:::
+:::
+::: {.column width="60%"}
+![](../figures/fig-charniga-flowchart.png){height="800px"
+fig-align="center"
+fig-alt="A decision tree. Questions about time variation, whether the
+analysis is retrospective or real time, whether the cutoff was near
+the primary events, and which event cases were ascertained through,
+lead to actions: adjust for interval censoring and right censoring,
+adjust for interval censoring and right truncation, or interval
+censoring alone."}
+:::
+::::
+
+## What Stan has no vocabulary for {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="54%"}
+```stan
+real dist_lcdf(real delay, array[] real params,
+               int dist_id) {
+  if (dist_id == 1)
+    return lognormal_lcdf(delay | params[1], params[2]);
+  else if (dist_id == 2)
+    return gamma_lcdf(delay | params[1], params[2]);
+  // ... 15 more branches ...
+  else if (dist_id == 25)
+    return von_mises_lcdf(delay | params[1], params[2]);
+  else reject("Invalid distribution identifier: ",
+              dist_id);
+}
+```
+:::
+::: {.column width="46%"}
+- No user types, so a distribution is an integer. **18 branches** for
+  the 25 families R knows, and the other seven have no Stan CDF to call
+- A second table of ten says which have positive support, kept in step
+  by hand
+- `dist_id = 3` meant Normal in Stan and Weibull in R. Ask for a
+  Weibull on the numerical path and you fitted a normal
+:::
+::::
+
+::: {.attribution}
+`primarycensored_ode.stan:38-51` and `:52-77` ·
+[epinowcast/primarycensored#277](https://github.com/epinowcast/primarycensored/pull/277),
+commit `4aaf249`, February 2026
+:::
+
+## What the `brms` formula buys {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="42%"}
+- Fitting each stratum on its own runs out of data. Partial pooling
+  shares what the small strata cannot support
+- `brms` metaprograms Stan and hands you the whole regression
+  apparatus behind one formula
+
+::: {.attribution}
+Sierra Leone Ebola line list, `epidist/vignettes/ebola.Rmd:244-250`,
+renamed and sampler arguments cut ·
+[epidist](https://epidist.epinowcast.org/)
+:::
+:::
+::: {.column width="58%"}
+```r
+fit <- epidist(
+  data = obs_prep,
+  formula = bf(
+    mu ~ 1 + sex + (1 | district),
+    sigma ~ 1 + sex + (1 | district)
+  ),
+  family = lognormal()
+)
+```
+:::
+::::
+
+::: {.callout-note}
+The delay family has to be one `brms` already knows.
+:::
+
+## Sometimes there is no line list {visibility="uncounted"}
+
+:::: {.columns}
+::: {.column width="42%"}
+- Counts arrive by reference date and by report date, and today's
+  count is not finished. Right truncation on a table, not on a pair
+- `epinowcast` writes the delay as discrete-time reporting hazards, so
+  effects and random walks can modify it by delay and by date
+- It estimates the reporting process and the epidemic curve together
+
+::: {.attribution}
+[epinowcast](https://package.epinowcast.org/)
+:::
+:::
+::: {.column width="54%"}
+The count reported at delay $d$
+
+$$
+\mathbb{E}[n_{t,d}] = \lambda_t\, h_d
+\textstyle\prod_{d'<d}(1-h_{d'})
+$$
+:::
+::::
+
 ## Three closed forms, picked by type {visibility="uncounted"}
 
 :::: {.columns}
@@ -33,25 +176,6 @@ primarycensored_cdf(dist::D1, primary_event::D2,
 `primarycensored_analytical_cdf.stan`
 :::
 
-## Everything I tried in between {visibility="uncounted"}
-
-![](../figures/delays-stan-failures.png){width="80%"
-fig-align="center"
-fig-alt="Horizontal bar chart of ten runs reported in
-epinowcast/primarycensored issue 34. The first, integrate_1d at
-tolerance 1e-6, lost 243 of 256 chains. Eight tuning attempts sit
-between 12 and 27 per cent, one of them a model with the truncation
-adjustment removed. The last, recast as ode_rk45, lost 0 of 600."}
-
-::: {.attribution}
-Every run is one Sam Abbott reported in
-[epinowcast/primarycensored#34](https://github.com/epinowcast/primarycensored/issues/34)
-between 5 and 12 September 2024, read back from the issue,
-`scripts/delays-stan-failures.py`. The runs are not one dataset. The
-scenario was made harder in the same PR that landed the ODE, so the
-last two rows on 600 chains are the pair closest to like for like.
-:::
-
 ## The observation process is the type {visibility="uncounted"}
 
 :::: {.columns}
@@ -82,38 +206,49 @@ lines, and the type parameters of the solver and of `Truncated` are
 elided at `…`
 :::
 
-## The numerical problem moved, it did not go away {visibility="uncounted"}
+## Where the Julia side goes next {visibility="uncounted"}
 
 :::: {.columns}
 ::: {.column width="44%"}
-| Autodiff backend | Broken |
-|---|---:|
-| ForwardDiff | 0 |
-| ReverseDiff, tape | 0 |
-| Mooncake forward | 3 |
-| Mooncake reverse | 3 |
-| Enzyme forward | 4 |
-| Enzyme reverse | 8 |
+- `ConvolvedDistributions.jl` adds sums and differences of delays
+- The generation time is the same shape of problem, a convolution and
+  a difference
+- A composed Julia `epidist`, with Turing submodels doing what the
+  `brms` formula does now
 
-::: {.attribution}
-Scenarios registered broken out of 63, in
-`test/ADFixtures/src/ADFixtures.jl`
+::: {.callout-important}
+The `epidist` layer on top is not written yet. Open issue
+`CensoredDistributions.jl#749` says the joint fit is too slow.
 :::
 :::
 ::: {.column width="56%"}
-- **Six autodiff backends**, each with its own CI workflow. Two of them
-  pass every scenario, four carry scenarios registered broken
-- The default solver is **`GaussLegendre(; n = 64)`** because fixed
-  nodes trace through all six backends and adaptive ones do not
-- Stan gave up adaptive quadrature for an ODE. Julia gave it up for a
-  dot product
-:::
-::::
+![](../figures/fig-si-compose.png){width="100%"
+fig-alt="A graph of a composed delay. A latent period and a
+transmission delay combine into a generation time, the generation time
+and a difference of incubation periods combine into a serial interval,
+and double interval censoring turns that into the observed delay."}
+
+```julia
+using CensoredDistributions
+using ConvolvedDistributions, Distributions
+
+incubation = Gamma(2.0, 1.0)
+reporting = LogNormal(1.0, 0.5)
+
+d = convolved(incubation, reporting)
+observed = double_interval_censored(
+    d; upper = 15, interval = 1
+)
+
+cdf(observed, 5.0)   # 0.4561
+```
 
 ::: {.attribution}
-Six per-backend workflows in `.github/workflows/`, over a shared
-`ad-backend.yaml` · why an ecosystem needs that CI was the 14:30 talk
-in this room, [samabbott.co.uk/JuliaCon2026/roadmap][roadmap-talk]
+Diagram from
+[How to serial interval?](https://samabbott.co.uk/how-to-serial-interval),
+labelled there for a serial interval · run against
+`CensoredDistributions.jl` v0.2.22 and
+[ConvolvedDistributions.jl](https://github.com/EpiAware/ConvolvedDistributions.jl)
 :::
-
-[roadmap-talk]: https://samabbott.co.uk/JuliaCon2026/roadmap/
+:::
+::::

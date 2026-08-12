@@ -1,3 +1,20 @@
+## There is no `brms` in Julia
+
+- `brms` exists partly because in R you cannot drop the delay
+  machinery into a model you wrote yourself. In Julia you can
+- So perhaps most people do not need a formula interface. They write
+  the model and the composed distribution goes in
+- The people who use the R package do not write Julia, and a formula
+  is the interface they have
+- A Julia `brms` would very likely be more extensible. The
+  metaprogramming would not be fighting a second language with no user
+  types
+
+::: {.callout-note}
+Where is a formula interface still needed, once the components compose
+on their own?
+:::
+
 ## R wins this, by about a hundred to one
 
 :::: {.columns}

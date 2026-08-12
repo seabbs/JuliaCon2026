@@ -1,0 +1,23 @@
+## A delay is the time between two events in one case
+
+:::: {.columns}
+::: {.column width="40%"}
+- Infection to symptom onset is the incubation period. Onset to
+  hospitalisation and onset to death sit on the same line
+- We want the whole distribution over days, not a mean
+- Nowcasts, forecasts and transmission models take one as an input and
+  do not re-estimate it
+
+::: {.attribution}
+Diagram for this talk, `scripts/delays-natural-history.py`
+:::
+:::
+::: {.column width="60%"}
+![](../figures/delays-natural-history.png){width="100%"
+fig-alt="A time axis with four marked events, infection, symptom
+onset, hospitalisation and death. Three double-headed arrows above the
+axis span pairs of them: the incubation period from infection to
+onset, onset to hospitalisation, and onset to death. The last two
+share a start, so the intervals overlap."}
+:::
+::::

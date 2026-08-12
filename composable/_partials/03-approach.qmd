@@ -1,14 +1,14 @@
-## The proof of concept is `ComposableTuringIDModels.jl`
+## The prototype is `ComposableTuringIDModels.jl`
 
 :::: {.columns}
 ::: {.column width="45%"}
-- A thin language for epidemiology over Turing.jl, which does the
-  fitting
-- Three component families. Infection processes, latent processes, and
-  observation models
-- Components carry their own priors, so domain expertise travels with
-  the component
-- Model definitions do not know about the data, so one definition
+- A library of parts over Turing.jl, which does the fitting
+- Three kinds of part. A prior model for a parameter, an infection
+  model that turns that parameter into infections, and an observation
+  model that turns infections into data
+- Parts carry their own priors, so domain expertise travels with the
+  part
+- A model definition does not know about the data, so one definition
   simulates and fits
 
 ::: {.attribution}
@@ -32,35 +32,67 @@ three
 :::
 ::::
 
-## What composition looks like
+## A composed model is two submodel draws
+
+:::: {.columns}
+::: {.column width="56%"}
+```julia
+@model function as_turing_model(model::IDModel, y_t, n)
+    infections ~ as_turing_submodel(model.infection_model, n)
+    I_t = infections.I_t
+    Z_t = infections.Z_t
+    obs ~ as_turing_submodel(model.observation_model, y_t, I_t)
+    generated_y_t = obs.y_t
+    expected_y_t = obs.expected
+    return (; generated_y_t, expected_y_t, I_t, Z_t)
+end
+```
+
+::: {.attribution}
+`src/compose.jl:53-62`, `main` at `011169f`, one comment line removed ·
+61 `as_turing_model` definitions across 45 files in `src/`, counted
+2026-08-12
+:::
+:::
+::: {.column width="44%"}
+- `IDModel` holds two parts, an infection model and an observation
+  model
+- Every part is a plain struct with one method of `as_turing_model`
+- A part that holds another part draws it as a submodel, through the
+  same interface it exposes itself
+- A part is identified by the method it implements, not by its place in
+  a type tree
+
+::: {.attribution}
+Last line is `docs/src/design.md:18-20`
+:::
+:::
+::::
+
+## Nesting one part inside another
 
 :::: {.columns}
 ::: {.column width="58%"}
 ```julia
-using ComposableTuringIDModels, Distributions, Turing, Accessors
-
 ar2 = AR(;
   damp = [truncated(Normal(0.2, 0.2), 0, 1),
           truncated(Normal(0.1, 0.05), 0, 1)],
   ϵ_t = HierarchicalNormal(std = HalfNormal(0.1)))
+
 ma1 = MA(;
   θ = [truncated(Normal(0.0, 0.2), -1, 1)],
   ϵ_t = HierarchicalNormal(std = HalfNormal(0.1)))
 
+# the AR's innovation slot now holds the MA process
 arma21 = @set ar2.ϵ_t = ma1
 arima211 = DiffLatentModel(arma21, Normal(0, 0.2); d = 1)
-
-mdl = IDModel(
-  DirectInfections(; Z = arima211, initialisation = Normal()),
-  PoissonError())
-chain = sample(as_turing_model(mdl, cases, n), NUTS(), 1_000)
 ```
 
 ::: {.attribution}
-`@set` is Accessors.jl, not ours, and works because the components are
-plain immutable structs · Keywords track `main`. The paper's artefact
-pins an earlier release, where these were `damp_priors`, `θ_priors` and
-`std_prior`
+Run against `main` at `011169f` for this talk · `@set` is Accessors.jl,
+not ours, and works because the parts are plain immutable structs ·
+Keywords track `main`. The paper's artefact pins an earlier release,
+where these were `damp_priors`, `θ_priors` and `std_prior`
 :::
 :::
 ::: {.column width="42%"}
@@ -70,6 +102,39 @@ fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
 ::: {.callout-note}
 `AR` was never told that `MA` exists.
 :::
+:::
+::::
+
+## The type in a slot picks the method
+
+:::: {.columns}
+::: {.column width="56%"}
+```julia
+# a component writes its parameter slot once
+damp ~ as_turing_submodel(model.damp, n; prefix = true)
+
+# what is in the slot picks the method
+as_turing_submodel(m, args...; prefix = false) =
+    to_submodel(as_turing_model(m, args...), prefix)
+
+as_turing_submodel(d::Distribution, ::ModelShape;
+    prefix = false) = d
+```
+
+::: {.attribution}
+Two of the three `as_turing_submodel` methods,
+`src/base/priors.jl:65-82`, reformatted to fit and with the `::Bool`
+annotations dropped. The third takes a vector of priors · The `AR`
+example is `src/latent_models/models/AR.jl:40-43`
+:::
+:::
+::: {.column width="44%"}
+- A slot takes a fixed prior or a whole process
+- A `Distribution` draws one scalar. A process draws a path of length
+  `n`
+- `AR(damp = Normal(...))` is a constant coefficient,
+  `AR(damp = RandomWalk())` a time-varying one
+- The component that owns the slot is not changed either way
 :::
 ::::
 

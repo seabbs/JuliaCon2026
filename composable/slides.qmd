@@ -23,12 +23,12 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- What modelling evidence has to be, and why we rarely manage all of it
+- What modelling evidence has to be
 - Chaining models loses information, joint models cannot be taken apart
-- Parts validated on their own, then fitted together
+- Two approaches we are running, and the Turing one in code
 - One replication, a common `EpiNow2` configuration in three hours
 - Why the backend is the part I am least sure about
-- Whether JAX is the way forward, and whether Julia is the place
+- Whether Julia is the place for this work
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-composable.png){width="58%"}
