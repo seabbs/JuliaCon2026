@@ -108,7 +108,7 @@ fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
 :::
 ::::
 
-## `as_turing_model`, inside the ARIMA call
+## `as_turing_model`
 
 :::: {.columns}
 ::: {.column width="56%"}
