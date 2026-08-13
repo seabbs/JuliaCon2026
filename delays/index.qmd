@@ -94,6 +94,8 @@ The other two JuliaCon talks are in the same room on the same day.
   starting point.
 - [epidist][epidist].
   Fits delay distributions on top of primarycensored.
+- [fitdistrplus][fitdist].
+  The fitting machinery `primarycensored` composes on top of.
 - [primarycensored PR #64][pc-pr64].
   The ODE recast forced by Stan's integral solver going unstable
   mid-sampling.
@@ -104,9 +106,10 @@ The other two JuliaCon talks are in the same room on the same day.
 
 ### Julia
 
-- [ConvolvedDistributions.jl][conv-repo].
-  Sums, differences, products, and ratios of delay distributions, the next
-  layer up.
+- [CensoredDistributions.jl][cd-repo].
+  The Julia package, and the composed `epidist` the talk closes on.
+- [DifferentiationInterfaceTest.jl][dit].
+  What the backend tests run through, by Guillaume Dalle and Adrian Hill.
 - [CensoredDistributions.jl PR #250][cd-pr250].
   The switch to a fixed quadrature rule, so gradients trace through
   every backend.
@@ -120,7 +123,8 @@ The other two JuliaCon talks are in the same room on the same day.
 [epidist]: https://epidist.epinowcast.org/
 [pc-pr64]: https://github.com/epinowcast/primarycensored/pull/64
 [pc-pr277]: https://github.com/epinowcast/primarycensored/pull/277
+[fitdist]: https://lbbe-software.github.io/fitdistrplus/
+[dit]: https://github.com/JuliaDiff/DifferentiationInterface.jl
 [pc-zenodo]: https://doi.org/10.5281/zenodo.13632838
-[conv-repo]: https://github.com/EpiAware/ConvolvedDistributions.jl
 [cd-pr250]: https://github.com/EpiAware/CensoredDistributions.jl/pull/250
 [hsi]: https://samabbott.co.uk/how-to-serial-interval

@@ -387,3 +387,10 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Both the approaches examples are not good vs what epiaware.github.io has,
 > which shows more nice features. Can we update.
+
+> Scan the decks and suggest edits to the project home pages, keeping changes
+> minimal, not touching the abstracts, cutting fluff that is now gone and
+> adding more links.
+
+> Do we link to i.e. Enzyme and i.e. PyRenew as a JAX/NumPyro similar effort,
+> for roadmap

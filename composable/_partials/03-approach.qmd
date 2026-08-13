@@ -61,7 +61,8 @@ end
 ::: {.attribution}
 Struct fields abridged, parameter bounds dropped ·
 `src/latent_models/models/AR.jl` and
-`src/observation_models/ObservationErrorModels/NegativeBinomialError.jl`, `main` at `011169f`
+`src/observation_models/ObservationErrorModels/NegativeBinomialError.jl`,
+`main` at `011169f`
 :::
 :::
 ::: {.column width="48%"}

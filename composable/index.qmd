@@ -98,12 +98,14 @@ The other two are in the same room earlier the same day.
 
 - [ComposableTuringIDModels.jl][ctim].
   The Turing.jl proof of concept this talk demonstrates.
-  Registered in General at v0.1.1, so `] add ComposableTuringIDModels`
-  works.
-- [Turing.jl][turing].
+- [ComposedDistributions.jl][cdists].
+  The other approach, event delays composed into one distribution.
+- [Turing.jl][turing] and the [TuringLang team][turingteam].
   The probabilistic programming backend the proof of concept is built on.
-- [CensoredDistributions.jl][cd] and [ConvolvedDistributions.jl][cvd].
+- [CensoredDistributions.jl][cd].
   The delay components the closing section is built on.
+- [Distributions.jl][distributions].
+  The shared interface the closing section argues from.
 
 ### The R equivalent
 
@@ -116,9 +118,11 @@ The other two are in the same room earlier the same day.
 [approaches]: https://epiaware.org/approaches/
 [workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
+[cdists]: https://github.com/EpiAware/ComposedDistributions.jl
+[turingteam]: https://turinglang.org/team/
+[distributions]: https://juliastats.org/Distributions.jl/stable/
 [turing]: https://github.com/TuringLang/Turing.jl
 [cd]: https://github.com/EpiAware/CensoredDistributions.jl
-[cvd]: https://github.com/EpiAware/ConvolvedDistributions.jl
 [adtools]: https://github.com/EpiAware/EpiAwareADTools.jl
 [epiawarer]: https://github.com/sbfnk/EpiAwareR
 [pretalx]: https://pretalx.com/juliacon-2026/talk/AMFLYU/

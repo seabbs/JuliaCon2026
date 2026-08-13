@@ -141,6 +141,11 @@ The other two are in the same room on the same day.
   A named BDFL and a steering committee.
 - [MultiDocumenter.jl][multidoc].
   How SciML stitches many packages' docs into one site.
+- [Enzyme.jl][enzyme] and [Mooncake.jl][mooncake].
+  The two backends the outbreak model depends on, and the one that will
+  not compile it.
+- [PyRenew][pyrenew].
+  The same effort in JAX and NumPyro, from CDC.
 - [DifferentiationInterface.jl][di].
   The automatic differentiation abstraction layer every package's test
   suite runs through, alongside DifferentiationInterfaceTest.jl.
@@ -169,4 +174,7 @@ The other two are in the same room on the same day.
 [comrade]: https://github.com/ptiede/Comrade.jl
 [jump]: https://jump.dev/pages/governance/
 [multidoc]: https://github.com/JuliaComputing/MultiDocumenter.jl
+[enzyme]: https://github.com/EnzymeAD/Enzyme.jl
+[mooncake]: https://github.com/chalk-lab/Mooncake.jl
+[pyrenew]: https://github.com/CDCgov/PyRenew
 [di]: https://github.com/JuliaDiff/DifferentiationInterface.jl
