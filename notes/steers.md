@@ -214,3 +214,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Cut the DRC stuff, it is the motivation, we don't need it on the epiaware
 > slide
+
+> [On the inspiration slide] bullets should flag i.e. epinowcast community
+> forum and seminar
