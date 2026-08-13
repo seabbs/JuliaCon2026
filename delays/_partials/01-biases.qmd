@@ -9,6 +9,8 @@
   window is short
 - Mix the delay over where in the window the event sat, a convolution
   on the CDF
+- A uniform primary has closed forms; we are working on more analytical
+  solutions
 :::
 ::: {.column width="60%"}
 ![](../figures/fig-primary-censoring.png){width="100%"

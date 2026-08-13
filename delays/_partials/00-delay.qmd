@@ -4,7 +4,8 @@
 ::: {.column width="40%"}
 - The time between two events in one case. Infection to symptom onset
   is the incubation period
-- We want the whole distribution over days, not a mean
+- We want the whole distribution over days across a population, not a
+  mean
 - Nowcasts, forecasts and transmission models take one as an input and
   do not re-estimate it
 
