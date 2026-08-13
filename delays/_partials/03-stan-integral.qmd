@@ -26,7 +26,7 @@ Error text and chain counts quoted from
 :::
 ::::
 
-## Eight days of things that did not work
+## Eight days, then `ode_rk45`
 
 :::: {.columns}
 ::: {.column width="40%"}

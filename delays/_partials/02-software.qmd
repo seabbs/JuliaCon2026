@@ -80,6 +80,8 @@ wrapper is `primarycensored/R/fitdistdoublecens.R:202-236`
 
 ## Stan, a complete duplication of the code base
 
+:::: {.columns}
+::: {.column width="88%"}
 |  | R | Stan |
 |---|---|---|
 | Daily probability | `dprimarycensored` | `primarycensored_lpmf` |
@@ -98,3 +100,9 @@ wrapper is `primarycensored/R/fitdistdoublecens.R:202-236`
 `data-raw/distributions.R:1-30` ·
 `inst/stan/functions/primarycensored_ode.stan:52-77`
 :::
+:::
+::: {.column width="12%"}
+![](../figures/stan-logo.svg){width="100%"
+fig-alt="The Stan logo"}
+:::
+::::

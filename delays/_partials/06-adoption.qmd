@@ -34,8 +34,8 @@ of people. First CRAN release 28 October 2024, registered in General
   them on CRAN. Seven are from my own orgs. Two are CDC's, both as
   suggests
 - Everything that depends on `CensoredDistributions.jl` is mine, Sam
-  Brand's or Sebastian Funk's. I looked for one from outside and did
-  not find it
+  Brand's or Sebastian Funk's
+- I looked. I did not find one
 
 ::: {.attribution}
 GitHub code search, `primarycensored` in `DESCRIPTION` and
