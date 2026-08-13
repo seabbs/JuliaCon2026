@@ -30,8 +30,9 @@ chain = sample(delay_model(values, weights),
 - The stack is still a distribution, so Turing takes it as it is
 - Multiple dispatch picks the closed form when the pair has one, and
   the numerical integral otherwise
-- `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
-  `0.847`. Nobody wrote that method
+- A new distribution would just work. For example,
+  `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
+  `0.847`
 - In Stan `Frechet` needs a branch, an integer and a rebuild
 
 ::: {.attribution}
@@ -62,8 +63,7 @@ ForwardDiff    -> [-0.23692, -0.21296, 0.19054]
 ::: {.column width="48%"}
 - `SpecialFunctions` has no `_gamma_inc` method for a `Dual` shape, so
   our Gamma closed form would not differentiate
-- Adaptive quadrature would not either. Its node count depends on the
-  integrand, so the trace is a different shape each call
+- Adaptive quadrature would not either
 - Lifting a correct `ChainRulesCore` rule into Enzyme returned a wrong
   shape partial and two right ones, with no error
 
