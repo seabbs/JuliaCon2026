@@ -34,7 +34,7 @@ The two practical limits are in the paper's discussion · Logo from
 
 :::: {.columns}
 ::: {.column width="52%"}
-- 🐋 `Enzyme.jl` had 18 human authors in the last six months, 210 of its
+- `Enzyme.jl` had 18 human authors in the last six months, 210 of its
   276 commits from William Moses. `Mooncake.jl` had 12, with 155 of 221
   from Hong Ge
 - `TuringLang/ADTests` published a per-backend support table for Turing
