@@ -40,7 +40,6 @@ The two practical limits are in the paper's discussion · Logo from
   from Hong Ge
 - `TuringLang/ADTests` published a per-backend support table for Turing
   models. It is archived, with no commits since May
-- 🐋 Our own packages are the same shape, one or two people each
 - The work itself is good
 
 ![](../figures/penelope-yong.jpg){width="21%"
