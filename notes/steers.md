@@ -333,3 +333,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 > AD fixes to the "what does it mean to say a package supports" slide, and give
 > SpecialFunctions.jl as an example of a package with janky support across
 > backends.
+
+> Add the Mooncake logo to "Where does Julia come in?"
