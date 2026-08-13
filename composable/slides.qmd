@@ -29,6 +29,7 @@ format:
 - `ComposableTuringIDModels.jl`
 - `EpiNow2`
 - `Turing.jl`
+- `ConvolvedDistributions.jl`
 - `Distributions.jl`
 - Is Julia the place for this work?
 :::
