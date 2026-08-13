@@ -25,13 +25,16 @@ format:
 - Modelling evidence must be timely, rigorous, and collaborative
 - Chaining loses information, joint models cannot be taken apart
 - What is composable modelling?
-- What we want from any approach
+- What we want from any approach, and the workflow we are trying to
+  follow
 - Two approaches we are prototyping: composed distributions and
   composable Turing models
+- Inside `ComposableTuringIDModels.jl`: structs, ARIMA, and where it is
+  at the moment
 - One replication, `EpiNow2` in three hours
 - `Turing.jl` and the teams
-- The composed distributions route: `Distributions.jl` as the
-  interface, and the pieces that are not distributions yet
+- The composed distributions route: `ComposedDistributions.jl` and the
+  packages around it, and what `Distributions.jl` as an interface means
 - Is Julia the place for this work?
 :::
 ::: {.column width="32%"}
@@ -76,14 +79,20 @@ Tell me what you would build this on, if not a probabilistic programming
 language.
 :::
 
+- **Integrate with us.** The infectious disease ecosystem for Julia is
+  nascent; it is only composable if there is an ecosystem to compose.
+  We would like to reuse yours, not rebuild it — speak to me about
+  SciML, Turing, Distributions, and JuliaStats overlaps
+- **The `Distributions.jl` interface is unwritten.** Help pin down what
+  makes something a distribution — `rand` and `logpdf`? — so
+  composed distributions are interoperable
+- **AD backends.** We test seven configurations in CI and cannot tell a
+  user which is safe for a composed model. Help us make that a
+  property of the ecosystem, not of each package
 - **Counter examples** where current practice IS producing timely,
   rigorous, and collaborative evidence
-- Ideas for **other ways** these could be implemented, and let's test
-  them, e.g. AlgebraicJulia for formal guarantees
 - **Feedback** on the design considerations for composable modelling
-- The infectious disease ecosystem for Julia is fairly nascent; for
-  composability to work it needs an ecosystem to compose. If you are
-  thinking of developing software, **do it in Julia**. Speak to me
+- If you are thinking of developing software, **do it in Julia**
 - [A workflow for infectious disease modelling][workflow] — the workflow
   we are trying to follow
 - [The prompts that wrote these decks][prompts]

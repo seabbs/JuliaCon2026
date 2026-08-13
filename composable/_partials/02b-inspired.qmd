@@ -3,14 +3,17 @@
 - `SpeedyWeather.jl`
 - `HydroModels.jl`
 - `Comrade.jl`
+- `DynamicalSystems.jl`
 
 ::: {.attribution}
 Domain-specific Julia ecosystems, from the roadmap talk's inspiration
 deck · [github.com/SpeedyWeather/SpeedyWeather.jl][speedy] ·
 [github.com/HydroModels/HydroModels.jl][hydro] ·
-[github.com/ptiede/Comrade.jl][comrade]
+[github.com/ptiede/Comrade.jl][comrade] ·
+[juliadynamics.github.io/DynamicalSystemsDocs.jl/dynamicalsystems][dynsys]
 :::
 
 [speedy]: https://github.com/SpeedyWeather/SpeedyWeather.jl
 [hydro]: https://github.com/HydroModels/HydroModels.jl
 [comrade]: https://github.com/ptiede/Comrade.jl
+[dynsys]: https://juliadynamics.github.io/DynamicalSystemsDocs.jl/dynamicalsystems

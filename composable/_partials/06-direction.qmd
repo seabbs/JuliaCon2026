@@ -1,65 +1,98 @@
-## `Distributions.jl`
+## `ComposedDistributions.jl`
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="40%"}
 - Write the epidemiology as distributions
 - The probabilistic programming language becomes optional
-- `CensoredDistributions.jl` does not depend on `Turing.jl`. Nothing in
-  `src/` mentions it
-- It reaches `ConvolvedDistributions.jl` through a package extension
+- A verb grammar for n-ary composition over any `Distributions.jl`
+  distribution: chains, branches, and `one_of` outcomes
+- A composed object scores an observed record *and* simulates a new one
+- Parameter uncertainty is an ordinary leaf, not a PPL-specific layer
+- The composed result is itself a distribution
 :::
-::: {.column width="50%"}
+::: {.column width="60%"}
 ```julia
-# two delays convolved, then censored and truncated
-si = double_interval_censored(
-  convolve_distributions(generation_time, incubation);
-  upper = 15, interval = 1)
+cfr = 0.12
 
-typeof(si)
-# IntervalCensored{Truncated{PrimaryCensored{Convolved{…}}}}
-
-cdf(si, 5.0)   # 0.094
+admission = @uncertain compose((
+    path = sequential(
+        :onset_admit => LogNormal(Normal(0.0, 0.2), 0.4),
+        :admit_outcome => resolve(
+            :death => (Gamma(1.5, 1.0), cfr),
+            :discharge => Gamma(2.0, 1.5))),
+    onset_report = truncated(Gamma(1.5, 1.0); upper = 21.0),
+    onset_referral = censored(Gamma(1.0, 2.0); upper = 14.0)))
 ```
 
 ::: {.attribution}
-`CensoredDistributions.jl` v0.2.22, `main`, checked 2026-08-11.
-`ConvolvedDistributions` is a `[weakdeps]` entry carrying the extension
-`CensoredDistributionsConvolvedDistributionsExt`, and neither package is
-in the other's `[deps]` · The type is the output of
-`scripts/composable-composed-type.jl`, run for this talk, with the
-parameter types dropped
+A hospital pathway from the `ComposedDistributions.jl` README, `main`
+checked 2026-08-13 · `resolve` picks an outcome with the given
+probability, `sequential` and `one_of` are the other two of the three
+composition verbs
 :::
 :::
 ::::
 
-## The pieces that are not distributions yet
+## Where this approach is at the moment
 
 :::: {.columns}
-::: {.column width="48%"}
-| Piece of a model | Is it a distribution? |
-|---|---|
-| Delay, censored and truncated | Yes, today |
-| Renewal process | No |
-| ARIMA latent process | No |
-| ODE | No |
-| The fitting layer | No |
+::: {.column width="55%"}
+- `ComposedDistributions.jl` — the verb grammar above
+- `CensoredDistributions.jl` — censoring and truncation for
+  `Distributions.jl`
+- `ConvolvedDistributions.jl` — n-ary convolution and quadrature
+- `ModifiedDistributions.jl` — transformations that stay distributions
+- `ReparameterisedDistributions.jl` — reparameterised sampling
+- `DistributionsInference.jl` — the fitting layer, no model macro
+:::
+::: {.column width="45%"}
+| Package | Contributors |
+|---|---:|
+| `ComposedDistributions.jl` | 5 |
+| `CensoredDistributions.jl` | 10 |
+| `ConvolvedDistributions.jl` | 6 |
+| `ModifiedDistributions.jl` | 4 |
+| `ReparameterisedDistributions.jl` | 5 |
+| `DistributionsInference.jl` | 3 |
 
-: {tbl-colwidths="[55,45]"}
+: {tbl-colwidths="[70,30]"}
 :::
-::: {.column width="4%"}
-:::
-::: {.column width="48%"}
-- So this is a direction, not a plan. It still needs a way to write a
-  time series as a distribution
-- The fitting layer is what the probabilistic programming language was
-  doing. `DistributionsInference.jl` does it without a model macro
-- Each distribution family needs `parameter_rows` and `reconstruct`
-  written for it first
+::::
 
 ::: {.attribution}
-Open issue `CensoredDistributions.jl#749` says the joint fit is too
-slow, because reverse mode automatic differentiation through
-`cdf(Convolved(...))` costs too much per step ·
+All are active EpiAware packages, pushed within the last two days ·
+[ComposedDistributions.jl][composed] ·
+[CensoredDistributions.jl][censored] · [ConvolvedDistributions.jl][convolved] ·
+[ModifiedDistributions.jl][modified] ·
+[ReparameterisedDistributions.jl][reparm] ·
+[DistributionsInference.jl][dinf] · Contributor counts from the GitHub
+API, 2026-08-13, raw totals including bots
+:::
+
+## `Distributions.jl`
+
+:::: {.columns}
+::: {.column width="50%"}
+- A small team maintains the interface everything above leans on
+- There is no concrete written definition of the `Distributions.jl`
+  interface
+- Should we aim to be more generic: anything with a limited set of
+  methods, e.g. `rand` and `logpdf`?
+
+::: {.callout-important}
+If `Distributions.jl` is a convention rather than a package, the
+composed-distributions direction and everything built on it depends on
+an interface nobody has pinned down.
+:::
+:::
+::: {.column width="50%"}
+- The fitting layer is what a probabilistic programming language was
+  doing. `DistributionsInference.jl` does it without a model macro
+- `CensoredDistributions.jl` does not depend on `Turing.jl`. Nothing in
+  `src/` mentions it
+
+::: {.attribution}
+[github.com/JuliaStats/Distributions.jl][distjl] ·
 `DistributionsInference.jl` README, `main` at `ac84bdf`, read 2026-08-12
 :::
 :::
@@ -68,21 +101,28 @@ slow, because reverse mode automatic differentiation through
 ## Is Julia the place for this work?
 
 :::: {.columns}
-::: {.column width="84%"}
-- In the paper I wrote that NumPyro and JAX are promising, with barriers
-  for epidemiological modellers
+::: {.column width="68%"}
 - JAX has one automatic differentiation system, and everything is
   written against it
 - We test seven automatic differentiation configurations in CI and
   cannot tell a user which one is safe for a composed model
+- 🤖 I wrote much of this deck and the code behind it with coding
+  agents, and I am not sure that is the story to sell to an
+  epidemiological audience
 
 ::: {.callout-important}
 I have argued myself into both answers.
 :::
 :::
-::: {.column width="12%"}
-![](../figures/julia-logo.svg){width="100%"
+::: {.column width="28%"}
+![](../figures/julia-logo.svg){width="55%" fig-align="center"
 fig-alt="The Julia language logo"}
+![](../figures/jax-logo.png){width="55%" fig-align="center"
+fig-alt="The JAX logo"}
+![](../figures/enzyme-logo.svg){width="40%" fig-align="center"
+fig-alt="The Enzyme logo"}
+![](../figures/mooncake-logo.svg){width="55%" fig-align="center"
+fig-alt="The Mooncake logo"}
 :::
 ::::
 
@@ -91,3 +131,11 @@ The alternative approaches, including NumPyro and JAX, are in the
 paper's discussion · Seven backends from `EpiAwareADTools.jl`,
 `test/ADFixtures/src/ADFixtures.jl`, `main` at `c164a87`, 2026-08-12
 :::
+
+[composed]: https://github.com/EpiAware/ComposedDistributions.jl
+[censored]: https://github.com/EpiAware/CensoredDistributions.jl
+[convolved]: https://github.com/EpiAware/ConvolvedDistributions.jl
+[modified]: https://github.com/EpiAware/ModifiedDistributions.jl
+[reparm]: https://github.com/EpiAware/ReparameterisedDistributions.jl
+[dinf]: https://github.com/EpiAware/DistributionsInference.jl
+[distjl]: https://github.com/JuliaStats/Distributions.jl

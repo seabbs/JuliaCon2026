@@ -194,4 +194,43 @@ is `src/base/priors.jl:25` · The `AR` example is
 :::
 ::::
 
+## Where `ComposableTuringIDModels.jl` is at the moment
+
+:::: {.columns}
+::: {.column width="55%"}
+- `Split` / `StrataMap` — split one expected series into several named
+  observation streams; parallel, cascade, and strata-split pipelines
+- `MixingStep` — a mixing model drawn before the scan, so a fixed or
+  inferred coupling matrix plugs into a `Renewal`
+- `ConcatLatentModels` — switch a latent process between segments of a
+  series
+- Composed renewal processes, e.g. `RenewalStep` with folded-in
+  modifiers, as robust as `Turing.jl` can handle
+
+::: {.callout-important}
+Automatic differentiation across the molecule is coming, not yet here.
+:::
+:::
+::: {.column width="45%"}
+```julia
+# split into streams, one per outcome
+Split((cases = PoissonError(),
+       deaths = NegativeBinomialError()))
+
+# mixing draws a coupling matrix before the scan
+Renewal(; mixing = MixingStep(...))
+
+# switch latent processes at a breakpoint
+ConcatLatentModels([Intercept(Normal(2, 0.2)), AR()])
+```
+
+::: {.attribution}
+`src/observation_models/Split.jl:179`, `src/steps/MixingStep.jl:42`,
+`src/latent_models/manipulators/ConcatLatentModels.jl:29`, and
+`src/steps/RenewalStep.jl:166`, `main` at `011169f`, signatures
+abridged
+:::
+:::
+::::
+
 [ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
