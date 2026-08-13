@@ -30,8 +30,8 @@ Europe/Berlin.
 
 [A roadmap, challenges, and questions]{.talk-sub}
 
-Where EpiAware is going, what we have got wrong so far, and the questions we
-would like the Julia community to answer.
+A live outbreak fitted in Julia, six years of trying this in R and Stan,
+what we are building now, and where I need help.
 
 [Page](roadmap/index.qmd){.btn .btn-sm .btn-outline-primary}
 [Slides](roadmap/slides.qmd){.btn .btn-sm .btn-outline-primary}

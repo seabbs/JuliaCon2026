@@ -2,8 +2,8 @@
 title: "Building a composable Julia ecosystem for infectious disease modelling"
 subtitle: "A roadmap, challenges, and questions"
 description: >-
-  Where EpiAware is going, what we have got wrong so far, and the questions
-  we would like the Julia community to answer.
+  A live outbreak fitted in Julia, six years of trying this in R and Stan,
+  what we are building now, and where I need help.
 page-layout: full
 ---
 
@@ -94,10 +94,9 @@ The other two are in the same room on the same day.
   One template that keeps ten of the eleven packages' tests, docs, and README
   format in sync.
 - [EpiAwareADTools.jl][adtools].
-  Automatic differentiation safety machinery for the ecosystem's packages.
-  automatic differentiation safe CDF evaluation hooks, tape-stripping
-  helpers, and correct
-  upstream rules lifted into backends that lack them.
+  Where the org's automatic differentiation fixes live, including the
+  `gamma_inc` and `beta_inc` rules `SpecialFunctions.jl` does not carry.
+  Each one is deleted when upstream ships it.
 - [CensoredDistributions.jl][cd].
   The most mature package so far, 25 registered releases.
 - [EpiAwareR][epiawarer].
