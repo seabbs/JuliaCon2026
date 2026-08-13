@@ -68,8 +68,8 @@ epidist_family_param.default <- function(family, ...) {
 :::
 ::: {.column width="44%"}
 - Delays vary by district, by age and by wave. `brms`, by
-  Paul-Christian Bürkner, is how you get partial pooling and
-  time-varying effects in R
+  Paul-Christian Bürkner, is one way (via Stan) to get partial pooling
+  and time-varying effects in R
 - Every `brms` family has a `mu`. Stan's `gamma_lpdf` takes the shape
   first, so the intercept we read as the mean was the shape
 - To learn what order `brms` used, `epidist` compiles a dummy model,
