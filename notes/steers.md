@@ -285,3 +285,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 > my prompts.
 
 > In the roadmap the McCabe et al. report needs a link
+
+> Julia logo on the "Where does Julia come in?" slide

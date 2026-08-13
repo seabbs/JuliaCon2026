@@ -45,20 +45,24 @@ Bundibugyo virus in DRC*, Imperial College London, 18 May 2026,
 ## Where does Julia come in?
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="46%"}
 - All of it in Julia, with `Turing.jl` and `Mooncake` as the autodiff
   backend
 - Our R and Stan tools were not expressive enough
 - Nothing in Julia for infectious disease modelling that made sense to
   use, so all of it from scratch. About 35,000 lines
 :::
-::: {.column width="50%"}
+::: {.column width="42%"}
 - **The good.** Heavy use of submodels makes it easy to follow the
   workflow
 - **The bad.** Really quite slow. I cannot get Enzyme to work, and
   Mooncake compile times are very slow
 - Some of it took a lot of work to run under autodiff at all, the
   integrals especially
+:::
+::: {.column width="12%"}
+![](../figures/julia-logo.svg){width="100%"
+fig-alt="The Julia language logo"}
 :::
 ::::
 
