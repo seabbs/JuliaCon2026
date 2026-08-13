@@ -413,3 +413,8 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Link to my full Google Scholar in the papers and talks bit, just
 > "[My Google Scholar]" as a bullet
+
+> In our slides make sure as much as possible of our package mentions are
+> links without breaking formatting. The gamma_inc AD rule claim talks about
+> duals but my impression was it was an issue for all AD backends, make it
+> less specific.

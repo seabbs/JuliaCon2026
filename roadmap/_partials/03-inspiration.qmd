@@ -1,12 +1,12 @@
 # Some inspiration
 
-- `epinowcast`, its community forum and seminar series
-- `Turing.jl`
-- `SciML`
-- `rOpenSci`
-- `SpeedyWeather.jl`
-- `Comrade.jl`
-- `HydroModels.jl`
+- `epinowcast`[lk-epinowcast], its community forum and seminar series
+- `Turing.jl`[lk-turingjl]
+- `SciML`[lk-sciml]
+- `rOpenSci`[lk-ropensci]
+- `SpeedyWeather.jl`[lk-speedy]
+- `Comrade.jl`[lk-comrade]
+- `HydroModels.jl`[lk-hydro]
 
 ::: {.attribution}
 [community.epinowcast.org](https://community.epinowcast.org/) and
@@ -15,3 +15,11 @@
 [rOpenSci software review](https://ropensci.org/software-review/), read
 2026-08-11.
 :::
+
+[lk-turingjl]: https://turinglang.org/
+[lk-epinowcast]: https://www.epinowcast.org/
+[lk-sciml]: https://sciml.ai/
+[lk-ropensci]: https://ropensci.org/
+[lk-speedy]: https://github.com/SpeedyWeather/SpeedyWeather.jl
+[lk-comrade]: https://github.com/ptiede/Comrade.jl
+[lk-hydro]: https://github.com/chooron/HydroModels.jl

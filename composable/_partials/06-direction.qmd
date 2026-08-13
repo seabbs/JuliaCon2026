@@ -4,7 +4,7 @@
 ::: {.column width="40%"}
 - Write the epidemiology as distributions
 - The probabilistic programming language becomes optional
-- A verb grammar for composition over any `Distributions.jl`
+- A verb grammar for composition over any `Distributions.jl`[lk-distributionsjl]
   distribution: chains and branches
 - A composed object scores an observed record *and* simulates a new one
 - Parameter uncertainty is an ordinary leaf, not a PPL-specific layer
@@ -42,8 +42,10 @@ outcome with the given probability
 
 ## Where we are
 
-- `ComposedDistributions.jl` — the verb grammar above
-- `CensoredDistributions.jl` — interval and primary-interval
+- `ComposedDistributions.jl`[lk-composeddistributionsjl] — the verb grammar
+  above
+- `CensoredDistributions.jl`[lk-censoreddistributionsjl] — interval and
+  primary-interval
   censoring, plus `Distributions.jl`'s truncation
 - `ConvolvedDistributions.jl` — convolution and quadrature
 - `ModifiedDistributions.jl` — transforming distributions
@@ -54,7 +56,8 @@ outcome with the given probability
 ## `Distributions.jl`
 
 - A small team maintains the interface everything above leans on
-- There is no concrete written definition of the `Distributions.jl`
+- There is no concrete written definition of the
+  `Distributions.jl`[lk-distributionsjl]
   interface
 - Not great automatic differentiation support
 - Many experimental Julia PPLs end up implementing their own
@@ -95,3 +98,7 @@ fig-alt="The Mooncake logo"}
 ::::
 
 [distjl]: https://github.com/JuliaStats/Distributions.jl
+
+[lk-censoreddistributionsjl]: https://github.com/EpiAware/CensoredDistributions.jl
+[lk-composeddistributionsjl]: https://github.com/EpiAware/ComposedDistributions.jl
+[lk-distributionsjl]: https://juliastats.org/Distributions.jl/stable/

@@ -19,7 +19,7 @@ to 2026-08-11 from [cranlogs](https://cranlogs.r-pkg.org/), retrieved
 ::: {.column width="54%"}
 - All of them are used by public health departments, including CDC,
   UKHSA, RKI, ECDC and WHO
-- `epinowcast` was the attempt at community developed tools
+- `epinowcast`[lk-epinowcast] was the attempt at community developed tools
 - In many cases the package is too complex for anyone else to use
 - We see fragmentation, and a lot of small mistakes in outbreak
   modelling that add up to real biases
@@ -39,3 +39,5 @@ feedback arrows running backwards from later steps to earlier ones."}
 :::
 
 [wf2]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+
+[lk-epinowcast]: https://www.epinowcast.org/

@@ -5,7 +5,8 @@
 - **Composed distributions.** Model the relationships between events
   with `Distributions.jl`
 - Those relationships form an event tree
-- **Composable Turing models.** A library of parts over `Turing.jl`.
+- **Composable Turing models.** A library of parts over
+  `Turing.jl`[lk-turingjl].
   Transmission, latent process and observation are separate objects that
   nest into one model
 
@@ -15,3 +16,5 @@ Wording and design considerations from
 :::
 :::
 ::::
+
+[lk-turingjl]: https://turinglang.org/

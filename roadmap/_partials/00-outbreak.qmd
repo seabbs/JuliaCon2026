@@ -46,7 +46,8 @@ Bundibugyo virus in DRC*, Imperial College London, 18 May 2026,
 
 :::: {.columns}
 ::: {.column width="46%"}
-- All of it in Julia, with `Turing.jl` and `Mooncake` as the autodiff
+- All of it in Julia, with `Turing.jl`[lk-turingjl] and
+  `Mooncake`[lk-mooncake] as the autodiff
   backend
 - Our R and Stan tools were not expressive enough
 - Nothing in Julia for infectious disease modelling that made sense to
@@ -78,3 +79,6 @@ About 35,000 lines of Julia across `src`, `test`, `scripts`, `ext` and
 [bvd445]: https://github.com/epiforecasts/BVDOutbreakSize/issues/445
 [wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [mccabe]: https://doi.org/10.25560/130007
+
+[lk-mooncake]: https://github.com/chalk-lab/Mooncake.jl
+[lk-turingjl]: https://turinglang.org/

@@ -28,7 +28,8 @@ primarycensored_cdf(d, u, x, ::AnalyticalSolver) =
 ```
 :::
 ::: {.column width="46%"}
-- Each adjustment is a wrapper on a `Distributions.jl` object.
+- Each adjustment is a wrapper on a `Distributions.jl`[lk-distributionsjl]
+  object.
   `primary_censored` is the $w_P$ integral, `upper` extends
   `Distributions.jl`'s `truncated` at $C$, `interval_censored` is $w_S$
 - The stack is still a distribution, so Turing takes it as it is
@@ -68,8 +69,9 @@ ForwardDiff    -> [-0.23692, -0.21296, 0.19054]
 ```
 :::
 ::: {.column width="48%"}
-- `SpecialFunctions` has no `_gamma_inc` method for a `Dual` shape, so
-  our Gamma closed form would not differentiate
+- `SpecialFunctions`[lk-specialfunctions] carries no derivative rules for
+  `gamma_inc`, so our
+  Gamma closed form would not differentiate
 - Adaptive quadrature also errored under auto-differentiation
 - Lifting a correct `ChainRulesCore` rule into Enzyme returned a wrong
   shape partial and two right ones, with no error
@@ -131,3 +133,6 @@ the `DifferentiationInterfaceTest` `Project.toml`, read 2026-08-13.
 :::
 :::
 ::::
+
+[lk-distributionsjl]: https://juliastats.org/Distributions.jl/stable/
+[lk-specialfunctions]: https://github.com/JuliaMath/SpecialFunctions.jl
