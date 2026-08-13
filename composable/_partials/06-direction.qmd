@@ -4,7 +4,7 @@
 ::: {.column width="40%"}
 - Write the epidemiology as distributions
 - The probabilistic programming language becomes optional
-- A verb grammar for n-ary composition over any `Distributions.jl`
+- A verb grammar for composition over any `Distributions.jl`
   distribution: chains, branches, and `one_of` outcomes
 - A composed object scores an observed record *and* simulates a new one
 - Parameter uncertainty is an ordinary leaf, not a PPL-specific layer
@@ -40,7 +40,7 @@ composition verbs
 - `ComposedDistributions.jl` — the verb grammar above
 - `CensoredDistributions.jl` — censoring and truncation for
   `Distributions.jl`
-- `ConvolvedDistributions.jl` — n-ary convolution and quadrature
+- `ConvolvedDistributions.jl` — convolution and quadrature
 - `ModifiedDistributions.jl` — transformations that stay distributions
 - `ReparameterisedDistributions.jl` — reparameterised sampling
 - `DistributionsInference.jl` — the fitting layer, no model macro
