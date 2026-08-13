@@ -44,6 +44,7 @@ abridged, read 2026-08-12 · 22 of the 23 workflows in
 
 :::: {.columns}
 ::: {.column width="55%"}
+- Rigid template implementing and enforcing community standards
 - `scaffold` writes the tooling into a package once. `update` re-applies
   it and reports drift
 - `Aqua`, `JET`, formatting, docstrings and benchmarks

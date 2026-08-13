@@ -309,3 +309,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > In "Some inspiration" I asked for a bare list of orgs, not the little
 > sentences you have added
+
+> EpiAwarePackageTools.jl needs a first bullet: rigid template implementing and
+> enforcing community standards
