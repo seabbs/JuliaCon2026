@@ -10,9 +10,7 @@
 - `EpiAwareAgents` is one possible answer, a community bot any maintainer
   could point at their own repository
 - 🌍 We want contributors who are not Julia developers, and not in
-  well resourced settings. Free CI, an R interface, and issues someone
-  can actually start on
-- None of that is enough on its own, and I would like to know what is
+  well resourced settings
 :::
 ::: {.column width="42%"}
 ::: {.emoji-crowd}

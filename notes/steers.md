@@ -382,3 +382,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > We want some kind of statement about how we encourage a diverse set of
 > contributors
+
+> Cut the second sentence, we don't want run on endless text
