@@ -33,9 +33,11 @@ of people. First CRAN release 28 October 2024, registered in General
   suggests
 - This means multiple public-health agencies use it as well as
   researchers
+- For example, the NEJM correspondence on Bundibugyo virus disease
+  (DRC 2026) used `epidist`, and therefore `primarycensored` —
+  [doi:10.1056/NEJMc2608070](https://www.nejm.org/doi/full/10.1056/NEJMc2608070)
 - Everything that depends on `CensoredDistributions.jl` is mine, Sam
   Brand's or Sebastian Funk's
-- I looked. I did not find one
 
 ::: {.attribution}
 GitHub code search, `primarycensored` in `DESCRIPTION` and
@@ -46,8 +48,3 @@ August 2026.
 :::
 :::
 ::::
-
-::: {.callout-note}
-Twenty-one months on CRAN against twelve in General. I do not know how
-much of the gap is R having the users and how much is the package.
-:::
