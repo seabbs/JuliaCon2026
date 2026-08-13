@@ -4,49 +4,64 @@
 
 :::: {.columns}
 ::: {.column width="31%"}
-![](../figures/bvd-insp-sitreps.png){height="330px"
+![](../figures/bvd-insp-sitreps.png){height="300px"
 fig-alt="A situation report page from the DRC national public health
 institute, in French, with cumulative confirmed cases, deaths, isolation
 occupancy, recoveries and suspected cases in boxes."}
 :::
 ::: {.column width="35%"}
-![](../figures/bvd-outbreak-streams.png){height="330px"
+![](../figures/bvd-outbreak-streams.png){height="300px"
 fig-alt="Posterior densities for cumulative infections, one curve per data
 stream and one for the joint fit, which sits inside the spread of the
 single-stream fits."}
 :::
 ::: {.column width="34%"}
-![](../figures/bvd-rt-over-time.png){height="330px"
+![](../figures/bvd-rt-over-time.png){height="300px"
 fig-alt="Posterior reproduction number trajectories over the established
 outbreak, with most of the mass between 1.5 and 2."}
 :::
 ::::
 
-:::: {.columns}
-::: {.column width="55%"}
-- One renewal model over the suspected, confirmed, death, export and
-  bed-occupancy counts, fitted together
-- The situation reports are French PDFs. Agents read them and digitise
-  the epidemic curve
-- It refits on every push and tags a release with the draws, 105 of them by
-  10 August
+- A replication of the McCabe et al. report, in a few hours, on 19 May
+- Updated up to daily since, and the model has evolved with the outbreak
+- From replicating their model to a renewal process fitted to the
+  suspected, confirmed, death, export and bed-occupancy counts
+- The situation reports are French PDFs. Agents ingest them directly
+- Aiming to follow our infectious disease modelling workflow, and to run
+  in free CI so anyone could use it
+
+::: {.attribution}
+[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize), first
+commit 2026-05-19 with 33 that day, read 2026-08-13 from the clone at
+`90df658d` · figures from the WHO collaboratory talk of 10 June 2026,
+fitted to data as of 7 June · situation reports from
+[insp.cd](https://insp.cd/ebola-17eme-epidemie/) · the McCabe et al.
+Imperial reports are cited in the repository README.
 :::
-::: {.column width="45%"}
-- Mooncake differentiates all of it. Enzyme matches Mooncake to 4e-15 on a
-  single stream and cannot compile the joint
-- Over 30,000 lines of Julia for one outbreak, most of it written by
-  agents
+
+## Where does Julia come in?
+
+:::: {.columns}
+::: {.column width="50%"}
+- All of it in Julia, with `Turing.jl` and `Mooncake` as the autodiff
+  backend
+- Our R and Stan tools were not expressive enough
+- Nothing in Julia for infectious disease modelling that made sense to
+  use, so all of it from scratch. About 35,000 lines
+:::
+::: {.column width="50%"}
+- **The good.** Heavy use of submodels makes it easy to follow the
+  workflow
+- **The bad.** Really quite slow. I cannot get Enzyme to work, and
+  Mooncake compile times are very slow
+- Some of it took a lot of work to run under autodiff at all, the
+  integrals especially
 :::
 ::::
 
 ::: {.attribution}
-[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize), the
-`bvd_joint` arguments and the Julia line count read 2026-08-12 from the
-clone at commit `90df658d`, whose 121 tags include 105 `results-*` draws
-releases · figures from the WHO
-collaboratory talk of 10 June 2026, fitted to data as of 7 June ·
-situation reports from
-[insp.cd](https://insp.cd/ebola-17eme-epidemie/) · the Enzyme comparison is
+About 35,000 lines of Julia across `src`, `test`, `scripts`, `ext` and
+`docs`, counted 2026-08-13 · the Enzyme comparison is
 [BVDOutbreakSize#445][bvd445], open at 2026-08-12.
 :::
 

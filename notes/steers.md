@@ -205,3 +205,12 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Change "What it would take, and the coding agents we run on instead" to
 > "before and after agents"
+
+> Restructure that slide: replication of McCabe et al. in a few hours, updated
+> up to daily since and evolved, from replicating their model to a renewal
+> process, data ingestion from the PDF sitreps using agents, aiming to follow
+> our workflow, aiming to run in free CI. Then a new slide, where does Julia
+> come in.
+
+> Cut the DRC stuff, it is the motivation, we don't need it on the epiaware
+> slide

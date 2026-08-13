@@ -2,9 +2,8 @@
 
 :::: {.columns}
 ::: {.column width="55%"}
-- Models that synthesise several data streams give better evidence than
-  chains of models that hand summaries to each other
-- Building one is slow, and needs expertise across several domains
+- Building one of those is slow, and needs expertise across several
+  domains
 - So we want the components reusable, not the model
 - `EpiAware` is the attempt at that in Julia. Packages, docs, and a
   written account of what any approach has to do
