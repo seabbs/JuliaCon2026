@@ -79,19 +79,14 @@ Tell me what you would build this on, if not a probabilistic programming
 language.
 :::
 
-- **Pin the `Distributions.jl` interface.** We build on a convention
-  nobody has written down. What is the minimal contract — `rand`,
-  `logpdf`? Where should it live?
-- **Make AD safety an ecosystem property.** Seven backends in CI, and
-  we cannot tell a user which is safe for a composed model. That
-  should be a table of tests, not a per-package prayer
-- **Break the extension pattern.** `CensoredDistributions.jl` reaches
-  `ConvolvedDistributions.jl` through a weakdeps extension, no
-  dependency in either direction. Where else does this fall apart?
-- **Review twelve design considerations** that have had no community
-  input yet, at [epiaware.org/approaches](https://epiaware.org/approaches)
-- **Build modelling software in Julia.** Composable modelling needs an
-  ecosystem to compose; the ecosystem is you
+- **Where has Julia already pulled composition off?** Point me at
+  composable pattern libraries, compisable model ecosystems, or bits
+  of the ecosystem that fit together cleanly — we want to learn from
+  what already works before building our own
+- **AlgebraicJulia.** Exploring whether a formal, computable notion of
+  composition could give us guarantees instead of good intentions
+- **How do you sell Julia?** We are trying to move epidemiological
+  modellers off R and Stan. What has actually worked for you?
 - [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
