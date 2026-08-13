@@ -47,7 +47,7 @@ abridged, read 2026-08-12 · 22 of the 23 workflows in
 - `scaffold` writes the tooling into a package once. `update` re-applies
   it and reports drift
 - `Aqua`, `JET`, formatting, docstrings and benchmarks
-- Sixteen written standards, and the checks that catch a breach
+- Sixteen written standards, and checks for them
 - It injects `AGENTS.md` and `CLAUDE.md` so a model can find the docs
 
 ::: {.callout-important}

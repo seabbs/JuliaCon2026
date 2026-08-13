@@ -233,3 +233,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 > code wrapper
 
 > cut: ", all wired up"
+
+> Change "and the checks that catch a breach" to "and checks for them"
