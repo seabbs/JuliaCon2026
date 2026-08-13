@@ -68,8 +68,6 @@ Struct fields abridged, parameter bounds dropped ·
 - A component is a plain struct. The type tree does the bookkeeping
 - A slot holds a fixed prior or a whole other component
 - Use `Accessors.jl` to update a component
-- A component is identified by the method it implements, not by its
-  place in a type tree
 
 ::: {.attribution}
 `docs/src/design.md:18-20`
