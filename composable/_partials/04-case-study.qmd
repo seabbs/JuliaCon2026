@@ -12,7 +12,7 @@
   sequentially by nesting structs
 
 ::: {.callout-important}
-No component was edited. The replication took three hours.
+No new components needed and took ~ 3 hours
 :::
 
 ::: {.attribution}
