@@ -3,7 +3,7 @@
 The integral solves numerically for any pair of delay and primary
 distribution, and in closed form for a few of them.
 
-## `primarycensored`
+## `primarycensored`, an R package
 
 :::: {.columns}
 ::: {.column width="54%"}
