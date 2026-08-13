@@ -384,3 +384,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > contributors
 
 > Cut the second sentence, we don't want run on endless text
+
+> Both the approaches examples are not good vs what epiaware.github.io has,
+> which shows more nice features. Can we update.

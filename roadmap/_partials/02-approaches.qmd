@@ -8,28 +8,31 @@
 - Registered, and the proof of concept the 16:45 talk demonstrates
 
 ::: {.attribution}
-`README.md` in
+[epiaware.org/approaches/composable-turing-models][cturing], read
+2026-08-13, comments trimmed to fit ·
 [ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)
-at `011169f`, read 2026-08-13, the four blocks joined and comments
-removed to fit.
 :::
 :::
 ::: {.column width="58%"}
 ```julia
-using ComposableTuringIDModels, Distributions, Turing
+using ComposableTuringIDModels, Distributions, Turing, Mooncake
+using ADTypes: AutoMooncake
 
-model = IDModel(
-    DirectInfections(;
-        Z = DiffLatentModel(; model = AR(),
-                            init = [Normal(), Normal()]),
-        initialisation = Normal()),
-    PoissonError())
+renewal = Renewal(;
+    generation_time = Gamma(1.4, 1 / 0.38),
+    rt = AR(; ϵ_t = HierarchicalNormal(std = HalfNormal(0.1))),
+    initialisation = Normal(log(1.0), 1.0))
 
-prior = as_turing_model(model, missing, 30)
-(; generated_y_t) = prior()
+obs = LatentDelay(                    # delay → ascertainment → noise
+    Ascertainment(NegativeBinomialError(),
+        Intercept(Normal(log(0.4), 0.1))),
+    truncated(Normal(5.0, 2.0), 0.0, Inf))
 
-posterior = as_turing_model(model, generated_y_t, 30)
-chain = sample(posterior, NUTS(), 1_000)
+model = IDModel(renewal, obs)
+
+chain = sample(as_turing_model(model, cases, length(cases)),
+    NUTS(0.95; adtype = AutoMooncake(; config = nothing)),
+    MCMCThreads(), 100, 2)
 ```
 :::
 ::::
@@ -48,30 +51,38 @@ chain = sample(posterior, NUTS(), 1_000)
   `SciMLBase`, `JumpProcesses` and `AlgebraicPetri`
 
 ::: {.attribution}
-`README.md` in
-[ComposedDistributions.jl](https://github.com/EpiAware/ComposedDistributions.jl)
-at `0446d5b`, read 2026-08-13 ·
+[epiaware.org/approaches/composed-distributions][cdists], read
+2026-08-13, comments trimmed to fit ·
+[ComposedDistributions.jl](https://github.com/EpiAware/ComposedDistributions.jl) ·
 [LoweredDistributions.jl](https://github.com/EpiAware/LoweredDistributions.jl)
 README, read 2026-08-10.
 :::
 :::
 ::: {.column width="58%"}
 ```julia
-using ComposedDistributions, Distributions, Random
+using ComposedDistributions, Distributions
 
-cfr = 0.12
+tree = @uncertain compose((          # parallel pathways, nested
+    clinical = sequential(
+        :onset_admit => Gamma(Normal(1.2, 0.2), 3.0),
+        :admit_resolve => resolve(
+            :death => (Gamma(2.0, 3.5), 0.3),
+            :discharge => (Gamma(1.0, 8.0), 0.7))),
+    surveillance = sequential(
+        :onset_notif => Gamma(0.7, 20.0),
+        :notif_compete => compete(
+            :confirmed => Gamma(2.0, 1.0),
+            :lost => Gamma(5.0, 0.5))),))
 
-admission = @uncertain compose((
-    path = sequential(
-        :onset_admit => LogNormal(Normal(0.0, 0.2), 0.4),
-        :admit_outcome => resolve(
-            :death => (Gamma(1.5, 1.0), cfr),
-            :discharge => Gamma(2.0, 1.5))),
-    onset_report = truncated(Gamma(1.5, 1.0); upper = 21.0),
-    onset_referral = censored(Gamma(1.0, 2.0); upper = 14.0)))
+event_tree(tree)              # the tree,
+params_table(tree)            # its parameters,
+priors = param_priors(tree)   # and its default priors
 
-record = rand(Xoshiro(1), admission)
-logpdf(admission, record)
+case = rand(tree)
+logpdf(tree, case)
 ```
 :::
 ::::
+
+[cturing]: https://epiaware.org/approaches/composable-turing-models.html
+[cdists]: https://epiaware.org/approaches/composed-distributions.html
