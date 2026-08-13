@@ -343,3 +343,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 > problematic biases. Cut "None of it comes apart", put it on a single slide.
 
 > Add sbfnk-bot to the robot driven dev slide
+
+> We want to aim to cut the backup slides

@@ -102,8 +102,6 @@ Sam Abbott, LSHTM ·
 :::
 ::::
 
-{{< include _partials/80-backup.qmd >}}
-
 {{< include _partials/90-summary.qmd >}}
 
 [delays-talk]: https://samabbott.co.uk/JuliaCon2026/delays/
