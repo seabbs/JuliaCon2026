@@ -113,25 +113,21 @@ fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
 :::: {.columns}
 ::: {.column width="56%"}
 ```julia
-mdl = as_turing_model(arima211, 100)
-
-# DiffLatentModel draws its init, then descends:
-@model function as_turing_model(model::DiffLatentModel, n::Int)
-    latent_init ~ as_turing_submodel(model.init, model.d; prefix = true)
-    diff_latent ~ as_turing_submodel(model.model, n - model.d)
-    return _combine_diff(latent_init, diff_latent, model.d)
+@model function as_turing_model(model::AR, n::Int)
+    p = model.p
+    ar_init ~ as_turing_submodel(model.init, p; prefix = true)
+    damp_AR ~ as_turing_submodel(model.damp, p; prefix = true)
+    ϵ_t ~ as_turing_submodel(model.ϵ_t, n - p)
+    ar = accumulate_scan(ARStep(reverse(damp_AR)),
+                         ar_init, ϵ_t)
+    return ar
 end
-
-# model.model is arma21: an AR whose ϵ_t slot holds the MA
-# AR draws its damp and init, then descends again:
-#   ϵ_t ~ as_turing_submodel(model.ϵ_t, n - 1)
 ```
 
 ::: {.attribution}
-`src/latent_models/modifiers/DiffLatentModel.jl:61-68` and
-`src/latent_models/models/AR.jl:99-115`, `main` at `011169f`, comments
-added · 61 `as_turing_model` definitions across 45 files in `src/`,
-counted 2026-08-12
+`src/latent_models/models/AR.jl:99-115`, reformatted to fit, `main`
+at `011169f`, comments removed · 61 `as_turing_model` definitions
+across 45 files in `src/`, counted 2026-08-12
 :::
 :::
 ::: {.column width="44%"}
@@ -142,8 +138,8 @@ counted 2026-08-12
   definition
 
 ::: {.attribution}
-`as_turing_model(model::AR, n)` is the last recursion shown; it passes
-its `ϵ_t` slot to `as_turing_submodel`, which resolves the `MA`
+`AR` passes each slot in turn to `as_turing_submodel`, which resolves
+the prior or the whole process that fills it
 :::
 :::
 ::::
@@ -174,8 +170,7 @@ is `src/base/priors.jl:25` · The `AR` example is
 :::
 ::: {.column width="44%"}
 - A call takes a fixed prior or a whole process
-- A `Distribution` draws one scalar. A process draws a path of length
-  `n`
+- You can pass a `Distribution` or another Turing model
 - `AR(damp = Normal(...))` is a constant coefficient,
   `AR(damp = RandomWalk())` a time-varying one
 - The component that makes the call is not changed either way
