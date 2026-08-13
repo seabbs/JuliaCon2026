@@ -81,10 +81,4 @@ fig-alt="The Mooncake logo"}
 :::
 ::::
 
-::: {.attribution}
-The alternative approaches, including NumPyro and JAX, are in the
-paper's discussion · Seven backends from `EpiAwareADTools.jl`,
-`test/ADFixtures/src/ADFixtures.jl`, `main` at `c164a87`, 2026-08-12
-:::
-
 [distjl]: https://github.com/JuliaStats/Distributions.jl
