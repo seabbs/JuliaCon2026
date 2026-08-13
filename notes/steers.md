@@ -379,3 +379,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > On "Governance, what do users want" add a bullet: how can we move users to
 > contributors
+
+> We want some kind of statement about how we encourage a diverse set of
+> contributors
