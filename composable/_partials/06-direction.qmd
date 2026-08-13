@@ -35,8 +35,7 @@ composition verbs
 ## Where we are
 
 - `ComposedDistributions.jl` — the verb grammar above
-- `CensoredDistributions.jl` — censoring and truncation for
-  `Distributions.jl`
+- `CensoredDistributions.jl` — censoring and truncation
 - `ConvolvedDistributions.jl` — convolution and quadrature
 - `ModifiedDistributions.jl` — transformations that stay distributions
 - `ReparameterisedDistributions.jl` — reparameterised sampling
