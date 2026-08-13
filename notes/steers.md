@@ -410,3 +410,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > likely need a Quarto box, "woops we forgot to keep track", ended up needing
 > lots of minor adjustments for more humanity, and link to the commits for the
 > repo.
+
+> Link to my full Google Scholar in the papers and talks bit, just
+> "[My Google Scholar]" as a bullet

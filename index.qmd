@@ -160,6 +160,7 @@ wider infectious disease modelling community.*
   What coding agents do and do not do in a research workflow.
 - [How to serial interval?][hsi].
   Delays, censoring, and the serial interval as a composition.
+- [My Google Scholar][scholar].
 :::
 :::
 
@@ -183,6 +184,7 @@ wider infectious disease modelling community.*
 [bvd]: https://epiforecasts.io/BVDOutbreakSize/stable/
 [bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
 [howillm]: https://samabbott.co.uk/how-I-llm
+[scholar]: https://scholar.google.com/citations?user=GqZm90IAAAAJ&hl=en
 [hsi]: https://samabbott.co.uk/how-to-serial-interval
 
 ::: {.made-note}
