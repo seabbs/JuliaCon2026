@@ -25,16 +25,11 @@ format:
 - Modelling evidence must be timely, rigorous, and collaborative
 - Chaining loses information, joint models cannot be taken apart
 - What is composable modelling?
-- What we want from any approach, and the workflow we are trying to
-  follow
-- Two approaches we are prototyping: composed distributions and
-  composable Turing models
-- Inside `ComposableTuringIDModels.jl`: structs, ARIMA, and where it is
-  at the moment
-- One replication, `EpiNow2` in three hours
-- `Turing.jl` and the teams
-- The composed distributions route: `ComposedDistributions.jl` and the
-  packages around it, and what `Distributions.jl` as an interface means
+- What we want from any approach
+- `ComposableTuringIDModels.jl`
+- `EpiNow2`
+- `Turing.jl`
+- `Distributions.jl`
 - Is Julia the place for this work?
 :::
 ::: {.column width="32%"}
