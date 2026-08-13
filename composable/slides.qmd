@@ -26,8 +26,8 @@ format:
 - Modelling evidence must be timely, rigorous, and collaborative
 - Chaining loses information, joint models cannot be taken apart
 - Two approaches we are running
-- One replication, a common `EpiNow2` configuration in three hours
-- The backend is the part I am least sure about
+- One replication, `EpiNow2` in three hours
+- `Turing.jl` is the part I am least sure about
 - Is Julia the place for this work?
 :::
 ::: {.column width="32%"}
@@ -71,6 +71,8 @@ language.
 - **Feedback** on the design considerations
 - For composability to work it needs an ecosystem to compose. If you are
   thinking of developing software, **do it in Julia**. Speak to me
+- [A workflow for infectious disease modelling][workflow] — the workflow
+  we are trying to follow
 - [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
@@ -93,4 +95,5 @@ Sam Abbott, LSHTM ·
 {{< include _partials/90-summary.qmd >}}
 
 [composable-talk]: https://samabbott.co.uk/JuliaCon2026/composable/
+[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html

@@ -1,9 +1,9 @@
-## A delay is the time between two events in one case
+## An epidemiological delay
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Infection to symptom onset is the incubation period. Onset to
-  hospitalisation and onset to death sit on the same line
+- The time between two events in one case. Infection to symptom onset
+  is the incubation period
 - We want the whole distribution over days, not a mean
 - Nowcasts, forecasts and transmission models take one as an input and
   do not re-estimate it

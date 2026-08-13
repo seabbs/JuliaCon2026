@@ -84,9 +84,9 @@ how it went.
 - [`CensoredDistributions.jl`](https://github.com/EpiAware/CensoredDistributions.jl),
   the Julia package
 - [`primarycensored`](https://github.com/epinowcast/primarycensored),
-  the R and Stan one, still the one to use in R
-- [epiaware.org](https://epiaware.org) for
-  `ConvolvedDistributions.jl`, `DistributionsInference.jl` and the rest
+  the R and Stan one
+- [epiaware.org](https://epiaware.org), the rest of the packages
+- [A workflow for infectious disease modelling][workflow]
 - [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
@@ -106,3 +106,4 @@ Sam Abbott, LSHTM ·
 
 [delays-talk]: https://samabbott.co.uk/JuliaCon2026/delays/
 [prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html
+[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/

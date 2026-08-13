@@ -1,6 +1,6 @@
 # Unfortunately, biases
 
-## 1. The primary event sits in a window
+## 1. Primary interval censoring
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -35,7 +35,7 @@ forms.
 
 [hsi]: https://samabbott.co.uk/how-to-serial-interval
 
-## 2. So does the secondary event
+## 2. Secondary interval censoring
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -67,7 +67,7 @@ In the past this was often written as a double integral, which is
 typically more complicated to evaluate.
 :::
 
-## 3. In real time you only see the pairs that finished
+## 3. Right truncation
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -101,7 +101,6 @@ Diagram from [How to serial interval?][hsi]
 ::: {.column width="34%"}
 - At a cutoff seven days after the primary events, and 5.3 days at
   fourteen
-- That is the delay a forecast or a transmission model is handed
 
 ::: {.attribution}
 `LogNormal(1.6, 0.6)` with daily windows, computed for this talk with

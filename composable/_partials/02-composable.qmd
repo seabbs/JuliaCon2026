@@ -26,16 +26,15 @@ motivates it, under six themes. All twelve are at
 :::
 ::::
 
-## Composed distributions, and composable Turing models
+## Two approaches, `ComposedDistributions.jl` and `ComposableTuringIDModels.jl`
 
 :::: {.columns}
 ::: {.column width="55%"}
-- **Composed distributions.** `ComposedDistributions.jl` joins a case's
-  event delays into one distribution, to simulate or to fit
-- **Composable Turing models.** `ComposableTuringIDModels.jl` splits a
-  model into transmission, infection, and observation
-- Both build a model out of parts that are checked on their own and
-  then fitted together
+- **Composed distributions.** Model the relationships between events
+  with `Distributions.jl`
+- Those relationships form an event tree
+- **Composable Turing models.** A library of parts over `Turing.jl`.
+  Transmission, latent process and observation nest into one model
 
 ::: {.attribution}
 Wording and design considerations from

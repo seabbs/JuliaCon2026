@@ -1,4 +1,4 @@
-## Stan has no imports, so we wrote the copying code
+## The copying code
 
 :::: {.columns}
 ::: {.column width="52%"}

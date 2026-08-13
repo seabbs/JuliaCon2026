@@ -1,4 +1,4 @@
-## Real-time nowcasting, one `EpiNow2` configuration
+## Real-time nowcasting (`EpiNow2`)
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -9,7 +9,7 @@
 - Two `LatentDelay` wrappers add the incubation period and the
   reporting delay
 - **A** to **D** validate each part on its own. **E** and **F** are the
-  joint fit, recovering cases through the delays and $R_t$ with them
+  joint fit
 
 ::: {.callout-important}
 No component was edited. The replication took three hours.

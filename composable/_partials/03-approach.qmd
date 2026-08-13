@@ -5,9 +5,8 @@
 - The proof of concept, a library of parts over `Turing.jl`
 - Three kinds of part. An infection model, an observation model, and
   prior models nested in the slots of both
-- Parts carry their own priors, so domain expertise travels with the
-  part
-- A model definition does not know about the data, so one definition
+- Parts carry their own priors
+- A model definition does not know about the data. One definition
   simulates and fits
 
 ::: {.attribution}
@@ -30,7 +29,7 @@ three
 :::
 ::::
 
-## A composed model is two submodel draws
+## `as_turing_model`
 
 :::: {.columns}
 ::: {.column width="56%"}
@@ -56,8 +55,7 @@ end
 - `IDModel` holds two parts, an infection model and an observation
   model
 - Every part is a plain struct with one method of `as_turing_model`
-- A part that holds another part draws it as a submodel, through the
-  same interface
+- A part that holds another part draws it as a submodel
 - A part is identified by the method it implements, not by its place in
   a type tree
 
@@ -67,7 +65,7 @@ Last line is `docs/src/design.md:18-20`
 :::
 ::::
 
-## Nesting one part inside another
+## ARIMA(2,1,1)
 
 :::: {.columns}
 ::: {.column width="58%"}
@@ -103,7 +101,7 @@ fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
 :::
 ::::
 
-## The type in a slot picks the method
+## `as_turing_submodel`
 
 :::: {.columns}
 ::: {.column width="56%"}

@@ -1,4 +1,4 @@
-## The quadrature died mid-sampling
+## `integrate_1d`
 
 :::: {.columns}
 ::: {.column width="54%"}

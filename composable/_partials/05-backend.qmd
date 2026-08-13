@@ -1,4 +1,4 @@
-## The backend is the part I am least sure about
+## `Turing.jl`
 
 :::: {.columns}
 ::: {.column width="48%"}
@@ -32,13 +32,13 @@ The two practical limits are in the paper's discussion
 
 :::: {.columns}
 ::: {.column width="55%"}
-- A lot of the stack rests on very few people. The work itself is good
 - `Enzyme.jl` had 18 human authors in the last six months, 210 of its
   276 commits from one of them. `Mooncake.jl` had 12, with 155 of 221
   from one
 - `TuringLang/ADTests` published a per-backend support table for Turing
   models. It is archived, with no commits since May
 - Our own packages are the same shape, one or two people each
+- The work itself is good
 :::
 ::: {.column width="45%"}
 | Commits, last six months | `Turing.jl` | `DynamicPPL.jl` |

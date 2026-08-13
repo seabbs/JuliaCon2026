@@ -23,7 +23,7 @@ working branch, read 12 August 2026
 
 <!-- poster -->
 
-## Removed, kept, and still open {visibility="uncounted"}
+## Removed, moved, unchanged {visibility="uncounted"}
 
 :::: {.columns}
 ::: {.column width="33%"}

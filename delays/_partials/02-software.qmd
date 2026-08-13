@@ -3,7 +3,7 @@
 The integral solves numerically for any pair of delay and primary
 distribution, and in closed form for a few of them.
 
-## `primarycensored`, shaped like base R
+## `primarycensored`
 
 :::: {.columns}
 ::: {.column width="54%"}
@@ -35,7 +35,7 @@ at `R/pcens_cdf.R:70`, `:106`, `:185`, `:267` ·
 :::
 ::::
 
-## Fitting meant `fitdistrplus`
+## `fitdistrplus`
 
 :::: {.columns}
 ::: {.column width="56%"}

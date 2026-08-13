@@ -1,6 +1,6 @@
 # Can we do better?
 
-## The good: it stays a distribution
+## The good: multiple dispatch
 
 :::: {.columns}
 ::: {.column width="54%"}

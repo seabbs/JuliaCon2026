@@ -17,7 +17,7 @@ fig-alt="Four panels of the survey chain fitted as one model"}
 
 ::: {.attribution}
 Prevalence (A), incidence (B), antibody prevalence (C) and $R_t$ (D)
-fitted together as one model instead. Abbott and Funk (2022),
+fitted together as one model. Abbott and Funk (2022),
 [doi:10.1101/2022.03.29.22273101](https://doi.org/10.1101/2022.03.29.22273101).
 Survey figures from the paper's introduction
 :::

@@ -6,8 +6,7 @@
   programming language becomes optional
 - `CensoredDistributions.jl` does not depend on `Turing.jl`. Nothing in
   `src/` mentions it
-- It reaches `ConvolvedDistributions.jl` through a package extension,
-  and neither is a hard dependency of the other
+- It reaches `ConvolvedDistributions.jl` through a package extension
 :::
 ::: {.column width="50%"}
 ```julia
@@ -59,9 +58,9 @@ parameter types dropped
 
 ::: {.attribution}
 Open issue `CensoredDistributions.jl#749` says the joint fit is too
-slow, because reverse mode autodiff through `cdf(Convolved(...))` costs
-too much per step · `DistributionsInference.jl` README, `main` at
-`ac84bdf`, read 2026-08-12
+slow, because reverse mode automatic differentiation through
+`cdf(Convolved(...))` costs too much per step ·
+`DistributionsInference.jl` README, `main` at `ac84bdf`, read 2026-08-12
 :::
 :::
 ::::
@@ -70,9 +69,10 @@ too much per step · `DistributionsInference.jl` README, `main` at
 
 - In the paper I wrote that NumPyro and JAX are promising, with barriers
   for epidemiological modellers
-- JAX has one autodiff system, and everything is written against it
-- We test seven autodiff configurations in CI and cannot tell a user
-  which one is safe for a composed model
+- JAX has one automatic differentiation system, and everything is
+  written against it
+- We test seven automatic differentiation configurations in CI and
+  cannot tell a user which one is safe for a composed model
 
 ::: {.callout-important}
 I have argued myself into both answers.
