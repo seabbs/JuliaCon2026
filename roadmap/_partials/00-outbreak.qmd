@@ -27,8 +27,8 @@ outbreak, with most of the mass between 1.5 and 2."}
 - From replicating their model to a renewal process fitted to the
   suspected, confirmed, death, export and bed-occupancy counts
 - The situation reports are French PDFs. Agents ingest them directly
-- Aiming to follow our infectious disease modelling workflow, and to run
-  in free CI so anyone could use it
+- Aiming to follow our [infectious disease modelling workflow][wf], and
+  to run in free CI so anyone could use it
 
 ::: {.attribution}
 [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize), first
@@ -66,3 +66,4 @@ About 35,000 lines of Julia across `src`, `test`, `scripts`, `ext` and
 :::
 
 [bvd445]: https://github.com/epiforecasts/BVDOutbreakSize/issues/445
+[wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/

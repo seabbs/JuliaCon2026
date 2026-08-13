@@ -77,6 +77,8 @@ Tell me how you would do any of this.
   `EpiAwarePackageTools.jl` and `EpiAwareADTools.jl`
 - [BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize) —
   the live DRC outbreak size model
+- [A workflow for infectious disease modelling][workflow] — the workflow
+  we are trying to follow
 - [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
@@ -98,4 +100,5 @@ Sam Abbott, LSHTM ·
 
 [roadmap-plan]: https://samabbott.co.uk/JuliaCon2026/roadmap/
 [roadmap-talk]: https://samabbott.co.uk/JuliaCon2026/roadmap/
+[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html

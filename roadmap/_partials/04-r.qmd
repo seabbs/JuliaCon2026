@@ -22,8 +22,8 @@ Stars and repository creation dates from the GitHub API, retrieved
 - The same structural request has been written down in `EpiNow2` four times
   since 2020. Two were closed as done and left the package no easier to take
   apart. Two are still open
-- We wrote down a workflow for building these models, then could not follow
-  it with the tools we had built
+- We wrote down a [workflow for building these models][wf2], then could
+  not follow it with the tools we had built
 
 ::: {.attribution}
 Four `EpiNow2` issues read 2026-08-10 ·
@@ -36,3 +36,5 @@ A Workflow for Infectious Disease Modelling, Abbott et al.
 :::
 :::
 ::::
+
+[wf2]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/

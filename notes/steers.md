@@ -271,3 +271,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Change "Multiple dispatch is not a feature to them, it is why the install is
 > unfamiliar" to "They don't care about fancy language features"
+
+> Our slides need to link to our infectious disease modelling workflow
