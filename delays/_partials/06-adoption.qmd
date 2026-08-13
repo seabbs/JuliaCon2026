@@ -10,7 +10,7 @@
 - If Julia had something like `brms` it would very likely be a lot
   more extensible and flexible
 
-## The same component, but it is three languages
+## Comparing across implementations
 
 | | R and Stan | Julia |
 |---|---|---|
