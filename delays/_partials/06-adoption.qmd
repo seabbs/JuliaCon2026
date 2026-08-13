@@ -12,13 +12,15 @@
 
 ## The same component, but it is three languages
 
-- `primarycensored` is the same component, ported through R, Stan and
-  Julia
-- That is three languages to keep in step, and it is one component
-- We need a flexible component system so a component is written once
-  and reused, not rewritten per language
-- For R and Stan, `brms` fills that role. For Julia we are still
-  working out what it is
+| | R and Stan | Julia |
+|---|---|---|
+| Adding a distribution | New branch, new integer, rebuild | Pass the type |
+| Distributions covered | 18, listed in a switch | Any univariate one |
+| Choosing one | An integer, set before sampling | The object itself |
+| Sharing the code | Splice 1,103 Stan lines in at build | `Project.toml` |
+| The integral | `integrate_1d`, then an ODE recast | 64 fixed nodes |
+| Worst failure | 243 of 256 chains died | 8 scenarios broken on one backend |
+| Flexible component system | `brms` | composed Julia `epidist` |
 
 ## Who is using which packages?
 
