@@ -37,9 +37,10 @@ outcome with the given probability
 - `CensoredDistributions.jl` — interval and primary-interval
   censoring, plus `Distributions.jl`'s truncation
 - `ConvolvedDistributions.jl` — convolution and quadrature
-- `ModifiedDistributions.jl` — transformations that stay distributions
-- `ReparameterisedDistributions.jl` — reparameterised sampling
-- `DistributionsInference.jl` — the fitting layer, no model macro
+- `ModifiedDistributions.jl` — transforming distributions
+- `ReparameterisedDistributions.jl` — reparameterising distributions
+- `DistributionsInference.jl` — the interface between our composed
+  distributions and inference approaches
 
 ::: {.attribution}
 All are active EpiAware packages, pushed within the last two days ·
