@@ -7,8 +7,7 @@
   of it
 - 🐳 Julia's composability does not fix that
 - Here the whale is me and a subscription
-- 🌍 Who can do this work at all is narrowing. Agents make that worse,
-  because the subscription is the barrier and access is not equal
+- 🌍 Who can do this work at all is narrowing. Agents make that worse
 - I started `epinowcast` in 2021 to avoid what happened with `EpiNow2`.
   It did not work
 - The people I build for work in R in the middle of an outbreak response.
