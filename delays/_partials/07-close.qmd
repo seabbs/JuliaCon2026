@@ -2,9 +2,4 @@
 
 - Any distribution, one implementation
 - However, I would still point an R user at `primarycensored` today
-- Next is a composed Julia `epidist`, with Turing submodels doing what
-  the `brms` formula does now
-
-::: {.callout-important}
-So how do I get people to shift?
-:::
+- So how do I get people to shift?
