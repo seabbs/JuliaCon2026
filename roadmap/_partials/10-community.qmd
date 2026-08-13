@@ -6,8 +6,6 @@
 - It is not clear which repositories want robot-filed issues at all
 - `EpiAwareAgents` is one possible answer, a community bot any maintainer
   could point at their own repository
-- It does not work. It is a design document, and its README says
-  "Status: design phase. Nothing here runs yet"
 
 ::: {.attribution}
 [EpiAwareAgents](https://github.com/EpiAware/EpiAwareAgents) README and

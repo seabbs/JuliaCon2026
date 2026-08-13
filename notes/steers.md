@@ -247,3 +247,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > comprehensive does not ship"
 
 > Cut ", and nobody has written the rule down"
+
+> Cut "It does not work. It is a design document, and its README says
+> 'Status: design phase. Nothing here runs yet'"
