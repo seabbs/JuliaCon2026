@@ -28,7 +28,7 @@ EpiAware counts from `gh api search/issues`, read 2026-08-10.
 :::
 :::
 ::: {.column width="34%"}
-- I was travelling for summer school, teaching and workshops, so decided
+- I was travelling for summer schools, teaching and workshops, so decided
   to have a go with agents
 - **966 merged pull requests** in the EpiAware org from the bot account,
   and 119 closed unmerged
