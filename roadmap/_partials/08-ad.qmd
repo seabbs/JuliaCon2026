@@ -5,6 +5,10 @@
 - We do not think there is a community standard for what supporting
   automatic differentiation means
 - So we aimed to build our own, using `DifferentiationInterfaceTest`
+- `SpecialFunctions.jl` is the example. `gamma_inc` and `beta_inc` carry
+  no derivative rules, so support is janky across backends
+- `EpiAwareADTools.jl` stores our org-wide automatic differentiation
+  fixes, and deletes each one when upstream ships it
 
 ::: {.callout-note}
 Is there a guide for any of this anywhere in the Julia ecosystem? I went
@@ -29,7 +33,11 @@ Abridged from `_AD_BACKENDS`, `src/scaffold.jl` in
 [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl),
 read 2026-08-12. The list generates the CI matrix, the Codecov flags, the
 README badges and the support table in the docs ·
-[DifferentiationInterfaceTest.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl).
+[DifferentiationInterfaceTest.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl) ·
+the missing rules are `SpecialFunctions.jl` issue #531, and the
+replacements are in `src/gamma_ad.jl` in
+[EpiAwareADTools.jl](https://github.com/EpiAware/EpiAwareADTools.jl),
+read 2026-08-13.
 :::
 :::
 ::::

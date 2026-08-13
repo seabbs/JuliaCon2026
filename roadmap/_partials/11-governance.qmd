@@ -11,8 +11,9 @@
   makes it easier for the 🐋 to work together
 - What are good examples of 🐋 working together in Julia?
 - 🌍 Who can do this work at all is narrowing. Agents make that worse
-- The people I build for work in R in the middle of an outbreak response.
-  They don't care about fancy language features
+- The people I build for work in R in the middle of an outbreak response
+- They don't care about fancy language features
+- They need their tools to work
 
 ::: {.attribution}
 [JuMP governance](https://jump.dev/pages/governance/),

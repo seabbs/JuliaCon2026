@@ -327,3 +327,9 @@ and the 40 minute deck is a primary source for the composable talk.)
 > New bullet: What are good examples of :whales: working together in Julia?
 
 > Smooth the order so the me-as-a-whale ordering makes sense
+
+> Make "They don't care about fancy language features" a new bullet and add
+> "They need their tools to work". Add EpiAwareADTools.jl for storing org-wide
+> AD fixes to the "what does it mean to say a package supports" slide, and give
+> SpecialFunctions.jl as an example of a package with janky support across
+> backends.
