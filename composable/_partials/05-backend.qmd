@@ -30,11 +30,10 @@ The two practical limits are in the paper's discussion · Logo from
 :::
 ::::
 
-## The teams are small
+## The teams are small — [stats from @seabbs-bot][bot]
 
 :::: {.columns}
 ::: {.column width="52%"}
-- Stats from [@seabbs-bot][bot]
 - 🐋 `Enzyme.jl` had 18 human authors in the last six months, 210 of its
   276 commits from William Moses. `Mooncake.jl` had 12, with 155 of 221
   from Hong Ge
