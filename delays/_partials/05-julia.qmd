@@ -63,7 +63,7 @@ ForwardDiff    -> [-0.23692, -0.21296, 0.19054]
 ::: {.column width="48%"}
 - `SpecialFunctions` has no `_gamma_inc` method for a `Dual` shape, so
   our Gamma closed form would not differentiate
-- Adaptive quadrature would not either
+- Adaptive quadrature also errored under auto-differentiation
 - Lifting a correct `ChainRulesCore` rule into Enzyme returned a wrong
   shape partial and two right ones, with no error
 
