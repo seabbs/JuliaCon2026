@@ -376,3 +376,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > After "They need their tools to work" add "Julia often doesn't"
 
 > Make sure the site is up to date with this deck, i.e. its home page etc
+
+> On "Governance, what do users want" add a bullet: how can we move users to
+> contributors

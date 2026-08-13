@@ -27,5 +27,6 @@ no governance document in any TuringLang repository, searched 2026-08-12.
 - Julia often doesn't
 - They need to be able to trust it, and to see who is behind it
 - Who do they ask when it breaks?
+- How do we move users to contributors?
 
 [turing-contrib]: https://github.com/TuringLang/.github/blob/main/CONTRIBUTING.md
