@@ -10,7 +10,7 @@
 - If Julia had something like `brms` it would very likely be a lot
   more extensible and flexible
 
-## R wins this, by about a hundred to one
+## Who is using which packages?
 
 :::: {.columns}
 ::: {.column width="42%"}
@@ -31,6 +31,8 @@ of people. First CRAN release 28 October 2024, registered in General
 - **Nine** repositories on GitHub depend on `primarycensored`, two of
   them on CRAN. Seven are from my own orgs. Two are CDC's, both as
   suggests
+- This means multiple public-health agencies use it as well as
+  researchers
 - Everything that depends on `CensoredDistributions.jl` is mine, Sam
   Brand's or Sebastian Funk's
 - I looked. I did not find one
