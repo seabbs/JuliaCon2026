@@ -1,4 +1,4 @@
-## `ComposedDistributions.jl`
+## [`ComposedDistributions.jl`](https://github.com/EpiAware/ComposedDistributions.jl)
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -53,7 +53,7 @@ outcome with the given probability
 - `DistributionsInference.jl` — the interface between our composed
   distributions and inference approaches
 
-## `Distributions.jl`
+## [`Distributions.jl`](https://juliastats.org/Distributions.jl/stable/)
 
 - A small team maintains the interface everything above leans on
 - There is no concrete written definition of the

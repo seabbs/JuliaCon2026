@@ -1,4 +1,4 @@
-## `.github`
+## [`.github`](https://github.com/EpiAware/.github)
 
 :::: {.columns}
 ::: {.column width="52%"}
@@ -40,7 +40,7 @@ abridged, read 2026-08-12 · 22 of the 23 workflows in
 :::
 ::::
 
-## `EpiAwarePackageTools.jl`
+## [`EpiAwarePackageTools.jl`](https://github.com/EpiAware/EpiAwarePackageTools.jl)
 
 :::: {.columns}
 ::: {.column width="55%"}

@@ -1,4 +1,4 @@
-## `Turing.jl`
+## [`Turing.jl`](https://turinglang.org/)
 
 :::: {.columns}
 ::: {.column width="44%"}

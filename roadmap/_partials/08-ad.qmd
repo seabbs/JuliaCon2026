@@ -6,8 +6,9 @@
   automatic differentiation means
 - So we aimed to build our own, using
   `DifferentiationInterfaceTest`[lk-differentiationinterfacetest]
-- `SpecialFunctions.jl` is the example. `gamma_inc` and `beta_inc` carry
-  no derivative rules, so support is janky across backends
+- `SpecialFunctions.jl` is the example. The shape-parameter partials of
+  `gamma_inc` and `beta_inc` are not implemented, so support is janky
+  across backends
 - `EpiAwareADTools.jl` stores our org-wide automatic differentiation
   fixes, and deletes each one when upstream ships it
 

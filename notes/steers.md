@@ -418,3 +418,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > links without breaking formatting. The gamma_inc AD rule claim talks about
 > duals but my impression was it was an issue for all AD backends, make it
 > less specific.
+
+> Are we sure it doesn't carry rules, or just not for the call we wanted?
+> Can't we make titles links whilst they still work?

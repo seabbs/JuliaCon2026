@@ -1,4 +1,4 @@
-## `ComposableTuringIDModels.jl`
+## [`ComposableTuringIDModels.jl`](https://github.com/EpiAware/ComposableTuringIDModels.jl)
 
 :::: {.columns}
 ::: {.column width="45%"}
