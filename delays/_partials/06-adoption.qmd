@@ -6,6 +6,7 @@
 - So perhaps most people do not need a formula interface. They write
   the model and the composed distribution goes in
 - None of our users know Julia
+- They need something really easy and a "wow" moment 😮
 - If Julia had something like `brms` it would very likely be a lot
   more extensible and flexible
 
