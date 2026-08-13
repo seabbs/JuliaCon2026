@@ -1,5 +1,6 @@
 ## In my view the Julia version is clearly better
 
 - Any distribution, one implementation
+- It is also the one nobody uses (well, I do)
 - However, I would still point an R user at `primarycensored` today
 - So how do I get people to shift?
