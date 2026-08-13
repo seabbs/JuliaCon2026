@@ -25,8 +25,8 @@ chain = sample(delay_model(values, weights),
 :::
 ::: {.column width="46%"}
 - Each adjustment is a wrapper on a `Distributions.jl` object.
-  `primary_censored` is the $w_P$ integral, `upper` truncates at $C$,
-  `interval_censored` is $w_S$
+  `primary_censored` is the $w_P$ integral, `upper` extends
+  `Distributions.jl`'s `truncated` at $C$, `interval_censored` is $w_S$
 - The stack is still a distribution, so Turing takes it as it is
 - Multiple dispatch picks the closed form when the pair has one, and
   the numerical integral otherwise
