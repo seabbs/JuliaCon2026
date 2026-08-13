@@ -16,6 +16,7 @@ for f in $files; do
   while IFS= read -r line; do
     n=${line%%:*}
     text=${line#*:}
+    text=${text# }
     # A markdown link target cannot be wrapped, and a newline inside an ATX
     # heading ends the heading, splitting one slide into two. So lines
     # carrying a link, and headings themselves, are exempt.
