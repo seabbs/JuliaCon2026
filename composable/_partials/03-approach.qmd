@@ -138,7 +138,6 @@ counted 2026-08-12
 - Every part implements `as_turing_model`
 - A part that holds another part draws it as a submodel, so the call
   descends through the slots
-- `AR` was never told that `MA` exists
 - `mdl` is a `DynamicPPL.Model`; it simulates and fits from one
   definition
 
