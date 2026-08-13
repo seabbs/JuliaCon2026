@@ -1,15 +1,16 @@
-## Documentation has to be a failing test
+## Documentation
 
 :::: {.columns}
 ::: {.column width="52%"}
-- Julia's default is a docstring if you feel like it. Asking for them
-  did not work, so the template tests for them
-- Public symbols need a docstring in the standard format. The README's
-  Julia blocks run at docs build, so a broken example fails it
-- Sixteen standards are written down, each naming the check that
-  catches a breach or saying plainly that a human has to
-- The banned word list is one of those checks. A README that calls
-  itself comprehensive does not ship
+- Julia's default is a docstring if you feel like it. Asking for them did
+  not work, so the template tests for them
+- `DocStringExtensions` gets us close to R's standard. I would like more
+- The README's Julia blocks run at docs build, so a broken example fails
+  the build
+- `SciML` puts something interesting on the front page and keeps the
+  tutorials short. We are copying that
+- The banned word list is one of the checks. A README that calls itself
+  comprehensive does not ship
 :::
 ::: {.column width="48%"}
 ```julia
@@ -26,8 +27,10 @@ const BANNED_README_WORDS = [
 ```
 
 ::: {.attribution}
-`BANNED_README_WORDS` in `src/quality.jl`, and the standards page in
-the `EpiAwarePackageTools.jl` documentation, both read 2026-08-12.
+`BANNED_README_WORDS` in `src/quality.jl`, and the sixteen written
+standards in the `EpiAwarePackageTools.jl` documentation, both read
+2026-08-12 ·
+[DocStringExtensions.jl](https://github.com/JuliaDocs/DocStringExtensions.jl).
 :::
 :::
 ::::

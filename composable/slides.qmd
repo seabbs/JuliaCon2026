@@ -23,9 +23,9 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- What modelling evidence has to be
+- Modelling evidence must be timely, rigorous, and collaborative
 - Chaining models loses information, joint models cannot be taken apart
-- Two approaches we are running, and the Turing one in code
+- Two approaches we are running, and the `Turing.jl` one in code
 - One replication, a common `EpiNow2` configuration in three hours
 - Why the backend is the part I am least sure about
 - Whether Julia is the place for this work

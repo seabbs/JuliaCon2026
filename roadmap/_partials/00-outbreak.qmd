@@ -1,4 +1,5 @@
-## We are already using Julia on a live outbreak
+## The 2026 Bundibugyo virus disease outbreak in the
+## Democratic Republic of the Congo
 
 :::: {.columns}
 ::: {.column width="31%"}
@@ -22,19 +23,18 @@ outbreak, with most of the mass between 1.5 and 2."}
 
 :::: {.columns}
 ::: {.column width="55%"}
-- The 2026 **Bundibugyo virus disease** outbreak in the **Democratic
-  Republic of the Congo**. One renewal model over the suspected,
-  confirmed, death, export and bed-occupancy counts, fitted together
-- The situation reports are French PDFs. Agents read them, and digitise an
-  epidemic curve that has no data table behind it
+- One renewal model over the suspected, confirmed, death, export and
+  bed-occupancy counts, fitted together
+- The situation reports are French PDFs. Agents read them and digitise
+  the epidemic curve
 - It refits on every push and tags a release with the draws, 105 of them by
   10 August
 :::
 ::: {.column width="45%"}
 - Mooncake differentiates all of it. Enzyme matches Mooncake to 4e-15 on a
   single stream and cannot compile the joint
-- Over 30,000 lines of Julia for one outbreak, most of it written by agents.
-  I read fewer of the tests than I should
+- Over 30,000 lines of Julia for one outbreak, most of it written by
+  agents
 :::
 ::::
 

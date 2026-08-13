@@ -1,29 +1,25 @@
-## What that model needs from its parts
+## [epiaware.org](https://epiaware.org)
 
 :::: {.columns}
-::: {.column width="40%"}
-- Carry the uncertainty the whole way, from the unobserved process to every
-  observed stream
-- Keep transmission, priors and observation separate, and let a model nest
-  inside another model
-- Specify once, then simulate and fit the same object
+::: {.column width="55%"}
+- Models that synthesise several data streams give better evidence than
+  chains of models that hand summaries to each other
+- Building one is slow, and needs expertise across several domains
+- So we want the components reusable, not the model
+- `EpiAware` is the attempt at that in Julia. Packages, docs, and a
+  written account of what any approach has to do
 
 ::: {.callout-note}
-The argument for joint models is the 16:45 talk in this room.
+The case for composition is the 16:45 talk in this room.
 :::
 :::
-::: {.column width="60%"}
-![](../figures/fig-bvd-model.png){width="94%"
-fig-alt="Directed graph of the Bundibugyo outbreak model. One reproduction
-number drives infections, infections feed onsets through an incubation
-period, and onsets feed suspected cases, exports, deaths and isolation
-occupancy, all inside a single joint model."}
+::: {.column width="45%"}
+![](../figures/epiaware-logo.svg){width="52%" fig-align="center"
+fig-alt="The EpiAware logo"}
 
 ::: {.attribution}
-The requirements are the ecosystem needs listed at
-[epiaware.org/approaches](https://epiaware.org/approaches/), read
-2026-08-12 · figure: the 2026 Bundibugyo model,
-[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize).
+[epiaware.org](https://epiaware.org) and its
+[approaches](https://epiaware.org/approaches/) page, read 2026-08-13.
 :::
 :::
 ::::

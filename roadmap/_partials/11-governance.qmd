@@ -8,6 +8,10 @@
 - 🐳 Julia's composability does not fix that. The median Julia package has
   two contributors, and this ecosystem has its own whales
 - Here the whale is me and a subscription
+- 🌍 Who can do this work at all is narrowing. Agents make that worse,
+  because the subscription is the barrier and access is not equal
+- I started `epinowcast` in 2021 to avoid what happened with `EpiNow2`.
+  It did not work
 - The people I build for work in R in the middle of an outbreak response.
   Multiple dispatch is not a feature to them, it is why the install is
   unfamiliar

@@ -1,21 +1,17 @@
 ## What does it mean to say a package supports AD?
 
 :::: {.columns}
-::: {.column width="52%"}
-- A real model needs a PPL, and a PPL needs gradients through every
-  component
-- Nobody has written down what supporting AD means, so we picked a
-  definition and made CI defend it
-- `DifferentiationInterfaceTest` does the correctness testing and the
-  benchmarks. One list drives the CI matrix, the Codecov flags and the
-  README badges. Seven configurations in the list, six in every package
+::: {.column width="46%"}
+- We do not think there is a community standard for what supporting
+  automatic differentiation means
+- So we aimed to build our own, using `DifferentiationInterfaceTest`
 
 ::: {.callout-note}
 Is there a guide for any of this anywhere in the Julia ecosystem? I went
 looking and did not find one.
 :::
 :::
-::: {.column width="48%"}
+::: {.column width="54%"}
 ```julia
 const _AD_BACKENDS = [
   (header = "ForwardDiff", ...),
@@ -30,56 +26,10 @@ const _AD_BACKENDS = [
 
 ::: {.attribution}
 Abridged from `_AD_BACKENDS`, `src/scaffold.jl` in
-`EpiAwarePackageTools.jl` at commit `427d4f5`, read 2026-08-12. Each entry
-also carries a Codecov flag, a test item tag and the package it loads ·
-ReverseDiff (compiled) was added by commit `4e83318` on 2026-08-10 and is
-in the `ad.yaml` caller and README of `EpiAwareADTools.jl` only, checked
-across the package clones 2026-08-12 · `check_broken` and the registry
-contract are in `src/ad_harness.jl` ·
+[EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl),
+read 2026-08-12. The list generates the CI matrix, the Codecov flags, the
+README badges and the support table in the docs ·
 [DifferentiationInterfaceTest.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl).
 :::
 :::
 ::::
-
-## A wrong number, not an error
-
-:::: {.columns}
-::: {.column width="48%"}
-```julia
-f(x) = xlogy(x[1], 0.8)   # d/dx = log(0.8)
-
-DI.gradient(f, DI.AutoForwardDiff(), [0.0])
-DI.gradient(f, DI.AutoMooncake(), [0.0])
-```
-
-| Backend | Gradient at `x = 0` |
-|---|---|
-| Finite differences | -0.22314 |
-| ForwardDiff | -0.22314 |
-| ReverseDiff | -0.22314 |
-| Enzyme | -0.22314 |
-| Mooncake | **0.0** |
-:::
-::: {.column width="52%"}
-- `logpdf(Gamma(k, θ), x)` computes `xlogy(k - 1, x / θ)`. Mooncake has
-  no rule for `xlogy`, so it differentiates the implementation. At shape
-  1.0 the first argument is zero, the `iszero` branch returns a
-  constant, and the gradient comes back as zero
-- Nothing throws. The sampler runs. The number is wrong
-- `EpiAwareADTools.jl` carries the rule, and deletes it the day
-  Mooncake ships one
-
-::: {.attribution}
-The three lines and the backend comparison are from
-[ComposedDistributions.jl#99][cd99], 2026-07-07. `xlogy` comes from
-`LogExpFunctions`, `DI` is `DifferentiationInterface`. Mooncake 0.5.37,
-Julia 1.12 · the withdrawn upstream report is
-[chalk-lab/Mooncake.jl#1241][mc1241], closed the day it was opened, and
-nothing has replaced it as of 2026-08-11 · the local rule is
-`ext/EpiAwareADToolsLogExpFunctionsMooncakeExt.jl`.
-:::
-:::
-::::
-
-[cd99]: https://github.com/EpiAware/ComposedDistributions.jl/issues/99
-[mc1241]: https://github.com/chalk-lab/Mooncake.jl/issues/1241

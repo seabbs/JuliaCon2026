@@ -1,25 +1,17 @@
-## Approach one, composable Turing models
+## Approach one, `ComposableTuringIDModels.jl`
 
 :::: {.columns}
 ::: {.column width="42%"}
-- A library of parts over Turing. Joint inference and the rest of the
-  toolchain come with it
-- So do one PPL's design decisions. Nested submodels evaluated and
-  differentiated about 15 times slower until DynamicPPL 0.42.1, and a
-  capped dependency held us off the fix
-- Forecasting past the fitting window splices the chain by hand, because
-  `predict` errors on the length mismatch
+- A library of parts over `Turing.jl`. Transmission, latent process and
+  observation are separate objects that nest into one model
+- Joint inference and the rest of the `Turing` toolchain come with it
+- Registered, and the proof of concept the 16:45 talk demonstrates
 
 ::: {.attribution}
 Code from
 [epiaware.org/approaches/composable-turing-models.html][cturing], read
-2026-08-12, blank lines and comments removed to fit ·
-[ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl) ·
-the 15x slowdown and the Pathfinder cap are
-[ComposableTuringIDModels.jl#124][ctim124], opened 2026-07-14 and closed
-2026-07-16, citing [Turing.jl#2844][turing2844] · the splice is the
-comment above `_extend_latent_draws`, `src/inference/forecast.jl` at
-`011169f`.
+2026-08-13, blank lines and comments removed to fit ·
+[ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)
 :::
 :::
 ::: {.column width="58%"}
@@ -41,24 +33,22 @@ chain = sample(as_turing_model(model, cases, length(cases)),
 :::
 ::::
 
-## Approach two, composed distributions
+## Approach two, `ComposedDistributions.jl`
 
 :::: {.columns}
 ::: {.column width="42%"}
-- Every leaf is an ordinary `Distributions.jl` distribution, and so is the
-  tree they compose into
+- Every leaf is an ordinary `Distributions.jl` distribution, and so is
+  the tree they compose into
 - `rand` simulates a case and `logpdf` scores one, with no PPL involved
-- The tree is data you can read and edit, a parameter table and a nested
-  prior
-- It has no account of a time series or a latent trajectory, and it needs
-  its own fitting layer
+- The tree is data you can read and edit. A parameter table, nested
+  priors, partial pooling with `pool` and `tie`, and leaves that vary
+  with time or stratum
+- `lower` turns a delay into a compartmental generator, over `Catalyst`,
+  `SciMLBase`, `JumpProcesses` and `AlgebraicPetri`
 
-::: {.attribution}
-Code from [epiaware.org/approaches/composed-distributions.html][cdists],
-read 2026-08-12, blank lines, comments and the three inspection calls
-removed to fit ·
-[ComposedDistributions.jl](https://github.com/EpiAware/ComposedDistributions.jl)
-and `DistributionsInference.jl`.
+::: {.callout-note}
+We are running both, and a model written by hand, because I cannot tell
+you which is right.
 :::
 :::
 ::: {.column width="58%"}
@@ -77,36 +67,16 @@ tree = @uncertain compose((
             :lost => Gamma(5.0, 0.5))),))
 case = rand(tree); logpdf(tree, case)
 ```
+
+::: {.attribution}
+Code from [epiaware.org/approaches/composed-distributions.html][cdists],
+read 2026-08-13 · pooling and varying leaves from the
+`docs/composed-approach-shared-pool-varying` branch, 2026-08-10 ·
+[LoweredDistributions.jl](https://github.com/EpiAware/LoweredDistributions.jl)
+README, read 2026-08-10.
+:::
 :::
 ::::
 
-## Lowering into SciML, and writing the model by hand
-
-- `lower` turns a delay distribution into a compartmental generator, and
-  four backends share the same lowering. Catalyst, SciMLBase, JumpProcesses
-  and AlgebraicPetri
-- Composing dynamical systems is not the same problem as composing
-  probability models, so inference has to be supplied separately
-- A model written by hand is what everyone does now. The DRC model is one,
-  built on `Turing` and `CensoredDistributions` and nothing above them
-- We are running all three because I cannot tell you which is right. The
-  approaches page carries two of them so far
-
-::: {.callout-note}
-A bet. The three we are building take the same `Distributions.jl` objects
-and the same gradients.
-:::
-
-::: {.attribution}
-[LoweredDistributions.jl](https://github.com/EpiAware/LoweredDistributions.jl)
-README, read 2026-08-10 ·
-[epiaware.org/approaches](https://epiaware.org/approaches/), read
-2026-08-12 · the DRC model's dependencies are `Project.toml` in
-[BVDOutbreakSize](https://github.com/epiforecasts/BVDOutbreakSize) at
-commit `90df658d`.
-:::
-
 [cturing]: https://epiaware.org/approaches/composable-turing-models.html
 [cdists]: https://epiaware.org/approaches/composed-distributions.html
-[ctim124]: https://github.com/EpiAware/ComposableTuringIDModels.jl/issues/124
-[turing2844]: https://github.com/TuringLang/Turing.jl/issues/2844
