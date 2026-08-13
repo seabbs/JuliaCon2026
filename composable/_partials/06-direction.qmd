@@ -5,7 +5,7 @@
 - Write the epidemiology as distributions
 - The probabilistic programming language becomes optional
 - A verb grammar for composition over any `Distributions.jl`
-  distribution: chains, branches, and `one_of` outcomes
+  distribution: chains and branches
 - A composed object scores an observed record *and* simulates a new one
 - Parameter uncertainty is an ordinary leaf, not a PPL-specific layer
 :::
@@ -25,9 +25,8 @@ admission = @uncertain compose((
 
 ::: {.attribution}
 A hospital pathway from the `ComposedDistributions.jl` README, `main`
-checked 2026-08-13 · `resolve` picks an outcome with the given
-probability, `sequential` and `one_of` are the other two of the three
-composition verbs
+checked 2026-08-13 · `sequential` chains delays and `resolve` picks an
+outcome with the given probability
 :::
 :::
 ::::
