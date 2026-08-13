@@ -79,22 +79,19 @@ Tell me what you would build this on, if not a probabilistic programming
 language.
 :::
 
-- **Integrate with us.** The infectious disease ecosystem for Julia is
-  nascent; it is only composable if there is an ecosystem to compose.
-  We would like to reuse yours, not rebuild it — speak to me about
-  SciML, Turing, Distributions, and JuliaStats overlaps
-- **The `Distributions.jl` interface is unwritten.** Help pin down what
-  makes something a distribution — `rand` and `logpdf`? — so
-  composed distributions are interoperable
-- **AD backends.** We test seven configurations in CI and cannot tell a
-  user which is safe for a composed model. Help us make that a
-  property of the ecosystem, not of each package
-- **Counter examples** where current practice IS producing timely,
-  rigorous, and collaborative evidence
-- **Feedback** on the design considerations for composable modelling
-- If you are thinking of developing software, **do it in Julia**
-- [A workflow for infectious disease modelling][workflow] — the workflow
-  we are trying to follow
+- **Pin the `Distributions.jl` interface.** We build on a convention
+  nobody has written down. What is the minimal contract — `rand`,
+  `logpdf`? Where should it live?
+- **Make AD safety an ecosystem property.** Seven backends in CI, and
+  we cannot tell a user which is safe for a composed model. That
+  should be a table of tests, not a per-package prayer
+- **Break the extension pattern.** `CensoredDistributions.jl` reaches
+  `ConvolvedDistributions.jl` through a weakdeps extension, no
+  dependency in either direction. Where else does this fall apart?
+- **Review twelve design considerations** that have had no community
+  input yet, at [epiaware.org/approaches](https://epiaware.org/approaches)
+- **Build modelling software in Julia.** Composable modelling needs an
+  ecosystem to compose; the ecosystem is you
 - [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}
@@ -115,5 +112,4 @@ Sam Abbott, LSHTM ·
 ::::
 
 [composable-talk]: https://samabbott.co.uk/JuliaCon2026/composable/
-[workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html
