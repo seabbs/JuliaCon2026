@@ -123,8 +123,15 @@ wider infectious disease modelling community.*
   The organisation these talks are about.
 - [EpiAwarePackageTools.jl][pkgtools].
   One rigid package template.
-- [EpiAwareADTools.jl][adtools].
-  Automatic differentiation safety machinery for the ecosystem's packages.
+- [ComposableTuringIDModels.jl][ctim].
+  The Turing.jl proof of concept behind the composable models talk.
+- [BVDOutbreakSize][bvd].
+  A live joint model of the 2026 DRC outbreak of Ebola disease caused by
+  Bundibugyo virus, building on the Imperial (McCabe et al.) report.
+  [Source][bvd-repo].
+- [Andes virus line list analysis][andv].
+  Joint estimation of the incubation period, transmission timing and
+  $R_t$ for the Epuyén hantavirus outbreak.
 :::
 
 ::: {.g-col-12 .g-col-md-4}
@@ -144,18 +151,11 @@ wider infectious disease modelling community.*
 ::: {.g-col-12 .g-col-md-4}
 ### Papers and talks
 
-- [ComposableTuringIDModels.jl][ctim] and [what we want from an
-  approach][approaches].
-  The prototype behind the composable models talk, and the design
-  considerations it is built to meet.
+- [What we want from an approach][approaches].
+  The design considerations behind the composable models talk.
   The paper is in CDC clearance.
 - [A workflow for infectious disease modelling][workflow].
   The paper behind the roadmap talk.
-- [BVDOutbreakSize][bvd].
-  A live report on the size of the 2026 DRC outbreak of Ebola disease caused
-  by Bundibugyo virus.
-  It builds on the Imperial (McCabe et al.) report.
-  [Source][bvd-repo].
 - [How I am LLM][howillm].
   What coding agents do and do not do in a research workflow.
 - [How to serial interval?][hsi].
@@ -170,7 +170,7 @@ wider infectious disease modelling community.*
 [cvd]: https://github.com/EpiAware/ConvolvedDistributions.jl
 [epiaware]: https://github.com/EpiAware
 [pkgtools]: https://github.com/EpiAware/EpiAwarePackageTools.jl
-[adtools]: https://github.com/EpiAware/EpiAwareADTools.jl
+[andv]: https://epiforecasts.io/andv-linelist-analysis/
 [epinowcast]: https://www.epinowcast.org/
 [forum]: https://community.epinowcast.org/
 [pc]: https://primarycensored.epinowcast.org/

@@ -394,3 +394,8 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Do we link to i.e. Enzyme and i.e. PyRenew as a JAX/NumPyro similar effort,
 > for roadmap
+
+> Cut EpiAwareADTools from "Other recent work you might like" Julia column and
+> instead link to ComposableTuringIDModels, BVDOutbreakSize and the recent
+> hanta virus epiforecasts work. We kind of do this already, use your
+> judgement.
