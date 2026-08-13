@@ -55,6 +55,8 @@ outcome with the given probability
 - A small team maintains the interface everything above leans on
 - There is no concrete written definition of the `Distributions.jl`
   interface
+- Not great automatic differentiation support
+- Many experimental Julia PPLs end up implementing their own
 - Should we aim to be more generic: anything with a limited set of
   methods, e.g. `rand` and `logpdf`?
 
