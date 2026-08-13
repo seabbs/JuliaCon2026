@@ -32,10 +32,8 @@ composition verbs
 :::
 ::::
 
-## Where this approach is at the moment
+## Where we are
 
-:::: {.columns}
-::: {.column width="55%"}
 - `ComposedDistributions.jl` — the verb grammar above
 - `CensoredDistributions.jl` — censoring and truncation for
   `Distributions.jl`
@@ -43,20 +41,6 @@ composition verbs
 - `ModifiedDistributions.jl` — transformations that stay distributions
 - `ReparameterisedDistributions.jl` — reparameterised sampling
 - `DistributionsInference.jl` — the fitting layer, no model macro
-:::
-::: {.column width="45%"}
-| Package | Contributors |
-|---|---:|
-| `ComposedDistributions.jl` | 5 |
-| `CensoredDistributions.jl` | 10 |
-| `ConvolvedDistributions.jl` | 6 |
-| `ModifiedDistributions.jl` | 4 |
-| `ReparameterisedDistributions.jl` | 5 |
-| `DistributionsInference.jl` | 3 |
-
-: {tbl-colwidths="[70,30]"}
-:::
-::::
 
 ::: {.attribution}
 All are active EpiAware packages, pushed within the last two days ·
@@ -64,8 +48,7 @@ All are active EpiAware packages, pushed within the last two days ·
 [CensoredDistributions.jl][censored] · [ConvolvedDistributions.jl][convolved] ·
 [ModifiedDistributions.jl][modified] ·
 [ReparameterisedDistributions.jl][reparm] ·
-[DistributionsInference.jl][dinf] · Contributor counts from the GitHub
-API, 2026-08-13, raw totals including bots
+[DistributionsInference.jl][dinf]
 :::
 
 ## `Distributions.jl`
