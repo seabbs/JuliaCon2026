@@ -8,14 +8,17 @@
 | `epinowcast` | 2021 | 67 | not on CRAN |
 | `epidist` | 2023 | 16 | not on CRAN |
 | `primarycensored` | 2024 | 9 | 11,294 |
+| `baselinenowcast` | 2025 | 10 | 1,678 |
 
 ::: {.attribution}
 Stars and creation dates from the GitHub API, downloads are CRAN totals
-to 2026-08-11 from [cranlogs](https://cranlogs.r-pkg.org/), both
-retrieved 2026-08-12.
+to 2026-08-11 from [cranlogs](https://cranlogs.r-pkg.org/), retrieved
+2026-08-12, and `baselinenowcast` 2026-08-13.
 :::
 :::
 ::: {.column width="54%"}
+- All of them are used by public health departments, including CDC,
+  UKHSA, RKI, ECDC and WHO
 - `epinowcast` was the attempt at community developed tools
 - In many cases the package is too complex for anyone else to use
 - We see fragmentation, and a lot of small mistakes in outbreak

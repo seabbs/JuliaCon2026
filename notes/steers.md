@@ -356,3 +356,7 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Cut "Six years of packages, none of which come apart" and "A live outbreak,
 > and four questions I cannot answer"
+
+> Add bullet to "Six years of trying this in R and Stan": all packages used
+> widely by public health departments including CDC, UKHSA, RKI, ECDC, WHO
+> etc. Add baselinenowcast to the package table.
