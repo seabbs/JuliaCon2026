@@ -399,3 +399,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 > instead link to ComposableTuringIDModels, BVDOutbreakSize and the recent
 > hanta virus epiforecasts work. We kind of do this already, use your
 > judgement.
+
+> "Ecosystems we are learning from" is missing DynamicalSystems

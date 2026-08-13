@@ -134,6 +134,9 @@ The other two are in the same room on the same day.
   document, for an ecosystem well past the size we are planning for.
 - [TuringLang][turinglang].
   Small packages that other people build on, rather than one library.
+- [DynamicalSystems.jl][dynsys] and [JuliaDynamics][juliadynamics].
+  A domain library assembled from smaller packages, nine years old and
+  still one organisation.
 - [SpeedyWeather.jl][speedy] and [Comrade.jl][comrade].
   Two domain-specific Julia ecosystems, one an atmospheric general
   circulation model, the other radio astronomy imaging.
@@ -170,6 +173,8 @@ The other two are in the same room on the same day.
 [bvd-repo]: https://github.com/epiforecasts/BVDOutbreakSize
 [sciml]: https://sciml.ai/governance/
 [turinglang]: https://github.com/TuringLang
+[dynsys]: https://github.com/JuliaDynamics/DynamicalSystems.jl
+[juliadynamics]: https://github.com/JuliaDynamics
 [speedy]: https://github.com/SpeedyWeather/SpeedyWeather.jl
 [comrade]: https://github.com/ptiede/Comrade.jl
 [jump]: https://jump.dev/pages/governance/
