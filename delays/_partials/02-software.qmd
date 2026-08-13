@@ -57,13 +57,17 @@ fnobjcens <- function(par, fix.arg, rcens, lcens, icens,
     (T1+T2+T3+T4)/data.size)
 }
 ```
+
+```r
+# what the user actually calls
+fitdistcens(my_doulbe_censored_data,
+            distr = "gamma")
+# fitdistrplus then optimises fnobjcens
+```
 :::
 ::: {.column width="44%"}
 - A distribution is the string `"norm"`, with `d` and `p` pasted on
   the front and looked up by name
-- One infinite term and the whole objective returns
-  `.Machine$integer.max`, so the optimiser gets a large finite number
-  where it wanted a rejection
 - Three copies of this censored objective in `mledist.R`, branching on
   `log` support and on weights
 - To reach it, `primarycensored` invents a distribution called
