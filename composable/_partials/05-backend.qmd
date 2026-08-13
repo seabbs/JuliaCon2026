@@ -1,17 +1,20 @@
 ## `Turing.jl`
 
 :::: {.columns}
-::: {.column width="48%"}
+::: {.column width="44%"}
 - `Turing.jl` gave us submodels, a choice of samplers, and the rest of
   Julia
 - Eleven breaking releases in nineteen months, v0.35.5 to v0.46.0
 - Large simulated counts error, and vectors mixing missing and observed
   values have to be handled by hand
 - Future automatic differentiation support is uncertain
+- It is still what we build on
 :::
-::: {.column width="4%"}
+::: {.column width="12%"}
+![](../figures/turing-logo.svg){width="100%"
+fig-alt="The Turing.jl logo, three overlapping density curves"}
 :::
-::: {.column width="48%"}
+::: {.column width="44%"}
 ::: {.callout-important}
 ## From the `Turing.jl` documentation
 "not all AD libraries in there are thoroughly tested on Turing models.
@@ -23,7 +26,8 @@ even silently give incorrect results"
 Release dates from the GitHub API, 2026-08-10 · v0.35.5 is the release
 the paper's artefact pins ·
 [turinglang.org/docs/usage/automatic-differentiation][turing-ad] ·
-The two practical limits are in the paper's discussion
+The two practical limits are in the paper's discussion · Logo from
+[turinglang.org](https://turinglang.org), read 2026-08-13
 :::
 :::
 ::::
@@ -31,16 +35,25 @@ The two practical limits are in the paper's discussion
 ## The teams under this are small
 
 :::: {.columns}
-::: {.column width="55%"}
-- `Enzyme.jl` had 18 human authors in the last six months, 210 of its
-  276 commits from one of them. `Mooncake.jl` had 12, with 155 of 221
-  from one
+::: {.column width="52%"}
+- 🐋 `Enzyme.jl` had 18 human authors in the last six months, 210 of its
+  276 commits from William Moses. `Mooncake.jl` had 12, with 155 of 221
+  from Hong Ge
 - `TuringLang/ADTests` published a per-backend support table for Turing
   models. It is archived, with no commits since May
-- Our own packages are the same shape, one or two people each
+- 🐋 Our own packages are the same shape, one or two people each
 - The work itself is good
+
+![](../figures/penelope-yong.jpg){width="21%"
+fig-alt="Penelope Yong of the TuringLang team"}
+![](../figures/hong-ge.jpg){width="21%"
+fig-alt="Hong Ge of the TuringLang team"}
+![](../figures/shravan-goswami.jpg){width="21%"
+fig-alt="Shravan Goswami of the TuringLang team"}
+![](../figures/xianda-sun.jpg){width="21%"
+fig-alt="Xianda Sun of the TuringLang team"}
 :::
-::: {.column width="45%"}
+::: {.column width="44%"}
 | Commits, last six months | `Turing.jl` | `DynamicPPL.jl` |
 |---|---:|---:|
 | By humans | 29 | 72 |
@@ -52,7 +65,10 @@ The two practical limits are in the paper's discussion
 Commit counts from the GitHub API, 2026-08-10, `main`, human authors
 only, so 17 of 29 and 47 of 72 are per repository ·
 [TuringLang/ADTests][adtests], archived, last commit 2026-05-01, GitHub
-API 2026-08-12
+API 2026-08-12 · Those commits are the work of Penelope Yong, Hong Ge,
+Shravan Goswami, Xianda Sun, Hardik Kumar, Markus Hauru and others on
+the [TuringLang team](https://turinglang.org/team/), whose photographs
+are cropped from that page, read 2026-08-13
 :::
 :::
 ::::

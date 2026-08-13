@@ -2,14 +2,13 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Reuses the ARIMA(2,1,1) built earlier, with a negative binomial
-  observation model
-- `broadcast_weekly` wraps the ARIMA for piecewise constant weekly
-  $R_t$, and `ascertainment_dayofweek` adds day-of-week reporting
-- Two `LatentDelay` wrappers add the incubation period and the
-  reporting delay
-- **A** to **D** validate each part on its own. **E** and **F** are the
-  joint fit
+- Reuses ARIMA(2,1,1) and `negbin` from earlier directly
+- `broadcast_weekly` wraps ARIMA to produce piecewise constant weekly
+  $R_t$ values
+- `ascertainment_dayofweek` adds day-of-week reporting effects via
+  softmax transformation
+- Two `LatentDelay` wrappers compose incubation and reporting delays
+  sequentially by nesting structs
 
 ::: {.callout-important}
 No component was edited. The replication took three hours.

@@ -1,9 +1,9 @@
-## `Distributions.jl` is already a shared interface
+## `Distributions.jl`
 
 :::: {.columns}
 ::: {.column width="50%"}
-- Write the epidemiology as distributions and the probabilistic
-  programming language becomes optional
+- Write the epidemiology as distributions
+- The probabilistic programming language becomes optional
 - `CensoredDistributions.jl` does not depend on `Turing.jl`. Nothing in
   `src/` mentions it
 - It reaches `ConvolvedDistributions.jl` through a package extension
@@ -32,7 +32,7 @@ parameter types dropped
 :::
 ::::
 
-## Most of a model is not a distribution yet
+## The pieces that are not distributions yet
 
 :::: {.columns}
 ::: {.column width="48%"}
@@ -67,6 +67,8 @@ slow, because reverse mode automatic differentiation through
 
 ## Is Julia the place for this work?
 
+:::: {.columns}
+::: {.column width="84%"}
 - In the paper I wrote that NumPyro and JAX are promising, with barriers
   for epidemiological modellers
 - JAX has one automatic differentiation system, and everything is
@@ -77,6 +79,12 @@ slow, because reverse mode automatic differentiation through
 ::: {.callout-important}
 I have argued myself into both answers.
 :::
+:::
+::: {.column width="12%"}
+![](../figures/julia-logo.svg){width="100%"
+fig-alt="The Julia language logo"}
+:::
+::::
 
 ::: {.attribution}
 The alternative approaches, including NumPyro and JAX, are in the

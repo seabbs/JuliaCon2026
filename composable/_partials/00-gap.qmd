@@ -1,4 +1,4 @@
-## The gap: timely, rigorous, and collaborative evidence
+## Timely, rigorous, and collaborative evidence
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -7,10 +7,12 @@
   inform policy effectively
 - Current approaches struggle to be timely, rigorous, and collaborative
   all at once
-- Multi-model efforts combine forecasts from several teams and rarely
-  collaborate on model components
-- Common components would let a difference in results be attributed to
-  an assumption rather than an implementation
+- Multi-model efforts synthesise expertise by combining forecasts from
+  multiple teams
+- Can improve predictive accuracy but teams rarely collaborate on model
+  components
+- Common components would enable attribution of differences to
+  assumptions rather than implementation
 
 ::: {.attribution}
 Whitty (2015),

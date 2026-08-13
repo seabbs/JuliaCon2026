@@ -8,6 +8,7 @@
 - Parts carry their own priors
 - A model definition does not know about the data. One definition
   simulates and fits
+- Adding a new application means defining only the novel parts
 
 ::: {.attribution}
 Registered in General at v0.1.1 ·

@@ -64,12 +64,13 @@ Tell me what you would build this on, if not a probabilistic programming
 language.
 :::
 
-- **Counter examples** where current practice is producing timely,
+- **Counter examples** where current practice IS producing timely,
   rigorous, and collaborative evidence
-- **Other ways** these could be implemented, and let's test them.
-  AlgebraicJulia for formal guarantees
-- **Feedback** on the design considerations
-- For composability to work it needs an ecosystem to compose. If you are
+- Ideas for **other ways** these could be implemented, and let's test
+  them, e.g. AlgebraicJulia for formal guarantees
+- **Feedback** on the design considerations for composable modelling
+- The infectious disease ecosystem for Julia is fairly nascent; for
+  composability to work it needs an ecosystem to compose. If you are
   thinking of developing software, **do it in Julia**. Speak to me
 - [A workflow for infectious disease modelling][workflow] — the workflow
   we are trying to follow

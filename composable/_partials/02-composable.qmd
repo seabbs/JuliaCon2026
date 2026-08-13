@@ -10,8 +10,8 @@
   inference
 
 ::: {.callout-warning}
-These were developed by the authors and have not yet received broader
-community input.
+These design considerations were developed by the authors and have not
+yet received broader community input.
 :::
 :::
 ::: {.column width="60%"}
@@ -34,7 +34,9 @@ motivates it, under six themes. All twelve are at
   with `Distributions.jl`
 - Those relationships form an event tree
 - **Composable Turing models.** A library of parts over `Turing.jl`.
-  Transmission, latent process and observation nest into one model
+  Transmission, latent process and observation are separate objects that
+  nest into one model
+- 🐋 One or two people on each of them
 
 ::: {.attribution}
 Wording and design considerations from
@@ -54,7 +56,10 @@ Wording and design considerations from
 ::: {.attribution}
 Contributor lists from the GitHub API, 2026-08-12, all time, with bot
 and agent accounts removed. The six people other than me on
-`CensoredDistributions.jl` have not committed since February 2026
+`CensoredDistributions.jl` are Michael DeWitt, Samuel Brand, Sebastian
+Funk, Damon Bayer, Joseph Lemaitre and
+[@Vyshnavi0702](https://github.com/Vyshnavi0702), and none has
+committed since February 2026
 :::
 :::
 ::::

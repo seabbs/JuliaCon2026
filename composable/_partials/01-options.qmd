@@ -2,13 +2,16 @@
 
 :::: {.columns}
 ::: {.column width="42%"}
-- The ONS COVID-19 Infection Survey tested over four million swabs from
-  more than 150,000 households at a cost above £500 million
-- Modellers outside saw the published prevalence, not the swabs
-- Prevalence fed incidence, incidence fed $R_t$, and those fed variant
-  transmissibility and severity
-- Uncertainty was approximated at each step and assumptions were
-  inherited unchecked
+- ONS COVID-19 Infection Survey: 4M+ swabs, 150K households, £500M+,
+  April 2020 to March 2023
+- External modellers accessed only summarised prevalence, not underlying
+  observations
+- Prevalence to incidence to $R_t$
+- Cascade fed into policy-relevant analyses of variant transmissibility
+  and severity
+- Uncertainty from earlier estimates approximated at each step
+- Modelling assumptions inherited without the ability to evaluate their
+  impact
 :::
 ::: {.column width="58%"}
 ![](../figures/composable-ons-cascade.jpg){width="94%"
@@ -28,14 +31,15 @@ Survey figures from the paper's introduction
 
 :::: {.columns}
 ::: {.column width="45%"}
-- Lison et al. found biases at each step of a chain, in date imputation
-  and in the nowcasting count model
-- Those biases carried into $R_t$. Fitting the steps together avoided
-  them
-- Joint models are difficult to develop within policy timelines, and
-  need expertise across several domains
-- England's COVID-19 models were not adapted to mpox in 2022. New
-  single-source models were built instead
+- Lison et al. found biases at each step: lack of epidemic phase in date
+  imputation and count model assumptions in nowcasting led to biased
+  $R_t$
+- Joint modelling of all steps together avoided these cascading biases
+- But models are difficult to develop within policy-relevant timelines
+- Require expertise across multiple domains and careful specification of
+  component interactions
+- In 2022 existing COVID-19 models lacked the flexibility to adapt to
+  mpox; new single-source models were built instead
 
 ::: {.attribution}
 Lison et al. (2024),
