@@ -35,7 +35,7 @@ three
 :::
 ::::
 
-## The parts are structs
+## Each component is a struct
 
 :::: {.columns}
 ::: {.column width="52%"}
@@ -53,31 +53,23 @@ struct AR{D, I, P, E, F} <: AbstractLatentModel
     transform::F
 end
 
-struct MA{C, Q, E} <: AbstractLatentModel
-    θ::C
-    q::Q
-    ϵ_t::E
-end
-
-struct DiffLatentModel{M, P} <: AbstractLatentModel
-    model::M
-    init::P
-    d::Int
+struct NegativeBinomialError{S} <: AbstractObservationErrorModel
+    cluster_factor::S
 end
 ```
 
 ::: {.attribution}
 Struct fields abridged, parameter bounds dropped ·
-`src/latent_models/models/{AR,MA}.jl` and
-`src/latent_models/modifiers/DiffLatentModel.jl`, `main` at `011169f`
+`src/latent_models/models/AR.jl` and
+`src/observation_models/ObservationErrorModels/NegativeBinomialError.jl`, `main` at `011169f`
 :::
 :::
 ::: {.column width="48%"}
-- A part is a plain struct. The type tree does the bookkeeping
-- A slot holds a fixed prior or a whole other part
-- Composition is replacing what is in a slot
-- A part is identified by the method it implements, not by its place in
-  a type tree
+- A component is a plain struct. The type tree does the bookkeeping
+- A slot holds a fixed prior or a whole other component
+- Use `Accessors.jl` to update a component
+- A component is identified by the method it implements, not by its
+  place in a type tree
 
 ::: {.attribution}
 `docs/src/design.md:18-20`
