@@ -44,26 +44,15 @@ outcome with the given probability
 
 ## `Distributions.jl`
 
-:::: {.columns}
-::: {.column width="50%"}
 - A small team maintains the interface everything above leans on
 - There is no concrete written definition of the `Distributions.jl`
   interface
 - Should we aim to be more generic: anything with a limited set of
   methods, e.g. `rand` and `logpdf`?
-:::
-::: {.column width="50%"}
-- The fitting layer is what a probabilistic programming language was
-  doing. `DistributionsInference.jl` does it without a model macro
-- `CensoredDistributions.jl` does not depend on `Turing.jl`. Nothing in
-  `src/` mentions it
 
 ::: {.attribution}
-[github.com/JuliaStats/Distributions.jl][distjl] ·
-`DistributionsInference.jl` README, `main` at `ac84bdf`, read 2026-08-12
+[github.com/JuliaStats/Distributions.jl][distjl]
 :::
-:::
-::::
 
 ## Is Julia the place for this work?
 
