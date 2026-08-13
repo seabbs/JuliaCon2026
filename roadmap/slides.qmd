@@ -63,14 +63,12 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 14:30.
 
 {{< include _partials/11-governance.qmd >}}
 
-{{< include _partials/12-questions.qmd >}}
-
 ## Thank you
 
 :::: {.columns}
 ::: {.column width="62%"}
 ::: {.callout-important}
-Tell me which of the four questions you already have an answer to.
+Tell me how you would do any of this.
 :::
 
 - [epiaware.org](https://epiaware.org) — the packages, the docs, and how

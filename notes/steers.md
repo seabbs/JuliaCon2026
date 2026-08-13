@@ -250,3 +250,13 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Cut "It does not work. It is a design document, and its README says
 > 'Status: design phase. Nothing here runs yet'"
+
+> Make something in the community slide, a bunch of robot emojis surrounding a
+> few people emojis
+
+> Remove the "questions I cannot answer" slide
+
+> "None of them says how an org starts, or how a package joins one" is its own
+> bullet
+
+> Put the whale emoji in the whale title

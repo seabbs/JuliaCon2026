@@ -1,11 +1,25 @@
 ## Community, in the age of robots
 
+:::: {.columns}
+::: {.column width="58%"}
 - Nobody from outside the team has committed since February, so the other
   party on an issue is usually one of my robots. Answering a robot is
   dispiriting
 - It is not clear which repositories want robot-filed issues at all
 - `EpiAwareAgents` is one possible answer, a community bot any maintainer
   could point at their own repository
+:::
+::: {.column width="42%"}
+::: {.emoji-crowd}
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 [🧑‍💻 👩‍💻]{.humans} 🤖 🤖\
+🤖 🤖 🤖 [🧑‍🔬]{.humans} 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖\
+🤖 🤖 🤖 🤖 🤖 🤖
+:::
+:::
+::::
 
 ::: {.attribution}
 [EpiAwareAgents](https://github.com/EpiAware/EpiAwareAgents) README and

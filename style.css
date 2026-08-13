@@ -20,3 +20,16 @@
 .reveal .slides a {
   text-decoration: none;
 }
+
+/* A crowd of robots with a few humans in it, for the community slide. */
+.reveal .emoji-crowd {
+  font-size: 2.1em;
+  line-height: 1.15;
+  letter-spacing: 0.06em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.reveal .emoji-crowd .humans {
+  font-size: 1.18em;
+}
