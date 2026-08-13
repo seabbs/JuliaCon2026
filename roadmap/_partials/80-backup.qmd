@@ -7,7 +7,8 @@
   on which backend, and `check_broken` re-runs them
 - A scenario declared broken that starts passing is flagged, so the
   declarations cannot go stale
-- `gamma_inc` and `beta_inc` carry no AD rules, so we hand-wrote those
+- `gamma_inc` and `beta_inc` carry no automatic differentiation rules,
+  so we hand-wrote those
   derivatives. `ScoringRules.jl` hit the same two from scratch
 
 ::: {.attribution}
@@ -40,7 +41,8 @@ read 2026-08-08.
   time
 - Both are built to be chosen from. We wanted every package identical,
   so that whatever writes the next one has one shape to copy
-- Neither covers the opinionated part, per-backend AD testing and
+- Neither covers the opinionated part, per-backend automatic
+  differentiation testing and
   benchmarking
 
 ::: {.attribution}

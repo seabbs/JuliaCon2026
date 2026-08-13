@@ -95,7 +95,8 @@ The other two are in the same room on the same day.
   format in sync.
 - [EpiAwareADTools.jl][adtools].
   Automatic differentiation safety machinery for the ecosystem's packages.
-  AD-safe CDF evaluation hooks, tape-stripping helpers, and correct
+  automatic differentiation safe CDF evaluation hooks, tape-stripping
+  helpers, and correct
   upstream rules lifted into backends that lack them.
 - [CensoredDistributions.jl][cd].
   The most mature package so far, 25 registered releases.
@@ -142,7 +143,7 @@ The other two are in the same room on the same day.
 - [MultiDocumenter.jl][multidoc].
   How SciML stitches many packages' docs into one site.
 - [DifferentiationInterface.jl][di].
-  The automatic differentiation abstraction layer every package's AD test
+  The automatic differentiation abstraction layer every package's test
   suite runs through, alongside DifferentiationInterfaceTest.jl.
 
 :::

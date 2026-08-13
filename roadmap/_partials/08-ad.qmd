@@ -1,4 +1,4 @@
-## What does it mean to say a package supports AD?
+## What does it mean to say a package supports automatic differentiation?
 
 :::: {.columns}
 ::: {.column width="46%"}
