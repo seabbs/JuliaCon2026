@@ -35,6 +35,8 @@ Error text and chain counts quoted from
 - Then `d` from parameter to data, integrating over the delay instead
   of the window, a guard on tiny delays, and the tolerance from 1e-6
   to 1e-2. Twelve per cent at best
+- The recast to an ODE worked because the Stan devs had recently
+  reworked AD support—not because it is a good or bad approach
 
 ```stan
 // before

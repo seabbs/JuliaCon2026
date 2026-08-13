@@ -81,8 +81,9 @@ If you have moved a user base from one language to another, tell me
 how it went.
 :::
 
-- Somebody should do this. Chat to me if you are interested — a few
-  people are already working on it — or join the
+- Somebody should build `brms` for Julia, building on the
+  composability the language offers. Chat to me if you are
+  interested — a few people are already working on it — or join the
   [`#bayes`](https://julialang.slack.com/) channel on the Julia Slack
 - [`CensoredDistributions.jl`](https://github.com/EpiAware/CensoredDistributions.jl),
   the Julia package

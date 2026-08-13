@@ -10,6 +10,16 @@
 - If Julia had something like `brms` it would very likely be a lot
   more extensible and flexible
 
+## The same component, but it is three languages
+
+- `primarycensored` is the same component, ported through R, Stan and
+  Julia
+- That is three languages to keep in step, and it is one component
+- We need a flexible component system so a component is written once
+  and reused, not rewritten per language
+- For R and Stan, `brms` fills that role. For Julia we are still
+  working out what it is
+
 ## Who is using which packages?
 
 :::: {.columns}
