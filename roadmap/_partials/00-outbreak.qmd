@@ -22,7 +22,8 @@ outbreak, with most of the mass between 1.5 and 2."}
 :::
 ::::
 
-- A replication of the McCabe et al. report, in a few hours, on 19 May
+- A replication of the [McCabe et al. report][mccabe] of 18 May, in a
+  few hours the next day
 - Updated up to daily since, and the model has evolved with the outbreak
 - From replicating their model to a renewal process fitted to the
   suspected, confirmed, death, export and bed-occupancy counts
@@ -35,8 +36,10 @@ outbreak, with most of the mass between 1.5 and 2."}
 commit 2026-05-19 with 33 that day, read 2026-08-13 from the clone at
 `90df658d` · figures from the WHO collaboratory talk of 10 June 2026,
 fitted to data as of 7 June · situation reports from
-[insp.cd](https://insp.cd/ebola-17eme-epidemie/) · the McCabe et al.
-Imperial reports are cited in the repository README.
+[insp.cd](https://insp.cd/ebola-17eme-epidemie/) · McCabe et al.,
+*Estimation of the size of the outbreak of Ebola disease caused by
+Bundibugyo virus in DRC*, Imperial College London, 18 May 2026,
+[doi:10.25560/130007](https://doi.org/10.25560/130007).
 :::
 
 ## Where does Julia come in?
@@ -67,3 +70,4 @@ About 35,000 lines of Julia across `src`, `test`, `scripts`, `ext` and
 
 [bvd445]: https://github.com/epiforecasts/BVDOutbreakSize/issues/445
 [wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
+[mccabe]: https://doi.org/10.25560/130007

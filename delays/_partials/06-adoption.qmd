@@ -4,7 +4,7 @@
   machinery into a model you wrote yourself. In Julia you can
 - So perhaps most people do not need a formula interface. They write
   the model and the composed distribution goes in
-- The people who use the R package do not write Julia
+- None of our users know Julia
 - If Julia had something like `brms` it would very likely be a lot
   more extensible and flexible
 

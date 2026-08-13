@@ -1,5 +1,16 @@
 # Delays deck: the structure the author asked for
 
+> I think you are working from a spec you wrote not my prompts
+
+WARNING TO ANY AGENT READING THIS. This file is a paraphrase, and it has
+been wrong. It has previously invented a 14 line code limit, a generation
+time section and a `ConvolvedDistributions.jl` section that the author never
+asked for, and they were then applied as if they were his instructions.
+
+`notes/steers.md` is the record of what he actually said. Where this file and
+his words differ, his words win. If a requirement here is not traceable to a
+quote, treat it as a suggestion.
+
 This replaces the earlier version of this spec. Read `notes/style.md` first.
 
 His outline, lightly punctuated, which is close to a running order:

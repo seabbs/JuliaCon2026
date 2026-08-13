@@ -23,7 +23,7 @@ working branch, read 12 August 2026
 
 <!-- poster -->
 
-## What the move fixed, and what it did not {visibility="uncounted"}
+## Removed, kept, and still open {visibility="uncounted"}
 
 :::: {.columns}
 ::: {.column width="33%"}

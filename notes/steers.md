@@ -276,3 +276,12 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > In the talk plan change "Four questions I cannot answer" to "Please send
 > help!" and have a large "Please send help!" on the closing slide
+
+> I don't have a 14 line code limit, I meant my recent comments on prose etc
+> that we just deployed to improve the roadmap deck. Don't leave "what the
+> move fixed and what it did not", it is awful. We want a composed version of
+> Julia epidist in the slides, we don't need generation time or
+> ConvolvedDistributions. I think you are working from a spec you wrote, not
+> my prompts.
+
+> In the roadmap the McCabe et al. report needs a link

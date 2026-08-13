@@ -25,8 +25,7 @@ pcens_cdf.default                 # stats::integrate
   family is whichever `p*` function you hand it
 - S3 dispatch picks the closed form when the pair has one, and
   `stats::integrate` when it does not
-- The primary event distribution defaults to `dunif`, and an
-  exponentially growing one ships alongside it
+- The primary event distribution defaults to `dunif`
 
 ::: {.attribution}
 `R/dprimarycensored.R:70`, the roxygen example, reflowed · S3 methods

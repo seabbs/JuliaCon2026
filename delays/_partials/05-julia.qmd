@@ -28,8 +28,8 @@ chain = sample(delay_model(values, weights),
 - Multiple dispatch picks the closed form when the pair has one, and
   the numerical integral otherwise
 - `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
-  `0.847`. Nobody wrote that method. In Stan `Frechet` needs a branch,
-  an integer and a rebuild
+  `0.847`. Nobody wrote that method
+- In Stan `Frechet` needs a branch, an integer and a rebuild
 
 ::: {.attribution}
 Model from `CensoredDistributions.jl/README.md:67-81`, run for this
