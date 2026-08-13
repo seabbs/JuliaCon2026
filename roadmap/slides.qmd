@@ -21,11 +21,10 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- Bundibugyo virus disease in the Democratic Republic of the Congo, fitted
-  in Julia this summer
-- What the parts have to do, and the ways we are trying to build them
+- Bundibugyo virus disease in the Democratic Republic of the Congo
+- The ways we are trying to build it
 - Six years of trying this in R
-- What it would take, and the coding agents we run on instead
+- Before and after agents
 - Infrastructure, autodiff, docs, community, governance
 - Four questions I cannot answer
 :::

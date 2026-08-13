@@ -199,3 +199,9 @@ and the 40 minute deck is a primary source for the composable talk.)
 > yesterday, use a single agent per talk.]
 
 > use opus agents
+
+> Remove ", fitted in Julia this summer". Try and restrain yourself from a
+> little bit extra sentences.
+
+> Change "What it would take, and the coding agents we run on instead" to
+> "before and after agents"

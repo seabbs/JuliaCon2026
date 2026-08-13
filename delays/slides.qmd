@@ -38,13 +38,12 @@ format:
 
 :::: {.columns}
 ::: {.column width="68%"}
-- What an epidemiological delay is, and which models take one as an input
-- Both events arrive as windows, and the pairs that have not finished
-  are missing
+- What an epidemiological delay is
+- Unfortunately, biases
 - `primarycensored` in R, then the same likelihood again in Stan
 - `fitdistrplus` for fitting, `brms` for partial pooling
-- The same three adjustments in Julia, as `Distributions.jl` wrappers
-- Automatic differentiation, and who uses which version
+- The same three adjustments in Julia
+- Who actually uses which version
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-delays.png){width="58%"}

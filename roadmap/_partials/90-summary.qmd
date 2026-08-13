@@ -48,8 +48,8 @@ data stream and one for the joint fit, which sits inside the spread of
 the single-stream fits."}
 
 - The 2026 Bundibugyo virus disease outbreak in the Democratic Republic
-  of the Congo, fitted in Julia. One renewal model over the suspected,
-  confirmed, death, export and bed-occupancy counts, fitted together
+  of the Congo. One renewal model over the suspected, confirmed, death,
+  export and bed-occupancy counts, fitted together
 - Mooncake differentiates all of it. Enzyme matches Mooncake to 4e-15 on
   a single stream and cannot compile the joint
 - Over 30,000 lines of Julia for one outbreak, most of it written by
