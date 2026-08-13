@@ -64,13 +64,13 @@ Tell me what you would build this on, if not a probabilistic programming
 language.
 :::
 
-- **Counter-examples.** Where is practice already timely, rigorous, and
-  collaborative? I would like to be shown the problem is smaller than I
-  think
-- **Other ways to compose.** Category theory, symbolic approaches, or
-  something I have not thought of
-- **Build it in Julia.** The infectious disease ecosystem here is small.
-  If you are about to write a tool, come and find me first
+- **Counter examples** where current practice is producing timely,
+  rigorous, and collaborative evidence
+- **Other ways** these could be implemented, and let's test them.
+  AlgebraicJulia for formal guarantees
+- **Feedback** on the design considerations
+- For composability to work it needs an ecosystem to compose. If you are
+  thinking of developing software, **do it in Julia**. Speak to me
 - [The prompts that wrote these decks][prompts]
 :::
 ::: {.column width="38%"}

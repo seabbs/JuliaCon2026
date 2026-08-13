@@ -82,10 +82,10 @@ If you have moved a user base from one language to another, tell me
 how it went.
 :::
 
-- [CensoredDistributions](https://github.com/EpiAware/CensoredDistributions.jl),
+- [`CensoredDistributions.jl`](https://github.com/EpiAware/CensoredDistributions.jl),
   the Julia package
-- [primarycensored](https://github.com/epinowcast/primarycensored), the
-  R and Stan one, still the one to use in R
+- [`primarycensored`](https://github.com/epinowcast/primarycensored),
+  the R and Stan one, still the one to use in R
 - [epiaware.org](https://epiaware.org) for
   `ConvolvedDistributions.jl`, `DistributionsInference.jl` and the rest
 - [The prompts that wrote these decks][prompts]

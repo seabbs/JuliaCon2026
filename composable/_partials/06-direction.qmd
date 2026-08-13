@@ -2,11 +2,9 @@
 
 :::: {.columns}
 ::: {.column width="50%"}
-- A `Distributions.jl` distribution is an interface the whole of Julia
-  understands
 - Write the epidemiology as distributions and the probabilistic
   programming language becomes optional
-- `CensoredDistributions.jl` does not depend on Turing. Nothing in
+- `CensoredDistributions.jl` does not depend on `Turing.jl`. Nothing in
   `src/` mentions it
 - It reaches `ConvolvedDistributions.jl` through a package extension,
   and neither is a hard dependency of the other

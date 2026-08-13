@@ -3,13 +3,14 @@
 :::: {.columns}
 ::: {.column width="45%"}
 - Chris Whitty, then Chief Scientific Adviser and later Chief Medical
-  Officer for England, set out what modelling evidence has to be to
+  Officer for England, outlined what was needed of modelling evidence to
   inform policy effectively
-- It has to be timely, rigorous, and collaborative
-- Most of what we build manages two of the three
+- Current approaches struggle to be timely, rigorous, and collaborative
+  all at once
 - Multi-model efforts combine forecasts from several teams and rarely
-  share components. A difference in results cannot be attributed to an
-  assumption
+  collaborate on model components
+- Common components would let a difference in results be attributed to
+  an assumption rather than an implementation
 
 ::: {.attribution}
 Whitty (2015),

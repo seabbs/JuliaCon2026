@@ -49,4 +49,3 @@ Endo et al. (2022),
 fig-alt="Title of the Lison et al. 2024 paper"}
 :::
 ::::
-

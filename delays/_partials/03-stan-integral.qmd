@@ -17,8 +17,6 @@ Warning: 243 chain(s) finished unexpectedly!
   that lived returned the right answer
 - `integrate_1d` errors rather than rejecting, so the chain dies
   instead of the proposal
-- The integral was fine. It was the interaction with Stan's autodiff,
-  and the missing reject, that made it unusable
 
 ::: {.attribution}
 Error text and chain counts quoted from

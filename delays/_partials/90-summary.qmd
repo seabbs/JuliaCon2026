@@ -11,11 +11,6 @@
 | The integral | `integrate_1d`, then an ODE recast | 64 fixed nodes |
 | Worst failure | 243 of 256 chains died | 8 scenarios broken on one backend |
 
-::: {.callout-important}
-The Stan file has to know every distribution it will ever support. The
-Julia file does not have to know any of them.
-:::
-
 ::: {.attribution}
 `primarycensored_ode.stan:52-77` and `pcd_load_stan_functions()` at
 `2ec4f40` · `primarycensored_cdf.jl:184-188`, v0.2.22 ·
@@ -87,8 +82,7 @@ Nine GitHub repositories depend on `primarycensored`, two of them on
 CRAN. Seven are mine, two are CDC's. Everything depending on
 `CensoredDistributions.jl` is mine, Sam Brand's or Sebastian Funk's.
 
-Twenty-one months on CRAN against twelve in General, so the gap is not
-all the package.
+Twenty-one months on CRAN against twelve in General.
 :::
 ::::
 

@@ -7,7 +7,7 @@
 - Neither event is seen at a point. Both arrive as a day, sometimes a
   week
 - In real time the longer delays have not happened yet
-- Three adjustments follow from that, and they compose in this order
+- Three adjustments follow from that, and they compose
 
 ::: {.attribution}
 Diagram for this talk, `scripts/delays-double-censoring.py`
@@ -51,7 +51,7 @@ censoring alone."}
 :::
 ::::
 
-## What Stan has no vocabulary for {visibility="uncounted"}
+## In Stan a distribution is an integer {visibility="uncounted"}
 
 :::: {.columns}
 ::: {.column width="54%"}
@@ -71,8 +71,8 @@ real dist_lcdf(real delay, array[] real params,
 ```
 :::
 ::: {.column width="46%"}
-- No user types, so a distribution is an integer. **18 branches** for
-  the 25 families R knows, and the other seven have no Stan CDF to call
+- Stan has no user types. **18 branches** for the 25 families R knows,
+  and the other seven have no Stan CDF to call
 - A second table of ten says which have positive support, kept in step
   by hand
 - `dist_id = 3` meant Normal in Stan and Weibull in R. Ask for a
@@ -86,7 +86,7 @@ real dist_lcdf(real delay, array[] real params,
 commit `4aaf249`, February 2026
 :::
 
-## What the `brms` formula buys {visibility="uncounted"}
+## Partial pooling behind one `brms` formula {visibility="uncounted"}
 
 :::: {.columns}
 ::: {.column width="42%"}

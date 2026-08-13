@@ -1,11 +1,8 @@
-## The Julia version is better. How do I move people?
+## In my view the Julia version is clearly better
 
-- In my view the Julia one is clearly better. Any distribution, one
-  implementation, and the type carries the model
+- Any distribution, one implementation, and the type carries the model
 - It is also the one nobody uses, and I would still point an R user at
   `primarycensored` today
-- Rewriting the R stack in Julia is not the answer, and neither is
-  waiting for people to arrive
 
 ::: {.callout-important}
 So how do I get people to shift?

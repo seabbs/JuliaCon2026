@@ -23,8 +23,8 @@ pcens_cdf.default                 # stats::integrate
 ::: {.column width="46%"}
 - `d`, `p`, `q` and `r` prefixes, so it reads like `dgamma`. The delay
   family is whichever `p*` function you hand it
-- Gamma, lognormal and Weibull against a uniform primary dispatch to a
-  closed form. Every other pair goes to `stats::integrate`
+- S3 dispatch picks the closed form when the pair has one, and
+  `stats::integrate` when it does not
 - The primary event distribution defaults to `dunif`, and an
   exponentially growing one ships alongside it
 
@@ -79,7 +79,7 @@ wrapper is `primarycensored/R/fitdistdoublecens.R:202-236`
 :::
 ::::
 
-## Stan is the same code base again
+## Stan, a complete duplication of the code base
 
 |  | R | Stan |
 |---|---|---|
@@ -88,8 +88,7 @@ wrapper is `primarycensored/R/fitdistdoublecens.R:202-236`
 | Numerical fallback | `stats::integrate` | `ode_rk45` |
 | Growth-rate primary | `expgrowth.R` | `expgrowth.stan` |
 
-- 1,215 lines of Stan next to 2,703 lines of R, and the two have to
-  agree with each other
+- 1,215 lines of Stan next to 2,703 lines of R
 - The R lookup table names 25 delay families. `dist_lcdf` in Stan has
   18 branches, because Stan has no CDF for the other seven
 - Every fix lands twice. `test-stan-dist_lcdf.R` is 246 lines whose

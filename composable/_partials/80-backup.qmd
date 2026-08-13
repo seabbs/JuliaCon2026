@@ -66,10 +66,6 @@ fig-alt="Six panels: prior checks on each part, then the joint fit"}
 - **C** shows both landing on the same posterior $R_0$. **E** and **F**
   show the deterministic fit is the worse calibrated of the two
 
-::: {.callout-important}
-The infection process changed and nothing downstream had to.
-:::
-
 ::: {.attribution}
 Replicating Chatzilena et al. (2019),
 [doi:10.1016/j.epidem.2019.100367][chatzilena]. An influenza outbreak
@@ -98,14 +94,14 @@ fig-alt="Six panels comparing a deterministic and a stochastic SIR fit"}
 | `ModelingToolkit.jl`         | Acausal components, symbolically    |
 +------------------------------+-------------------------------------+
 | `Gen.jl`                     | Nested generative functions, at a   |
-|                              | lower level than Turing.jl          |
+|                              | lower level than `Turing.jl`        |
 +------------------------------+-------------------------------------+
 
 ::: {.attribution}
 The paper's discussion of alternative designs
 :::
 
-## Why keep the parts small {visibility="uncounted"}
+## LLM-assisted model construction {visibility="uncounted"}
 
 - The component structure is what makes this tractable for a language
   model to assemble

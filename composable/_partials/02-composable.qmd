@@ -30,21 +30,16 @@ motivates it, under six themes. All twelve are at
 
 :::: {.columns}
 ::: {.column width="55%"}
-- **Composed distributions.** The delays between a case's events join
-  into one distribution, which can simulate a case or be fitted to
-  observed ones
-- **Composable Turing models.** One part for what drives transmission
-  over time, one for how that produces infections, and one for how
-  infections become the data you actually see
+- **Composed distributions.** `ComposedDistributions.jl` joins a case's
+  event delays into one distribution, to simulate or to fit
+- **Composable Turing models.** `ComposableTuringIDModels.jl` splits a
+  model into transmission, infection, and observation
 - Both build a model out of parts that are checked on their own and
   then fitted together
-- The rest of this talk is the Turing one
 
 ::: {.attribution}
 Wording and design considerations from
-[epiaware.org/approaches](https://epiaware.org/approaches/) ·
-`ComposedDistributions.jl` is the first, `ComposableTuringIDModels.jl`
-the second
+[epiaware.org/approaches](https://epiaware.org/approaches/)
 :::
 :::
 ::: {.column width="45%"}

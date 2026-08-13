@@ -2,7 +2,7 @@
 
 :::: {.columns}
 ::: {.column width="48%"}
-- Turing.jl gave us submodels, a choice of samplers, and the rest of
+- `Turing.jl` gave us submodels, a choice of samplers, and the rest of
   Julia
 - Eleven breaking releases in nineteen months, v0.35.5 to v0.46.0
 - Large simulated counts error, and vectors mixing missing and observed
@@ -13,7 +13,7 @@
 :::
 ::: {.column width="48%"}
 ::: {.callout-important}
-## From the Turing.jl documentation
+## From the `Turing.jl` documentation
 "not all AD libraries in there are thoroughly tested on Turing models.
 Thus, it is possible that some of them will either error ... or maybe
 even silently give incorrect results"
@@ -41,7 +41,7 @@ The two practical limits are in the paper's discussion
 - Our own packages are the same shape, one or two people each
 :::
 ::: {.column width="45%"}
-| Commits, last six months | Turing.jl | DynamicPPL.jl |
+| Commits, last six months | `Turing.jl` | `DynamicPPL.jl` |
 |---|---:|---:|
 | By humans | 29 | 72 |
 | By one person | **17** | **47** |

@@ -95,13 +95,13 @@ Diagram from [How to serial interval?][hsi]
 :::
 ::::
 
-## What the truncation costs, in days
+## A mean of 3.9 days instead of 5.9
 
 :::: {.columns}
 ::: {.column width="34%"}
-- The shortfall grows the nearer the cutoff is to now
-- A mean of **3.9 days rather than 5.9** is what the forecast and the
-  transmission model are handed
+- At a cutoff seven days after the primary events, and 5.3 days at
+  fourteen
+- That is the delay a forecast or a transmission model is handed
 
 ::: {.attribution}
 `LogNormal(1.6, 0.6)` with daily windows, computed for this talk with

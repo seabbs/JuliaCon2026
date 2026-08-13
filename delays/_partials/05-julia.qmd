@@ -24,8 +24,7 @@ chain = sample(delay_model(values, weights),
 - Each adjustment is a wrapper on a `Distributions.jl` object.
   `primary_censored` is the $w_P$ integral, `upper` truncates at $C$,
   `interval_censored` is $w_S$
-- The stack is still a distribution, so Turing takes it as it is and
-  the delay is built from the sampled parameters
+- The stack is still a distribution, so Turing takes it as it is
 - Multiple dispatch picks the closed form when the pair has one, and
   the numerical integral otherwise
 - `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
@@ -64,7 +63,6 @@ ForwardDiff    -> [-0.23692, -0.21296, 0.19054]
   integrand, so the trace is a different shape each call
 - Lifting a correct `ChainRulesCore` rule into Enzyme returned a wrong
   shape partial and two right ones, with no error
-- The org-wide version of this problem was the 14:30 talk in this room
 
 ::: {.attribution}
 [EpiAware/CensoredDistributions.jl#217](https://github.com/EpiAware/CensoredDistributions.jl/issues/217)
@@ -75,7 +73,7 @@ April and May 2026 · `src/integration/integration.jl:14-20`
 :::
 ::::
 
-## What the autodiff cost us
+## 2,724 lines of tests and 480 lines of rules
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -96,14 +94,14 @@ scenarios and registers none broken
 :::
 :::
 ::: {.column width="60%"}
-- 2,724 lines of test infrastructure, 63 scenarios and a CI workflow
-  per backend. `DifferentiationInterfaceTest` is what made any of it
-  testable, and it is good
-- 480 lines of hand-written rules across `gamma_ad.jl` and five
-  autodiff extensions, for one Gamma CDF derivative
+- 63 scenarios and a CI workflow per backend.
+  `DifferentiationInterfaceTest` is what made any of it testable, and
+  it is good
+- The 480 are for one Gamma CDF derivative, across `gamma_ad.jl` and
+  five autodiff extensions
 - The default solver is `GaussLegendre(; n = 64)`, because fixed nodes
-  trace through every backend and adaptive ones do not. I got there by
-  hacking around the integral in sad confusion
+  trace through every backend. I got there by hacking around the
+  integral in sad confusion
 - I still cannot give a user a straight answer on which backend to
   pick
 

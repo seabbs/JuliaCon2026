@@ -1,10 +1,9 @@
-## The prototype is `ComposableTuringIDModels.jl`
+## `ComposableTuringIDModels.jl`
 
 :::: {.columns}
 ::: {.column width="45%"}
-- A library of parts over Turing.jl
-- Three kinds of part. An infection model that turns parameters into
-  infections, an observation model that turns infections into data, and
+- The proof of concept, a library of parts over `Turing.jl`
+- Three kinds of part. An infection model, an observation model, and
   prior models nested in the slots of both
 - Parts carry their own priors, so domain expertise travels with the
   part
@@ -12,8 +11,7 @@
   simulates and fits
 
 ::: {.attribution}
-Registered in General at v0.1.1, so `] add ComposableTuringIDModels`
-works ·
+Registered in General at v0.1.1 ·
 [github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
 Abbott et al., *Composable probabilistic models can lower barriers to
 rigorous infectious disease modelling*, in CDC clearance
@@ -59,7 +57,7 @@ end
   model
 - Every part is a plain struct with one method of `as_turing_model`
 - A part that holds another part draws it as a submodel, through the
-  same interface it exposes itself
+  same interface
 - A part is identified by the method it implements, not by its place in
   a type tree
 
@@ -89,9 +87,10 @@ arima211 = DiffLatentModel(arma21, Normal(0, 0.2); d = 1)
 ```
 
 ::: {.attribution}
-Run against `main` at `011169f` for this talk · `@set` is Accessors.jl,
-not ours · Keywords track `main`. The paper's artefact pins an earlier release,
-where these were `damp_priors`, `θ_priors` and `std_prior`
+Run against `main` at `011169f` for this talk · `@set` is
+`Accessors.jl`, not ours · Keywords track `main`. The paper's artefact
+pins an earlier release, where these were `damp_priors`, `θ_priors` and
+`std_prior`
 :::
 :::
 ::: {.column width="42%"}
