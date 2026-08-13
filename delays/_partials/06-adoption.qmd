@@ -1,7 +1,8 @@
 ## There is no `brms` in Julia
 
-- `brms` exists partly because in R you cannot drop the delay
-  machinery into a model you wrote yourself. In Julia you can
+- `brms` exists partly because in R you cannot easily drop the delay
+  machinery into a model you wrote yourself (without learning Stan and
+  then using code vendoring). In Julia you can
 - So perhaps most people do not need a formula interface. They write
   the model and the composed distribution goes in
 - None of our users know Julia
