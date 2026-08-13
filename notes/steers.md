@@ -217,3 +217,11 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > [On the inspiration slide] bullets should flag i.e. epinowcast community
 > forum and seminar
+
+> Cut "Otherwise it is one more package that only we use". In the after skynet
+> slide include the seabbs-bot GitHub profile photo.
+
+> After skynet, first bullet: I was travelling for summer school, teaching,
+> workshops etc so decided to have a go with agents
+
+> Cut "Any ideas?"

@@ -5,8 +5,7 @@
 - **Funding.** Several goes at grants of a few million, and a lot of
   scepticism about Julia. None of them funded so far
 - **A team.** A few people
-- **Buy-in.** Other groups have to want to build on it. Otherwise it is one
-  more package that only we use
+- **Buy-in.** Other groups have to want to build on it
 
 ::: {.attribution}
 "We have been applying for funding to do it. So far without success", the
@@ -28,10 +27,20 @@ All of my organisations, `seabbs-bot` only, January to July 2026 ·
 EpiAware counts from `gh api search/issues`, read 2026-08-10.
 :::
 :::
-::: {.column width="48%"}
-- We started anyway, with coding agents. **966 merged pull requests** in the
-  EpiAware org from the bot account, and 119 closed unmerged
+::: {.column width="34%"}
+- I was travelling for summer school, teaching and workshops, so decided
+  to have a go with agents
+- **966 merged pull requests** in the EpiAware org from the bot account,
+  and 119 closed unmerged
 - A Claude Max subscription
-- Well, actually, we still need funding. Any ideas?
+- Well, actually, we still need funding
+:::
+::: {.column width="14%"}
+![](../figures/seabbs-bot.jpg){width="100%"
+fig-alt="The seabbs-bot GitHub avatar, a robot wearing a party hat."}
+
+::: {.attribution}
+[@seabbs-bot](https://github.com/seabbs-bot)
+:::
 :::
 ::::
