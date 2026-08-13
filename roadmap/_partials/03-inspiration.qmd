@@ -1,23 +1,17 @@
 # Some inspiration
 
-- `epinowcast`. A community forum and a seminar series, where people who
-  did not write the code answer each other. 144 members, 1,273 posts, and
-  34 seminars since May 2023
-- `Turing.jl`. Small packages that other people build on, rather than one
-  library
-- `SciML`. Shared interfaces, and downstream CI run against packages it
-  does not own
-- `rOpenSci`. Software peer review and a written package guide. Julia has
-  nothing like it
-- `SpeedyWeather.jl`, `Comrade.jl`, `HydroModels.jl`. One domain each,
-  done properly
+- `epinowcast`, its community forum and seminar series
+- `Turing.jl`
+- `SciML`
+- `rOpenSci`
+- `SpeedyWeather.jl`
+- `Comrade.jl`
+- `HydroModels.jl`
 
 ::: {.attribution}
 [community.epinowcast.org](https://community.epinowcast.org/) and
 [epinowcast.org/seminars](https://www.epinowcast.org/seminars), read
-2026-08-11 · [SciML governance](https://sciml.ai/governance/), whose
-downstream CI runs `ProbNumDiffEq.jl` and `PositiveIntegrators.jl`, and
+2026-08-11 · [SciML governance](https://sciml.ai/governance/) and
 [rOpenSci software review](https://ropensci.org/software-review/), read
-2026-08-11 · [TuringLang](https://github.com/TuringLang), 26 repositories,
-counted 2026-08-10.
+2026-08-11.
 :::

@@ -306,3 +306,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Cut the note "We are running both, and a model written by hand, because I
 > cannot tell you which is right"
+
+> In "Some inspiration" I asked for a bare list of orgs, not the little
+> sentences you have added
