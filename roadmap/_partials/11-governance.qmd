@@ -24,6 +24,7 @@ no governance document in any TuringLang repository, searched 2026-08-12.
 - The people I build for work in R in the middle of an outbreak response
 - They don't care about fancy language features
 - They need their tools to work
+- Julia often doesn't
 - They need to be able to trust it, and to see who is behind it
 - Who do they ask when it breaks?
 
