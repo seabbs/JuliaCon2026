@@ -13,22 +13,26 @@
 :::
 ::: {.column width="48%"}
 ```julia
-const BANNED_README_WORDS = [
-    "comprehensive", "cornerstone",
-    "facilitate", "foster",
-    "framework", "harness",
-    "landscape", "leverage",
-    "novel", "pivotal",
-    "practitioner", "robust",
-    "streamline", "synergy",
-    # ... 20 in total
-]
+@template (FUNCTIONS, METHODS, MACROS) = """
+$(TYPEDSIGNATURES)
+$(DOCSTRING)
+"""
+
+@template TYPES = """
+$(TYPEDEF)
+$(DOCSTRING)
+
+---
+## Fields
+$(TYPEDFIELDS)
+"""
 ```
 
 ::: {.attribution}
-`BANNED_README_WORDS` in `src/quality.jl`, and the sixteen written
-standards in the `EpiAwarePackageTools.jl` documentation, both read
-2026-08-12 ·
+`templates/src/docstrings.jl` in
+[EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl),
+written into every package and paired with `test_docstring_format`, read
+2026-08-13 ·
 [DocStringExtensions.jl](https://github.com/JuliaDocs/DocStringExtensions.jl).
 :::
 :::

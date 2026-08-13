@@ -350,3 +350,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > from roadmap. Cut the EpiNow2 four-times bullet and the "we wrote down a
 > workflow then could not follow it" bullet. Add a slide after that shows the
 > workflow schematic, "Trying but not in software" as the title.
+
+> The Documentation slide should show the docstring template as much as
+> possible, not the weird banned word list
