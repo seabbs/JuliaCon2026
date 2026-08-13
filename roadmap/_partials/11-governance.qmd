@@ -1,9 +1,5 @@
-## Governance, and the whales 🐋
+## Current whales 🐋
 
-- JuMP and SciML wrote their governance down after they were already
-  large, and Turing has contributing guidance instead
-- None of them says how an org starts, or how a package joins one
-  (according to [@seabbs-bot](https://github.com/seabbs-bot))
 - 🐋 Every project I have worked on has ended up with one person doing most
   of it
 - Here the whale is me and a subscription
@@ -11,6 +7,13 @@
   makes it easier for the 🐋 to work together
 - What are good examples of 🐋 working together in Julia?
 - 🌍 Who can do this work at all is narrowing. Agents make that worse
+
+## Governance, what do users want
+
+- JuMP and SciML wrote their governance down after they were already
+  large, and Turing has contributing guidance instead
+- None of them says how an org starts, or how a package joins one
+  (according to [@seabbs-bot](https://github.com/seabbs-bot))
 - The people I build for work in R in the middle of an outbreak response
 - They don't care about fancy language features
 - They need their tools to work
