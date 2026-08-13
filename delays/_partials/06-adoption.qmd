@@ -22,6 +22,10 @@
 | Worst failure | 243 of 256 chains died | 8 scenarios broken on one backend |
 | Flexible component system | `brms` | composed Julia `epidist` |
 
+::: {.attribution}
+Comparison as summarised by [@seabbs-bot][bot]
+:::
+
 ## Who is using which packages?
 
 :::: {.columns}
@@ -60,3 +64,5 @@ August 2026.
 :::
 :::
 ::::
+
+[bot]: https://github.com/seabbs-bot
