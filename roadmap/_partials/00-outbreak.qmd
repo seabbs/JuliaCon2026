@@ -1,5 +1,6 @@
-## The 2026 Bundibugyo virus disease outbreak in the
-## Democratic Republic of the Congo
+# The 2026 Bundibugyo virus disease outbreak in the Democratic Republic of the Congo
+
+##
 
 :::: {.columns}
 ::: {.column width="31%"}

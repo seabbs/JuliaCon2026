@@ -17,8 +17,9 @@ for f in $files; do
     n=${line%%:*}
     text=${line#*:}
     # A markdown link target cannot be wrapped, and a newline inside an ATX
-    # heading ends the heading, so lines carrying a link are exempt.
-    if [[ "$text" == *"http"* || "$text" == *"]("* ]]; then
+    # heading ends the heading, splitting one slide into two. So lines
+    # carrying a link, and headings themselves, are exempt.
+    if [[ "$text" == *"http"* || "$text" == *"]("* || "$text" == "#"* ]]; then
       continue
     fi
     echo "$f:$n: line over 80 characters (${#text})"
