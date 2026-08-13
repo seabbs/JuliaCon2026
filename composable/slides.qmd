@@ -53,9 +53,9 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 16:45.
 
 {{< include _partials/01b-composable.qmd >}}
 
-{{< include _partials/02c-two-approaches.qmd >}}
-
 {{< include _partials/02b-inspired.qmd >}}
+
+{{< include _partials/02c-two-approaches.qmd >}}
 
 {{< include _partials/03-approach.qmd >}}
 
