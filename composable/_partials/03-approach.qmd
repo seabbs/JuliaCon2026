@@ -135,7 +135,7 @@ counted 2026-08-12
 :::
 :::
 ::: {.column width="44%"}
-- Every part implements `as_turing_model`; nothing else is needed
+- Every part implements `as_turing_model`
 - A part that holds another part draws it as a submodel, so the call
   descends through the slots
 - `AR` was never told that `MA` exists
