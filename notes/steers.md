@@ -317,3 +317,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Documentation, add a bullet: tutorial for each key feature developed
 > alongside the feature and checked in CI
+
+> On "None of them says how an org starts, or how a package joins one" add
+> "(according to @seabbs-bot)"

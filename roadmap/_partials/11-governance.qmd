@@ -3,6 +3,7 @@
 - JuMP and SciML wrote their governance down after they were already
   large, and Turing has contributing guidance instead
 - None of them says how an org starts, or how a package joins one
+  (according to [@seabbs-bot](https://github.com/seabbs-bot))
 - 🐋 Every project I have worked on has ended up with one person doing most
   of it
 - 🐳 Julia's composability does not fix that
