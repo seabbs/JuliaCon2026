@@ -189,3 +189,13 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > feel free to use subagents but make sure to review work done vs my recent
 > spec here i.e. from today
+
+> [Roadmap corrections after the first rebuild, recorded in full in
+> notes/spec-roadmap.md under "Corrections after the first rebuild". Key
+> points: my humour is being stripped out, the before and after skynet points
+> are key and one was cut; stop writing so much; take my steer and ape my
+> style; titles should literally be the thing in backticks; cut the "wrong
+> number, not an error" slide I did not ask for; major spec drift vs
+> yesterday, use a single agent per talk.]
+
+> use opus agents

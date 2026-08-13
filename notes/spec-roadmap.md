@@ -157,6 +157,134 @@ Cut these, by his instruction:
 - "What the language buys us"
 - "Nobody can tell you which backend a model needs"
 
+## Corrections after the first rebuild
+
+The rebuild drifted. His verdict: "major spec drift vs yesterday". Work
+through these in order. Where he quotes text, that text is either cut or
+replaced, not reworded.
+
+**Process, first.** One agent rebuilds one deck, end to end. Do not split a
+deck across agents. The drift came from splitting.
+
+**And his humour survives.** "my humour is being stripped out". The
+before-skynet and after-skynet framing is his and it stays. So do the emojis.
+If a line reads as dry and correct where he was being funny, it is wrong.
+
+### Opener
+
+- Cut "I read fewer of the tests than I should".
+- Cut anything with no data table behind it.
+- Make **"2026 Bundibugyo virus disease outbreak in the Democratic Republic of
+  the Congo"** the slide *title*, and take it out of the bullets.
+
+### Slide 1
+
+- Cut "What that model needs from its parts". That is not what was asked for.
+- What was asked for is a transition slide flagging the other talk. Make it an
+  **epiaware.org slide**: the logo, the site, and the synthesis motivation.
+  Look at epiaware.org for what it actually says.
+
+### Approaches
+
+- **Approach one does not name the package.** Name it.
+- **The code example is out of date.** Get the current one from
+  epiaware.github.io, and check the branches.
+- Package names in titles and prose take backticks, for example `Turing.jl`.
+- **"What the hell are the 2 last bullets for or about?"** Cut them. Each
+  approach slide wants a high level statement of what the approach *is*, not
+  a list of specific negatives. Same for approach two. Source the framing from
+  the epiaware.github.io repository.
+- **Lowering into SciML** becomes one bullet on the approach two slide, and
+  the slide after it is cut.
+
+### Some inspiration
+
+Just the package names. Include `SpeedyWeather.jl` and the others used in the
+composable talk.
+
+### I tried in R
+
+Title and text are still not what was asked for. Revise against section 6.
+
+### What do we need to implement this
+
+- The **before skynet** point goes here, in his words.
+- The **after skynet** point was cut and is key. Put it back.
+- Cut ", rather than one person and a pile of agents".
+- A bullet that just says **"A Claude Max subscription."** is fine.
+- Then **"Aiming for good to great docs."**
+
+### The agents slide
+
+- The title "Four contributors, and most of the writing is not mine" is
+  terrible. Make it **"So what does robot driven dev look like?"** or similar,
+  with emojis, as asked.
+- Cut "Four contributors from outside the team, none since February 2026, and
+  no open good first issue on any package. Whoever writes the next one is
+  likely to be a model."
+- Stop writing so much.
+
+### The detail slides
+
+Titles should literally be the thing, in backticks: `.github`,
+`EpiAwarePackageTools.jl`, and so on.
+
+- Wrong: "EpiAwarePackageTools.jl writes those callers and overwrites them
+  every Monday we use dependabot for a grouped update." Instead **list a few
+  of the more interesting workflows**.
+- Cut ", most of them force-managed, so an edited file comes back on the next
+  sync". Not human language.
+- Cut "Over 10,000 lines of Julia hold ten of the eleven packages rigid".
+- Say more about what it actually does: scaffold, update, JET, Aqua, the
+  written standards, and the agent and Claude file injection that helps a
+  model find the docs in a repository.
+
+### Package checks
+
+Use his structure, not a rewrite of it:
+
+- `CRAN` has more checks than comparable package servers.
+- As part of this there is a set of automated checks that looks at ...
+- In Julia you can opt in to `Aqua`, which is great.
+- But we want to go further than that, so ... then the specifics.
+
+Drop "all of it runs on CI".
+
+### Reverse dependencies
+
+- The title should be about **nothing in Julia checking the packages
+  downstream of you**, not "Reverse dependency checking".
+- Remove "In all ten the list of downstreams is empty".
+- Cut "every package also tests against its lowest allowed dependency
+  versions". That is standard practice and not worth a line.
+
+### Automatic differentiation
+
+Two bullets, not an essay:
+
+- We do not think there is a community standard for what supporting AD means.
+- So we aimed to build our own, using `DifferentiationInterfaceTest`.
+
+The rest of the detail is not needed.
+
+**Cut the "A wrong number, not an error" slide.** He did not ask for it.
+
+### Documentation
+
+He wants a real documentation slide, covering:
+
+- `DocStringExtensions` and docstring metadata, which bring docstrings much
+  closer to R's standard, though he would like more.
+- The template, shown.
+- The package standards from `EpiAwarePackageTools.jl`.
+- The SciML approach of putting something genuinely interesting on the README
+  and home page, with clear focused tutorials rather than a wall of text.
+
+### The close
+
+He asked for specific slides and wants to know where they are. Check section
+10 and the earlier spec against what is in the deck.
+
 ## Constraints
 
 - 15 minute slot. The deck currently runs 8 to 10 minutes, so this rebuild has

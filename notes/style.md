@@ -61,6 +61,42 @@ table plus bullets plus a callout plus an attribution, are the problem.
 4. **Voice.** Match the serial interval deck. Plain, specific, unhurried. No
    slogans, no summarising the point, no telling the audience what to think.
 
+## His humour is content, not decoration
+
+> my humour is being stripped out
+
+Rebuild passes keep flattening the jokes into correct, dry statements. That is
+a fault, not a tidy-up.
+
+Specifically, and these are not negotiable:
+
+- The **before skynet** and **after skynet** framing on the roadmap deck is
+  his. Keep the words.
+- **Emojis** where he asked for them, for example the whale contributors
+  slide.
+- Wry section titles like "Unfortunately, biases" stay exactly as written.
+- "In sad confusion" stays.
+
+If a line reads as a correct summary of something that was funny, you have
+broken it. Put it back.
+
+## Write less
+
+> stop writing so much
+>
+> take my steer and ape my style
+
+Two related faults keep coming back. Slides carry more prose than he would
+write, and the prose is a paraphrase of his steer rather than his steer.
+
+When he gives you a line, use his line. Do not improve it, expand it into two
+sentences, or add the clause that explains why it matters. His steers are
+often already the bullet.
+
+Signs you are doing this: a bullet that restates its own first clause, a
+sentence that ends by telling the audience what to conclude, a slide where
+half the words are yours and half are his and the joins show.
+
 ## No editorial asides dressed as references
 
 > In all the decks I also see lots of little tiny aside comments in the same
