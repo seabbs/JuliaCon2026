@@ -33,3 +33,12 @@
 .reveal .emoji-crowd .humans {
   font-size: 1.18em;
 }
+
+/* The closing ask on the roadmap deck. */
+.reveal .send-help {
+  font-size: 1.9em;
+  font-weight: 700;
+  text-align: center;
+  color: #cb3c33; /* Julia red */
+  margin: 0.2em 0 0.6em 0;
+}

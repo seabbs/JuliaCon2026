@@ -273,3 +273,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > unfamiliar" to "They don't care about fancy language features"
 
 > Our slides need to link to our infectious disease modelling workflow
+
+> In the talk plan change "Four questions I cannot answer" to "Please send
+> help!" and have a large "Please send help!" on the closing slide

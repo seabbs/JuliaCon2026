@@ -26,7 +26,7 @@ format:
 - Six years of trying this in R
 - Before and after agents
 - Infrastructure, autodiff, docs, community, governance
-- Four questions I cannot answer
+- Please send help!
 :::
 ::: {.column width="32%"}
 ![](../figures/qr-roadmap.png){width="58%"}
@@ -67,8 +67,8 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 14:30.
 
 :::: {.columns}
 ::: {.column width="62%"}
-::: {.callout-important}
-Tell me how you would do any of this.
+::: {.send-help}
+Please send help!
 :::
 
 - [epiaware.org](https://epiaware.org) — the packages, the docs, and how
