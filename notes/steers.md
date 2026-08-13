@@ -325,3 +325,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 > it easier for the :whales: to work together"
 
 > New bullet: What are good examples of :whales: working together in Julia?
+
+> Smooth the order so the me-as-a-whale ordering makes sense
