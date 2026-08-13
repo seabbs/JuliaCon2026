@@ -363,3 +363,12 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Split "Governance, and the whales" into two: "Current whales" and
 > "Governance, what do users want"
+
+> Change the code example on "What does it mean to say a package supports
+> automatic differentiation?" to the DIT call, and credit the DIT main author
+> with his GitHub profile picture.
+
+> Add bullet to "Community, in the age of robots": Do :robots: shut down
+> collaboration?
+
+> "Current whales" has lost its governance, which it needed

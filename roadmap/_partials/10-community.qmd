@@ -6,6 +6,7 @@
   party on an issue is usually one of my robots. Answering a robot is
   dispiriting
 - It is not clear which repositories want robot-filed issues at all
+- Do 🤖 shut down collaboration?
 - `EpiAwareAgents` is one possible answer, a community bot any maintainer
   could point at their own repository
 :::

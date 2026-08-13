@@ -17,22 +17,26 @@ looking and did not find one.
 :::
 ::: {.column width="54%"}
 ```julia
-const _AD_BACKENDS = [
-  (header = "ForwardDiff", ...),
-  (header = "ReverseDiff (tape)", ...),
-  (header = "ReverseDiff (compiled)", ...),
-  (header = "Enzyme forward", ...),
-  (header = "Enzyme reverse", ...),
-  (header = "Mooncake reverse", ...),
-  (header = "Mooncake forward", ...),
-]
+DIT.test_differentiation(
+    [backend], ok;
+    correctness = true,
+    type_stability = :none,
+    scenario_intact = scenario_intact,
+    rtol = rtol, atol = atol
+)
+
+check_broken(broken_scens, backend; rtol, atol)
 ```
 
+![](../figures/gdalle.jpg){width="22%" fig-align="center"
+fig-alt="Guillaume Dalle, author of DifferentiationInterface.jl"}
+
 ::: {.attribution}
-Abridged from `_AD_BACKENDS`, `src/scaffold.jl` in
+`src/ad_harness.jl:157-168` in
 [EpiAwarePackageTools.jl](https://github.com/EpiAware/EpiAwarePackageTools.jl),
-read 2026-08-12. The list generates the CI matrix, the Codecov flags, the
-README badges and the support table in the docs ·
+read 2026-08-13 ·
+[DifferentiationInterface.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl)
+is by [Guillaume Dalle](https://github.com/gdalle), with Adrian Hill ·
 [DifferentiationInterfaceTest.jl](https://github.com/JuliaDiff/DifferentiationInterface.jl) ·
 the missing rules are `SpecialFunctions.jl` issue #531, and the
 replacements are in `src/gamma_ad.jl` in

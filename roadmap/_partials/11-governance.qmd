@@ -1,5 +1,9 @@
-## Current whales 🐋
+## Governance, and current whales 🐋
 
+- JuMP and SciML wrote their governance down after they were already
+  large, and Turing has contributing guidance instead
+- None of them says how an org starts, or how a package joins one
+  (according to [@seabbs-bot](https://github.com/seabbs-bot))
 - 🐋 Every project I have worked on has ended up with one person doing most
   of it
 - Here the whale is me and a subscription
@@ -8,21 +12,19 @@
 - What are good examples of 🐋 working together in Julia?
 - 🌍 Who can do this work at all is narrowing. Agents make that worse
 
-## Governance, what do users want
-
-- JuMP and SciML wrote their governance down after they were already
-  large, and Turing has contributing guidance instead
-- None of them says how an org starts, or how a package joins one
-  (according to [@seabbs-bot](https://github.com/seabbs-bot))
-- The people I build for work in R in the middle of an outbreak response
-- They don't care about fancy language features
-- They need their tools to work
-
 ::: {.attribution}
 [JuMP governance](https://jump.dev/pages/governance/),
 [SciML governance](https://sciml.ai/governance/) and
 [TuringLang's contributing guidance][turing-contrib], read 2026-08-10, with
 no governance document in any TuringLang repository, searched 2026-08-12.
 :::
+
+## Governance, what do users want
+
+- The people I build for work in R in the middle of an outbreak response
+- They don't care about fancy language features
+- They need their tools to work
+- They need to be able to trust it, and to see who is behind it
+- Who do they ask when it breaks?
 
 [turing-contrib]: https://github.com/TuringLang/.github/blob/main/CONTRIBUTING.md
