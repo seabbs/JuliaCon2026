@@ -34,7 +34,8 @@ outcome with the given probability
 ## Where we are
 
 - `ComposedDistributions.jl` — the verb grammar above
-- `CensoredDistributions.jl` — censoring and truncation
+- `CensoredDistributions.jl` — interval and primary-interval
+  censoring, plus `Distributions.jl`'s truncation
 - `ConvolvedDistributions.jl` — convolution and quadrature
 - `ModifiedDistributions.jl` — transformations that stay distributions
 - `ReparameterisedDistributions.jl` — reparameterised sampling
