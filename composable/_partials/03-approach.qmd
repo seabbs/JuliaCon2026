@@ -10,7 +10,14 @@
   simulates and fits
 - Adding a new application means defining only the novel parts
 
+![](../figures/sam-abbott.jpg){width="21%"
+fig-alt="Sam Abbott"}
+![](../figures/samuel-brand.jpg){width="21%"
+fig-alt="Samuel Brand"}
+
 ::: {.attribution}
+Photos from GitHub, read 2026-08-13
+:::
 Registered in General at v0.1.1 ·
 [github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
 Abbott et al., *Composable probabilistic models can lower barriers to
@@ -95,9 +102,6 @@ pins an earlier release, where these were `damp_priors`, `θ_priors` and
 ::: {.column width="42%"}
 ![](../figures/composable-arima.png){height="500px" fig-align="center"
 fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
-
-::: {.callout-note}
-`AR` was never told that `MA` exists.
 :::
 :::
 ::::
@@ -107,10 +111,10 @@ fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
 :::: {.columns}
 ::: {.column width="56%"}
 ```julia
-# a component writes its parameter slot once
+# a component writes its parameter once
 damp ~ as_turing_submodel(model.damp, p; prefix = true)
 
-# what is in the slot picks the method
+# what is passed to the call picks the method
 as_turing_submodel(m, args...; prefix = false) =
     to_submodel(as_turing_model(m, args...), prefix)
 
@@ -121,18 +125,18 @@ as_turing_submodel(d::Distribution, ::ModelShape;
 ::: {.attribution}
 Two of the three `as_turing_submodel` methods,
 `src/base/priors.jl:65-82`, reformatted to fit and with the `::Bool`
-annotations dropped. The third takes a vector of priors · The slot line
+annotations dropped. The third takes a vector of priors · The call line
 is `src/base/priors.jl:25` · The `AR` example is
 `src/latent_models/models/AR.jl:40-43`
 :::
 :::
 ::: {.column width="44%"}
-- A slot takes a fixed prior or a whole process
+- A call takes a fixed prior or a whole process
 - A `Distribution` draws one scalar. A process draws a path of length
   `n`
 - `AR(damp = Normal(...))` is a constant coefficient,
   `AR(damp = RandomWalk())` a time-varying one
-- The component that owns the slot is not changed either way
+- The component that makes the call is not changed either way
 :::
 ::::
 

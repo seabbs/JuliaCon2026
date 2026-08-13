@@ -2,7 +2,8 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-- Reuses ARIMA(2,1,1) and `negbin` from earlier directly
+- Reuses ARIMA(2,1,1) from earlier, swapping the Poisson observation
+  model for `negbin`
 - `broadcast_weekly` wraps ARIMA to produce piecewise constant weekly
   $R_t$ values
 - `ascertainment_dayofweek` adds day-of-week reporting effects via

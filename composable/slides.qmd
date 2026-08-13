@@ -2,7 +2,6 @@
 title: >-
   Composable probabilistic models can lower barriers to rigorous
   infectious disease modelling
-subtitle: "And a change of mind about the backend"
 author: "Sam Abbott"
 institute: "London School of Hygiene & Tropical Medicine"
 date: 2026-08-14
@@ -25,9 +24,9 @@ format:
 ::: {.column width="68%"}
 - Modelling evidence must be timely, rigorous, and collaborative
 - Chaining loses information, joint models cannot be taken apart
-- Two approaches we are running
+- Two approaches we are prototyping
 - One replication, `EpiNow2` in three hours
-- `Turing.jl` is the part I am least sure about
+- `Turing.jl`
 - Is Julia the place for this work?
 :::
 ::: {.column width="32%"}
@@ -46,6 +45,10 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 16:45.
 {{< include _partials/01-options.qmd >}}
 
 {{< include _partials/02-composable.qmd >}}
+
+{{< include _partials/02a-workflow.qmd >}}
+
+{{< include _partials/02b-inspired.qmd >}}
 
 {{< include _partials/03-approach.qmd >}}
 

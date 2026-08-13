@@ -26,7 +26,7 @@ Europe/Berlin.
 ::: {.talk-card}
 [14:30–14:45]{.talk-time}
 
-### [A composable Julia ecosystem for infectious disease modelling](roadmap/index.qmd)
+### [Building a composable Julia ecosystem for infectious disease modelling](roadmap/index.qmd)
 
 [A roadmap, challenges, and questions]{.talk-sub}
 

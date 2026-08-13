@@ -36,30 +36,10 @@ motivates it, under six themes. All twelve are at
 - **Composable Turing models.** A library of parts over `Turing.jl`.
   Transmission, latent process and observation are separate objects that
   nest into one model
-- 🐋 One or two people on each of them
 
 ::: {.attribution}
 Wording and design considerations from
 [epiaware.org/approaches](https://epiaware.org/approaches/)
-:::
-:::
-::: {.column width="45%"}
-| Repository | Contributors |
-|---|---:|
-| `ComposedDistributions.jl` | 1 |
-| `ConvolvedDistributions.jl` | 1 |
-| `CensoredDistributions.jl` | 7 |
-| `ComposableTuringIDModels.jl` | 1 |
-
-: {tbl-colwidths="[70,30]"}
-
-::: {.attribution}
-Contributor lists from the GitHub API, 2026-08-12, all time, with bot
-and agent accounts removed. The six people other than me on
-`CensoredDistributions.jl` are Michael DeWitt, Samuel Brand, Sebastian
-Funk, Damon Bayer, Joseph Lemaitre and
-[@Vyshnavi0702](https://github.com/Vyshnavi0702), and none has
-committed since February 2026
 :::
 :::
 ::::

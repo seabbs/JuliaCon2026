@@ -20,7 +20,7 @@ out = root / "figures" / "og-card.png"
 photo = base64.b64encode((root / "figures" / "sam.jpg").read_bytes()).decode()
 
 TALKS = [
-    ("14:30", "A composable Julia ecosystem for infectious disease modelling"),
+    ("14:30", "Building a composable Julia ecosystem for infectious disease modelling"),
     ("14:45", "Estimating epidemiological delay distributions"),
     ("16:45", "Composable probabilistic models"),
 ]

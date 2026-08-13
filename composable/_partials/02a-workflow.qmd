@@ -1,0 +1,13 @@
+## Being able to follow a workflow
+
+![](../figures/workflow-schematic.png){width="86%" fig-align="center"
+fig-alt="A nine step workflow for infectious disease modelling, from
+research questions through process and observation DAGs, modularisation,
+inference choices, implementation, validation and data integration, with
+feedback arrows running backwards from later steps to earlier ones."}
+
+::: {.attribution}
+[A workflow for infectious disease modelling][wf], Abbott et al.
+:::
+
+[wf]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/

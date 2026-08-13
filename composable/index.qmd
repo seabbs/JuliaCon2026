@@ -2,7 +2,6 @@
 title: >-
   Composable probabilistic models can lower barriers to rigorous
   infectious disease modelling
-subtitle: "And a change of mind about the backend"
 description: >-
   Composition as a route to modelling evidence that is timely, rigorous and
   collaborative at once, and a change of mind about the Turing.jl backend.
