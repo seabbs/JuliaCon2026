@@ -1,6 +1,8 @@
-## In my view the Julia version is clearly better
+## In my view the Julia version is better
 
 - Any distribution, one implementation
 - It is also the one nobody uses (well, I do)
 - However, I would still point an R user at `primarycensored` today
+- We have not benchmarked yet, so the Julia version maybe (and likely
+  is) less efficient/stable than the Stan version
 - So how do I get people to shift?

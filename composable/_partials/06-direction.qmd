@@ -17,6 +17,7 @@ fig-alt="seabbs-bot"}
 ::: {.attribution}
 Photos from GitHub, read 2026-08-13
 :::
+:::
 ::: {.column width="60%"}
 ```julia
 cfr = 0.12
