@@ -42,15 +42,6 @@ outcome with the given probability
 - `DistributionsInference.jl` — the interface between our composed
   distributions and inference approaches
 
-::: {.attribution}
-All are active EpiAware packages, pushed within the last two days ·
-[ComposedDistributions.jl][composed] ·
-[CensoredDistributions.jl][censored] · [ConvolvedDistributions.jl][convolved] ·
-[ModifiedDistributions.jl][modified] ·
-[ReparameterisedDistributions.jl][reparm] ·
-[DistributionsInference.jl][dinf]
-:::
-
 ## `Distributions.jl`
 
 :::: {.columns}
@@ -60,12 +51,6 @@ All are active EpiAware packages, pushed within the last two days ·
   interface
 - Should we aim to be more generic: anything with a limited set of
   methods, e.g. `rand` and `logpdf`?
-
-::: {.callout-important}
-If `Distributions.jl` is a convention rather than a package, the
-composed-distributions direction and everything built on it depends on
-an interface nobody has pinned down.
-:::
 :::
 ::: {.column width="50%"}
 - The fitting layer is what a probabilistic programming language was
@@ -114,10 +99,4 @@ paper's discussion · Seven backends from `EpiAwareADTools.jl`,
 `test/ADFixtures/src/ADFixtures.jl`, `main` at `c164a87`, 2026-08-12
 :::
 
-[composed]: https://github.com/EpiAware/ComposedDistributions.jl
-[censored]: https://github.com/EpiAware/CensoredDistributions.jl
-[convolved]: https://github.com/EpiAware/ConvolvedDistributions.jl
-[modified]: https://github.com/EpiAware/ModifiedDistributions.jl
-[reparm]: https://github.com/EpiAware/ReparameterisedDistributions.jl
-[dinf]: https://github.com/EpiAware/DistributionsInference.jl
 [distjl]: https://github.com/JuliaStats/Distributions.jl
