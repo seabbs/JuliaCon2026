@@ -76,7 +76,7 @@ language.
 :::
 
 - **Where has Julia already pulled composition off?** Point me at
-  composable pattern libraries, compisable model ecosystems, or bits
+  composable pattern libraries, composable model ecosystems, or bits
   of the ecosystem that fit together cleanly — we want to learn from
   what already works before building our own
 - **AlgebraicJulia.** Exploring whether a formal, computable notion of
