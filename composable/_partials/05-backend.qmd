@@ -7,7 +7,6 @@
 - Large simulated counts error, and vectors mixing missing and observed
   values have to be handled by hand
 - Future automatic differentiation support is uncertain
-- It is still what we build on
 :::
 ::: {.column width="12%"}
 ![](../figures/turing-logo.svg){width="100%"
