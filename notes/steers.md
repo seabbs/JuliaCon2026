@@ -401,3 +401,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > judgement.
 
 > "Ecosystems we are learning from" is missing DynamicalSystems
+
+> In another slide deck we linked to a YouTube video of our composability
+> talk. Add it to the composable models home page.

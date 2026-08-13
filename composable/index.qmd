@@ -93,6 +93,8 @@ The other two are in the same room earlier the same day.
   clearance.
 - [A workflow for infectious disease modelling][workflow].
   Related work on how these models get built and checked.
+- [A longer version of this talk][juniper].
+  The Juniper consortium seminar series, on YouTube.
 
 ### Code
 
@@ -116,6 +118,7 @@ The other two are in the same room earlier the same day.
 ::::
 
 [approaches]: https://epiaware.org/approaches/
+[juniper]: https://www.youtube.com/watch?v=FQYOqGnbJWA
 [workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
 [ctim]: https://github.com/EpiAware/ComposableTuringIDModels.jl
 [cdists]: https://github.com/EpiAware/ComposedDistributions.jl
