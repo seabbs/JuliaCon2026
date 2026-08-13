@@ -1,7 +1,8 @@
-# Our current approach
+# Our aims
 
-1. As much infrastructure as we can build
-2. Automatic differentiation as a first class citizen
-3. Good to great docs, and checking that they work
-4. A community of contributors
-5. Governance
+1. All the composability requirements we outlined in the other talk
+2. As much infrastructure as we can build
+3. Automatic differentiation as a first class citizen
+4. Good to great docs, and checking that they work
+5. A community of contributors
+6. Governance
