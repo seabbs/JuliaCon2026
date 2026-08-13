@@ -9,7 +9,6 @@
 - A model definition does not know about the data. One definition
   simulates and fits
 - Adding a new application means defining only the novel parts
-- Every part is a plain struct with one method of `as_turing_model`
 
 ![](../figures/sam-abbott.jpg){width="21%"
 fig-alt="Sam Abbott"}
