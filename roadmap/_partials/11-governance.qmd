@@ -9,8 +9,7 @@
 - Here the whale is me and a subscription
 - 🌍 Who can do this work at all is narrowing. Agents make that worse
 - The people I build for work in R in the middle of an outbreak response.
-  Multiple dispatch is not a feature to them, it is why the install is
-  unfamiliar
+  They don't care about fancy language features
 
 ::: {.attribution}
 [JuMP governance](https://jump.dev/pages/governance/),

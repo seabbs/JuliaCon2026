@@ -268,3 +268,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Cut "I started epinowcast in 2021 to avoid what happened with EpiNow2. It
 > did not work" from governance, it repeats an earlier slide
+
+> Change "Multiple dispatch is not a feature to them, it is why the install is
+> unfamiliar" to "They don't care about fancy language features"
