@@ -320,3 +320,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > On "None of them says how an org starts, or how a package joins one" add
 > "(according to @seabbs-bot)"
+
+> On "Julia's composability does not fix that" add "hope is modularity makes
+> it easier for the :whales: to work together"
