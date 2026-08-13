@@ -7,7 +7,7 @@
 - The README's Julia blocks run at docs build, so a broken example fails
   the build
 - `SciML` puts something interesting on the front page and keeps the
-  tutorials short. We are copying that
+  tutorials short. We copy that
 - The banned word list is one of the checks. A README that calls itself
   comprehensive does not ship
 :::
