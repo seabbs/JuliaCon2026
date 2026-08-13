@@ -8,6 +8,14 @@
   distribution: chains and branches
 - A composed object scores an observed record *and* simulates a new one
 - Parameter uncertainty is an ordinary leaf, not a PPL-specific layer
+
+![](../figures/sam-abbott.jpg){width="21%"
+fig-alt="Sam Abbott"}
+![](../figures/seabbs-bot.jpg){width="21%"
+fig-alt="seabbs-bot"}
+
+::: {.attribution}
+Photos from GitHub, read 2026-08-13
 :::
 ::: {.column width="60%"}
 ```julia
