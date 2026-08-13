@@ -8,6 +8,7 @@
   of it
 - 🐳 Julia's composability does not fix that. The hope is that
   modularity makes it easier for the 🐋 to work together
+- What are good examples of 🐋 working together in Julia?
 - Here the whale is me and a subscription
 - 🌍 Who can do this work at all is narrowing. Agents make that worse
 - The people I build for work in R in the middle of an outbreak response.

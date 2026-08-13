@@ -323,3 +323,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > On "Julia's composability does not fix that" add "hope is modularity makes
 > it easier for the :whales: to work together"
+
+> New bullet: What are good examples of :whales: working together in Julia?
