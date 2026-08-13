@@ -94,8 +94,6 @@ Sam Abbott, LSHTM ·
 :::
 ::::
 
-{{< include _partials/90-summary.qmd >}}
-
 [roadmap-plan]: https://samabbott.co.uk/JuliaCon2026/roadmap/
 [roadmap-talk]: https://samabbott.co.uk/JuliaCon2026/roadmap/
 [workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/

@@ -353,3 +353,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > The Documentation slide should show the docstring template as much as
 > possible, not the weird banned word list
+
+> Cut "Six years of packages, none of which come apart" and "A live outbreak,
+> and four questions I cannot answer"
