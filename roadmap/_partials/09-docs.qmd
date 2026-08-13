@@ -8,8 +8,6 @@
   the build
 - `SciML` puts something interesting on the front page and keeps the
   tutorials short. We copy that
-- The banned word list is one of the checks. A README that calls itself
-  comprehensive does not ship
 :::
 ::: {.column width="48%"}
 ```julia
