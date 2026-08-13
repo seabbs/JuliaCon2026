@@ -39,8 +39,12 @@ EpiAware counts from `gh api search/issues`, read 2026-08-10.
 ![](../figures/seabbs-bot.jpg){width="100%"
 fig-alt="The seabbs-bot GitHub avatar, a robot wearing a party hat."}
 
+![](../figures/sbfnk-bot.jpg){width="100%"
+fig-alt="The sbfnk-bot GitHub avatar, a robot in a red scarf."}
+
 ::: {.attribution}
-[@seabbs-bot](https://github.com/seabbs-bot)
+[@seabbs-bot](https://github.com/seabbs-bot) and
+[@sbfnk-bot](https://github.com/sbfnk-bot)
 :::
 :::
 ::::

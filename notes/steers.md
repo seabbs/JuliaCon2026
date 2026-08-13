@@ -335,3 +335,11 @@ and the 40 minute deck is a primary source for the composable talk.)
 > backends.
 
 > Add the Mooncake logo to "Where does Julia come in?"
+
+> "I tried in R" becomes "Six years of trying this in R and Stan" with the
+> timeline of packages, epinowcast as the attempt at community developed tools
+> where I contribute most of the code, the package too complex for others to
+> use in many cases, and fragmentation and small mistakes adding up to
+> problematic biases. Cut "None of it comes apart", put it on a single slide.
+
+> Add sbfnk-bot to the robot driven dev slide

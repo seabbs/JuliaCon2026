@@ -1,6 +1,8 @@
-## I tried in R
+## Six years of trying this in R and Stan
 
-| Package | Since | Stars | CRAN downloads |
+:::: {.columns}
+::: {.column width="46%"}
+| Package | Since | Stars | CRAN |
 |---|---|---:|---:|
 | `EpiNow2` | 2020 | 141 | 58,073 |
 | `epinowcast` | 2021 | 67 | not on CRAN |
@@ -8,27 +10,23 @@
 | `primarycensored` | 2024 | 9 | 11,294 |
 
 ::: {.attribution}
-Stars and repository creation dates from the GitHub API, retrieved
-2026-08-12 · downloads are CRAN totals from first publication to
-2026-08-11, [cranlogs](https://cranlogs.r-pkg.org/), retrieved 2026-08-12.
+Stars and creation dates from the GitHub API, downloads are CRAN totals
+to 2026-08-11 from [cranlogs](https://cranlogs.r-pkg.org/), both
+retrieved 2026-08-12 · contribution shares from the GitHub contributor
+statistics API for `epinowcast/epinowcast`, read 2026-08-13.
 :::
-
-## None of it comes apart
-
-- I started `epinowcast` in 2021 to be the modular one. It still cannot
-  be taken apart into pieces anyone else can use
+:::
+::: {.column width="54%"}
+- `epinowcast` was the attempt at community developed tools. I have
+  written 68% of the commits, and 68% of the lines with my bot
+- In many cases the package is too complex for anyone else to use
+- We see fragmentation, and a lot of small mistakes in outbreak
+  modelling that add up to real biases
 - The same structural request has been written down in `EpiNow2` four
-  times since 2020. Two were closed as done and left the package no
-  easier to take apart. Two are still open
+  times since 2020. Two closed as done, two still open
 - We wrote down a [workflow for building these models][wf2], then could
   not follow it with the tools we had built
-
-::: {.attribution}
-Four `EpiNow2` issues read 2026-08-10 ·
-[#122](https://github.com/epiforecasts/EpiNow2/issues/122),
-[#313](https://github.com/epiforecasts/EpiNow2/issues/313),
-[#1268](https://github.com/epiforecasts/EpiNow2/issues/1268),
-[#1345](https://github.com/epiforecasts/EpiNow2/issues/1345).
 :::
+::::
 
 [wf2]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
