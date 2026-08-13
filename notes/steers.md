@@ -228,3 +228,8 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Change "Our current approach" to "Our aims". First should be "All the
 > composability requirements we outlined in the other talk".
+
+> Add another example to .github, something a bit more interesting than the
+> code wrapper
+
+> cut: ", all wired up"

@@ -6,7 +6,9 @@
   one `.github` repository, as SciML does it
 - Each caller pins the reusable workflow to a commit SHA
 - The more interesting ones: the per-backend autodiff matrix, downstream
-  testing, docs deploy, and the weekly template sync
+  testing, and the weekly template sync
+- `release-nudge` opens a tracking issue when a package has unreleased
+  changes, and closes it again when it does not
 :::
 ::: {.column width="48%"}
 ```yaml
@@ -17,6 +19,15 @@ name: Test
 jobs:
   test:
     uses: EpiAware/.github/.github/workflows/tests.yml@d024dc6
+```
+
+`try-this-pr` comments install instructions on every pull request
+
+```julia
+import Pkg
+Pkg.activate(temp = true)
+Pkg.add(url = "...", rev = "my-branch")
+using CensoredDistributions
 ```
 
 ::: {.attribution}
@@ -35,7 +46,7 @@ abridged, read 2026-08-12 · 22 of the 23 workflows in
 ::: {.column width="55%"}
 - `scaffold` writes the tooling into a package once. `update` re-applies
   it and reports drift
-- `Aqua`, `JET`, formatting, docstrings and benchmarks, all wired up
+- `Aqua`, `JET`, formatting, docstrings and benchmarks
 - Sixteen written standards, and the checks that catch a breach
 - It injects `AGENTS.md` and `CLAUDE.md` so a model can find the docs
 
