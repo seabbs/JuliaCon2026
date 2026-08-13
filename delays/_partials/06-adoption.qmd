@@ -10,10 +10,6 @@
 - If Julia had something like `brms` it would very likely be a lot
   more extensible and flexible
 
-::: {.callout-note}
-So where is a formula interface still needed?
-:::
-
 ## R wins this, by about a hundred to one
 
 :::: {.columns}
