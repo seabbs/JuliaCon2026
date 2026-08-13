@@ -6,6 +6,8 @@
 - `DocStringExtensions` gets us close to R's standard. I would like more
 - The README's Julia blocks run at docs build, so a broken example fails
   the build
+- A tutorial for each key feature, developed alongside the feature and
+  checked in CI
 - `SciML` puts something interesting on the front page and keeps the
   tutorials short. We copy that
 :::

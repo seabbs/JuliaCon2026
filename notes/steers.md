@@ -314,3 +314,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > enforcing community standards
 
 > Write out AD in full
+
+> Documentation, add a bullet: tutorial for each key feature developed
+> alongside the feature and checked in CI
