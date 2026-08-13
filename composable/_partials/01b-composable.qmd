@@ -2,19 +2,8 @@
 
 :::: {.columns}
 ::: {.column width="40%"}
-::: {.callout-note}
 Components can be reused across contexts and combined in different
 configurations whilst maintaining statistical rigour.
-:::
-
-- Chaining models keeps you flexible and loses information. Uncertainty
-  is approximated at each hand-off and assumptions are inherited
-  unchecked
-- Joint models avoid that and produce something nobody can take apart.
-  England's COVID-19 models were not adapted to mpox in 2022
-- Composable components are validated on their own, then fitted
-  together, and carry their own priors, so domain expertise travels
-  with the component
 :::
 ::: {.column width="60%"}
 ![](../figures/composable-structure.png){height="700px"
