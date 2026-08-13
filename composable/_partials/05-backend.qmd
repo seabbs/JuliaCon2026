@@ -34,6 +34,7 @@ The two practical limits are in the paper's discussion · Logo from
 
 :::: {.columns}
 ::: {.column width="52%"}
+- Stats from [@seabbs-bot][bot]
 - 🐋 `Enzyme.jl` had 18 human authors in the last six months, 210 of its
   276 commits from William Moses. `Mooncake.jl` had 12, with 155 of 221
   from Hong Ge
@@ -51,25 +52,8 @@ fig-alt="Shravan Goswami of the TuringLang team"}
 ![](../figures/xianda-sun.jpg){width="21%"
 fig-alt="Xianda Sun of the TuringLang team"}
 :::
-::: {.column width="44%"}
-| Commits, last six months | `Turing.jl` | `DynamicPPL.jl` |
-|---|---:|---:|
-| By humans | 29 | 72 |
-| By one person | **17** | **47** |
-
-: {tbl-colwidths="[46,27,27]"}
-
-::: {.attribution}
-Commit counts from the GitHub API, 2026-08-10, `main`, human authors
-only, so 17 of 29 and 47 of 72 are per repository ·
-[TuringLang/ADTests][adtests], archived, last commit 2026-05-01, GitHub
-API 2026-08-12 · Those commits are the work of Penelope Yong, Hong Ge,
-Shravan Goswami, Xianda Sun, Hardik Kumar, Markus Hauru and others on
-the [TuringLang team](https://turinglang.org/team/), whose photographs
-are cropped from that page, read 2026-08-13
-:::
-:::
 ::::
 
+[bot]: https://github.com/seabbs-bot
 [turing-ad]: https://turinglang.org/docs/usage/automatic-differentiation/
 [adtests]: https://github.com/TuringLang/ADTests
