@@ -235,3 +235,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > cut: ", all wired up"
 
 > Change "and the checks that catch a breach" to "and checks for them"
+
+> "Reverse dependency checks" as the title for that slide, with "nothing in
+> Julia checks the packages downstream of you" as a bullet

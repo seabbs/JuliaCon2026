@@ -108,10 +108,11 @@ into each adopting package and overwritten on every sync, read 2026-08-12.
 :::
 ::::
 
-## Nothing in Julia checks the packages downstream of you
+## Reverse dependency checks
 
-- CRAN policy asks you to check that packages depending on yours still pass
-  `R CMD check` before you update. Julia has no equivalent
+- Nothing in Julia checks the packages downstream of you
+- CRAN policy asks you to check that packages depending on yours still
+  pass `R CMD check` before you update. Julia has no equivalent
 - SciML runs downstream CI against two packages it does not own
 - Our scaffold writes a downstream job into all ten packages, run by a
   label on a pull request
