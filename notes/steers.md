@@ -260,3 +260,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 > bullet
 
 > Put the whale emoji in the whale title
+
+> Cut "The median Julia package has two contributors, and this ecosystem has
+> its own whales"
