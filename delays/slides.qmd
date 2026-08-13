@@ -106,8 +106,6 @@ Sam Abbott, LSHTM ·
 :::
 ::::
 
-{{< include _partials/90-summary.qmd >}}
-
 [delays-talk]: https://samabbott.co.uk/JuliaCon2026/delays/
 [prompts]: https://samabbott.co.uk/JuliaCon2026/prompts.html
 [workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
