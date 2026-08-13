@@ -238,3 +238,5 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > "Reverse dependency checks" as the title for that slide, with "nothing in
 > Julia checks the packages downstream of you" as a bullet
+
+> Cut "Asking for them did not work, so the template tests for them"

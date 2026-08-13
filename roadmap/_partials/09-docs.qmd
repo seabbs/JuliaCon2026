@@ -2,8 +2,7 @@
 
 :::: {.columns}
 ::: {.column width="52%"}
-- Julia's default is a docstring if you feel like it. Asking for them did
-  not work, so the template tests for them
+- Julia's default is a docstring if you feel like it
 - `DocStringExtensions` gets us close to R's standard. I would like more
 - The README's Julia blocks run at docs build, so a broken example fails
   the build
