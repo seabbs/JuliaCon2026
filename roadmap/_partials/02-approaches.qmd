@@ -8,27 +8,28 @@
 - Registered, and the proof of concept the 16:45 talk demonstrates
 
 ::: {.attribution}
-Code from
-[epiaware.org/approaches/composable-turing-models.html][cturing], read
-2026-08-13, blank lines and comments removed to fit ·
+`README.md` in
 [ComposableTuringIDModels.jl](https://github.com/EpiAware/ComposableTuringIDModels.jl)
+at `011169f`, read 2026-08-13, the four blocks joined and comments
+removed to fit.
 :::
 :::
 ::: {.column width="58%"}
 ```julia
 using ComposableTuringIDModels, Distributions, Turing
-data = IDData(gen_distribution = Gamma(1.4, 1 / 0.38))
+
 model = IDModel(
-    Renewal(data;
-        rt = AR(; ϵ_t = HierarchicalNormal(
-            std_prior = HalfNormal(0.1))),
-        initialisation_prior = Normal(log(1.0), 1.0)),
-    LatentDelay(
-        Ascertainment(NegativeBinomialError(),
-            Intercept(Normal(log(0.4), 0.1))),
-        truncated(Normal(5.0, 2.0), 0.0, Inf)))
-chain = sample(as_turing_model(model, cases, length(cases)),
-               NUTS(), MCMCThreads(), 1_000, 2)
+    DirectInfections(;
+        Z = DiffLatentModel(; model = AR(),
+                            init = [Normal(), Normal()]),
+        initialisation = Normal()),
+    PoissonError())
+
+prior = as_turing_model(model, missing, 30)
+(; generated_y_t) = prior()
+
+posterior = as_turing_model(model, generated_y_t, 30)
+chain = sample(posterior, NUTS(), 1_000)
 ```
 :::
 ::::
@@ -37,46 +38,40 @@ chain = sample(as_turing_model(model, cases, length(cases)),
 
 :::: {.columns}
 ::: {.column width="42%"}
-- Every leaf is an ordinary `Distributions.jl` distribution, and so is
-  the tree they compose into
-- `rand` simulates a case and `logpdf` scores one, with no PPL involved
-- The tree is data you can read and edit. A parameter table, nested
-  priors, partial pooling with `pool` and `tie`, and leaves that vary
-  with time or stratum
+- Model the relationships between events with `Distributions.jl`
+- Those relationships form an event tree
+- Modify the tree, and the distributions in it, for an intervention.
+  Split the tree, compete distributions against each other
+- `convolve_series` pushes a time series through the tree, and it
+  marginalises across the tree where that is cheaper
 - `lower` turns a delay into a compartmental generator, over `Catalyst`,
   `SciMLBase`, `JumpProcesses` and `AlgebraicPetri`
 
-::: {.callout-note}
-We are running both, and a model written by hand, because I cannot tell
-you which is right.
-:::
-:::
-::: {.column width="58%"}
-```julia
-using ComposedDistributions, Distributions
-tree = @uncertain compose((
-    clinical = sequential(
-        :onset_admit => Gamma(Normal(1.2, 0.2), 3.0),
-        :admit_resolve => resolve(
-            :death => (Gamma(2.0, 3.5), 0.3),
-            :discharge => (Gamma(1.0, 8.0), 0.7))),
-    surveillance = sequential(
-        :onset_notif => Gamma(0.7, 20.0),
-        :notif_compete => compete(
-            :confirmed => Gamma(2.0, 1.0),
-            :lost => Gamma(5.0, 0.5))),))
-case = rand(tree); logpdf(tree, case)
-```
-
 ::: {.attribution}
-Code from [epiaware.org/approaches/composed-distributions.html][cdists],
-read 2026-08-13 · pooling and varying leaves from the
-`docs/composed-approach-shared-pool-varying` branch, 2026-08-10 ·
+`README.md` in
+[ComposedDistributions.jl](https://github.com/EpiAware/ComposedDistributions.jl)
+at `0446d5b`, read 2026-08-13 ·
 [LoweredDistributions.jl](https://github.com/EpiAware/LoweredDistributions.jl)
 README, read 2026-08-10.
 :::
 :::
-::::
+::: {.column width="58%"}
+```julia
+using ComposedDistributions, Distributions, Random
 
-[cturing]: https://epiaware.org/approaches/composable-turing-models.html
-[cdists]: https://epiaware.org/approaches/composed-distributions.html
+cfr = 0.12
+
+admission = @uncertain compose((
+    path = sequential(
+        :onset_admit => LogNormal(Normal(0.0, 0.2), 0.4),
+        :admit_outcome => resolve(
+            :death => (Gamma(1.5, 1.0), cfr),
+            :discharge => Gamma(2.0, 1.5))),
+    onset_report = truncated(Gamma(1.5, 1.0); upper = 21.0),
+    onset_referral = censored(Gamma(1.0, 2.0); upper = 14.0)))
+
+record = rand(Xoshiro(1), admission)
+logpdf(admission, record)
+```
+:::
+::::

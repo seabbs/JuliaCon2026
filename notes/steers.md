@@ -287,3 +287,22 @@ and the 40 minute deck is a primary source for the composable talk.)
 > In the roadmap the McCabe et al. report needs a link
 
 > Julia logo on the "Where does Julia come in?" slide
+
+> epiaware.org slide is terrible, it should have a few bullets about what the
+> org is trying to do. I will set it up as the solution when talking from the
+> previous slides.
+
+> Approach one is well out of date code wise. Make sure the approach two
+> example is up to date as well.
+
+> Approach two C is not well explained. Should be: aim to model the
+> relationships between events using Distributions.jl, then a second bullet,
+> this forms an event tree. Want to modify the tree and the distributions
+> within it based on i.e. interventions, split the tree, competing dists etc.
+> Cut "rand simulates a case and logpdf scores one, with no PPL involved".
+> Cut "The tree is data you can read and edit..." and replace with i.e.
+> convolve_series, and marginalise across the tree automatically where
+> efficient.
+
+> Cut the note "We are running both, and a model written by hand, because I
+> cannot tell you which is right"

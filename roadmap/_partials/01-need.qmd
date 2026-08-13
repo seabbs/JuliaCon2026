@@ -1,24 +1,22 @@
 ## [epiaware.org](https://epiaware.org)
 
 :::: {.columns}
-::: {.column width="55%"}
-- Building one of those is slow, and needs expertise across several
-  domains
-- So we want the components reusable, not the model
-- `EpiAware` is the attempt at that in Julia. Packages, docs, and a
-  written account of what any approach has to do
-
-::: {.callout-note}
-The case for composition is the 16:45 talk in this room.
+::: {.column width="60%"}
+- Composable tools for infectious disease modelling in Julia
+- Models built from interchangeable parts, not one system rebuilt for
+  each outbreak
+- A specialist contributes the part they know, without holding the whole
+  model in their head
+- Uncertainty carried from the priors through infection dynamics to
+  observation
+- Nowcasting, forecasting and scenarios from one model definition
 :::
-:::
-::: {.column width="45%"}
-![](../figures/epiaware-logo.svg){width="52%" fig-align="center"
+::: {.column width="40%"}
+![](../figures/epiaware-logo.svg){width="56%" fig-align="center"
 fig-alt="The EpiAware logo"}
 
 ::: {.attribution}
-[epiaware.org](https://epiaware.org) and its
-[approaches](https://epiaware.org/approaches/) page, read 2026-08-13.
+[epiaware.org](https://epiaware.org), read 2026-08-13.
 :::
 :::
 ::::
