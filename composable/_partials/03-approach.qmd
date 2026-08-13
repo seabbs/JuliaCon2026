@@ -113,8 +113,8 @@ fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
 :::: {.columns}
 ::: {.column width="56%"}
 ```julia
+# AR draws its damp, init, and innovations as submodels
 @model function as_turing_model(model::AR, n::Int)
-    p = model.p
     ar_init ~ as_turing_submodel(model.init, p; prefix = true)
     damp_AR ~ as_turing_submodel(model.damp, p; prefix = true)
     ϵ_t ~ as_turing_submodel(model.ϵ_t, n - p)
@@ -122,12 +122,21 @@ fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
                          ar_init, ϵ_t)
     return ar
 end
+
+# DiffLatentModel draws its init, then descends into the AR
+@model function as_turing_model(model::DiffLatentModel, n::Int)
+    latent_init ~ as_turing_submodel(model.init, d; prefix = true)
+    diff_latent ~ as_turing_submodel(model.model, n - d)
+    return _combine_diff(latent_init, diff_latent, d)
+end
 ```
 
 ::: {.attribution}
-`src/latent_models/models/AR.jl:99-115`, reformatted to fit, `main`
-at `011169f`, comments removed · 61 `as_turing_model` definitions
-across 45 files in `src/`, counted 2026-08-12
+`src/latent_models/models/AR.jl:99-115` and
+`src/latent_models/modifiers/DiffLatentModel.jl:61-68`, reformatted to
+fit, `main` at `011169f`, comments and `@assert`s removed · 61
+`as_turing_model` definitions across 45 files in `src/`, counted
+2026-08-12
 :::
 :::
 ::: {.column width="44%"}
@@ -138,8 +147,8 @@ across 45 files in `src/`, counted 2026-08-12
   definition
 
 ::: {.attribution}
-`AR` passes each slot in turn to `as_turing_submodel`, which resolves
-the prior or the whole process that fills it
+`AR` passes each slot to `as_turing_submodel`; `DiffLatentModel`
+passes its whole inner model, and the call descends from there
 :::
 :::
 ::::
