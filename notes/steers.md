@@ -404,3 +404,9 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > In another slide deck we linked to a YouTube video of our composability
 > talk. Add it to the composable models home page.
+
+> Cut the "they were told never to state a number" and the contradicted-the-
+> brief paragraphs. We have many many more commits since this was updated, we
+> likely need a Quarto box, "woops we forgot to keep track", ended up needing
+> lots of minor adjustments for more humanity, and link to the commits for the
+> repo.

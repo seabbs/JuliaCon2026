@@ -511,26 +511,11 @@ They wrote about 3,500 lines of notes into
 - how SciML, JuMP, and Turing govern themselves, for the questions at the end
 - the BVDOutbreakSize model, and where a live outbreak analysis fits in
 
-They were told never to state a number they had not checked against a repo,
-the GitHub API, or a package registry, and to list separately anything they
-could not verify.
-Several notes have an unverified section.
-Those claims are not on the slides.
-
-Some of what came back contradicted the brief.
-The brief says the Stan side needed an ODE but otherwise AD just worked.
-The Julia history says both languages moved off adaptive quadrature by default
-because the differentiator could not follow it, and that 48 of the 396 issues
-in CensoredDistributions.jl have AD, autodiff, gradient, numerical,
-quadrature, precision or performance in the title.
-So the deck says that.
-One agent was asked for a lines of code comparison between the two packages.
-It counted the lines in both, then said the number should not go on a slide
-because the scopes are not the same.
-Another declined to claim public health agency use of primarycensored, because
-the only evidence was the epinowcast team describing its own tools to a public
-health audience.
-
-Writing agents then drafted the slide text from the notes.
-Review agents read the drafts back against this brief for length, for voice,
-and for claims that were not in the notes.
+::: {.callout-warning}
+## Woops, we forgot to keep track
+This account stopped being accurate a long way back.
+There have been many more commits since, and most of them were small
+adjustments for more humanity.
+The [commit history](https://github.com/seabbs/JuliaCon2026/commits/main)
+is the real record.
+:::
