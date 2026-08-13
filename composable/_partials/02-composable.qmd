@@ -25,21 +25,3 @@ motivates it, under six themes. All twelve are at
 :::
 :::
 ::::
-
-## Two approaches, `ComposedDistributions.jl` and `ComposableTuringIDModels.jl`
-
-:::: {.columns}
-::: {.column width="55%"}
-- **Composed distributions.** Model the relationships between events
-  with `Distributions.jl`
-- Those relationships form an event tree
-- **Composable Turing models.** A library of parts over `Turing.jl`.
-  Transmission, latent process and observation are separate objects that
-  nest into one model
-
-::: {.attribution}
-Wording and design considerations from
-[epiaware.org/approaches](https://epiaware.org/approaches/)
-:::
-:::
-::::

@@ -31,7 +31,7 @@ The two practical limits are in the paper's discussion · Logo from
 :::
 ::::
 
-## The teams under this are small
+## The teams are small
 
 :::: {.columns}
 ::: {.column width="52%"}

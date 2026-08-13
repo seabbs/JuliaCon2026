@@ -9,6 +9,7 @@
 - A model definition does not know about the data. One definition
   simulates and fits
 - Adding a new application means defining only the novel parts
+- Every part is a plain struct with one method of `as_turing_model`
 
 ![](../figures/sam-abbott.jpg){width="21%"
 fig-alt="Sam Abbott"}
@@ -16,9 +17,7 @@ fig-alt="Sam Abbott"}
 fig-alt="Samuel Brand"}
 
 ::: {.attribution}
-Photos from GitHub, read 2026-08-13
-:::
-Registered in General at v0.1.1 ·
+Photos from GitHub, read 2026-08-13 · Registered in General at v0.1.1 ·
 [github.com/EpiAware/ComposableTuringIDModels.jl][ctim] ·
 Abbott et al., *Composable probabilistic models can lower barriers to
 rigorous infectious disease modelling*, in CDC clearance
@@ -37,38 +36,52 @@ three
 :::
 ::::
 
-## `as_turing_model`
+## The parts are structs
 
 :::: {.columns}
-::: {.column width="56%"}
+::: {.column width="52%"}
 ```julia
-@model function as_turing_model(model::IDModel, y_t, n)
-    infections ~ as_turing_submodel(model.infection_model, n)
-    I_t = infections.I_t
-    Z_t = infections.Z_t
-    obs ~ as_turing_submodel(model.observation_model, y_t, I_t)
-    generated_y_t = obs.y_t
-    expected_y_t = obs.expected
-    return (; generated_y_t, expected_y_t, I_t, Z_t)
+struct IDModel{I, O} <: AbstractComposableModel
+    infection_model::I   # process → I_t
+    observation_model::O # I_t → y_t
+end
+
+struct AR{D, I, P, E, F} <: AbstractLatentModel
+    damp::D
+    init::I
+    p::P
+    ϵ_t::E              # an innovation slot
+    transform::F
+end
+
+struct MA{C, Q, E} <: AbstractLatentModel
+    θ::C
+    q::Q
+    ϵ_t::E
+end
+
+struct DiffLatentModel{M, P} <: AbstractLatentModel
+    model::M
+    init::P
+    d::Int
 end
 ```
 
 ::: {.attribution}
-`src/compose.jl:53-62`, `main` at `011169f`, one comment line removed ·
-61 `as_turing_model` definitions across 45 files in `src/`, counted
-2026-08-12
+Struct fields abridged, parameter bounds dropped ·
+`src/latent_models/models/{AR,MA}.jl` and
+`src/latent_models/modifiers/DiffLatentModel.jl`, `main` at `011169f`
 :::
 :::
-::: {.column width="44%"}
-- `IDModel` holds two parts, an infection model and an observation
-  model
-- Every part is a plain struct with one method of `as_turing_model`
-- A part that holds another part draws it as a submodel
+::: {.column width="48%"}
+- A part is a plain struct. The type tree does the bookkeeping
+- A slot holds a fixed prior or a whole other part
+- Composition is replacing what is in a slot
 - A part is identified by the method it implements, not by its place in
   a type tree
 
 ::: {.attribution}
-Last line is `docs/src/design.md:18-20`
+`docs/src/design.md:18-20`
 :::
 :::
 ::::
@@ -102,6 +115,47 @@ pins an earlier release, where these were `damp_priors`, `θ_priors` and
 ::: {.column width="42%"}
 ![](../figures/composable-arima.png){height="500px" fig-align="center"
 fig-alt="MA(1) inside AR(2) inside ARMA inside ARIMA, then Poisson"}
+:::
+:::
+::::
+
+## `as_turing_model`, inside the ARIMA call
+
+:::: {.columns}
+::: {.column width="56%"}
+```julia
+mdl = as_turing_model(arima211, 100)
+
+# DiffLatentModel draws its init, then descends:
+@model function as_turing_model(model::DiffLatentModel, n::Int)
+    latent_init ~ as_turing_submodel(model.init, model.d; prefix = true)
+    diff_latent ~ as_turing_submodel(model.model, n - model.d)
+    return _combine_diff(latent_init, diff_latent, model.d)
+end
+
+# model.model is arma21: an AR whose ϵ_t slot holds the MA
+# AR draws its damp and init, then descends again:
+#   ϵ_t ~ as_turing_submodel(model.ϵ_t, n - 1)
+```
+
+::: {.attribution}
+`src/latent_models/modifiers/DiffLatentModel.jl:61-68` and
+`src/latent_models/models/AR.jl:99-115`, `main` at `011169f`, comments
+added · 61 `as_turing_model` definitions across 45 files in `src/`,
+counted 2026-08-12
+:::
+:::
+::: {.column width="44%"}
+- Every part implements `as_turing_model`; nothing else is needed
+- A part that holds another part draws it as a submodel, so the call
+  descends through the slots
+- `AR` was never told that `MA` exists
+- `mdl` is a `DynamicPPL.Model`; it simulates and fits from one
+  definition
+
+::: {.attribution}
+`as_turing_model(model::AR, n)` is the last recursion shown; it passes
+its `ϵ_t` slot to `as_turing_submodel`, which resolves the `MA`
 :::
 :::
 ::::

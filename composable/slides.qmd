@@ -24,9 +24,14 @@ format:
 ::: {.column width="68%"}
 - Modelling evidence must be timely, rigorous, and collaborative
 - Chaining loses information, joint models cannot be taken apart
-- Two approaches we are prototyping
+- What is composable modelling?
+- What we want from any approach
+- Two approaches we are prototyping: composed distributions and
+  composable Turing models
 - One replication, `EpiNow2` in three hours
-- `Turing.jl`
+- `Turing.jl` and the teams
+- The composed distributions route: `Distributions.jl` as the
+  interface, and the pieces that are not distributions yet
 - Is Julia the place for this work?
 :::
 ::: {.column width="32%"}
@@ -47,6 +52,10 @@ JuliaCon 2026, Muschel — N3, Friday 14 August 2026, 16:45.
 {{< include _partials/02-composable.qmd >}}
 
 {{< include _partials/02a-workflow.qmd >}}
+
+{{< include _partials/01b-composable.qmd >}}
+
+{{< include _partials/02c-two-approaches.qmd >}}
 
 {{< include _partials/02b-inspired.qmd >}}
 
@@ -95,8 +104,6 @@ Sam Abbott, LSHTM ·
 :::
 :::
 ::::
-
-{{< include _partials/90-summary.qmd >}}
 
 [composable-talk]: https://samabbott.co.uk/JuliaCon2026/composable/
 [workflow]: https://samabbott.co.uk/a-workflow-for-infectious-disease-modelling/
