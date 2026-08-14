@@ -33,10 +33,6 @@ primarycensored_cdf(d, u, x, ::AnalyticalSolver) =
   `primary_censored` is the $w_P$ integral, `upper` extends
   `Distributions.jl`'s `truncated` at $C$, `interval_censored` is $w_S$
 - The stack is still a distribution, so Turing takes it as it is
-- `primarycensored_cdf` dispatches on the distribution pair: the
-  default `AnalyticalSolver` method falls back to the numerical
-  integral, and `Gamma`/`LogNormal`/`Weibull` with a `Uniform` primary
-  each get a closed form
 - A new distribution would just work. For example,
   `cdf(primary_censored(Frechet(2, 1), Uniform(0, 1)), 3.0)` returns
   `0.847`
@@ -44,9 +40,7 @@ primarycensored_cdf(d, u, x, ::AnalyticalSolver) =
 
 ::: {.attribution}
 Model from `CensoredDistributions.jl/README.md:67-81`, run for this
-talk against v0.2.22 · fallback at
-`src/censoring/primarycensored_cdf.jl:162-170`, and the `NumericSolver`
-method at `:184-188` ·
+talk against v0.2.22 ·
 [CensoredDistributions.jl](https://github.com/EpiAware/CensoredDistributions.jl) ·
 [Distributions.jl](https://juliastats.org/Distributions.jl/stable/) ·
 [Turing](https://turinglang.org/)
