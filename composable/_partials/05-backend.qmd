@@ -38,8 +38,8 @@ The two practical limits are in the paper's discussion · Logo from
   its
   276 commits from William Moses. `Mooncake.jl` had 12, with 155 of 221
   from Hong Ge
-- `TuringLang/ADTests` published a per-backend support table for Turing
-  models. It is archived, with no commits since May
+- [`TuringLang/ADTests`][adtests] published a per-backend support table
+  for Turing models. It is archived, with no commits since May
 - The work itself is good
 
 ![](../figures/penelope-yong.jpg){width="21%"
