@@ -6,7 +6,7 @@
   with `Distributions.jl`
 - Those relationships form an event tree
 - **Composable Turing models.** A library of parts over
-  `Turing.jl`[lk-turingjl].
+  [`Turing.jl`][lk-turingjl].
   Transmission, latent process and observation are separate objects that
   nest into one model
 

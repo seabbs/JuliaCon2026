@@ -1,6 +1,6 @@
 ## There is no `brms` in Julia
 
-- `brms`[lk-brms] exists partly because in R you cannot easily drop the delay
+- [`brms`][lk-brms] exists partly because in R you cannot easily drop the delay
   machinery into a model you wrote yourself (without learning Stan and
   then using code vendoring). In Julia you can
 - So perhaps most people do not need a formula interface. They write
@@ -45,7 +45,7 @@ of people. First CRAN release 28 October 2024, registered in General
 :::
 ::: {.column width="58%"}
 - **Nine** repositories on GitHub depend on
-  `primarycensored`[lk-primarycensored], two of
+  [`primarycensored`][lk-primarycensored], two of
   them on CRAN. Seven are from my own orgs. Two are CDC's, both as
   suggests
 - This means multiple public-health agencies use it as well as
@@ -54,7 +54,7 @@ of people. First CRAN release 28 October 2024, registered in General
   (DRC 2026) used `epidist`, and therefore `primarycensored` —
   [doi:10.1056/NEJMc2608070](https://www.nejm.org/doi/full/10.1056/NEJMc2608070)
 - Everything that depends on
-  `CensoredDistributions.jl`[lk-censoreddistributionsjl] is mine, Sam
+  [`CensoredDistributions.jl`][lk-censoreddistributionsjl] is mine, Sam
   Brand's or Sebastian Funk's
 
 ::: {.attribution}

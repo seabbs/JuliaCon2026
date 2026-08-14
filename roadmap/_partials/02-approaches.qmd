@@ -2,7 +2,7 @@
 
 :::: {.columns}
 ::: {.column width="42%"}
-- A library of parts over `Turing.jl`[lk-turingjl]. Transmission, latent
+- A library of parts over [`Turing.jl`][lk-turingjl]. Transmission, latent
   process and
   observation are separate objects that nest into one model
 - Joint inference and the rest of the `Turing` toolchain come with it
@@ -43,7 +43,7 @@ chain = sample(as_turing_model(model, cases, length(cases)),
 :::: {.columns}
 ::: {.column width="42%"}
 - Model the relationships between events with
-  `Distributions.jl`[lk-distributionsjl]
+  [`Distributions.jl`][lk-distributionsjl]
 - Those relationships form an event tree
 - Modify the tree, and the distributions in it, for an intervention.
   Split the tree, compete distributions against each other

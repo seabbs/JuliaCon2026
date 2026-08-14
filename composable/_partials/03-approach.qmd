@@ -2,7 +2,7 @@
 
 :::: {.columns}
 ::: {.column width="45%"}
-- The proof of concept, a library of parts over `Turing.jl`[lk-turingjl]
+- The proof of concept, a library of parts over [`Turing.jl`][lk-turingjl]
 - Three kinds of part. An infection model, an observation model, and
   prior models nested in the slots of both
 - Parts carry their own priors

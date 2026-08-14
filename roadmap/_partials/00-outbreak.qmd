@@ -46,8 +46,8 @@ Bundibugyo virus in DRC*, Imperial College London, 18 May 2026,
 
 :::: {.columns}
 ::: {.column width="46%"}
-- All of it in Julia, with `Turing.jl`[lk-turingjl] and
-  `Mooncake`[lk-mooncake] as the autodiff
+- All of it in Julia, with [`Turing.jl`][lk-turingjl] and
+  [`Mooncake`][lk-mooncake] as the autodiff
   backend
 - Our R and Stan tools were not expressive enough
 - Nothing in Julia for infectious disease modelling that made sense to

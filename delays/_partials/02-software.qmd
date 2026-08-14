@@ -70,7 +70,7 @@ fitdistcens(my_doulbe_censored_data,
   the front and looked up by name
 - Three copies of this censored objective in `mledist.R`, branching on
   `log` support and on weights
-- To reach it, `primarycensored`[lk-primarycensored] invents a distribution
+- To reach it, [`primarycensored`][lk-primarycensored] invents a distribution
   called
   `pcens_dist` and hides two closures in an empty environment for the
   name lookup to find

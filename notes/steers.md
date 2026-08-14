@@ -421,3 +421,6 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Are we sure it doesn't carry rules, or just not for the call we wanted?
 > Can't we make titles links whilst they still work?
+
+> Issues with how you have done links: "Turing.jllk-turingjl" showing up in
+> the slides. If we can't do it nicely, remove.

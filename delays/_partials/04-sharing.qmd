@@ -27,7 +27,8 @@ pcd_load_stan_functions(
 - So the copying code, `R/pcd-stan-tools.R`, is 453 lines of R that
   reads Stan source, builds a call graph and sorts it topologically. It
   counts braces by hand
-- `epinowcast`[lk-epinowcast] carries a 521 line copy with its own licence file
+- [`epinowcast`][lk-epinowcast] carries a 521 line copy with its own licence
+  file
   beside it. `epidist` splices the whole 1,103 line bundle in at build
   time
 
@@ -67,12 +68,13 @@ epidist_family_param.default <- function(family, ...) {
 ```
 :::
 ::: {.column width="44%"}
-- Delays vary by district, by age and by wave. `brms`[lk-brms], by
+- Delays vary by district, by age and by wave. [`brms`][lk-brms], by
   Paul-Christian Bürkner, is one way (via Stan) to get partial pooling
   and time-varying effects in R
 - Every `brms` family has a `mu`. Stan's `gamma_lpdf` takes the shape
   first, so the intercept we read as the mean was the shape
-- To learn what order `brms` used, `epidist`[lk-epidist] compiles a dummy model,
+- To learn what order `brms` used, [`epidist`][lk-epidist] compiles a dummy
+  model,
   runs a regex over the generated Stan and reads the order back out
 - That string is then `gsub`-ed into our own Stan template, with
   `dist_id` and three more. Five passes before anything compiles

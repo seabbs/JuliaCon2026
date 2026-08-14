@@ -28,7 +28,7 @@ primarycensored_cdf(d, u, x, ::AnalyticalSolver) =
 ```
 :::
 ::: {.column width="46%"}
-- Each adjustment is a wrapper on a `Distributions.jl`[lk-distributionsjl]
+- Each adjustment is a wrapper on a [`Distributions.jl`][lk-distributionsjl]
   object.
   `primary_censored` is the $w_P$ integral, `upper` extends
   `Distributions.jl`'s `truncated` at $C$, `interval_censored` is $w_S$
@@ -69,7 +69,7 @@ ForwardDiff    -> [-0.23692, -0.21296, 0.19054]
 ```
 :::
 ::: {.column width="48%"}
-- `SpecialFunctions`[lk-specialfunctions] leaves the shape-parameter
+- [`SpecialFunctions`][lk-specialfunctions] leaves the shape-parameter
   partial of `gamma_inc` not implemented, so our Gamma closed form would
   not differentiate
 - Adaptive quadrature also errored under auto-differentiation
