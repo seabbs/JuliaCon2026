@@ -96,7 +96,7 @@ The other two are in the same room on the same day.
 - [EpiAwareADTools.jl][adtools].
   Where the org's automatic differentiation fixes live, including the
   `gamma_inc` and `beta_inc` rules `SpecialFunctions.jl` does not carry.
-  Each one is deleted when upstream ships it.
+  We aim to delete each one when upstream ships it.
 - [CensoredDistributions.jl][cd].
   The most mature package so far, 25 registered releases.
 - [EpiAwareR][epiawarer].

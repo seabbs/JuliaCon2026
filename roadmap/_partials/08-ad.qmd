@@ -6,11 +6,11 @@
   automatic differentiation means
 - So we aimed to build our own, using
   [`DifferentiationInterfaceTest`][lk-differentiationinterfacetest]
-- `SpecialFunctions.jl` is the example. The shape-parameter partials of
-  `gamma_inc` and `beta_inc` are not implemented, so support is janky
-  across backends
+- In [`SpecialFunctions.jl`][lk-specialfunctions] the shape-parameter
+  partials of `gamma_inc` and `beta_inc` are not implemented, so support
+  is janky across backends
 - `EpiAwareADTools.jl` stores our org-wide automatic differentiation
-  fixes, and deletes each one when upstream ships it
+  fixes, and aims to delete each one when upstream ships it
 
 ::: {.callout-note}
 Is there a guide for any of this anywhere in the Julia ecosystem? I went
@@ -49,3 +49,4 @@ read 2026-08-13.
 ::::
 
 [lk-differentiationinterfacetest]: https://github.com/JuliaDiff/DifferentiationInterface.jl
+[lk-specialfunctions]: https://github.com/JuliaMath/SpecialFunctions.jl

@@ -424,3 +424,9 @@ and the 40 minute deck is a primary source for the composable talk.)
 
 > Issues with how you have done links: "Turing.jllk-turingjl" showing up in
 > the slides. If we can't do it nicely, remove.
+
+> Remove "SpecialFunctions.jl is the example" to make it just
+> SpecialFunctions.jl, and any other instances of this pattern.
+
+> "and deletes each one when upstream ships it" should be aims, as it hasn't
+> happened yet.
